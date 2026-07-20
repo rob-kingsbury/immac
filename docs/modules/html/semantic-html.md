@@ -104,6 +104,30 @@ Put together, these four give a page its skeleton:
 </body>
 ```
 
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<header>
+  <h1>Corner Bakery</h1>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<p><em>(main content goes here)</em></p>
+
+<footer>
+  <p>&copy; 2026 Corner Bakery</p>
+</footer>
+</div>
+</details>
+
+Visually this is nothing special, a heading, a menu, and a copyright line. That's the point: semantic elements don't change how a page looks on their own. They change what the code *means* to everything other than your eyes, a screen reader, a search engine, the next developer.
+
 ## Grouping content: section, article, and aside
 
 Inside `<main>`, three elements organize your content. This is where beginners hesitate most, so here is a clear rule for each.
@@ -132,6 +156,19 @@ A `<section>` is a thematic grouping of related content, almost always with its 
   </article>
 </section>
 ```
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<section>
+  <h2>Reviews</h2>
+  <article>
+    <h3>Best sourdough in town</h3>
+    <p>Five stars...</p>
+  </article>
+</section>
+</div>
+</details>
 
 Notice that sections and articles nest naturally. A "Reviews" `<section>` can contain many review `<article>` elements, and an `<article>` can contain its own `<section>` elements. Choose based on meaning, not nesting depth.
 
@@ -247,6 +284,58 @@ Here is a realistic article page marked up entirely with semantic elements. Read
   </footer>
 </body>
 ```
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<header>
+  <h1>Corner Bakery Blog</h1>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+  </nav>
+</header>
+
+<article>
+  <header>
+    <h2>The Case for a Longer Rise</h2>
+    <p>Posted <time datetime="2026-02-10">February 10, 2026</time></p>
+  </header>
+
+  <section>
+    <h3>Flavour</h3>
+    <p>A slow fermentation develops...</p>
+  </section>
+
+  <section>
+    <h3>Texture</h3>
+    <figure>
+      <img src="/images/placeholder.svg" alt="Open crumb of a slowly fermented loaf">
+      <figcaption>Twenty-four hours of cold proofing.</figcaption>
+    </figure>
+  </section>
+
+  <footer>
+    <address>Written by the Corner Bakery team</address>
+  </footer>
+</article>
+
+<aside>
+  <h2>Related posts</h2>
+  <ul>
+    <li><a href="#">Choosing a starter</a></li>
+  </ul>
+</aside>
+
+<footer>
+  <p>&copy; 2026 Corner Bakery</p>
+</footer>
+</div>
+</details>
+
+The Result box uses a placeholder graphic in place of a real photo, since a textbook can't ship every image a real project would have. In your own project, `src` points at an actual image file in your folder, and the caption and `alt` text work exactly the same way.
 
 Notice that the `<article>` has its own `<header>` and `<footer>`, separate from the page's. That is legal and correct: those elements describe the nearest section they belong to, whether that's the whole page or a single article.
 
