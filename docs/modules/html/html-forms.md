@@ -34,18 +34,26 @@ The `<input>` element is the workhorse, and its `type` attribute changes both ho
 <input type="radio">     <!-- one choice from a group -->
 ```
 
+Put a few of those types to work in labelled fields:
+
+```html
+<label>Email <input type="email"></label>
+<label>Quantity <input type="number" min="0" max="10"></label>
+<label>Date <input type="date"></label>
+<label>Subscribe <input type="checkbox"></label>
+```
+
 <details class="demo" open>
 <summary>Result</summary>
-<div class="demo-render demo-fields">
-  <label><span>Text</span> <input type="text" placeholder="Anything"></label>
-  <label><span>Email</span> <input type="email" placeholder="you@example.com"></label>
-  <label><span>Number</span> <input type="number" min="0" max="10"></label>
-  <label><span>Date</span> <input type="date"></label>
-  <label><input type="checkbox"> <span>Subscribe</span></label>
+<div class="demo-render">
+<label>Email <input type="email"></label>
+<label>Quantity <input type="number" min="0" max="10"></label>
+<label>Date <input type="date"></label>
+<label>Subscribe <input type="checkbox"></label>
 </div>
 </details>
 
-Try each field above. The number input shows steppers, the date input opens a picker, and on a phone the email field brings up an email keyboard. Same markup, different built-in behaviour per type.
+The number field shows steppers and the date field opens a picker. Same markup, different built-in behaviour per type.
 
 Using `type="email"` instead of `type="text"` means the browser can check the format and mobile users get an email-optimized keyboard, all for free.
 
@@ -78,10 +86,8 @@ When several controls belong together, such as a set of radio buttons, wrap them
 ```html
 <fieldset>
   <legend>Preferred contact method</legend>
-
   <input type="radio" id="by-email" name="contact" value="email">
   <label for="by-email">Email</label>
-
   <input type="radio" id="by-phone" name="contact" value="phone">
   <label for="by-phone">Phone</label>
 </fieldset>
@@ -90,15 +96,17 @@ When several controls belong together, such as a set of radio buttons, wrap them
 <details class="demo" open>
 <summary>Result</summary>
 <div class="demo-render">
-  <fieldset>
-    <legend>Preferred contact method</legend>
-    <label><input type="radio" name="contact-demo" value="email"> Email</label>
-    <label><input type="radio" name="contact-demo" value="phone"> Phone</label>
-  </fieldset>
+<fieldset>
+  <legend>Preferred contact method</legend>
+  <input type="radio" id="by-email" name="contact" value="email">
+  <label for="by-email">Email</label>
+  <input type="radio" id="by-phone" name="contact" value="phone">
+  <label for="by-phone">Phone</label>
+</fieldset>
 </div>
 </details>
 
-Click either option above. Because both radios share the same `name`, choosing one clears the other. That is the live output of the code, rendered right on the page.
+Click either option above. Because both radios share the same `name`, choosing one clears the other. That is the live output of the exact code above, rendered on the page.
 
 The `<legend>` gives the whole group a name, so a screen reader announces "Preferred contact method, Email, radio button" rather than a bare "Email" with no context. Radio buttons in a group share the same `name`, which is what makes them mutually exclusive.
 

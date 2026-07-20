@@ -36,21 +36,30 @@
   padding-bottom: 0.28rem;
 }
 
-// Live example: a collapsible "Result" panel shown below the code, holding the
-// actual rendered, interactive output. Built on a native <details> element, so
-// it works without scripts, keeps the code block's own copy button, and stacks
-// cleanly on mobile.
+// Live example: the code block and a collapsible "Result" panel welded into one
+// unit. The code keeps its own copy button and highlighting; the Result holds
+// the actual rendered output. Native <details>, so it needs no scripts and
+// stacks cleanly on mobile.
+
+// Flatten the bottom of a code block that is immediately followed by a demo, and
+// drop the gap, so the code and its result read as a single block.
+div[class*='language-']:has(+ details.demo) {
+  margin-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 details.demo {
   border: 1px solid var(--vp-c-divider, #e2e2e3);
-  border-radius: 8px;
-  margin: 0.5rem 0 1.4rem;
+  border-radius: 0 0 8px 8px;
+  margin: 0 0 1.4rem;
   background: var(--vp-c-bg-soft, #f6f6f7);
   overflow: hidden;
 }
 
 details.demo > summary {
   cursor: pointer;
-  padding: 0.55rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -68,8 +77,21 @@ details.demo[open] > summary {
   padding: 1.15rem 1.2rem;
 }
 
-// Radio and checkbox groups inside a fieldset stay inline and spaced, since
-// those controls read naturally side by side.
+// Labelled fields (a label wrapping an input) stack one per row so the box does
+// not become a wall of controls.
+.demo-render > label {
+  display: block;
+}
+
+.demo-render > label + label {
+  margin-top: 0.65rem;
+}
+
+.demo-render > label input {
+  margin-left: 0.35rem;
+}
+
+// Radio and checkbox groups inside a fieldset sit inline, spaced as pairs.
 .demo fieldset {
   padding: 0.8rem 1rem;
   border-radius: 6px;
@@ -81,27 +103,9 @@ details.demo[open] > summary {
 }
 
 .demo fieldset label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
   margin-right: 1.5rem;
 }
 
-// A list of labelled fields stacks one per row, with the labels aligned in a
-// column so the inputs line up and the box does not become a wall of fields.
-.demo-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.demo-fields label {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-.demo-fields > label > span:first-child {
-  flex: 0 0 4.5rem;
-  opacity: 0.7;
+.demo fieldset input {
+  margin-right: 0.3rem;
 }
