@@ -4,4 +4,4 @@ title: Resources
 
 # Resources
 
-> Placeholder — resources content for MTM1544 has not been written yet.
+> Placeholder: resources for MTM1544 have not been written yet.

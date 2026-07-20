@@ -6,7 +6,7 @@ export default defineUserConfig({
   lang: 'en-US',
   base: '/immac/',
   title: 'IMM Web Courses',
-  description: 'Algonquin College — Interactive Media Management',
+  description: 'Algonquin College, Interactive Media Management',
 
   bundler: viteBundler(),
 
@@ -20,7 +20,7 @@ export default defineUserConfig({
     sidebar: {
       '/mtm1511/': [
         {
-          text: 'MTM1511 — Web Components',
+          text: 'MTM1511: Web Components',
           children: [
             '/mtm1511/README.md',
             '/mtm1511/overview/README.md',
@@ -31,7 +31,7 @@ export default defineUserConfig({
       ],
       '/mtm1544/': [
         {
-          text: 'MTM1544 — Web Styles',
+          text: 'MTM1544: Web Styles',
           children: [
             '/mtm1544/README.md',
             '/mtm1544/overview/README.md',

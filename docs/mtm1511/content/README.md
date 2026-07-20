@@ -13,7 +13,7 @@ title: Weekly Content
 | 5 | Site Architecture and Planning *(coming soon)* |
 | 6 | Web Accessibility Fundamentals *(coming soon)* |
 | 7 | HTML Forms and Data Structures *(coming soon)* |
-| — | Reading Week |
+| - | Reading Week |
 | 8 | Optimizing Images and Media *(coming soon)* |
 | 9 | SEO Fundamentals *(coming soon)* |
 | 10 | SEO in Practice *(coming soon)* |
