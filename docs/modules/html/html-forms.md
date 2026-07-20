@@ -152,7 +152,7 @@ Every control needs a `<label>`, connected by matching the label's `for` to the 
 <input type="text" id="name" name="name">
 ```
 
-This is the same rule from last week's accessibility module, and it's worth repeating because it's the most common thing beginners skip. The label makes a screen reader announce the field correctly, and it makes the label text clickable to focus the input, which is easier for everyone. A greyed-out `placeholder` is a hint, not a label. It disappears as soon as the user types, so it can never replace a real label.
+This is the same rule from the Web Accessibility Fundamentals chapter, and it's worth repeating because it's the most common thing beginners skip. The label makes a screen reader announce the field correctly, and it makes the label text clickable to focus the input, which is easier for everyone. A greyed-out `placeholder` is a hint, not a label. It disappears as soon as the user types, so it can never replace a real label.
 
 ## Grouping with fieldset and legend
 
@@ -616,6 +616,12 @@ Here's everything from this section in one table: `<table>`, `<caption>`, `<thea
 </table>
 </div>
 </details>
+
+## A habit worth starting now: validate your markup
+
+Forms and tables are two of the easiest structures to write invalid HTML in: an unclosed `<td>`, a `<label for>` that doesn't match any `id`, a `<tr>` sitting outside a `<thead>` or `<tbody>`. The browser usually renders something anyway, quietly guessing at what you meant, which means a real mistake can sit in your code for weeks without ever looking wrong on screen.
+
+The [W3C Markup Validation Service](https://validator.w3.org/) checks your HTML against the official rules and reports every error with a line number. Paste in the page you just built and see what it says. The Code Quality and Validation chapter later this semester covers this tool in full, but there's no reason to wait. Running a page through it the same day you build a form or a table, while the structure is still fresh in your mind, catches mistakes when they're a ten-second fix instead of an archaeology project weeks later.
 
 ## Keep learning
 
