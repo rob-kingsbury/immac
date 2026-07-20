@@ -62,6 +62,10 @@ export default defineUserConfig({
       ],
     },
 
+    // Show only the week links in the sidebar, not every in-page heading of the
+    // active chapter (which floods the nav on deep pages).
+    sidebarDepth: 0,
+
     colorMode: 'auto',
     colorModeSwitch: true,
 
