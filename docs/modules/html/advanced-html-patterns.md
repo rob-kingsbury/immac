@@ -4,7 +4,7 @@ title: Advanced HTML Patterns
 
 # Advanced HTML Patterns
 
-By now you can build a complete, valid, accessible page. This week rounds out your HTML with the patterns that come up on real sites: embedding content from other services safely, keeping that content responsive, polishing the document head, and a look at where HTML is heading so your knowledge doesn't go stale.
+By now you can build a complete, valid, accessible page. This chapter rounds out your HTML with the patterns that come up on real sites: embedding content from other services safely, keeping that content responsive, polishing the document head, and a look at where HTML is heading so your knowledge doesn't go stale.
 
 ## Embedding third-party content
 
@@ -19,7 +19,7 @@ Most sites include things they didn't build: a YouTube video, a Google Map, a bo
   allowfullscreen></iframe>
 ```
 
-A few practices make embeds behave. Always give the `<iframe>` a `title` describing its content, for the same accessibility reason images need `alt`. Add `loading="lazy"` so an embed lower on the page doesn't slow the initial load. And paste embed codes only from services you trust, since an `<iframe>` loads and runs another site's content inside your page.
+A few practices make embeds behave. Always give the `<iframe>` a `title` describing its content, for the same accessibility reason images need `alt`. Add `loading="lazy"` so an embed lower on the page doesn't slow the initial load. And paste embed codes only from services you trust, since an `<iframe>` loads and runs another site's content inside your page, effectively giving that site a window into yours.
 
 ## Responsive media containers
 
@@ -31,7 +31,7 @@ An `<iframe>` has a fixed `width` and `height`, which breaks on small screens: a
 </div>
 ```
 
-The container gets a fixed aspect ratio in CSS (16 by 9 for most video) and the `<iframe>` is set to fill it completely. The result scales smoothly from desktop to phone without distortion. You'll write the CSS side in your styling course; the HTML pattern is the wrapper element around the embed, and it's worth building the habit of wrapping every embed now.
+The container gets a fixed aspect ratio in CSS (16 by 9 for most video) and the `<iframe>` is set to fill it completely. The result scales smoothly from desktop to phone without distortion. You'll write the CSS side in your styling course; the HTML pattern is the wrapper element around the embed, and it's worth building the habit of wrapping every embed now, before you have a page full of unwrapped ones to fix later.
 
 ## Document head best practices
 
@@ -49,13 +49,11 @@ The `<head>` holds information about the page rather than visible content, and a
 </head>
 ```
 
-Two of these are easy to forget and important. The `charset` declaration ensures characters and symbols display correctly, and the `viewport` meta tag is what makes a page respond properly to mobile screens rather than rendering a shrunken desktop layout. Both belong in the head of every page you build.
+Two of these are easy to forget and important. The `charset` declaration ensures characters and symbols display correctly, and without it, special characters can render as garbled text. The `viewport` meta tag is what makes a page respond properly to mobile screens rather than rendering a shrunken desktop layout that a phone user has to pinch and zoom to read. Both belong in the head of every page you build, no exceptions.
 
-## Where HTML is going
+## The details and summary elements
 
-HTML is a living standard, meaning it's updated continuously rather than in big numbered versions. Newer elements keep arriving that handle, natively, things that used to require scripting. Two worth knowing:
-
-The `<dialog>` element provides a real, accessible modal dialog box, with built-in focus handling and a backdrop, replacing the old pattern of faking one with `<div>` elements. The `<details>` and `<summary>` elements create an expand-and-collapse disclosure widget (an FAQ answer that opens on click, say) with no scripting at all:
+Some interactive patterns that used to require JavaScript are now built directly into HTML. `<details>` and `<summary>` create an expand-and-collapse disclosure widget, an FAQ answer that opens on click, with no scripting at all.
 
 ```html
 <details>
@@ -64,8 +62,44 @@ The `<dialog>` element provides a real, accessible modal dialog box, with built-
 </details>
 ```
 
-The takeaway isn't to memorize every new element. It's the habit: before reaching for a complicated custom solution, check whether HTML has since grown a native element for it. The platform keeps absorbing common patterns, and native is almost always more accessible and more reliable than a hand-built version. A reference like MDN Web Docs is where you check what's current.
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<details>
+  <summary>What should I bring to the class?</summary>
+  <p>Just yourself. All ingredients and equipment are provided.</p>
+</details>
+</div>
+</details>
+
+Click the question in the Result box above. It's genuinely interactive, the same native element powering the collapsible Result boxes throughout this entire textbook. `<summary>` is always the first child, and it's what stays visible when the widget is closed. Everything else inside `<details>` is the content that reveals when it's opened. Add the `open` attribute to `<details>` if you want it expanded by default.
+
+## The dialog element
+
+The `<dialog>` element provides a real, accessible modal dialog box, with built-in focus handling and a backdrop, replacing the old pattern of faking one with a `<div>`, custom JavaScript, and a lot of careful accessibility work to get keyboard focus trapped correctly. Opening and closing it does need a small amount of JavaScript, `dialog.showModal()` and `dialog.close()`, which is beyond this course, but the markup itself is worth knowing:
+
+```html
+<dialog>
+  <p>Your class has been booked.</p>
+  <button>Close</button>
+</dialog>
+```
+
+The takeaway that matters more than either specific element: before reaching for a complicated custom solution built from `<div>` elements and scripting, check whether HTML has since grown a native element for it. The platform keeps absorbing common patterns, and a native element is almost always more accessible and more reliable than a hand-built version, since browser vendors have already solved the keyboard and screen reader behaviour you'd otherwise have to build yourself.
+
+## Common mistakes to avoid
+
+- **An `<iframe>` with no `title`.** Leaves assistive technology with nothing to announce about what the frame contains.
+- **Forgetting the `viewport` meta tag.** The single most common cause of a page that "looks broken" specifically on mobile, when it looked fine on a desktop screen.
+- **Building a fake modal with `<div>` and `display: none`** instead of `<dialog>`. It usually misses keyboard trapping and screen reader announcement that the real element handles automatically.
+- **A `<details>` with no `<summary>`.** The browser supplies a default "Details" label, which tells a user nothing about what's inside.
+
+## Keep learning
+
+- [W3Schools: The details Tag](https://www.w3schools.com/tags/tag_details.asp) and [The dialog Tag](https://www.w3schools.com/tags/tag_dialog.asp). Full attribute references for both elements.
+- [W3Schools: The meta Tag](https://www.w3schools.com/tags/tag_meta.asp) and [Responsive Web Design: The Viewport](https://www.w3schools.com/css/css_rwd_viewport.asp). References for the document head pieces in this chapter.
+- [Video: 2 HTML Elements I Never Used!? (Details & Summary), by DesignCourse](https://www.youtube.com/watch?v=PQtpZZQU0u0). A practical look at where these elements fit in a real project.
 
 ## Try it yourself
 
-Embed a video or map on one of your pages using an `<iframe>` with a `title` and `loading="lazy"`, wrapped in a container element ready for a responsive aspect ratio. Audit the `<head>` of your pages against the checklist above and add anything missing, especially the `charset` and `viewport` tags. Then build an FAQ section using `<details>` and `<summary>`, and note that it opens and closes with no scripting at all.
+Embed a video or map on one of your pages using an `<iframe>` with a `title` and `loading="lazy"`, wrapped in a container element ready for a responsive aspect ratio. Audit the `<head>` of your pages against the checklist above and add anything missing, especially the `charset` and `viewport` tags. Then build an FAQ section with at least three questions using `<details>` and `<summary>`, and confirm each one opens and closes with no scripting at all.
