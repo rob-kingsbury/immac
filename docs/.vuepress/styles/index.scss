@@ -127,3 +127,67 @@ details.demo[open] > summary {
   height: 100%;
   stroke: currentColor;
 }
+
+// A drawn stand-in for a native OS dialog box, used where a real screenshot
+// would otherwise be needed but no suitably licensed one exists (system
+// dialogs and settings screens are usually only found as unlicensed
+// screenshots on third-party tutorial sites). Built from CSS, not an image,
+// so it carries no copyright risk and stays crisp at any screen size.
+.mock-dialog {
+  display: flex;
+  gap: 0.9rem;
+  max-width: 26rem;
+  margin: 0 0 1.4rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--vp-c-divider, #e2e2e3);
+  border-radius: 10px;
+  background: var(--vp-c-bg-elv, #fff);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.mock-dialog-icon {
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--vp-c-text-accent, #3b82f6);
+}
+
+.mock-dialog-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+}
+
+.mock-dialog-title {
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.mock-dialog-message {
+  margin: 0 0 1rem;
+  font-size: 0.88rem;
+  opacity: 0.85;
+}
+
+.mock-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.mock-dialog-btn {
+  padding: 0.32rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  border: 1px solid var(--vp-c-divider, #e2e2e3);
+  background: var(--vp-c-bg-soft, #f6f6f7);
+  color: inherit;
+  cursor: default;
+}
+
+.mock-dialog-btn-primary {
+  border-color: var(--vp-c-text-accent, #3b82f6);
+  background: var(--vp-c-text-accent, #3b82f6);
+  color: #fff;
+}

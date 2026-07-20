@@ -8,7 +8,39 @@ Every project you submit this semester lives as a real, public website, hosted o
 
 ## Installing Git
 
-Git is the version control system that records every change you make to your files, and it's what connects your computer to GitHub. If you haven't already, download it from [git-scm.com/downloads](https://git-scm.com/downloads) and run the installer, accepting the default options throughout. The defaults are correct for this course.
+Git is the version control system that records every change you make to your files, and it's what connects your computer to GitHub. The install method differs by operating system, so follow whichever section matches your laptop.
+
+### Windows
+
+Download the installer from [git-scm.com/downloads](https://git-scm.com/downloads) and run it, accepting the default options throughout. The defaults are correct for this course. This also installs Git Bash, the terminal you'll set as your default in VS Code shortly.
+
+### macOS
+
+The [git-scm.com Mac page](https://git-scm.com/install/mac) lists several ways to install Git, Homebrew, MacPorts, a standalone binary, but they either require installing a separate package manager first or, in the binary installer's case, are explicitly discontinued and no longer updated. The simplest path, and the one this course uses, is **Xcode Command Line Tools**, a small developer toolkit Apple ships directly, with Git already included. Nothing extra to install first.
+
+Open **Terminal** (search for it with Spotlight, `Cmd+Space`, then type "Terminal"), and run:
+
+```bash
+xcode-select --install
+```
+
+A system dialog appears within a few seconds, asking to confirm the install:
+
+<div class="mock-dialog">
+  <div class="mock-dialog-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg>
+  </div>
+  <div>
+    <p class="mock-dialog-title">Install Command Line Developer Tools</p>
+    <p class="mock-dialog-message">The xcode-select command requires the command line developer tools. Would you like to install the tools now?</p>
+    <div class="mock-dialog-actions">
+      <span class="mock-dialog-btn">Not Now</span>
+      <span class="mock-dialog-btn mock-dialog-btn-primary">Install</span>
+    </div>
+  </div>
+</div>
+
+Click **Install**, then agree to the license. The download typically finishes in under ten minutes, faster on a good connection, and needs no further action once it completes. If the command instead prints a message saying the tools are already installed, that's fine too, it means a prior install (from Xcode itself, or an earlier course) already covered it.
 
 Confirm the install worked by opening a terminal and checking the version:
 
