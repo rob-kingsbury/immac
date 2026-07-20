@@ -8,7 +8,7 @@ The final week is open lab time to complete your multi-page website. There's no 
 
 ## What to finish
 
-By now your site's structure should be solid and its known problems resolved from week 13. This week is for completing content, making a final pass over every page, and confirming the whole site holds together: all pages present, all links working, all standards met. Bring the specific questions that come up in that final pass to the instructor while there's still time to act on them.
+By now your site's structure should be solid and its known problems resolved from the Project Development week. This week is for completing content, making a final pass over every page, and confirming the whole site holds together: all pages present, all links working, all standards met. Bring the specific questions that come up in that final pass to the instructor while there's still time to act on them.
 
 ## Pre-submission checklist
 

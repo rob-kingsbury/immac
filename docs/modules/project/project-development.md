@@ -4,7 +4,7 @@ title: Project Development
 
 # Project Development
 
-The teaching weeks are done. Weeks 13 and 14 are where your multi-page website comes together as a finished piece. This week is guided development: refining what you've built, getting feedback, and bringing in the styling side from your CSS course. No new HTML concepts are introduced. The work is applying everything you already know to your own project.
+The teaching chapters are done. These final two weeks are where your multi-page website comes together as a finished piece. This week is guided development: refining what you've built, getting feedback, and bringing in the styling side from your CSS course. No new HTML concepts are introduced. The work is applying everything you already know to your own project.
 
 ## The cross-course connection
 
@@ -29,8 +29,8 @@ Feedback tied to those concrete points ("your gallery page skips from h2 to h4" 
 
 ## Refining your own site
 
-Use the feedback and the studio time to raise the whole project to a professional standard. Revisit each page against the criteria above, fix what validation and the accessibility audit flag, and confirm your responsive images and metadata are in place. The goal by the end of this week is a site with no outstanding structural problems, so week 14 is pure polish and completion rather than firefighting.
+Use the feedback and the studio time to raise the whole project to a professional standard. Revisit each page against the criteria above, fix what validation and the accessibility audit flag, and confirm your responsive images and metadata are in place. The goal by the end of this week is a site with no outstanding structural problems, so next week is pure polish and completion rather than firefighting.
 
-## Looking ahead to week 14
+## Looking ahead to the final week
 
-Week 14 is open lab time to finish. Come into it with your structure solid and your known issues resolved, so the final week is about completing content and final checks, not repairing foundations. A short pre-submission checklist for that final pass is on the Project Work Lab page.
+The Project Work Lab that follows is open lab time to finish. Come into it with your structure solid and your known issues resolved, so the final week is about completing content and final checks, not repairing foundations. A short pre-submission checklist for that final pass is on the Project Work Lab page.
