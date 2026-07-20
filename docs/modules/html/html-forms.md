@@ -8,7 +8,7 @@ Forms are how the web listens. A search box, a login, a contact page, a checkout
 
 ## The form element
 
-A form wraps a group of controls. Its `action` says where the data goes and its `method` says how it's sent.
+A `<form>` wraps a group of controls into one unit that submits together. Two attributes decide where the data goes and how it travels.
 
 ```html
 <form action="/subscribe" method="post">
@@ -16,7 +16,31 @@ A form wraps a group of controls. Its `action` says where the data goes and its 
 </form>
 ```
 
-For now these can be placeholders, since there's no server to receive the data. What matters is the structure inside.
+`action` is the URL that receives the submitted data. `method` is the HTTP method used to send it, and the choice between the two available methods, `get` and `post`, is not a style preference. It changes how and where the data travels, and picking the wrong one is a real, gradeable mistake.
+
+### GET versus POST
+
+**`method="get"`** appends the form's data to the `action` URL as a query string, visible right in the address bar: `search.html?query=sourdough&sort=recent`. Because the data lives in the URL, a GET request can be bookmarked, shared as a link, and revisited, and the browser's back button works normally with it. That makes GET the correct method for anything that only retrieves or filters information and changes nothing on the server: a search box, a filter, a "view this page" link built from a form.
+
+**`method="post"`** sends the form's data in the body of the request, invisible in the URL and not stored in browser history. Use POST whenever a submission changes something (creating an account, posting a comment, placing an order) or whenever the data is sensitive (a password, personal information). Because the data isn't in the URL, POST doesn't expose it in bookmarks, browser history, or server logs the way GET would.
+
+A rule you can apply without hesitation: if submitting the form twice would create two of something, or if the form carries a password, use `post`. If it only asks a question and gets an answer back, `get` is correct and often better, since the result becomes a shareable, bookmarkable URL.
+
+```html
+<!-- Correct: a search form. Retrieval only, and the result is worth bookmarking. -->
+<form action="/search" method="get">
+  <label for="q">Search</label>
+  <input type="search" id="q" name="q">
+</form>
+
+<!-- Correct: a signup form. Creates an account and carries a password. -->
+<form action="/register" method="post">
+  <label for="new-password">Password</label>
+  <input type="password" id="new-password" name="password">
+</form>
+```
+
+For the exercises in this course there's no server to receive the data, so `action` and `method` are placeholders. What matters right now is choosing the method that matches what the form actually does, and building the structure inside correctly.
 
 ## Inputs and input types
 
@@ -67,6 +91,35 @@ For longer text use `<textarea>`, and for a list of options use `<select>`:
   <option value="support">Support</option>
 </select>
 ```
+
+## Buttons
+
+A form isn't complete without a way to submit it. Three distinct button behaviours exist, and confusing them is a common source of bugs.
+
+`<button type="submit">` submits the form. This is the default type for a `<button>` inside a `<form>`, so leaving off `type` entirely also submits, which is exactly why explicit typing matters: a button meant only to do something with JavaScript, if left untyped inside a form, will submit the form by accident.
+
+`<button type="reset">` clears every field in the form back to its original value. Use it rarely. Clearing a form a user has spent time filling in is more often a frustration than a convenience.
+
+`<button type="button">` does nothing on its own. It exists purely as a hook for JavaScript, for things like "show password" toggles or adding another row to a list. You won't wire up the behaviour until a later course, but the type belongs in your markup now, whenever a button isn't meant to submit.
+
+```html
+<button type="submit">Send message</button>
+<button type="reset">Clear form</button>
+<button type="button">Show password</button>
+```
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<button type="submit">Send message</button>
+<button type="reset">Clear form</button>
+<button type="button">Show password</button>
+</div>
+</details>
+
+You'll sometimes see `<input type="submit" value="Send">` instead of `<button type="submit">Send</button>`. Both submit the form. `<button>` is the better default, because its content can include an icon or nested markup, where an `<input>`'s label is limited to its plain-text `value`.
+
+A form needs exactly one primary submit action. If a form has both a submit and a reset button, make the submit button visually and structurally the primary one, since it's the action nearly every user wants and the reset is the rare exception.
 
 ## Labels are not optional
 
@@ -126,9 +179,13 @@ The browser shows its own error messages and blocks submission until the rules a
 
 ## Tables for data
 
-Tables are for tabular data (rows and columns of related values), never for page layout. Using a table to position things visually is an old, broken habit that wrecks accessibility.
+Tables are for tabular data (rows and columns of related values), never for page layout. Using a table to position things visually is an old, broken habit from before CSS could lay out a page, and it wrecks accessibility, because a screen reader tries to read a layout table as if it were real data and produces nonsense.
 
-A correct data table uses `<th>` for header cells, with a `scope` telling whether each header labels a column or a row:
+### The building blocks
+
+A table is built from five elements working together. `<table>` wraps the whole thing. `<caption>` names it, right after the opening tag. `<thead>` holds the header row, `<tbody>` holds the data rows, and an optional `<tfoot>` holds a summary row like a total. Inside those, `<tr>` is a table row, `<th>` is a header cell, and `<td>` is an ordinary data cell.
+
+Every `<th>` should carry a `scope` attribute saying what it labels: `scope="col"` for a header at the top of a column, `scope="row"` for a header at the start of a row. `scope` is what lets a screen reader announce a cell along with the header that describes it, for example reading "9:00, Opens, Monday" instead of just "9:00" with no context.
 
 ```html
 <table>
@@ -146,12 +203,106 @@ A correct data table uses `<th>` for header cells, with a `scope` telling whethe
       <td>9:00</td>
       <td>17:00</td>
     </tr>
+    <tr>
+      <th scope="row">Tuesday</th>
+      <td>9:00</td>
+      <td>17:00</td>
+    </tr>
+    <tr>
+      <th scope="row">Saturday</th>
+      <td>10:00</td>
+      <td>15:00</td>
+    </tr>
+    <tr>
+      <th scope="row">Sunday</th>
+      <td colspan="2">Closed</td>
+    </tr>
   </tbody>
 </table>
 ```
 
-The `<caption>` names the table, `<thead>` and `<tbody>` separate the header row from the data, and `scope` lets a screen reader read a cell along with the headers that describe it. Those pieces are what make a table understandable when you can't see the grid.
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<table>
+  <caption>Store hours</caption>
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Opens</th>
+      <th scope="col">Closes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Monday</th>
+      <td>9:00</td>
+      <td>17:00</td>
+    </tr>
+    <tr>
+      <th scope="row">Tuesday</th>
+      <td>9:00</td>
+      <td>17:00</td>
+    </tr>
+    <tr>
+      <th scope="row">Saturday</th>
+      <td>10:00</td>
+      <td>15:00</td>
+    </tr>
+    <tr>
+      <th scope="row">Sunday</th>
+      <td colspan="2">Closed</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+Notice the Sunday row. `colspan="2"` makes that one `<td>` span both the Opens and Closes columns, which is the correct way to show that a single value applies across more than one column, rather than repeating "Closed" twice. The matching attribute for spanning down instead of across is `rowspan`, used when one label applies to several rows underneath it.
+
+### Adding a summary row
+
+`<tfoot>` holds a row that summarizes the body, most often a total. It's a sibling of `<thead>` and `<tbody>`, not nested inside either:
+
+```html
+<table>
+  <caption>Weekly ingredient cost</caption>
+  <thead>
+    <tr>
+      <th scope="col">Ingredient</th>
+      <th scope="col">Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Flour</th>
+      <td>$12.00</td>
+    </tr>
+    <tr>
+      <th scope="row">Butter</th>
+      <td>$18.50</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row">Total</th>
+      <td>$30.50</td>
+    </tr>
+  </tfoot>
+</table>
+```
+
+Keeping `<thead>`, `<tbody>`, and `<tfoot>` distinct isn't just tidy structure. It's also what lets a browser (or a print stylesheet) repeat the header and footer rows if a long table breaks across pages, something a table built from plain `<tr>` elements with no sections can't do.
+
+## Keep learning
+
+- [W3Schools: HTML Forms](https://www.w3schools.com/html/html_forms.asp). A full reference for form elements, attributes, and the input types this chapter covers.
+- [W3Schools: HTML Tables](https://www.w3schools.com/html/html_tables.asp). Covers the same table structure with more worked examples.
+- [W3Schools: Table colspan and rowspan](https://www.w3schools.com/html/html_table_colspan_rowspan.asp). Focused practice on spanning cells across columns and rows.
+- [Video: HTTP GET vs. POST, by Hussein Nasser](https://www.youtube.com/watch?v=NEKImNnYB70). A clear explanation of the difference between the two methods and when each is appropriate.
 
 ## Try it yourself
 
-Build a contact form with a text input for a name, an email input, a `<select>` for a subject, and a `<textarea>` for a message, each with a proper `<label>`. Make the name and email `required`, and set the email field to `type="email"`. Add a set of radio buttons in a `<fieldset>` for a preferred contact method. Below the form, build a small data table with a `<caption>`, column headers, and `scope` attributes. Submit the form empty and read the validation messages the browser produces.
+Build a contact form with a text input for a name, an email input, a `<select>` for a subject, and a `<textarea>` for a message, each with a proper `<label>`. Make the name and email `required`, and set the email field to `type="email"`. Choose `method="post"` for this form and be ready to explain why GET would be the wrong choice here. Add a set of radio buttons in a `<fieldset>` for a preferred contact method, and a submit button using `<button type="submit">`.
+
+Below the form, build a data table with a `<caption>`, a `<thead>` with column headers using `scope="col"`, a `<tbody>` with row headers using `scope="row"`, and a `<tfoot>` with a summary row. Use `colspan` at least once, where a single value genuinely applies across more than one column. Submit the empty form and read the validation messages the browser produces.
