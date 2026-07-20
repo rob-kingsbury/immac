@@ -1,3 +1,10 @@
+// Theme default sets scroll-behavior: smooth on :root, which animates the
+// router's scroll-to-top on every page navigation (next/prev, sidebar, navbar).
+// Override to an instant jump.
+:root {
+  scroll-behavior: auto;
+}
+
 // Sidebar hierarchy.
 // Goal: weeks read as the primary level, and the active chapter's sections read
 // as clearly nested underneath, so the open nav is easy to scan.
