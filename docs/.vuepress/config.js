@@ -4,6 +4,7 @@ import { defaultTheme } from '@vuepress/theme-default'
 
 export default defineUserConfig({
   lang: 'en-US',
+  base: '/immac/',
   title: 'IMM Web Courses',
   description: 'Algonquin College — Interactive Media Management',
 
