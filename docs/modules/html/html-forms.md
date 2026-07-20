@@ -34,13 +34,16 @@ The `<input>` element is the workhorse, and its `type` attribute changes both ho
 <input type="radio">     <!-- one choice from a group -->
 ```
 
-<div class="demo demo-fields">
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render demo-fields">
   <label><span>Text</span> <input type="text" placeholder="Anything"></label>
   <label><span>Email</span> <input type="email" placeholder="you@example.com"></label>
   <label><span>Number</span> <input type="number" min="0" max="10"></label>
   <label><span>Date</span> <input type="date"></label>
   <label><input type="checkbox"> <span>Subscribe</span></label>
 </div>
+</details>
 
 Try each field above. The number input shows steppers, the date input opens a picker, and on a phone the email field brings up an email keyboard. Same markup, different built-in behaviour per type.
 
@@ -84,13 +87,16 @@ When several controls belong together, such as a set of radio buttons, wrap them
 </fieldset>
 ```
 
-<div class="demo">
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
   <fieldset>
     <legend>Preferred contact method</legend>
     <label><input type="radio" name="contact-demo" value="email"> Email</label>
     <label><input type="radio" name="contact-demo" value="phone"> Phone</label>
   </fieldset>
 </div>
+</details>
 
 Click either option above. Because both radios share the same `name`, choosing one clears the other. That is the live output of the code, rendered right on the page.
 
