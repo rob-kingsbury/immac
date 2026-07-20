@@ -1,0 +1,37 @@
+// Sidebar hierarchy.
+// Goal: weeks read as the primary level, and the active chapter's sections read
+// as clearly nested underneath, so the open nav is easy to scan.
+
+// Group headings ("Weekly Content") and week links: the primary level.
+.vp-sidebar-heading {
+  font-weight: 600;
+}
+
+// The active chapter's sections, nested under its week. Give them an indent and
+// a guide line so the nesting is obvious, and mute them so they sit below the
+// week they belong to.
+.vp-sidebar-children .vp-sidebar-children {
+  margin-left: 0.85rem;
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--vp-c-divider, #e2e2e3);
+
+  .vp-sidebar-item {
+    font-size: 0.84em;
+    font-weight: 400;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+}
+
+// The current page and current section stand out clearly.
+.vp-sidebar-item.active {
+  font-weight: 600;
+  opacity: 1;
+}
+
+// A little more breathing room between week links.
+.vp-sidebar-items > .vp-sidebar-item,
+.vp-sidebar-children > li > .vp-sidebar-item {
+  padding-top: 0.28rem;
+  padding-bottom: 0.28rem;
+}

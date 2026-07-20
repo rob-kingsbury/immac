@@ -19,13 +19,14 @@ const mtm1511Sidebar = [
       { text: 'Week 5: Site Architecture and Planning', link: '/modules/html/site-architecture-planning.md' },
       { text: 'Week 6: Web Accessibility Fundamentals', link: '/modules/accessibility/web-accessibility-fundamentals.md' },
       { text: 'Week 7: HTML Forms and Data Structures', link: '/modules/html/html-forms.md' },
-      { text: 'Week 8: Optimizing Images and Media', link: '/modules/html/image-optimization.md' },
-      { text: 'Week 9: SEO Fundamentals', link: '/modules/seo/seo-fundamentals.md' },
-      { text: 'Week 10: SEO in Practice', link: '/modules/seo/seo-in-practice.md' },
-      { text: 'Week 11: Code Quality and Validation', link: '/modules/html/code-quality-validation.md' },
-      { text: 'Week 12: Advanced HTML Patterns', link: '/modules/html/advanced-html-patterns.md' },
-      { text: 'Week 13: Project Development', link: '/modules/project/project-development.md' },
-      { text: 'Week 14: Project Work Lab', link: '/modules/project/project-work-lab.md' },
+      { text: 'Week 8: Reading Week', link: '/modules/reading-week.md' },
+      { text: 'Week 9: Optimizing Images and Media', link: '/modules/html/image-optimization.md' },
+      { text: 'Week 10: SEO Fundamentals', link: '/modules/seo/seo-fundamentals.md' },
+      { text: 'Week 11: SEO in Practice', link: '/modules/seo/seo-in-practice.md' },
+      { text: 'Week 12: Code Quality and Validation', link: '/modules/html/code-quality-validation.md' },
+      { text: 'Week 13: Advanced HTML Patterns', link: '/modules/html/advanced-html-patterns.md' },
+      { text: 'Week 14: Project Development', link: '/modules/project/project-development.md' },
+      { text: 'Week 15: Project Work Lab', link: '/modules/project/project-work-lab.md' },
     ],
   },
   { text: 'Resources', link: '/mtm1511/resources/' },
@@ -62,9 +63,9 @@ export default defineUserConfig({
       ],
     },
 
-    // Show only the week links in the sidebar, not every in-page heading of the
-    // active chapter (which floods the nav on deep pages).
-    sidebarDepth: 0,
+    // Show the active chapter's H2 sections under its week (one level of
+    // sub-nav). Styling in styles/index.scss defines the hierarchy clearly.
+    sidebarDepth: 1,
 
     colorMode: 'auto',
     colorModeSwitch: true,
