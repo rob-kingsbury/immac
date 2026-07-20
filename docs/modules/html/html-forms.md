@@ -34,12 +34,12 @@ The `<input>` element is the workhorse, and its `type` attribute changes both ho
 <input type="radio">     <!-- one choice from a group -->
 ```
 
-<div class="demo">
-  <label>Text <input type="text" placeholder="Anything"></label>
-  <label>Email <input type="email" placeholder="you@example.com"></label>
-  <label>Number <input type="number" min="0" max="10"></label>
-  <label>Date <input type="date"></label>
-  <label><input type="checkbox"> Subscribe</label>
+<div class="demo demo-fields">
+  <label><span>Text</span> <input type="text" placeholder="Anything"></label>
+  <label><span>Email</span> <input type="email" placeholder="you@example.com"></label>
+  <label><span>Number</span> <input type="number" min="0" max="10"></label>
+  <label><span>Date</span> <input type="date"></label>
+  <label><input type="checkbox"> <span>Subscribe</span></label>
 </div>
 
 Try each field above. The number input shows steppers, the date input opens a picker, and on a phone the email field brings up an email keyboard. Same markup, different built-in behaviour per type.

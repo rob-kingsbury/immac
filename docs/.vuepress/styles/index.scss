@@ -58,14 +58,40 @@
   margin-bottom: 0.75rem;
 }
 
-// Space out controls inside a demo so they're easy to read and click.
-.demo label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin-right: 1rem;
+// Radio and checkbox groups inside a fieldset stay inline and spaced, since
+// those controls read naturally side by side.
+.demo fieldset {
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
 }
 
-.demo > * + * {
-  margin-top: 0.5rem;
+.demo fieldset legend {
+  padding: 0 0.4rem;
+  font-weight: 600;
+}
+
+.demo fieldset label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-right: 1.5rem;
+}
+
+// A list of labelled fields stacks one per row, with the labels aligned in a
+// column so the inputs line up and the box does not become a wall of fields.
+.demo-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.demo-fields label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.demo-fields > label > span:first-child {
+  flex: 0 0 4.5rem;
+  opacity: 0.7;
 }
