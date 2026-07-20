@@ -24,4 +24,4 @@ Understand WCAG guidelines and inclusive design, test pages for accessibility co
 
 ## How the course is organized
 
-The semester runs in a 7/1/7 pattern (seven teaching weeks, a reading week, then seven more teaching weeks), with weeks 13 and 14 set aside for guided project development and open lab time on your multi-page website. See [Weekly Content](/mtm1511/content/) for the week-by-week breakdown.
+The semester runs in a 7/1/7 pattern (seven teaching weeks, a reading week, then seven more teaching weeks), with weeks 13 and 14 set aside for guided project development and open lab time on your multi-page website. See the Weekly Content list in the sidebar for the week-by-week breakdown.

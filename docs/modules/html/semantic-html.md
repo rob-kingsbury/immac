@@ -250,6 +250,15 @@ Here is a realistic article page marked up entirely with semantic elements. Read
 
 Notice that the `<article>` has its own `<header>` and `<footer>`, separate from the page's. That is legal and correct: those elements describe the nearest section they belong to, whether that's the whole page or a single article.
 
+## Keep learning
+
+References to go deeper. The W3Schools pages are quick and example-first, good to keep open as a cheat sheet while you work. The videos cover the same ground if you learn better by watching someone build.
+
+- [W3Schools: HTML Semantic Elements](https://www.w3schools.com/html/html5_semantic_elements.asp). Every semantic tag with a runnable example you can edit in place.
+- [W3Schools: HTML Layout Elements and Techniques](https://www.w3schools.com/html/html_layout.asp). How the landmark elements fit together into a full page layout.
+- [Video: HTML5 Semantics, by Net Ninja](https://www.youtube.com/watch?v=kGW8Al_cga4). A short, beginner-friendly walkthrough of the semantic elements.
+- [Video: Semantic HTML Tags, by Dave Gray](https://www.youtube.com/watch?v=kX3TfdUqpuU). A fuller tutorial with live coding.
+
 ## Try it yourself
 
 Work through these in order. They're practice, not graded work.
