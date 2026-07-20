@@ -1,6 +1,9 @@
 import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defaultTheme } from '@vuepress/theme-default'
+import { getDirname, path } from 'vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 // The weekly lesson pages live under /modules/. This sidebar is shared by the
 // course landing pages and the module pages so the weekly list stays visible as
@@ -71,6 +74,7 @@ export default defineUserConfig({
   description: 'Algonquin College, Interactive Media Management',
 
   bundler: viteBundler(),
+  clientConfigFile: path.resolve(__dirname, './client.js'),
 
   theme: defaultTheme({
     navbar: [

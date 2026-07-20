@@ -14,6 +14,8 @@ The reason it's a separate language, and not just more HTML, is a principle wort
 
 Here is the same HTML, once with no CSS and once with a small stylesheet applied. The markup is identical. Only the styling differs.
 
+<CssDemo summary="Result: no CSS">
+
 ```html
 <div class="profile">
   <h2>Ada Lovelace</h2>
@@ -21,38 +23,40 @@ Here is the same HTML, once with no CSS and once with a small stylesheet applied
 </div>
 ```
 
-<details class="demo" open>
-<summary>Result: no CSS</summary>
-<div class="demo-render">
-<div class="ex-nostyle">
-<div class="profile">
-  <h2>Ada Lovelace</h2>
-  <p>Mathematician and writer, often called the first programmer.</p>
-</div>
-</div>
-</div>
-</details>
+</CssDemo>
 
-<details class="demo" open>
-<summary>Result: with CSS</summary>
-<div class="demo-render">
-<style>
-.ex-styled .profile { background-color: #f1f5f9; border-radius: 8px; padding: 1rem 1.25rem; }
-.ex-styled .profile h2 { color: #6d28d9; margin-top: 0; }
-.ex-styled .profile p { color: #475569; margin-bottom: 0; }
-</style>
-<div class="ex-styled">
+Now the same markup, with a stylesheet added:
+
+<CssDemo summary="Result: with CSS">
+
+```html
 <div class="profile">
   <h2>Ada Lovelace</h2>
   <p>Mathematician and writer, often called the first programmer.</p>
 </div>
-</div>
-</div>
-</details>
+```
+
+```css
+.profile {
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+.profile h2 {
+  color: #6d28d9;
+  margin-top: 0;
+}
+.profile p {
+  color: #475569;
+  margin-bottom: 0;
+}
+```
+
+</CssDemo>
 
 You'll be able to write every line of that styling yourself by the end of this course. The point right now is narrower: CSS, and nothing else, created the difference. The words, the heading, and the structure never changed.
 
-**A note on the Result panels in this course.** They render real CSS, not screenshots. So that the many examples on one page don't accidentally style each other, each Result quietly wraps its example in a uniquely named box and puts that box's name in front of every selector. The code shown to you is what you actually write in your own stylesheet, the plain selector with no wrapper. That is the only difference between the code you see and what the Result renders.
+**A note on the Result panels in this course.** They render real CSS in your browser, not screenshots. Each Result is an isolated preview, so the many examples on a single page never style each other, and the code shown above each Result is exactly what runs. Type that same code into your own stylesheet and you get the same result.
 
 ## Attaching CSS to HTML
 
@@ -100,21 +104,6 @@ h1 {
 
 That single rule has a few named parts, and the whole course leans on this vocabulary:
 
-<details class="demo" open>
-<summary>The parts of a rule</summary>
-<div class="demo-render">
-<style>
-.css-anatomy code { font-size: 1.15rem; display: block; margin-bottom: 1rem; }
-.css-anatomy .a-sel { color: #2563eb; font-weight: 600; }
-.css-anatomy .a-prop { color: #7c3aed; font-weight: 600; }
-.css-anatomy .a-val { color: #059669; font-weight: 600; }
-.css-anatomy ul { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
-.css-anatomy li { margin: 0.3rem 0; }
-.css-anatomy .a-dot { display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 50%; margin-right: 0.5rem; vertical-align: middle; }
-.css-anatomy .a-sel-dot { background: #2563eb; }
-.css-anatomy .a-prop-dot { background: #7c3aed; }
-.css-anatomy .a-val-dot { background: #059669; }
-</style>
 <div class="css-anatomy">
 <code><span class="a-sel">h1</span> { <span class="a-prop">color</span>: <span class="a-val">crimson</span>; }</code>
 <ul>
@@ -123,10 +112,14 @@ That single rule has a few named parts, and the whole course leans on this vocab
 <li><span class="a-dot a-val-dot"></span><strong>Value</strong> (crimson): the setting you're giving that property.</li>
 </ul>
 </div>
-</div>
-</details>
 
 A property and its value together, `color: crimson;`, are called a **declaration**, and every declaration ends with a semicolon. The curly braces hold a declaration block, and a block can contain as many declarations as you need:
+
+<CssDemo>
+
+```html
+<h1>Styled heading</h1>
+```
 
 ```css
 h1 {
@@ -136,17 +129,7 @@ h1 {
 }
 ```
 
-<details class="demo" open>
-<summary>Result</summary>
-<div class="demo-render">
-<style>
-.ex-block h1 { color: crimson; font-size: 2.5rem; text-align: center; }
-</style>
-<div class="ex-block">
-<h1>Styled heading</h1>
-</div>
-</div>
-</details>
+</CssDemo>
 
 The semicolon after each declaration matters. Leave one out and the browser often ignores that declaration and the next one too, one of the most common early CSS bugs. Get in the habit of ending every declaration with a semicolon, including the last one in a block, even though the last one is technically optional.
 
@@ -158,6 +141,13 @@ The selector is how a rule finds its targets. This week covers the three you'll 
 
 An element selector targets every element of a given type by its tag name. This rule styles every paragraph on the page:
 
+<CssDemo>
+
+```html
+<p>Every paragraph gets this style.</p>
+<p>Including this one, automatically.</p>
+```
+
 ```css
 p {
   color: #475569;
@@ -165,24 +155,20 @@ p {
 }
 ```
 
-<details class="demo" open>
-<summary>Result</summary>
-<div class="demo-render">
-<style>
-.ex-element p { color: #475569; line-height: 1.6; }
-</style>
-<div class="ex-element">
-<p>Every paragraph gets this style.</p>
-<p>Including this one, automatically.</p>
-</div>
-</div>
-</details>
+</CssDemo>
 
 Element selectors are broad by design. They're the right tool for setting a baseline, the default look of all your paragraphs, headings, or links, before you start making exceptions.
 
 ### Class selectors
 
 A class selector targets only the elements you tag with a matching `class` attribute. You write a class selector with a leading dot, and you add the class to elements in your HTML without the dot:
+
+<CssDemo>
+
+```html
+<p>A normal sentence with a <span class="highlight">highlighted phrase</span> inside it.</p>
+<p class="highlight">This entire paragraph is highlighted.</p>
+```
 
 ```css
 .highlight {
@@ -191,29 +177,19 @@ A class selector targets only the elements you tag with a matching `class` attri
 }
 ```
 
-```html
-<p>A normal sentence with a <span class="highlight">highlighted phrase</span> inside it.</p>
-<p class="highlight">This entire paragraph is highlighted.</p>
-```
-
-<details class="demo" open>
-<summary>Result</summary>
-<div class="demo-render">
-<style>
-.ex-class .highlight { background-color: #fef08a; padding: 0.15rem 0.4rem; }
-</style>
-<div class="ex-class">
-<p>A normal sentence with a <span class="highlight">highlighted phrase</span> inside it.</p>
-<p class="highlight">This entire paragraph is highlighted.</p>
-</div>
-</div>
-</details>
+</CssDemo>
 
 Classes are the workhorse of CSS. The same class can go on as many elements as you like, across as many pages as you like, and one rule styles them all consistently. Most of the CSS you write this term will be class-based.
 
 ### ID selectors
 
 An ID selector targets a single, specific element. You write it with a leading hash, and an `id` value must be unique on the page, used once and only once:
+
+<CssDemo>
+
+```html
+<header id="site-header">The one and only site header</header>
+```
 
 ```css
 #site-header {
@@ -223,27 +199,19 @@ An ID selector targets a single, specific element. You write it with a leading h
 }
 ```
 
-```html
-<header id="site-header">The one and only site header</header>
-```
-
-<details class="demo" open>
-<summary>Result</summary>
-<div class="demo-render">
-<style>
-.ex-id #site-header { background-color: #1e293b; color: white; padding: 1rem; }
-</style>
-<div class="ex-id">
-<header id="site-header">The one and only site header</header>
-</div>
-</div>
-</details>
+</CssDemo>
 
 The practical guideline: reach for classes by default, and use an ID only when you genuinely have one unique element, since a class can do everything an ID can while staying reusable. If you find yourself wanting the same ID on two elements, that's the signal it should have been a class.
 
 ## Properties and values
 
 Selectors decide what to style. Properties and values decide how. There are hundreds of CSS properties, and you'll meet them steadily across the course, but a small set covers most of what you need to make a page look intentional. Here are a few you'll use immediately:
+
+<CssDemo>
+
+```html
+<div class="card">A styled card, built from seven declarations.</div>
+```
 
 ```css
 .card {
@@ -257,17 +225,7 @@ Selectors decide what to style. Properties and values decide how. There are hund
 }
 ```
 
-<details class="demo" open>
-<summary>Result</summary>
-<div class="demo-render">
-<style>
-.ex-props .card { color: #334155; background-color: #f8fafc; font-size: 1.1rem; text-align: center; padding: 1.5rem; border: 2px solid #cbd5e1; border-radius: 10px; }
-</style>
-<div class="ex-props">
-<div class="card">A styled card, built from seven declarations.</div>
-</div>
-</div>
-</details>
+</CssDemo>
 
 Two of those values deserve a first note. Colours can be written several ways, and the `#334155` form is a hex code, which the Typography and Colour week covers in full. The `1.1rem` font size uses `rem`, a relative unit that scales with the reader's preferred text size, which is why this course prefers it over fixed pixel sizes for text. You don't need to master every property now. You need to recognize the rule structure, and know that looking a property up, on a reference like MDN, is a normal part of writing CSS at every level.
 
@@ -277,11 +235,7 @@ CSS is short for *Cascading* Style Sheets, and the cascade is the system that de
 
 The first is inheritance. Some properties, colour and font among them, pass down from an element to the elements nested inside it. Set a colour on a container, and its children take that colour without being targeted directly:
 
-```css
-.callout {
-  color: #7c3aed;
-}
-```
+<CssDemo>
 
 ```html
 <div class="callout">
@@ -290,22 +244,21 @@ The first is inheritance. Some properties, colour and font among them, pass down
 </div>
 ```
 
-<details class="demo" open>
-<summary>Result</summary>
-<div class="demo-render">
-<style>
-.ex-inherit .callout { color: #7c3aed; }
-</style>
-<div class="ex-inherit">
-<div class="callout">
-  <h3>This heading is purple</h3>
-  <p>And so is this paragraph, without its own rule.</p>
-</div>
-</div>
-</div>
-</details>
+```css
+.callout {
+  color: #7c3aed;
+}
+```
+
+</CssDemo>
 
 The second is source order. When two rules carry the same weight and both apply to an element, the one written later in the stylesheet wins. Here two rules target the same paragraph, and the second overrides the first:
+
+<CssDemo>
+
+```html
+<p>This text is green, because the green rule comes second.</p>
+```
 
 ```css
 p {
@@ -316,18 +269,7 @@ p {
 }
 ```
 
-<details class="demo" open>
-<summary>Result</summary>
-<div class="demo-render">
-<style>
-.ex-order p { color: blue; }
-.ex-order p { color: green; }
-</style>
-<div class="ex-order">
-<p>This text is green, because the green rule comes second.</p>
-</div>
-</div>
-</details>
+</CssDemo>
 
 That is only part of the story. When rules carry different weights, a more specific selector can beat an earlier one regardless of order, and that mechanism, specificity, is involved enough to get its own week later in the course. For now, hold onto two facts: styling flows downward through inheritance, and among equally specific rules, the last one written wins.
 
