@@ -32,6 +32,38 @@ const mtm1511Sidebar = [
   { text: 'Resources', link: '/mtm1511/resources/' },
 ]
 
+// MTM1544 (CSS) weekly lessons live under /modules/css/. Shared by the course
+// landing pages and the module pages, the same way the MTM1511 sidebar is, so
+// the weekly list stays visible throughout the course. Its /modules/css/ key is
+// more specific than MTM1511's /modules/ key, so VuePress shows this sidebar on
+// CSS pages and the MTM1511 sidebar everywhere else under /modules/.
+const mtm1544Sidebar = [
+  { text: 'Course Home', link: '/mtm1544/' },
+  { text: 'Overview', link: '/mtm1544/overview/' },
+  {
+    text: 'Weekly Content',
+    collapsible: false,
+    children: [
+      { text: 'Week 1: Introduction to CSS', link: '/modules/css/intro-to-css.md' },
+      { text: 'Week 2: The Box Model and Spacing', link: '/modules/css/box-model-spacing.md' },
+      { text: 'Week 3: Typography and Colour', link: '/modules/css/typography-colour.md' },
+      { text: 'Week 4: Selectors, Specificity, and Inheritance', link: '/modules/css/selectors-specificity-inheritance.md' },
+      { text: 'Week 5: Flexbox Layouts', link: '/modules/css/flexbox-layouts.md' },
+      { text: 'Week 6: CSS Grid Layouts', link: '/modules/css/grid-layouts.md' },
+      { text: 'Week 7: Responsive Design and Media Queries', link: '/modules/css/responsive-media-queries.md' },
+      { text: 'Week 8: Reading Week', link: '/modules/css/reading-week.md' },
+      { text: 'Week 9: The DOM and CSS Targeting', link: '/modules/css/dom-css-targeting.md' },
+      { text: 'Week 10: Accessible Styling', link: '/modules/css/accessible-styling.md' },
+      { text: 'Week 11: CSS Custom Properties and Variables', link: '/modules/css/custom-properties.md' },
+      { text: 'Week 12: Visual Design Principles', link: '/modules/css/visual-design-principles.md' },
+      { text: 'Week 13: Transitions and Motion', link: '/modules/css/transitions-animation.md' },
+      { text: 'Week 14: Project Development', link: '/modules/css/project-development.md' },
+      { text: 'Week 15: Project Work Lab', link: '/modules/css/project-work-lab.md' },
+    ],
+  },
+  { text: 'Resources', link: '/mtm1544/resources/' },
+]
+
 export default defineUserConfig({
   lang: 'en-US',
   base: '/immac/',
@@ -48,19 +80,12 @@ export default defineUserConfig({
     ],
 
     sidebar: {
+      // Order matters only for readability; VuePress resolves by longest
+      // matching prefix, so '/modules/css/' wins over '/modules/' on CSS pages.
+      '/modules/css/': mtm1544Sidebar,
+      '/mtm1544/': mtm1544Sidebar,
       '/mtm1511/': mtm1511Sidebar,
       '/modules/': mtm1511Sidebar,
-      '/mtm1544/': [
-        {
-          text: 'MTM1544: Web Styles',
-          children: [
-            '/mtm1544/README.md',
-            '/mtm1544/overview/README.md',
-            '/mtm1544/content/README.md',
-            '/mtm1544/resources/README.md',
-          ],
-        },
-      ],
     },
 
     // Show the active chapter's H2 sections under its week (one level of
