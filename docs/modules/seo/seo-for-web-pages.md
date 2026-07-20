@@ -35,6 +35,23 @@ The meta description is a short summary that often appears under the title in se
 
 It isn't a direct ranking factor, but it's the sales pitch that decides whether someone clicks your result over the one above it. Keep it around 150 to 160 characters, make it specific to the page, and write it for a human, not a keyword counter.
 
+## What this actually looks like in results
+
+Neither `<title>` nor a meta description renders anywhere on your own page. Their only audience is the search results list and the browser tab. Here's roughly what the two examples above produce in a Google search result:
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<div style="font-family: arial, sans-serif; max-width: 500px;">
+  <div style="color: #1a0dab; font-size: 1.15rem; line-height: 1.3;">Sourdough Baking Class | Corner Bakery Ottawa</div>
+  <div style="color: #006621; font-size: 0.85rem; margin: 2px 0;">www.cornerbakeryottawa.com › classes › sourdough</div>
+  <div style="color: #545454; font-size: 0.9rem; line-height: 1.4;">Learn sourdough from scratch in a hands-on evening class in downtown Ottawa. Small groups, all ingredients included.</div>
+</div>
+</div>
+</details>
+
+This mockup isn't live HTML from your page, it's a rendering of how a search engine typically displays the `<title>` and description you write. Search engines can shorten or rewrite either one if they judge something else serves the searcher better, so treat this as the intended result, not a guarantee.
+
 ## Headings and keyword relevance
 
 Search engines read your heading structure to understand hierarchy and topic, the same outline you build for accessibility. Your `<h1>` should clearly state the page's subject, and your `<h2>` headings should describe its real sections.
@@ -65,6 +82,22 @@ When someone shares your page on social media or in a chat app, that platform lo
 
 These live in the document head alongside your title and description. The `og:image` matters most, since a good preview image is what makes a shared link get noticed. Aim for an image around 1200 by 630 pixels, the size most platforms display well.
 
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<div style="border: 1px solid #dadce0; border-radius: 8px; max-width: 400px; overflow: hidden; font-family: arial, sans-serif;">
+  <img src="/images/placeholder.svg" alt="" style="width: 100%; display: block;">
+  <div style="padding: 0.6rem 0.8rem;">
+    <div style="text-transform: uppercase; font-size: 0.75rem; color: #606770;">example.com</div>
+    <div style="font-weight: 600; margin-top: 2px;">Sourdough Baking Class</div>
+    <div style="color: #606770; font-size: 0.85rem;">A hands-on evening class in downtown Ottawa.</div>
+  </div>
+</div>
+</div>
+</details>
+
+This mockup uses a placeholder graphic in place of a real `og:image`, since a textbook can't ship every project's preview photo, but the layout is the same shape a social platform builds from your Open Graph tags: image, site name, title, description.
+
 ## Structured data
 
 Structured data is machine-readable information about your content, written in a standard vocabulary that search engines understand. Add it, and a search engine can show a richer result: star ratings, event dates, recipe cook times, and the like. The current recommended format is JSON-LD, a small block of data in the page head.
@@ -91,7 +124,14 @@ The vocabulary comes from schema.org, which lists types for events, recipes, pro
 
 Internal links are links between pages of your own site. They do two jobs. They help people move around, and they help search engines discover and understand your pages, since crawlers follow links to find content and use the link text as a clue about the destination.
 
-A few habits make internal linking work. Link related pages to each other rather than leaving them isolated. Use descriptive link text ("see our sourdough class") instead of "click here", because the words in a link tell the search engine what the target page is about. And make sure every page is reachable by following links from the home page, because a page nothing links to is a page crawlers may never find.
+A few habits make internal linking work. Link related pages to each other rather than leaving them isolated. Use descriptive link text ("see our sourdough class") instead of "click here," because the words in a link tell the search engine what the target page is about. And make sure every page is reachable by following links from the home page, because a page nothing links to is a page crawlers may never find.
+
+## Common mistakes to avoid
+
+- **Duplicate or missing `<title>` elements.** Every page needs its own unique title. Copy-pasting one page's `<head>` to another is the most common way this breaks.
+- **Keyword stuffing.** Repeating a target phrase unnaturally in a heading or description reads badly and is specifically penalized, not rewarded.
+- **A missing `og:image`.** A shared link with no preview image is far less likely to get clicked, even if the title and description are strong.
+- **Invalid JSON-LD syntax.** A missing comma or brace in a structured data block makes the whole block invalid, and a search engine will simply ignore it rather than partially use it. Always check a new block in a validator before considering it done.
 
 ## Running an SEO audit
 
@@ -99,8 +139,16 @@ The audit tools you already have will grade a page's SEO. Lighthouse, built into
 
 Run it on a page, read every item it flags, and treat each as a to-do. The value isn't the score itself, it's the checklist of concrete, fixable issues the tool hands you. Combine it with the schema.org validator to confirm any structured data you added is well formed.
 
+## Keep learning
+
+- [W3Schools: The meta Tag](https://www.w3schools.com/tags/tag_meta.asp). A full reference for meta tag attributes beyond title and description.
+- [Google: Influencing Your Title Links in Search Results](https://developers.google.com/search/docs/appearance/title-link). Google's own guidance on how titles get chosen and displayed, straight from the source that decides.
+- [Schema Markup Validator](https://validator.schema.org/). Paste in a JSON-LD block to check it's valid before publishing.
+- [Google Rich Results Test](https://search.google.com/test/rich-results). Checks whether a page's structured data qualifies for an enhanced search result.
+- [Video: How to Add Open Graph Meta Tags, by Rank Math SEO](https://www.youtube.com/watch?v=PU2RoBaelDc). A step-by-step walkthrough of the tags covered in this chapter.
+
 ## Try it yourself
 
 Take one of your project pages and give it a proper document head: a unique, specific `<title>` under 60 characters, a `<meta name="description">` of about 150 characters written to make someone want to click, and a self-referencing canonical link. Check that your `<h1>` states the page topic plainly and your `<h2>` headings describe the actual sections.
 
-Then add a full set of Open Graph tags, including a preview image. Pick a content type that fits the page (an Event, Product, or Article) and add a JSON-LD structured data block for it, then check it in a structured data validator. Add at least two descriptive internal links to other pages of your site. Finally, run the Lighthouse SEO audit, record your score, fix what it flags, and run it again to confirm the improvement.
+Then add a full set of Open Graph tags, including a preview image. Pick a content type that fits the page (an Event, Product, or Article) and add a JSON-LD structured data block for it, then check it in the Schema Markup Validator. Add at least two descriptive internal links to other pages of your site. Finally, run the Lighthouse SEO audit, record your score, fix what it flags, and run it again to confirm the improvement.
