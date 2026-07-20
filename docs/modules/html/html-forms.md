@@ -58,26 +58,48 @@ The `<input>` element is the workhorse, and its `type` attribute changes both ho
 <input type="radio">     <!-- one choice from a group -->
 ```
 
-Put a few of those types to work in labelled fields:
+Put a few of those types to work in labelled fields, each connected with `for` and `id`, the pattern the next section explains in full:
 
 ```html
-<label>Email <input type="email"></label>
-<label>Quantity <input type="number" min="0" max="10"></label>
-<label>Date <input type="date"></label>
-<label>Subscribe <input type="checkbox"></label>
+<label for="demo-email">Email</label>
+<input type="email" id="demo-email">
+
+<label for="demo-qty">Quantity</label>
+<input type="number" id="demo-qty" min="0" max="10">
+
+<label for="demo-date">Date</label>
+<input type="date" id="demo-date">
+
+<label for="demo-sub">Subscribe</label>
+<input type="checkbox" id="demo-sub">
 ```
 
 <details class="demo" open>
 <summary>Result</summary>
 <div class="demo-render">
-<label>Email <input type="email"></label>
-<label>Quantity <input type="number" min="0" max="10"></label>
-<label>Date <input type="date"></label>
-<label>Subscribe <input type="checkbox"></label>
+<label for="demo-email">Email</label>
+<input type="email" id="demo-email">
+
+<label for="demo-qty">Quantity</label>
+<input type="number" id="demo-qty" min="0" max="10">
+
+<label for="demo-date">Date</label>
+<input type="date" id="demo-date">
+
+<label for="demo-sub">Subscribe</label>
+<input type="checkbox" id="demo-sub">
 </div>
 </details>
 
 The number field shows steppers and the date field opens a picker. Same markup, different built-in behaviour per type.
+
+You may also see a label written by wrapping the input inside it, with no `for` or `id` at all:
+
+```html
+<label>Email <input type="email"></label>
+```
+
+This is valid HTML, called implicit association, and browsers do connect the two. It's used less in this course because not every screen reader supports it reliably, where the explicit `for`/`id` pattern below is universally supported. Recognizing both is worth knowing, since you'll see the implicit form in other people's code.
 
 Using `type="email"` instead of `type="text"` means the browser can check the format and mobile users get an email-optimized keyboard, all for free.
 
@@ -181,11 +203,348 @@ The browser shows its own error messages and blocks submission until the rules a
 
 Tables are for tabular data (rows and columns of related values), never for page layout. Using a table to position things visually is an old, broken habit from before CSS could lay out a page, and it wrecks accessibility, because a screen reader tries to read a layout table as if it were real data and produces nonsense.
 
-### The building blocks
+A table is built from several elements that nest inside one another. Rather than look at a finished table and try to reverse-engineer it, build one from scratch, one element at a time, the same way you'll build your own.
 
-A table is built from five elements working together. `<table>` wraps the whole thing. `<caption>` names it, right after the opening tag. `<thead>` holds the header row, `<tbody>` holds the data rows, and an optional `<tfoot>` holds a summary row like a total. Inside those, `<tr>` is a table row, `<th>` is a header cell, and `<td>` is an ordinary data cell.
+### The table container
 
-Every `<th>` should carry a `scope` attribute saying what it labels: `scope="col"` for a header at the top of a column, `scope="row"` for a header at the start of a row. `scope` is what lets a screen reader announce a cell along with the header that describes it, for example reading "9:00, Opens, Monday" instead of just "9:00" with no context.
+Everything in a table lives between an opening `<table>` and a closing `</table>`. On its own it renders nothing visible yet, but it's the container every other piece goes inside.
+
+```html
+<table>
+  <!-- everything else goes in here -->
+</table>
+```
+
+### Adding a caption
+
+`<caption>` names the table. It's the first thing inside `<table>`, right after the opening tag, and it should describe what the table contains.
+
+```html
+<table>
+  <caption>Store hours</caption>
+</table>
+```
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<table>
+  <caption>Store hours</caption>
+</table>
+</div>
+</details>
+
+### Adding the header row
+
+`<thead>` marks the header section of the table. Inside it, `<tr>` starts a table row, and `<th>` marks a heading cell within that row. Give each `<th>` a `scope="col"`, which tells a screen reader this heading labels a column.
+
+```html
+<table>
+  <caption>Store hours</caption>
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Opens</th>
+      <th scope="col">Closes</th>
+    </tr>
+  </thead>
+</table>
+```
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<table>
+  <caption>Store hours</caption>
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Opens</th>
+      <th scope="col">Closes</th>
+    </tr>
+  </thead>
+</table>
+</div>
+</details>
+
+### Adding the data rows
+
+`<tbody>` holds the actual data, as a sibling of `<thead>`, not nested inside it. Each row is another `<tr>`. Inside a data row, the first cell is usually a `<th scope="row">` naming that row, and the rest are `<td>` cells holding the values.
+
+```html
+<table>
+  <caption>Store hours</caption>
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Opens</th>
+      <th scope="col">Closes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Monday</th>
+      <td>9:00</td>
+      <td>17:00</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<table>
+  <caption>Store hours</caption>
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Opens</th>
+      <th scope="col">Closes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Monday</th>
+      <td>9:00</td>
+      <td>17:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+One row is rarely the whole story. Add the rest of the week the same way, one more `<tr>` per day:
+
+```html
+<table>
+  <caption>Store hours</caption>
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Opens</th>
+      <th scope="col">Closes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Monday</th>
+      <td>9:00</td>
+      <td>17:00</td>
+    </tr>
+    <tr>
+      <th scope="row">Tuesday</th>
+      <td>9:00</td>
+      <td>17:00</td>
+    </tr>
+    <tr>
+      <th scope="row">Saturday</th>
+      <td>10:00</td>
+      <td>15:00</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<table>
+  <caption>Store hours</caption>
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Opens</th>
+      <th scope="col">Closes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Monday</th>
+      <td>9:00</td>
+      <td>17:00</td>
+    </tr>
+    <tr>
+      <th scope="row">Tuesday</th>
+      <td>9:00</td>
+      <td>17:00</td>
+    </tr>
+    <tr>
+      <th scope="row">Saturday</th>
+      <td>10:00</td>
+      <td>15:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+Every `<th>` and `<td>` in this table so far exists because it's real, distinct data. That's the test for whether something belongs in a table at all: if you're tempted to leave cells empty just to make a layout line up, the content doesn't actually belong in a table.
+
+### Merging cells: colspan and rowspan
+
+Sometimes one value genuinely applies across more than one column. Sunday, this store is simply closed, and repeating "Closed" under both Opens and Closes would be misleading, since there's no separate opening and closing time. `colspan` merges a cell across the given number of columns. Here it's added to the Sunday row from the table you already built:
+
+```html
+<table>
+  <caption>Store hours</caption>
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Opens</th>
+      <th scope="col">Closes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Sunday</th>
+      <td colspan="2">Closed</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<table>
+  <caption>Store hours</caption>
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Opens</th>
+      <th scope="col">Closes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Sunday</th>
+      <td colspan="2">Closed</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+`rowspan` is the same idea turned sideways: it merges a cell down across several rows, used when one label applies to more than one row underneath it, such as a heading that groups two sub-columns:
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Name</th>
+      <th colspan="2">Scores</th>
+    </tr>
+    <tr>
+      <th>Maths</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bob</td>
+      <td>10/10</td>
+      <td>9/10</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Name</th>
+      <th colspan="2">Scores</th>
+    </tr>
+    <tr>
+      <th>Maths</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bob</td>
+      <td>10/10</td>
+      <td>9/10</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+`Name` spans both header rows down, because it labels the whole row below, not just one of the two sub-columns. `Scores` spans across, because it's the shared heading for the Maths and English columns beneath it.
+
+### Adding a summary row
+
+`<tfoot>` holds a row that summarizes the body, most often a total. Like `<tbody>`, it's a sibling of `<thead>`, not nested inside either of the others:
+
+```html
+<table>
+  <caption>Weekly ingredient cost</caption>
+  <thead>
+    <tr>
+      <th scope="col">Ingredient</th>
+      <th scope="col">Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Flour</th>
+      <td>$12.00</td>
+    </tr>
+    <tr>
+      <th scope="row">Butter</th>
+      <td>$18.50</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row">Total</th>
+      <td>$30.50</td>
+    </tr>
+  </tfoot>
+</table>
+```
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<table>
+  <caption>Weekly ingredient cost</caption>
+  <thead>
+    <tr>
+      <th scope="col">Ingredient</th>
+      <th scope="col">Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Flour</th>
+      <td>$12.00</td>
+    </tr>
+    <tr>
+      <th scope="row">Butter</th>
+      <td>$18.50</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row">Total</th>
+      <td>$30.50</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</details>
+
+Keeping `<thead>`, `<tbody>`, and `<tfoot>` distinct isn't just tidy structure. It's also what lets a browser, or a print stylesheet, repeat the header and footer rows if a long table breaks across pages, something a table built from plain `<tr>` elements with no sections can't do.
+
+### The full table, all seven tags together
+
+Here's everything from this section in one table: `<table>`, `<caption>`, `<thead>`, `<tbody>`, `<tr>`, `<th>` (with `scope`), and `<td>`.
 
 ```html
 <table>
@@ -257,42 +616,6 @@ Every `<th>` should carry a `scope` attribute saying what it labels: `scope="col
 </table>
 </div>
 </details>
-
-Notice the Sunday row. `colspan="2"` makes that one `<td>` span both the Opens and Closes columns, which is the correct way to show that a single value applies across more than one column, rather than repeating "Closed" twice. The matching attribute for spanning down instead of across is `rowspan`, used when one label applies to several rows underneath it.
-
-### Adding a summary row
-
-`<tfoot>` holds a row that summarizes the body, most often a total. It's a sibling of `<thead>` and `<tbody>`, not nested inside either:
-
-```html
-<table>
-  <caption>Weekly ingredient cost</caption>
-  <thead>
-    <tr>
-      <th scope="col">Ingredient</th>
-      <th scope="col">Cost</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Flour</th>
-      <td>$12.00</td>
-    </tr>
-    <tr>
-      <th scope="row">Butter</th>
-      <td>$18.50</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th scope="row">Total</th>
-      <td>$30.50</td>
-    </tr>
-  </tfoot>
-</table>
-```
-
-Keeping `<thead>`, `<tbody>`, and `<tfoot>` distinct isn't just tidy structure. It's also what lets a browser (or a print stylesheet) repeat the header and footer rows if a long table breaks across pages, something a table built from plain `<tr>` elements with no sections can't do.
 
 ## Keep learning
 
