@@ -34,7 +34,7 @@ Here is what that separation looks like in practice. Below is a small piece of H
 
 ```css
 h1 {
-  color: #1e3a5f;
+  color: #2563eb;
   font-family: system-ui, sans-serif;
   border-bottom: 3px solid #38bdf8;
   padding-bottom: 0.5rem;
@@ -104,23 +104,16 @@ There is a single principle underneath all three. The further you pull styling o
 Before styling anything, you need to know how a single piece of CSS is written, because everything you do this term is made of this one small pattern. CSS is a list of **rules**. Each rule picks out the elements it applies to and then lists the changes to make. Every rule has the same shape:
 
 ```css
-h1 {
-  color: crimson;
+body {
+  color: red;
 }
 ```
 
-That tiny rule already contains the vocabulary the entire course depends on, so it is worth naming each part precisely:
+That tiny rule already holds the vocabulary the whole course depends on. Here is the same rule with every part labelled:
 
-<div class="css-anatomy">
-<code><span class="a-sel">h1</span> { <span class="a-prop">color</span>: <span class="a-val">crimson</span>; }</code>
-<ul>
-<li><span class="a-dot a-sel-dot"></span><strong>Selector</strong> (h1): which elements this rule targets.</li>
-<li><span class="a-dot a-prop-dot"></span><strong>Property</strong> (color): the aspect you are changing.</li>
-<li><span class="a-dot a-val-dot"></span><strong>Value</strong> (crimson): the setting you are giving that property.</li>
-</ul>
-</div>
+![A CSS rule broken into its parts. The selector is "body". Inside the curly braces is a declaration, "color: red". Within that declaration, "color" is labelled the property and "red" is labelled the value. The selector together with its declaration block is labelled the rule set.](/images/css-syntax-basic.png)
 
-A property and its value written together, `color: crimson;`, are called a **declaration**. The property and the value are separated by a colon, and the declaration ends with a semicolon. The curly braces after the selector hold the **declaration block**, and the selector plus its block together make one complete **rule**, sometimes called a rule set. A single block can hold as many declarations as you need, one per line:
+Read it one piece at a time. The **selector** (`body`) chooses which elements the rule applies to. Inside the curly braces sits a **declaration**, `color: red`, and every declaration has two halves: the property (`color`) names the aspect you are changing, and the value (`red`) is the setting you give it. A colon separates the property from the value, and a semicolon ends the declaration. The curly braces with everything inside them are the **declaration block**, and the selector together with its block make one complete **rule**, also called a rule set. A block can hold as many declarations as you need, one per line:
 
 <CssDemo>
 
