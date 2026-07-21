@@ -222,6 +222,15 @@ details.demo[open] > summary {
   margin-bottom: 0;
 }
 
+// A hideSource demo stands alone (no code above it), so round all four corners.
+.css-demo-nosource .css-demo-source {
+  display: none;
+}
+
+.css-demo-nosource details.demo {
+  border-radius: 8px;
+}
+
 // Annotated figure for the anatomy of a CSS rule. Its colour-coded tokens live
 // here in the bundled stylesheet, not inline in the page, so they survive
 // hydration.

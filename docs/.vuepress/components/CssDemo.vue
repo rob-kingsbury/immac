@@ -27,6 +27,11 @@ import { ref, onMounted, nextTick } from 'vue'
 defineProps({
   open: { type: Boolean, default: true },
   summary: { type: String, default: 'Result' },
+  // Render the example but hide its source fences. Used for a motivating
+  // before/after where the point is the visual result, not code the student
+  // has not been taught yet. The fences still exist in the DOM and are read to
+  // run the demo; they are only visually hidden.
+  hideSource: { type: Boolean, default: false },
 })
 
 const source = ref(null)
@@ -53,7 +58,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="css-demo">
+  <div class="css-demo" :class="{ 'css-demo-nosource': hideSource }">
     <div ref="source" class="css-demo-source"><slot /></div>
     <details class="demo" :open="open">
       <summary>{{ summary }}</summary>

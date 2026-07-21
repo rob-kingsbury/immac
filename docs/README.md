@@ -2,14 +2,14 @@
 home: true
 title: IMM Web Courses
 heroText: Interactive Media Management
-tagline: Web Components (MTM1511) & Web Styles (MTM1544)
+tagline: Algonquin College
 actions:
   - text: 'MTM1511: Web Components'
     link: /mtm1511/
     type: primary
   - text: 'MTM1544: Web Styles'
     link: /mtm1544/
-    type: secondary
+    type: primary
 features:
   - title: 'MTM1511: Web Components'
     details: Semantic HTML, accessibility, site architecture, SEO fundamentals, and Git/GitHub onboarding.
