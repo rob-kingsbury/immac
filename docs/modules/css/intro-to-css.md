@@ -75,17 +75,17 @@ The second is an **internal stylesheet**, written once inside a `<style>` elemen
 </head>
 ```
 
-The third is an **external stylesheet**, where your CSS lives in its own separate file and the HTML page links to it. You write your rules in a file ending in `.css`, commonly named `styles.css`, and connect it with a `<link>` element in the `<head>`:
+The third is an **external stylesheet**, where your CSS lives in its own separate file and the HTML page links to it. You write your rules in a file ending in `.css`, commonly named `styles.css` and kept in a `css` folder so your project stays organized as it grows. You connect it to the page with a `<link>` element in the `<head>`:
 
 ```html
 <head>
   <meta charset="UTF-8">
   <title>My Page</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 ```
 
-The `<link>` element needs two attributes to do its job. `rel="stylesheet"` tells the browser what kind of file it is connecting to, and `href` gives the path to that file, the same way the `href` on an anchor gives the path to a page. With that one line in the `<head>`, every rule in `styles.css` applies to the page.
+The `<link>` element needs two attributes to do its job. `rel="stylesheet"` tells the browser what kind of file it is connecting to, and `href` gives the path to that file, the same way the `href` on an anchor gives the path to a page. The value `css/styles.css` means the file `styles.css` inside a folder named `css`. With that one line in the `<head>`, every rule in your stylesheet applies to the page.
 
 ### Why external is the one to use
 
@@ -201,6 +201,6 @@ Element selectors will only take you so far, because sooner or later you will wa
 
 ## Try it yourself
 
-Open the site folder you started in MTM1511. Create a new file called `styles.css` in the same folder as your HTML, and link it from your page's `<head>` with a `<link rel="stylesheet" href="styles.css">` element. Before styling anything, confirm the connection actually works: add one obvious rule such as `body { background-color: whitesmoke; }`, save, and reload the page with Live Server. If the background changes, your stylesheet is wired up correctly. If nothing happens, check the `href` path and that the `<link>` is inside the `<head>`.
+Open the site folder you started in MTM1511. Create a `css` folder next to your HTML, and inside it a new file called `styles.css`. Link it from your page's `<head>` with a `<link rel="stylesheet" href="css/styles.css">` element. Before styling anything, confirm the connection actually works: add one obvious rule such as `body { background-color: whitesmoke; }`, save, and reload the page with Live Server. If the background changes, your stylesheet is wired up correctly. If nothing happens, check the `href` path and that the `<link>` is inside the `<head>`.
 
 Now write real rules with the element selector. Give all your paragraphs a colour and a comfortable `line-height`. Give your headings a colour of their own. Group two element types into one rule to see grouping work. Add a comment above each rule saying what it does. Save and reload as you go so you see each change land. When it looks the way you want, stage, commit, and push, the same workflow you learned in MTM1511, so this week's styling lands in your repository.
