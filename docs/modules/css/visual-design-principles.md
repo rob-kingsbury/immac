@@ -215,7 +215,7 @@ The second half of this week is a critique session. Design work improves fastest
 
 **Describe before you judge.** Start with what you actually see: "my eye goes to the photo first, then the button, then the heading." That's information the author can use even if they disagree about whether it's a problem.
 
-**Name the principle.** "The heading and body are too close together" is vague. "The gap between the heading and its paragraph is the same as the gap between sections, so they don't read as grouped" is actionable, and it points at proximity.
+**Name the principle.** "The heading and body are too close together" is vague. "The gap between the heading and its paragraph is the same as the gap between sections, so they don't read as grouped" tells the author exactly what to change, and it points at proximity.
 
 **Separate the observation from the prescription.** Say what isn't working before you say how to fix it. The author often finds a better fix than your suggestion once they understand the problem.
 
@@ -259,3 +259,5 @@ Then do a restraint pass. Count every distinct font size, colour, and spacing va
 Fix one hierarchy problem, one alignment problem, and one proximity problem that the audit found. Take a screenshot before and after each so you can see the change.
 
 In the critique session, give feedback to at least two classmates using the format above: describe what you see, name the principle, locate it specifically, and hold the suggestion until after the observation. Write down every observation you receive without responding to it during the session, then decide afterwards which to act on and note why you rejected the rest.
+
+Your page now looks deliberate. Next week adds the one thing a still image can't show: how it responds when someone actually touches it.

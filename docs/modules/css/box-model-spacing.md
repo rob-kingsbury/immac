@@ -71,6 +71,87 @@ The distinction that matters most is **padding versus margin**. Both create spac
 
 The first box got bigger. The second box stayed the same size and moved away from its neighbours. That's the whole difference, and it's worth staring at until it's automatic.
 
+## Units: absolute versus relative
+
+Every size in CSS needs a unit, and so far you've only seen `px`. Before writing more spacing, it's worth knowing what the alternatives actually mean, because the choice affects whether your layout holds together when the page changes.
+
+An **absolute** unit always means the same physical size, no matter what's around it. `px` is the one you'll use, and one pixel is one pixel whether it's inside a tiny card or a full-width banner.
+
+A **relative** unit is measured against something else: the size of the parent, the size of the root, or the size of the viewport. Change that something else, and the relative value changes with it automatically.
+
+`%` is the relative unit you'll meet constantly, and it needs care, because **a percentage doesn't mean the same thing on every property.** It always resolves against a base, and the base depends on which property you're setting.
+
+<CssDemo>
+
+```html
+<div class="parent">
+  Parent: 300px wide, 150px tall
+  <p class="p-width">width: 50%</p>
+  <p class="p-padding">padding: 10%</p>
+</div>
+```
+
+```css
+.parent {
+  width: 300px;
+  height: 150px;
+  background-color: #f1f5f9;
+  border: 2px dashed #94a3b8;
+  padding: 8px;
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+}
+.p-width {
+  width: 50%;
+  background-color: #dbeafe;
+  border: 1px solid #60a5fa;
+  margin: 6px 0;
+}
+.p-padding {
+  padding: 10%;
+  background-color: #fef3c7;
+  border: 1px solid #fbbf24;
+  margin: 6px 0;
+}
+```
+
+</CssDemo>
+
+`width: 50%` resolves against the **parent's width**, so it's 150px here. That one is intuitive. `padding: 10%` is the one that catches people, because padding's percentage, on every side including top and bottom, resolves against the parent's **width** too, never its height. Set `padding: 10%` on a wide box and you get noticeably more vertical padding than you probably expected.
+
+<div class="diagram">
+<svg viewBox="0 0 640 190" role="img" aria-label="Three labelled boxes showing percentage resolving against different bases. Width at 50% measures against the parent's width. Padding at 10% also measures against the parent's width, even for top and bottom. Line-height at 150% measures against the element's own font size, not its parent.">
+  <rect x="10" y="10" width="190" height="170" rx="8" class="d-surface d-border" stroke-width="1.5"/>
+  <text x="24" y="32" class="d-lbl-muted">WIDTH: 50%</text>
+  <rect x="24" y="44" width="162" height="52" rx="4" fill="none" class="d-muted-stroke" stroke-dasharray="3 2"/>
+  <rect x="24" y="44" width="81" height="52" rx="4" class="d-accent-soft d-accent-stroke" stroke-width="1.5"/>
+  <text x="64" y="74" text-anchor="middle" class="d-lbl-mono">50%</text>
+  <line x1="24" y1="110" x2="186" y2="110" class="d-muted-stroke" stroke-width="1"/>
+  <line x1="24" y1="107" x2="24" y2="113" class="d-muted-stroke" stroke-width="1"/>
+  <line x1="186" y1="107" x2="186" y2="113" class="d-muted-stroke" stroke-width="1"/>
+  <text x="105" y="128" text-anchor="middle" class="d-lbl-muted">parent's width</text>
+
+  <rect x="225" y="10" width="190" height="170" rx="8" class="d-surface d-border" stroke-width="1.5"/>
+  <text x="239" y="32" class="d-lbl-muted">PADDING: 10%</text>
+  <rect x="239" y="44" width="162" height="52" rx="4" fill="none" class="d-muted-stroke" stroke-dasharray="3 2"/>
+  <rect x="239" y="58" width="162" height="24" class="d-accent-soft d-accent-stroke" stroke-width="1.5"/>
+  <text x="320" y="74" text-anchor="middle" class="d-lbl-mono">10%</text>
+  <text x="239" y="118" class="d-lbl-muted">top and bottom too,</text>
+  <text x="239" y="131" class="d-lbl-muted">measured against width</text>
+
+  <rect x="440" y="10" width="190" height="170" rx="8" class="d-surface d-border" stroke-width="1.5"/>
+  <text x="454" y="32" class="d-lbl-muted">LINE-HEIGHT: 150%</text>
+  <text x="454" y="70" class="d-lbl-mono" font-size="18">Aa</text>
+  <line x1="600" y1="46" x2="600" y2="80" class="d-accent-stroke" stroke-width="2"/>
+  <text x="454" y="118" class="d-lbl-muted">of its own font size,</text>
+  <text x="454" y="131" class="d-lbl-muted">not the parent at all</text>
+</svg>
+</div>
+
+`line-height` at `150%` is different again: it resolves against the element's **own font size**, not its parent. Three properties, three different bases, one symbol. That's the reason Week 3 will tell you to prefer `rem` over `%` for font-related sizing, and it's why `%` is worth understanding precisely rather than by feel.
+
+Two more relative units are common enough to name here, and you'll see both properly in later weeks. `rem` measures against the root font size. `vw` and `vh` measure against the viewport. Both are covered in depth when they matter, `rem` next week and viewport units in the Responsive Design week.
+
 ## Padding
 
 Padding is written with the `padding` property. Give it one value and all four sides get it:
@@ -275,6 +356,37 @@ p {
 
 Collapse only happens on **vertical** margins between block elements. Horizontal margins never collapse, and padding never collapses. Knowing this saves you from adding margin to both elements and wondering why the gap is smaller than the arithmetic says. A common habit that sidesteps the whole issue is to set margins in one direction only, usually `margin-bottom`, so two elements never both contribute to the same gap.
 
+## Sizing a box by its shape: aspect-ratio
+
+You'll often want a box that keeps a fixed shape, an image container, a video embed, a map, no matter how wide it ends up being. Setting a fixed `height` looks like the answer, and it's the mistake this chapter already warned about: content spills out the moment the box's width changes and the height doesn't follow.
+
+The `aspect-ratio` property solves this properly. Give it a ratio, and the box calculates its own height from whatever width it happens to have.
+
+<CssDemo>
+
+```html
+<div class="frame">16:9, whatever width I end up</div>
+```
+
+```css
+.frame {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-width: 320px;
+  background-color: #e0e7ff;
+  border: 2px solid #818cf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+}
+```
+
+</CssDemo>
+
+Resize your browser and that box's height adjusts on its own, always in proportion. No JavaScript, no fixed number to get wrong. `1 / 1` gives a square, `4 / 3` an older photo shape, `21 / 9` an ultra-wide banner. This is the property to reach for whenever "fixed height" was your instinct, particularly for image and video placeholders later in the course.
+
 ## Inspecting the box model
 
 You do not have to reason about any of this from memory. Right-click an element, choose **Inspect**, and look for the box model diagram in developer tools, usually under a Computed or Layout tab. It draws the four layers as nested rectangles with the real pixel value of each side filled in.
@@ -293,12 +405,15 @@ You can also edit values directly in that diagram and watch the page respond, wh
 - **Forgetting `box-sizing: border-box`.** Every layout that mysteriously overflows by a few pixels traces back to this.
 - **Adding vertical margin to both neighbours.** Margin collapse means you get the larger one, not the sum.
 - **Using margin to fake a gap inside a coloured box.** Margin is outside the background, so it can't put space between the edge of a card and its text. That's padding's job.
-- **Setting a fixed `height` on a box holding text.** Text length changes, and the content spills out. Let padding define the vertical space and the height follow the content.
+- **Setting a fixed `height` on a box holding text.** Text length changes, and the content spills out. Let padding define the vertical space and the height follow the content, or use `aspect-ratio` when the box genuinely needs a fixed shape.
+- **Assuming `%` always means "of my own size."** It resolves against different bases depending on the property. Padding's percentage is always relative to the parent's width, even top and bottom.
 
 ## Keep learning
 
 - [MDN: The box model](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model). Mozilla's full walkthrough, with interactive examples of every property in this chapter.
 - [MDN: Mastering margin collapsing](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing). The complete rules, for when a collapse surprises you.
+- [MDN: Values and units](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units). The full reference for absolute and relative units, including the ones later weeks build on.
+- [MDN: aspect-ratio](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio). The property reference, with the shorthand forms.
 - [Chrome DevTools: Inspect the box model](https://developer.chrome.com/docs/devtools/css/reference). Reference for the diagram described above.
 - [Video: The CSS Box Model, by Kevin Powell](https://www.youtube.com/watch?v=rIO5326FgPE). A clear visual explanation from a CSS teacher worth following generally.
 
@@ -311,3 +426,7 @@ Then build a card. Take one section of your page and give it a background colour
 Centre that card horizontally using `margin-left: auto` and `margin-right: auto`.
 
 Now investigate spacing deliberately. Set a bottom margin on one paragraph and a top margin on the next, both different values, and use the developer tools diagram to confirm the gap equals the larger of the two rather than the sum. Then convert one of your paddings into a margin and watch where the background colour stops. Being able to predict that before you save is the goal of this week.
+
+Finally, give one image or media placeholder on your page an `aspect-ratio` instead of a fixed height, and set its `width` to `100%` of its container. Resize your browser and confirm the box keeps its shape at every width.
+
+You now have every property that gives a box its shape, spacing, and proportions. Next week turns to what goes inside it: fonts, colour, and the units that make text scale properly for every reader.

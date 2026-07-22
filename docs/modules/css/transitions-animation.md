@@ -323,6 +323,31 @@ Transitions move between two states. When you need more than two, `@keyframes` d
 
 Keyframes are worth knowing exist, and loading indicators are their honest use case. For this project, transitions on interaction will cover almost everything, and they're far easier to keep tasteful.
 
+## Future of motion: scroll-driven animation
+
+Everything in this chapter animates in response to a state change, a hover, a focus, a class toggling on. There's a newer category worth knowing about even though it's not yet something to build a project around: animation tied directly to **scroll position**, with no JavaScript scroll listener involved at all.
+
+```css
+@supports (animation-timeline: scroll()) {
+  .reveal {
+    animation: fade-in linear both;
+    animation-timeline: scroll();
+    animation-range: entry 0% cover 40%;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+```
+
+Instead of a fixed duration, `animation-timeline: scroll()` ties the animation's progress to how far the page has scrolled, so an element fades and rises into place as it enters the viewport, purely in CSS. This used to require a scroll event listener recalculating positions on every frame in JavaScript, which is exactly the kind of thing this course's "if it needs JavaScript, it's out of scope" line would normally rule out. This is CSS doing a job that used to require a script.
+
+**It's wrapped in `@supports` deliberately, and that's the actual lesson here, not just the animation.** `@supports` checks whether the browser understands a feature before applying rules that use it, so on a browser that doesn't, the block is skipped entirely and the element simply appears without the scroll effect, fully functional either way. That's how you adopt a feature safely before every browser has caught up: the enhancement is additive, and its absence never breaks anything.
+
+And this specific feature genuinely hasn't caught up everywhere yet. Chrome and Edge have supported it since 2023, and Safari since September 2025, but Firefox ships it behind an experimental flag in its stable release as of writing, even though Mozilla's own public position on the feature is favourable and it's a named priority for closer cross-browser alignment. Treat scroll-driven animation as something to experiment with behind `@supports`, not something to depend on or be tested on in this course. Revisit it later in your career: this is exactly the kind of gap that closes within a year or two.
+
 ## Common mistakes to avoid
 
 - **Transitions that are too slow.** Anything over 500ms on an interface element feels broken.
@@ -333,11 +358,14 @@ Keyframes are worth knowing exist, and loading indicators are their honest use c
 - **Animating `:hover` but not `:focus-visible`.** Keyboard users get nothing, again.
 - **Motion as the only indicator of a state change.** Pair it with something static.
 - **Animating everything.** If every element moves, none of the movement means anything.
+- **Depending on scroll-driven animation without `@supports`.** It isn't supported everywhere yet. Treat it as an enhancement, never as something the page needs to function.
 
 ## Keep learning
 
 - [MDN: Using CSS transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions). The full property reference.
 - [MDN: Using CSS transforms](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms/Using_CSS_transforms). Every transform function, including the 3D ones.
+- [MDN: Scroll-driven animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations). The full reference, including `view()` timelines for elements entering the viewport.
+- [MDN: @supports](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports). How to check for a feature before depending on it.
 - [cubic-bezier.com](https://cubic-bezier.com/). Draw a custom timing curve and preview it.
 - [WCAG: Animation from Interactions](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html). The success criterion behind the reduced-motion requirement.
 - [Video: Learn CSS Transitions, by Kevin Powell](https://www.youtube.com/watch?v=Nloq6uzF8RQ). A practical walkthrough with good taste about restraint.
@@ -353,3 +381,7 @@ Build one card hover that combines a `translateY` lift with a deeper `box-shadow
 Now test the constraint. Turn on reduce motion in your operating system settings, reload your live page, and confirm the motion stops. Then turn it off and confirm it comes back.
 
 Finally, do a restraint pass. Look at every animation you added and remove any that doesn't communicate something: a state change, a response to input, or where an element went. Whatever survives that cut is the motion your project actually needed.
+
+Optional, and not required: wrap one `animation-timeline: scroll()` experiment in `@supports` on a single element, and check it in two different browsers to see the feature-detection actually working, the effect in one and a plain, unanimated element in the other.
+
+You've now covered everything this course teaches about styling a page. The final two weeks put the whole project, both courses' work together, in front of real eyes.

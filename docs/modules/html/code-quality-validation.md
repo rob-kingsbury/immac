@@ -84,3 +84,5 @@ Between the two, checking your source against the rules and checking what the br
 ## Try it yourself
 
 Take your most complex page so far and run it through the W3C validator. Fix every error and warning until it validates clean. While you're in there, audit your file and folder names against the standards above and rename anything that doesn't comply, updating the links that point to it. Add section-marker comments to the major regions of the page. Finally, open developer tools, inspect your nesting in the Elements panel, and check the Console for any errors you didn't know were there.
+
+Your markup is clean and it validates. Next week rounds out the HTML you know with a few more elements that solve real, specific problems.

@@ -4,7 +4,7 @@ title: CSS Grid Layouts
 
 # CSS Grid Layouts
 
-Flexbox arranges things in a line. **Grid** arranges things in rows *and* columns at the same time, which makes it the tool for page-level layout: a header across the top, a sidebar beside a main column, a footer along the bottom, a gallery in a tidy matrix.
+Last week's Flexbox arranges things in a line. **Grid** arranges things in rows *and* columns at the same time, which makes it the tool for page-level layout: a header across the top, a sidebar beside a main column, a footer along the bottom, a gallery in a tidy matrix.
 
 The two are not rivals. Flexbox is one-dimensional, Grid is two-dimensional, and real sites use both, usually with Grid handling the overall page and Flexbox handling the contents of each region. This chapter covers Grid on its own, then shows them working together.
 
@@ -315,6 +315,58 @@ Real layouts use both. The rule of thumb is simple: **Grid for the page skeleton
 
 Three layout systems nested in one small example, each doing the job it's best at. That's what production CSS actually looks like.
 
+## Nested grids, and when they won't line up
+
+Put a grid inside a grid item, and you get an ordinary **nested grid**: the inner grid defines its own tracks from scratch, with no relationship to the outer one.
+
+<CssDemo>
+
+```html
+<div class="outer">
+  <div class="card">
+    <h4>Lakeside Loop</h4>
+    <p class="meta">4 km</p>
+    <p class="badge">Easy</p>
+  </div>
+  <div class="card">
+    <h4>Ridge Trail, a longer name</h4>
+    <p class="meta">9 km</p>
+    <p class="badge">Moderate</p>
+  </div>
+</div>
+```
+
+```css
+.outer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  font-family: system-ui, sans-serif;
+}
+.card {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  background-color: #f1f5f9;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+.card h4 { margin: 0; }
+.meta { margin: 0; color: #64748b; }
+.badge { margin: 0; font-weight: 600; }
+```
+
+</CssDemo>
+
+Look closely at the two cards. Even though the first card's heading is much shorter, its "Easy" badge lines up exactly with the second card's "Moderate" badge, on the same row. That's not a coincidence, it's `grid-template-rows: subgrid` on `.card`. Without it, each card's three rows would size to its own content independently, and a short heading in one card would leave its badge sitting higher than its neighbour's.
+
+**Subgrid tells a nested grid to reuse its parent's track sizing instead of inventing its own.** Set `grid-row: span 3` so the card knows how many parent rows it occupies, then `grid-template-rows: subgrid` so it divides that exact space using the parent's row lines rather than its own.
+
+This solves a specific, recognisable problem: a row of cards where a short piece of content in one card should still line up with the corresponding content in every other card, the way a well-set table's columns line up even though the text in each cell is a different length. Before subgrid, this needed either JavaScript to measure and match heights, or accepting the misalignment.
+
+You won't need subgrid on every layout. Reach for it specifically when independent cards need to line up internally, and a plain nested grid otherwise, which is simpler and correct for everything else.
+
 ## Inspecting a grid
 
 Developer tools have a dedicated Grid inspector, and it's much better than guessing. Inspect a grid container and a small **grid** badge appears next to it in the elements panel. Click it and the browser overlays the grid on the page, drawing every track and numbering every line.
@@ -329,10 +381,12 @@ Turn it on whenever a grid item lands somewhere unexpected. Seeing the actual li
 - **Reaching for Grid when a line would do.** A row of buttons is one-dimensional. Flexbox is simpler for it.
 - **Forgetting that `gap` is not a margin.** It only applies between tracks, which is usually what you want, but it means the outer edge spacing has to come from padding on the container.
 - **Placing every item by line number.** Auto-placement handles most cases. Explicit placement is for the exceptions, and hand-placing everything makes a grid that breaks whenever the content changes.
+- **Reaching for subgrid when a plain nested grid would do.** It solves one specific problem, cards whose internal rows need to align with their siblings. Most nested grids don't need it.
 
 ## Keep learning
 
 - [MDN: CSS grid layout](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids). The full beginner walkthrough.
+- [MDN: Subgrid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid). The property reference, with more worked examples.
 - [CSS-Tricks: A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/). The reference chart to keep open while writing Grid.
 - [Grid Garden](https://cssgridgarden.com/). A short game that drills placement and track sizing.
 - [Chrome DevTools: Inspect CSS Grid](https://developer.chrome.com/docs/devtools/css/grid). How to use the overlay described above.
@@ -347,3 +401,7 @@ Inside the main area, build a card gallery using `repeat(auto-fit, minmax(200px,
 Make one card span two columns with `grid-column`, then turn on the grid overlay in developer tools and confirm the line numbers match what you wrote.
 
 Finally, keep Flexbox where it belongs. Your header's contents and your navigation links should still be Flexbox inside the Grid regions, not Grid within Grid. Write a comment at the top of each rule saying which system you chose and why, because being able to justify the choice is most of what this week is teaching.
+
+If your project has a row of cards, give them `grid-template-rows: subgrid` and confirm their internal content lines up even when one card's text is longer than another's.
+
+You've now built layouts for one screen size. Next week asks what happens to all of this on a phone.

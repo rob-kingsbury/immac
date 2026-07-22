@@ -91,11 +91,11 @@ The real payoff comes from declaring a whole set at the top of your stylesheet, 
 ```css
 :root {
   /* Colour */
-  --colour-brand: hsl(190, 80%, 30%);
-  --colour-brand-light: hsl(190, 80%, 92%);
-  --colour-text: hsl(215, 25%, 20%);
-  --colour-muted: hsl(215, 15%, 45%);
-  --colour-surface: hsl(0, 0%, 100%);
+  --colour-brand: hsl(190 80% 30%);
+  --colour-brand-light: hsl(190 80% 92%);
+  --colour-text: hsl(215 25% 20%);
+  --colour-muted: hsl(215 15% 45%);
+  --colour-surface: hsl(0 0% 100%);
 
   /* Type */
   --font-body: system-ui, sans-serif;
@@ -235,15 +235,109 @@ Every rule in your stylesheet stays exactly as it was. Only the variable block c
 
 One requirement carries over from Week 3: **check contrast in both themes.** A palette that passes on white frequently fails on dark, and vice versa. A dark theme is not an excuse to skip the contrast checker; it's a second set of pairs to run through it.
 
+A newer function, `light-dark()`, does the same job with less repetition, once you've told the page which schemes it supports:
+
+```css
+:root {
+  color-scheme: light dark;
+  --surface: light-dark(#ffffff, #0f172a);
+  --text: light-dark(#1e293b, #cbd5e1);
+}
+```
+
+`color-scheme: light dark` tells the browser this page supports both, and `light-dark()` picks its first argument in light mode and its second in dark mode, automatically, without a separate `@media` block duplicating the variable names. It's newer than the rest of this chapter and worth knowing, but the `@media (prefers-color-scheme: dark)` pattern above works everywhere and is what this course expects you to reach for by default.
+
+## Nesting related rules together
+
+Every rule you've written this term names its full selector on its own line, even when several rules are clearly about the same component. A card's border, its heading colour, and its hover state end up as three separate top-level rules, related only by the fact that their selectors all start with `.card`.
+
+**Native CSS nesting** lets you write a rule inside another rule, and have the inner selector understood as relative to the outer one, using `&` to stand for the parent selector.
+
+```css
+/* Without nesting: three separate rules, related only in your head */
+.card {
+  border: 1px solid var(--border);
+}
+.card h3 {
+  color: var(--colour-brand);
+}
+.card:hover {
+  border-color: var(--colour-brand);
+}
+
+/* With nesting: the relationship is visible in the code itself */
+.card {
+  border: 1px solid var(--border);
+
+  h3 {
+    color: var(--colour-brand);
+  }
+
+  &:hover {
+    border-color: var(--colour-brand);
+  }
+}
+```
+
+<CssDemo>
+
+```html
+<div class="card">
+  <h3>Ridge Trail</h3>
+  <p>Hover this card.</p>
+</div>
+```
+
+```css
+.card {
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-family: system-ui, sans-serif;
+  transition: border-color 150ms ease;
+
+  h3 {
+    color: #0e7490;
+    margin: 0 0 4px 0;
+  }
+
+  &:hover {
+    border-color: #0e7490;
+  }
+}
+```
+
+</CssDemo>
+
+Two things about that `&` are worth being precise on. A nested selector with a space before it, like `h3` above, is understood as a **descendant** of the parent, exactly as if you'd written `.card h3`. When you need the pseudo-class or a compound form directly on the parent element itself, like `:hover`, you write `&` explicitly right against it, `&:hover`, not just `:hover` on its own.
+
+Media queries and container queries nest too, which keeps a component's responsive behaviour physically next to the rest of its rules instead of scattered at the bottom of the file:
+
+```css
+.card {
+  display: block;
+
+  @container (min-width: 400px) {
+    display: flex;
+  }
+}
+```
+
+**Nesting doesn't replace the specificity rules from Week 4.** A nested selector's specificity is calculated exactly the same way as if you'd written it out in full, `&` included. It's a way of organising related rules so their relationship is visible on the page, not a new cascade mechanism.
+
+You may recognise this from Sass or Less, which have offered nesting for years through a build step. What's different here is that it's now **plain CSS**, understood natively by the browser, with nothing to compile.
+
+Use it where it genuinely groups related rules, a component and its own states and media queries. Reaching for it everywhere, nesting three or four levels deep "because you can," produces the same long, fragile selectors Week 4 already warned about, just written differently.
+
 ## Custom properties versus preprocessor variables
 
-You may see variables in Sass or Less written with a dollar sign. They are not the same thing, and the difference is worth understanding.
+You may see variables in Sass or Less written with a dollar sign, and nesting written the same way this chapter just showed you. They look similar. They are not the same thing, and the difference is worth understanding.
 
-Preprocessor variables are resolved **before** the CSS is written, so by the time a browser sees the file they're gone, replaced by their values. They can't change at runtime and they don't respond to the cascade.
+Preprocessor variables and preprocessor nesting are resolved **before** the CSS is written, in a separate build step, so by the time a browser sees the file they're gone, replaced by plain, flattened CSS. Preprocessor variables can't change at runtime and don't respond to the cascade.
 
-Custom properties are **live in the browser**. They cascade, they inherit, they can be redefined per selector as you did above, they can be changed by JavaScript, and they can differ between two elements on the same page. That's why scoping and theming work at all.
+Custom properties and native nesting are **understood by the browser itself**. Variables cascade, inherit, can be redefined per selector as you did above, and can differ between two elements on the same page, which is why scoping and theming work at all. Nesting is expanded by the browser at render time using the same cascade rules as everything else.
 
-This course uses custom properties. Nothing needs to be compiled, and everything in this chapter runs natively in every current browser.
+This course uses the native versions of both. Nothing needs to be compiled, and everything in this chapter runs directly in every current browser.
 
 ## Inspecting variables
 
@@ -260,12 +354,16 @@ If a property seems to have no value at all, a misspelled variable name is the f
 - **Expecting `var()` to work in a media query condition.** Custom properties can't be used in `@media` feature tests, only in declarations.
 - **Building a dark theme without rechecking contrast.** Different pairs, different ratios.
 - **Twenty spacing variables.** A scale of four or five used consistently beats a long list used approximately.
+- **Nesting three or four levels deep because you can.** It produces the same fragile, over-specific selectors Week 4 warned about, just formatted differently.
+- **Writing `:hover` instead of `&:hover` inside a nested rule.** Without the `&`, it's understood as a descendant selector, not the parent itself, and won't match what you meant.
 
 ## Keep learning
 
 - [MDN: Using CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties). The complete guide, including inheritance and fallback behaviour.
 - [MDN: var()](https://developer.mozilla.org/en-US/docs/Web/CSS/var). The function reference, with fallback syntax.
 - [MDN: prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme). Reading the visitor's light or dark preference.
+- [MDN: light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark). The function reference for the newer theming shortcut.
+- [MDN: CSS nesting](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting). The full reference, including nested media and container queries.
 - [Video: CSS Custom Properties, by Kevin Powell](https://www.youtube.com/watch?v=PHO6TBq_auI). A practical walkthrough including scoping and theming.
 
 ## Try it yourself
@@ -277,3 +375,7 @@ Build a spacing scale of four or five values and replace every ad-hoc padding an
 Then use scoping. Create a variant of an existing component, a highlighted card or a warning panel, by overriding only its variables rather than redeclaring its properties. Confirm the original rules are doing all the work.
 
 Add a dark theme with `prefers-color-scheme`, changing nothing but the variable block. Switch your operating system to dark mode and confirm the page follows. Then run every text and background pair in the dark theme through the WebAIM contrast checker, because the light-mode ratios tell you nothing about it.
+
+Finally, pick one component with at least three related rules, a card, a button, or your navigation, and rewrite them as one nested block using `&`. Confirm in developer tools that the computed specificity of each nested rule matches what you'd get by writing the selector out in full.
+
+Your stylesheet is now organised and themeable. The next two weeks step back from code entirely and put the whole project in front of other people's eyes.

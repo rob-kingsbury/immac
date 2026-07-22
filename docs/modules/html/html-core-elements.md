@@ -341,3 +341,5 @@ Use them to label the major regions of a page. Combined with consistent indentat
 Create a new folder in your cloned repository, add an `index.html` file, and build out the document skeleton, `<!DOCTYPE>` through `<body>`, from memory rather than copying it. Inside `<body>`, add one `<h1>`, at least two `<h2>` sections, a paragraph or two under each, one ordered and one unordered list, and a `<blockquote>`. Mark one or two words with `<strong>` or `<em>` where the meaning calls for it. Add a comment above each major section.
 
 Open the page in your browser, then open developer tools and inspect your own elements. Watch how the block elements each claim a full row while the inline ones share a line. Then commit and push your change using the workflow from last week, stage, commit, sync, and confirm it shows up on GitHub.
+
+Your page is a single block of text and lists right now. Next week connects it to the rest of the web, with links, images, and media.

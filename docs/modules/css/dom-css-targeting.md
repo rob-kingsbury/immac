@@ -4,7 +4,7 @@ title: The DOM and CSS Targeting
 
 # The DOM and CSS Targeting
 
-You've been writing selectors since Week 1 without a precise picture of what they're selecting *from*. This week supplies it. The browser doesn't apply your CSS to a text file. It applies it to a structure it built in memory called the **DOM**, and once you can see that structure, targeting stops being trial and error.
+Welcome back from reading week. You've been writing selectors since Week 1 without a precise picture of what they're selecting *from*. This week supplies it. The browser doesn't apply your CSS to a text file. It applies it to a structure it built in memory called the **DOM**, and once you can see that structure, targeting stops being trial and error.
 
 This is the diagnostic week. By the end of it you should be able to work out why any rule on your page is or isn't applying, without changing anything at random to find out.
 
@@ -234,3 +234,5 @@ Style the first paragraph after each `h2` on your page with `h2 + p`, with no cl
 Add an attribute selector that marks every external link on your site, using `[href^="https"]`.
 
 Finally, break something on purpose. Introduce a deliberate typo in a class name so a rule stops applying, then use the six-step routine above to find it without looking at your own edit. Time yourself. Do it again with a specificity conflict instead of a typo. The point is to make the routine automatic before you need it under pressure in the project weeks.
+
+You can now diagnose anything that goes wrong. Next week turns to making sure your page works for everyone, not just the visitor who matches your own screen, browser, and abilities.

@@ -371,6 +371,8 @@ Note that there are **two** flex containers here, nested. The header is a flex c
 
 Build a navigation bar on your project page. Put a site name and a set of links inside a `<header>`, make it a flex container, and use `space-between` and `align-items: center` to pin the name left and the links right, vertically centred. Make the links themselves a nested flex container with a `gap`. Give them `:hover` and `:focus` styles.
 
-Then build a row of at least four cards. Give the container `display: flex`, `flex-wrap: wrap`, and a `gap`, and give each card `flex: 1` with a sensible `flex-basis` so they share the width. Narrow your browser window slowly and watch them wrap. Note the width at which the layout stops looking right, because that number is a breakpoint, and next week you'll do something about it.
+Then build a row of at least four cards. Give the container `display: flex`, `flex-wrap: wrap`, and a `gap`, and give each card `flex: 1` with a sensible `flex-basis` so they share the width. Narrow your browser window slowly and watch them wrap. Note the width at which the layout stops looking right, because that number is a breakpoint, and the Responsive Design week puts it to use.
 
 Finally, centre something both ways. Make a box with a fixed height, put a single element inside it, and centre it with `justify-content` and `align-items`. Then change the container's `flex-direction` to `column` and predict what happens to the centring before you save.
+
+Flexbox handles one direction at a time. Next week adds the second dimension, rows and columns together, with Grid.

@@ -4,7 +4,7 @@ title: Links, Images, and Media
 
 # Links, Images, and Media
 
-A page of text is a document. Links, images, and media are what turn it into the web. This chapter covers how to connect pages together, how to place images correctly, and how to embed audio and video.
+Last week gave you the elements for a page of text. A page of text is a document. Links, images, and media are what turn it into the web. This chapter covers how to connect pages together, how to place images correctly, and how to embed audio and video.
 
 ## Links and the anchor element
 
@@ -139,3 +139,5 @@ Always give an `<iframe>` a `title`. Like `alt` text on an image, it tells assis
 ## Try it yourself
 
 Take one of your existing pages and connect it up. Add a second HTML page and link the two together with relative paths, in both directions. Place one image with a genuine, descriptive `alt` attribute and correct `width` and `height`. Add an in-page link that jumps to one of your `<h2>` sections using a matching `id`. If you have a short video clip, embed it with the `<video>` element. Open the page and confirm every link lands where you expect.
+
+You now have two connected pages. Next week gives every element on them real meaning, with semantic HTML.

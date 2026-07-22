@@ -131,3 +131,5 @@ Notice there's no real content yet, and no styling. This is the structural pass:
 Pick a small site you'd realistically build, three to five pages. Draw its site map as an indented list, and check it against the three-click guideline. Choose one of those pages and sketch a wireframe of it, boxes and labels only, no colour or real content.
 
 Then, without adding any real content, write the HTML skeleton for that page using semantic elements that match your wireframe regions. Name each region out loud before you type it: "this is the header, this is the main, these three repeated blocks are articles." You now have a plan and a structure ready to fill in.
+
+Your plan is solid. Next week checks whether the page built from it actually works for every visitor, not just the ones who match your own assumptions.

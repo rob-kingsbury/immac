@@ -164,3 +164,5 @@ You can catch a large share of issues yourself, before anyone else sees the page
 Take the semantic page you built in the Semantic HTML chapter. Add a skip link as the first element in the body, pointing to your `<main>`. Give every image a considered `alt` value, empty if it's decorative. Check any coloured text against the WebAIM contrast checker and fix anything that fails.
 
 Then put the mouse aside and navigate the whole page with Tab and Enter only, confirming you can always see where focus is. Finally, run the Lighthouse accessibility audit and read every item it reports, fixing what you can.
+
+Your pages now work for everyone who reaches them. Next week adds forms, the one place your site collects something back.

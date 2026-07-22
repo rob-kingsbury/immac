@@ -225,6 +225,10 @@ Convert your font sizes, padding, and any `max-width` values from `px` to `rem`.
 
 Add the `.visually-hidden` class to your stylesheet and use it at least once, for a label that's obvious visually but has nothing for a screen reader to announce. Add a skip link that's hidden until focused.
 
-Add the `prefers-reduced-motion` block to the bottom of your stylesheet now, before you write any animation next week.
+Add the `prefers-reduced-motion` block to the bottom of your stylesheet now. You won't write real animation until the Transitions and Motion week, but the guard belongs in place well before then, so it's never a decision you make under deadline.
+
+Run both Lighthouse and axe on the page, fix what they flag, then repeat the keyboard test once more. Note anything the manual test found that neither tool did, because that gap is the reason the manual test exists.
+
+Next week turns to a different kind of consistency: naming a value once instead of retyping it everywhere your stylesheet uses it.
 
 Finally, run both Lighthouse and axe on the page, fix what they flag, and then repeat the keyboard test. Note anything the manual test found that neither tool did, because that gap is the reason the manual test exists.

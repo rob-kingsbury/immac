@@ -4,7 +4,7 @@ title: Typography and Colour
 
 # Typography and Colour
 
-Most of a web page is text, and most of the impression a page makes comes from how that text is set and coloured. This week covers the properties that control both, and finishes with the one hard requirement that governs every colour choice you make: whether people can actually read it.
+Last week gave every element on your page a size and a shape. This week fills those boxes in: most of a web page is text, and most of the impression a page makes comes from how that text is set and coloured. This chapter covers the properties that control both, including the units question Week 2 opened, and finishes with the one hard requirement that governs every colour choice you make: whether people can actually read it.
 
 ## Font families and font stacks
 
@@ -167,6 +167,16 @@ p {
 
 Body text usually wants something between 1.5 and 1.7. Large headings want less, often 1.1 to 1.3, because at that size generous spacing pulls the words apart rather than helping.
 
+A small, newer property solves a different heading problem: a multi-word heading that wraps onto two lines usually leaves one short, orphaned word dangling on the second line. `text-wrap: balance` asks the browser to distribute the words more evenly across the lines instead.
+
+```css
+h1, h2 {
+  text-wrap: balance;
+}
+```
+
+It has no visible effect on a heading that already fits one line, and browser support is newer than everything else in this course, so treat it as a nice-to-have polish rather than something to depend on.
+
 ## Letter spacing and other text properties
 
 A handful of remaining properties round out text control.
@@ -222,24 +232,26 @@ color: #2563eb;  /* a mid blue */
 
 When all three pairs are doubled digits, you can write the short form: `#ffffff` becomes `#fff`, and `#2244aa` becomes `#24a`.
 
-**RGB** notation says the same thing in decimal, from 0 to 255 per channel, and it can take a fourth value for opacity from 0 to 1.
+**RGB** notation says the same thing in decimal, from 0 to 255 per channel, and it can take a fourth value for opacity from 0 to 1. Between hex and RGB, **RGB is the one to reach for by default**: hex is more compact for a fixed value, RGB is what you'll use everywhere you need to compute or adjust a colour, and it's the notation you'll see most often in colour pickers, design tools, and other people's code.
 
 ```css
 color: rgb(37 99 235);
 background-color: rgb(37 99 235 / 15%);   /* the same blue at 15% opacity */
 ```
 
-**HSL** describes a colour the way a person thinks about one, which makes it far easier to adjust by hand. It takes three parts: **hue**, an angle from 0 to 360 on the colour wheel; **saturation**, how intense the colour is from grey to vivid; and **lightness**, from black through the colour to white.
+That slash-and-percentage form for opacity is current CSS. You'll also see an older function, `rgba()`, written with commas and a fourth value from 0 to 1: `rgba(37, 99, 235, 0.15)`. It means exactly the same thing, and it still works everywhere, but it was folded into plain `rgb()` in 2022, so a separate function for "RGB with opacity" is no longer necessary. **Recognise `rgba()` when you see it in existing code, and write `rgb()` with a slash going forward.** The same history applies to `hsla()` below.
+
+**HSL** describes a colour the way a person thinks about one, rather than as raw channel values, which makes it a genuinely useful *second* notation for one specific job: building a set of related colours by hand. It takes three parts: **hue**, an angle from 0 to 360 on the colour wheel; **saturation**, how intense the colour is from grey to vivid; and **lightness**, from black through the colour to white.
 
 ![A colour wheel showing hue as an angle from 0 to 360 degrees, with red at 0 degrees, green at 120, and blue at 240.](/images/color-wheel.png)
 
 ![The HSL colour model, showing hue as a position around a circle with saturation and lightness as separate scales.](/images/hsl.png)
 
 ```css
-color: hsl(220, 83%, 53%);
+color: hsl(220 83% 53%);
 ```
 
-HSL's advantage is that related colours are obvious. Keep the hue and saturation, change only the lightness, and you get a matched set of tints and shades for a palette:
+HSL's advantage over RGB is that related colours are obvious. In RGB, lightening a blue means guessing new values for all three channels together. In HSL, you hold the hue and saturation steady and change only the lightness, and you get a matched set of tints and shades for a palette:
 
 <CssDemo>
 
@@ -266,6 +278,84 @@ p {
 </CssDemo>
 
 Doing that by hand in hex would mean guessing at six digits per step. In HSL you change one number. For building a palette, HSL is the tool.
+
+## A newer colour space: oklch
+
+HSL has one real weakness, and it shows up the moment you actually use it to build a palette. **Equal steps in HSL lightness don't look like equal steps to the eye.** Depending on the hue, the same jump in the lightness number can look huge on a yellow and barely noticeable on a blue.
+
+<CssDemo>
+
+```html
+<p class="hsl-y1">HSL yellow, L 70%</p>
+<p class="hsl-y2">HSL yellow, L 50%</p>
+<p class="hsl-b1">HSL blue, L 70%</p>
+<p class="hsl-b2">HSL blue, L 50%</p>
+```
+
+```css
+p {
+  font-family: system-ui, sans-serif;
+  padding: 8px 14px;
+  margin: 0 0 4px 0;
+  color: #1e293b;
+}
+.hsl-y1 { background-color: hsl(50 90% 70%); }
+.hsl-y2 { background-color: hsl(50 90% 50%); }
+.hsl-b1 { background-color: hsl(220 90% 70%); }
+.hsl-b2 { background-color: hsl(220 90% 50%); }
+```
+
+</CssDemo>
+
+Both pairs drop the same 20 lightness points. The yellow pair barely changes. The blue pair changes a lot. HSL's "lightness" is a mathematical average of the colour channels, not a measure of how bright the colour actually looks to a human eye, and that gap is what causes it.
+
+**`oklch()` fixes this.** It's a newer colour function, well supported across current browsers, built specifically so that lightness matches perceived brightness. It takes the same three-part shape as HSL, just with different ranges: **lightness** from 0 to 1, **chroma** roughly 0 to 0.4 for how saturated the colour is, and **hue** as the same 0 to 360 angle.
+
+```css
+color: oklch(0.6 0.15 250);
+```
+
+<CssDemo>
+
+```html
+<p class="ok90">Lightness 0.9</p>
+<p class="ok70">Lightness 0.7</p>
+<p class="ok50">Lightness 0.5</p>
+<p class="ok30">Lightness 0.3</p>
+```
+
+```css
+p {
+  font-family: system-ui, sans-serif;
+  padding: 10px 16px;
+  margin: 0;
+  color: #ffffff;
+}
+.ok90 { background-color: oklch(0.9 0.12 250); color: #1e293b; }
+.ok70 { background-color: oklch(0.7 0.12 250); color: #1e293b; }
+.ok50 { background-color: oklch(0.5 0.12 250); }
+.ok30 { background-color: oklch(0.3 0.12 250); }
+```
+
+</CssDemo>
+
+Build the same four-step palette in `oklch()` that you built in HSL, and every step looks like an equal jump in brightness, on any hue. That's the entire advantage: same idea as HSL, better arithmetic underneath.
+
+This course still expects you to know hex, RGB, and HSL cold, and the CLR for this course names all three by name. Treat `oklch()` as a tool worth having for palette work specifically, not a replacement for the notations above.
+
+## Deriving colours with color-mix()
+
+A related, smaller tool: `color-mix()` blends two colours together in whatever proportion you give it, without you picking a third value by hand.
+
+```css
+--brand: #2563eb;
+
+.button:hover {
+  background-color: color-mix(in oklch, var(--brand) 85%, black);
+}
+```
+
+That reads as "85% brand colour, 15% black," which gives you a darkened hover state derived from a single source colour, rather than a second colour you typed out and now have to keep in sync by hand. It works with any colour notation, though mixing `in oklch` gives the smoothest, most even-looking blend for the same reason `oklch()` beats HSL above.
 
 ## Accessible colour contrast
 
@@ -319,6 +409,8 @@ Two related habits matter as much as the ratio itself. **Never use colour as the
 - **Loading many web font weights "just in case."** Every weight is a separate download.
 - **Removing link underlines without adding another signal.** Colour alone is not enough to mark a link, for exactly the reason above.
 - **Using `line-height` with a unit.** Unitless values scale correctly with nested font sizes. Fixed values don't.
+- **Trusting HSL lightness to look evenly spaced.** It isn't, and the gap is worse on some hues than others. Use `oklch()` when the steps genuinely need to look equal.
+- **Typing a second colour by hand for a hover or disabled state.** A `color-mix()` derived from your one source colour stays correct if the source ever changes; a hand-picked second colour doesn't.
 
 ## Keep learning
 
@@ -326,14 +418,20 @@ Two related habits matter as much as the ratio itself. **Never use colour as the
 - [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/). Paste two colours, get the ratio and the pass or fail. Bookmark this one.
 - [Google Fonts](https://fonts.google.com/). Free, hosted web fonts, with the `<link>` code generated for you.
 - [WCAG: Contrast Minimum](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html). The actual success criterion behind the table above.
+- [MDN: oklch()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch). The function reference, with the lightness-uniformity explanation in more depth.
+- [MDN: color-mix()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix). The function reference, including how the mixing colour space affects the result.
 - [Video: Typography Basics for the Web, by Kevin Powell](https://www.youtube.com/watch?v=lMEHfaV0Cnw). A practical walkthrough of setting readable type in CSS.
 
 ## Try it yourself
 
-Set a typographic baseline on your project. Give `body` a font stack ending in a generic family, a base `font-size` in `rem`, and a `line-height` between 1.5 and 1.7. Then give your headings their own sizes in `rem` and a tighter line height, so there's a clear visual step between an `h1`, an `h2`, and body text.
+Set a typographic baseline on your project. Give `body` a font stack ending in a generic family, a base `font-size` in `rem`, and a `line-height` between 1.5 and 1.7. Then give your headings their own sizes in `rem` and a tighter line height, so there's a clear visual step between an `h1`, an `h2`, and body text. Add `text-wrap: balance` to your headings.
 
 Add one web font from Google Fonts, loading no more than two weights, and keep a fallback stack behind it. Confirm in developer tools that the font actually loaded rather than silently falling back.
 
-Build a small colour palette using HSL. Pick one hue, then generate four versions of it by changing only the lightness, and use them for your background, your cards, and your accents. Write each one as a comment noting what it's for.
+Build a small colour palette using HSL, the way this chapter demonstrated. Pick one hue, then generate four versions of it by changing only the lightness, and use them for your background, your cards, and your accents. Write each one as a comment noting what it's for. Then rebuild the same four steps in `oklch()` and compare the two palettes side by side. Note in a comment which one looks more evenly spaced to you.
+
+Pick one interactive colour, a button or link, and give it a `:hover` state built with `color-mix()` from its base colour rather than a second colour you typed by hand.
 
 Finally, audit every text and background pair you used with the WebAIM Contrast Checker. Record the ratio for each. Anything below 4.5:1 for body text gets darkened or lightened until it passes, and you note in a comment what it was and what you changed it to.
+
+Your page now looks and reads the way you intend. Next week asks a harder question: when two of your rules disagree about how something should look, which one actually wins.

@@ -4,7 +4,7 @@ title: Selectors, Specificity, and Inheritance
 
 # Selectors, Specificity, and Inheritance
 
-In Week 1 you met three selectors and a rough rule for what happens when they conflict: more specific beats less specific, and later beats earlier. That rough rule carries you a long way. This week replaces it with the real mechanism, adds the selectors that respond to what a visitor is doing, and explains why some properties pass down to child elements while others don't.
+In Week 1 you met three selectors and a rough rule for what happens when they conflict: more specific beats less specific, and later beats earlier. That rough rule carries you a long way, and Week 3's colour and type work has already leaned on it without saying so. This week replaces it with the real mechanism, adds the selectors that respond to what a visitor is doing, and explains why some properties pass down to child elements while others don't.
 
 This is the chapter that turns "my CSS isn't working" from a mystery into a diagnosis.
 
@@ -225,6 +225,47 @@ An ID sets specificity at 1-0-0, and the only way to override it later is with a
 
 The same logic argues against long descendant chains. `.card .body p` at 0-2-1 is harder to override than `.card-text` at 0-1-0, and it's tied to a structure that might change.
 
+### Grouping selectors without paying for it: :is() and :where()
+
+You already know how to group selectors with a comma, so several elements can share one block. Two related tools let you group *parts* of a selector instead of the whole thing.
+
+`:is()` takes a list of selectors and matches any element that fits one of them. It's a shorthand for what would otherwise be several separate, longer selectors.
+
+```css
+/* Instead of writing this out three times */
+article h2, article h3, article h4 {
+  color: #0f172a;
+}
+
+/* :is() says the same thing once */
+article :is(h2, h3, h4) {
+  color: #0f172a;
+}
+```
+
+`:where()` does exactly the same matching, with one difference that matters a great deal: **it always contributes zero to specificity**, no matter what's inside it.
+
+<CssDemo>
+
+```html
+<h2 class="section-title">Which colour wins?</h2>
+```
+
+```css
+:where(.sidebar, .article) h2 {
+  color: #0f766e;
+}
+.section-title {
+  color: #b91c1c;
+}
+```
+
+</CssDemo>
+
+The crimson wins, because `:where(.sidebar, .article) h2` scores as 0-0-1, the class inside `:where()` doesn't count at all, only the plain `h2` outside it does. Swap that same selector to `:is()` instead and the class *would* count, pushing the specificity to 0-1-1, and it would beat `.section-title`'s 0-1-0.
+
+That makes `:where()` the practical answer to the advice earlier in this chapter: it lets you write a broad, reach-anywhere selector for a default style, while guaranteeing that a single class anywhere else in your stylesheet can override it without a fight. It's a technique for the "prefer classes, avoid escalation" habit, not just a shortcut for typing less.
+
 ### The `!important` escape hatch
 
 Adding `!important` to a declaration makes it beat everything, regardless of specificity:
@@ -239,7 +280,39 @@ You will see this in other people's code and you'll be tempted by it when a rule
 
 ## The cascade, in full
 
-Specificity is one of several tie-breakers, and they're applied in order. The full sequence the browser runs is:
+Specificity is one of several tie-breakers, and they're applied in order, each one only breaking a tie the previous one left standing:
+
+<div class="diagram">
+<svg viewBox="0 0 560 150" role="img" aria-label="A three-step sequence. Step one, origin and importance, resolved by whether a declaration is marked important. Step two, specificity, resolved by the A-B-C calculation. Step three, source order, resolved by which declaration appears last. The third circle is filled solid, showing that whichever step actually resolves the tie is the winner.">
+  <circle cx="70" cy="55" r="26" class="d-surface d-accent-stroke" stroke-width="2"/>
+  <text x="70" y="61" text-anchor="middle" class="d-lbl" fill="var(--vp-c-text-accent, #3b82f6)" font-size="15">1</text>
+  <text x="70" y="100" text-anchor="middle" class="d-lbl">Origin &amp;</text>
+  <text x="70" y="114" text-anchor="middle" class="d-lbl">importance</text>
+  <text x="70" y="130" text-anchor="middle" class="d-lbl-muted">!important wins</text>
+
+  <path d="M105 55 L200 55" class="d-muted-stroke" stroke-width="1.5" marker-end="url(#tb-arrow)"/>
+
+  <circle cx="235" cy="55" r="26" class="d-surface d-accent-stroke" stroke-width="2"/>
+  <text x="235" y="61" text-anchor="middle" class="d-lbl" fill="var(--vp-c-text-accent, #3b82f6)" font-size="15">2</text>
+  <text x="235" y="100" text-anchor="middle" class="d-lbl">Specificity</text>
+  <text x="235" y="130" text-anchor="middle" class="d-lbl-muted">the A-B-C score</text>
+
+  <path d="M270 55 L365 55" class="d-muted-stroke" stroke-width="1.5" marker-end="url(#tb-arrow)"/>
+
+  <circle cx="400" cy="55" r="26" class="d-accent"/>
+  <text x="400" y="61" text-anchor="middle" class="d-lbl" fill="#ffffff" font-size="15">3</text>
+  <text x="400" y="100" text-anchor="middle" class="d-lbl">Source order</text>
+  <text x="400" y="130" text-anchor="middle" class="d-lbl-muted">last one written wins</text>
+
+  <defs>
+    <marker id="tb-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" class="d-muted-stroke" fill="var(--vp-c-text-2, #5c6773)"/>
+    </marker>
+  </defs>
+</svg>
+</div>
+
+Read it left to right, and stop at the first step that actually resolves the tie. If neither rule is `!important`, step one settles nothing and step two takes over. If the two rules also tie on specificity, step three is what actually decides, which is why it's drawn as the filled circle above: for two ordinary, equally-specific rules, source order is the one that matters in practice.
 
 1. **Origin and importance.** Your author stylesheet beats the browser's defaults. Declarations marked `!important` jump ahead.
 2. **Specificity.** The A-B-C calculation above.
@@ -308,6 +381,7 @@ Put it together into a routine. When a rule doesn't apply:
 - **Using IDs for styling.** They win at 1-0-0 and make every future override worse.
 - **Reaching for `!important`.** It hides the conflict instead of resolving it, and it spreads.
 - **Long descendant chains.** Fragile, hard to override, and usually replaceable by one class.
+- **Reaching for `:is()` when you meant `:where()`.** `:is()` still adds to specificity, based on its most specific argument. If the whole point was a zero-specificity default, use `:where()`.
 - **A `::before` with no `content` property.** Nothing renders, and there's no error to tell you why.
 - **Putting real information in generated content.** It isn't reliably available to assistive technology.
 - **Expecting `padding` or `border` to inherit.** They don't, and no amount of retyping will change that.
@@ -316,6 +390,7 @@ Put it together into a routine. When a rule doesn't apply:
 
 - [MDN: CSS selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors). The complete list, including everything this chapter didn't cover.
 - [MDN: Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity). The full rules, with the A-B-C model explained in more detail.
+- [MDN: :is() and :where()](https://developer.mozilla.org/en-US/docs/Web/CSS/:is). The full reference, including how each calculates specificity.
 - [Specificity Calculator](https://specificity.keegan.st/). Paste in a selector and see its score, useful for checking your own arithmetic.
 - [MDN: Handling conflicts](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts). Cascade, specificity, and inheritance together, from the beginner path.
 - [Video: CSS Specificity Explained, by Kevin Powell](https://www.youtube.com/watch?v=CHyPGSpIhSs). A clear walkthrough with worked examples.
@@ -329,3 +404,7 @@ Use `:nth-child(odd)` to stripe a list or table on your page, and `:first-child`
 Add a decorative `::before` to one element, and write a comment explaining why the content you put there is safe to hide from assistive technology.
 
 Then run a specificity experiment. Write three rules targeting the same element, one with an element selector, one with a class, and one with an ID, each setting a different colour. Predict which wins before you save. Open developer tools, confirm your prediction, and find the struck-through declarations. Then rewrite the whole thing using only single classes so that source order alone decides the winner, and note how much easier the second version is to reason about.
+
+Finally, take one repeated selector list from your own stylesheet, anywhere you wrote `h2, h3, h4` or similar, and rewrite it using `:where()`. Add one more selector afterward that should be able to override it with a single class, and confirm in developer tools that it does.
+
+You can now predict, with certainty, which of any two rules wins. Next week uses that certainty to build actual layouts, starting with Flexbox.

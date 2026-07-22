@@ -94,3 +94,5 @@ Use `loading="lazy"` for images below the fold, but not for the main image at th
 ## Try it yourself
 
 Take a large photo and export it at three widths (roughly 400, 800, and 1600 pixels), saving each as WebP at about 80 percent quality. Note how much smaller they are than the original. Put them into an `<img>` with a `srcset` and `sizes` attribute, then resize your browser window and watch the Network panel in developer tools show a different file loading at different widths. Add `loading="lazy"` to an image lower on the page and confirm, in the Network panel, that it only loads once you scroll to it.
+
+Your media loads fast. Next week is about making sure people can actually find your pages in the first place.
