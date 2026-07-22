@@ -1,20 +1,101 @@
 ---
-title: Git, GitHub, and GitHub Pages Setup
+title: Introduction to the Web
 ---
 
-# Git, GitHub, and GitHub Pages Setup
+# Introduction to the Web
 
-Every project you submit this semester lives as a real, public website, hosted on GitHub Pages. This week sets up the entire pipeline that makes that possible: Git tracking your changes, GitHub storing them, VS Code tying it all together, and Pages publishing the result. It's a lot in one class, but it's a one-time setup. Once it works, the weekly workflow is three clicks.
+Welcome to Web Components. By the end of this semester you'll have built a multi-page website from scratch, using the structural language every website on the internet is built from: HTML.
 
-## Installing Git
+This first week has two halves. The first is the mental model, what the web actually is and where HTML sits in it. The second is hands-on setup, installing and configuring every tool you'll use for the rest of the term. It's a lot of setup in one class, but it's a one-time cost. Once it works, the weekly workflow is three clicks, and from next week on we write code.
+
+## What this course covers
+
+This course is about structure and meaning, not appearance. You'll learn semantic HTML: the elements that describe what a piece of content *is*, a heading, a list, a navigation menu, an article, rather than how it looks. Styling those elements, the colours and layout and spacing, is the subject of your Web Styles course, taught right after this one each week. The two courses build the same project from two different angles. This one gives it structure, the other gives it a visual design.
+
+Over the semester you'll cover, in order: the building blocks of a web page, links and media, semantic structure, how to plan a whole site, accessibility, forms, image optimization, search engine visibility, and code quality. In the last weeks you'll bring all of it together into a finished, multi-page project.
+
+Every piece of work you submit is a real, live website, hosted on GitHub Pages under your own account. Setting that up is the second half of today.
+
+## How the web works
+
+Every website involves two computers. A **client** is the machine making the request, which in this course means your browser on your laptop. A **server** is a machine somewhere else that stores the website's files and hands them out when asked. That's the entire relationship the web is built on, and everything else is detail on top of it.
+
+The conversation between them follows a protocol called **HTTP**, the HyperText Transfer Protocol. A protocol is just an agreed set of rules for how two machines talk, the same way a phone call has conventions about who speaks first. When you type an address into your browser, this happens:
+
+1. Your browser sends an HTTP **request** to the server that owns that address, essentially asking "please send me this page."
+2. The server finds the file and sends back an HTTP **response**, containing the HTML.
+3. Your browser reads that HTML and renders it into the page you see.
+4. If the HTML references other files, a stylesheet, images, fonts, the browser makes a separate request for each one and assembles the finished page as they arrive.
+
+You'll see the **HTTPS** version almost everywhere now, which is the same protocol with the traffic encrypted so nobody in between can read or alter it. Browsers flag plain HTTP pages as not secure, and GitHub Pages serves your work over HTTPS automatically, so this is one thing you get for free.
+
+Two pieces of vocabulary worth having straight. A **URL** is the full address of a resource, and its parts have names: in `https://example.com/about/team.html`, `https` is the protocol, `example.com` is the domain, and `/about/team.html` is the path to a specific file on that server. **DNS**, the Domain Name System, is the lookup service that turns a human-readable domain like `example.com` into the numeric address your browser actually connects to. You don't have to configure any of this, but knowing the pieces exist makes error messages far less mysterious later.
+
+One consequence matters for this course specifically. Because the server just hands over files and the browser does the rendering, **the browser is the thing you're really writing for**. Two browsers can interpret the same file slightly differently, which is why testing your work in more than one is a habit worth building early.
+
+## What HTML is
+
+HTML stands for **HyperText Markup Language**. Every website you have ever visited, from a personal blog to the largest search engine, is built on it. Understanding what it does, and just as importantly what it doesn't do, is the first real concept in this course.
+
+**HTML describes structure and meaning, not appearance.** When you write HTML you're labelling content: this is a heading, this is a paragraph, this is a list, this is a link. You are not saying what colour it is, how large the text should be, or where it sits on the page. That's a separate job, done by CSS, which you'll learn in your Web Styles course. Keeping those two jobs separate, structure in HTML and appearance in CSS, is one of the most important habits this course will build in you.
+
+**A browser reads HTML and turns it into the page you see.** Without any styling at all an HTML page still displays, just plainly: headings look bigger than paragraphs, lists show bullets, links are blue and underlined. That plain rendering is the browser's built-in idea of what each element means, before any designer touches it.
+
+### Elements, tags, and attributes
+
+**"Markup" means the labels are mixed in with the content they describe.** The smallest unit of HTML is an **element**, and most elements are written as an opening tag, some content, and a closing tag:
+
+```html
+<h1>Mountain Trail Guide</h1>
+```
+
+Here `<h1>` is the opening tag, `</h1>` is the closing tag with its forward slash, and together with the text between them they form one element: a top-level heading. The tags are instructions to the browser about what the content is. They never appear on the finished page.
+
+Some elements carry extra information in **attributes**, written inside the opening tag as `name="value"`:
+
+```html
+<a href="about.html">About us</a>
+```
+
+`href` is an attribute telling the anchor element where the link should point. Elements also **nest** inside one another, which is how you build real structure rather than a flat list of text.
+
+### The shape of a document
+
+Every page you write this semester starts from the same skeleton. You'll build this properly next week, so read it now for the shape rather than the detail:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Mountain Trail Guide</title>
+  </head>
+  <body>
+    <h1>Mountain Trail Guide</h1>
+    <p>Three routes, from an easy lakeside loop to a steep summit climb.</p>
+  </body>
+</html>
+```
+
+The important split is `<head>` versus `<body>`. The **head** holds information *about* the page, its title, its character encoding, and later its stylesheet link, none of which appears on the page itself. The **body** holds everything a visitor actually sees. Almost all the markup you write this term goes in the body.
+
+## Setting up your development environment
+
+The rest of today is installation and configuration. Work through it in order, because a couple of the steps depend on an earlier one having finished. If something fails, say so rather than skipping it. A broken tool today blocks both of your web courses for the whole week.
+
+### Installing Visual Studio Code
+
+VS Code is the editor you'll write every line of code in this semester. Download it from [code.visualstudio.com](https://code.visualstudio.com/) and run the installer with the default options. It's free, and it runs on Windows, macOS, and Linux.
+
+### Installing Git
 
 Git is the version control system that records every change you make to your files, and it's what connects your computer to GitHub. The install method differs by operating system, so follow whichever section matches your laptop.
 
-### Windows
+#### Windows
 
 Download the installer from [git-scm.com/downloads](https://git-scm.com/downloads) and run it, accepting the default options throughout. The defaults are correct for this course. This also installs Git Bash, the terminal you'll set as your default in VS Code shortly.
 
-### macOS
+#### macOS
 
 The [git-scm.com Mac page](https://git-scm.com/install/mac) lists several ways to install Git, Homebrew, MacPorts, a standalone binary, but they either require installing a separate package manager first or, in the binary installer's case, are explicitly discontinued and no longer updated. The simplest path, and the one this course uses, is **Xcode Command Line Tools**, a small developer toolkit Apple ships directly, with Git already included. Nothing extra to install first.
 
@@ -40,9 +121,11 @@ A system dialog appears within a few seconds, asking to confirm the install:
   </div>
 </div>
 
-Click **Install**, then agree to the license. The download typically finishes in under ten minutes, faster on a good connection, and needs no further action once it completes. If the command instead prints a message saying the tools are already installed, that's fine too, it means a prior install (from Xcode itself, or an earlier course) already covered it.
+Click **Install**, then agree to the license. The download typically finishes in under ten minutes, faster on a good connection, and needs no further action once it completes. If the command instead prints a message saying the tools are already installed, that's fine too. It means a prior install already covered it.
 
-Confirm the install worked by opening a terminal and checking the version:
+#### Confirming it worked
+
+Whichever operating system you're on, open a terminal and check the version:
 
 ```bash
 git --version
@@ -57,6 +140,8 @@ git version 2.45.1
 
 The exact version number doesn't matter. Any recent version is fine. What matters is that the command is recognized at all, rather than an error saying `git` is not a known command.
 
+### Telling Git who you are
+
 Git needs to know who you are before it will let you commit changes. Set your name and email once, globally, and every commit you ever make on this machine will be signed with them:
 
 ```bash
@@ -66,13 +151,9 @@ git config --global user.email "you@example.com"
 
 Use the same email address you'll use for your GitHub account. This is a one-time setup per computer, not something you'll repeat each class.
 
-## Setting up VS Code
-
-VS Code is the editor you'll write every line of code in this semester. If you haven't installed it, get it from [code.visualstudio.com](https://code.visualstudio.com/), then set up two extensions and one terminal setting.
-
 ### Installing Live Server and Live Share
 
-Open the Extensions view (the icon in the Activity Bar on the left, or `Ctrl+Shift+X`) and install these two extensions, required for this course:
+Open the Extensions view in VS Code (the icon in the Activity Bar on the left, or `Ctrl+Shift+X`) and install these two extensions, both required for this course:
 
 - **[Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)**. Right-click any HTML file and choose "Open with Live Server" to preview it in a browser, and the page automatically refreshes every time you save. You'll use this every single class from here on.
 - **[Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare)**. Lets you share your live coding session with an instructor or classmate for real-time help, without either of you leaving VS Code.
@@ -136,7 +217,7 @@ Every file in a Git project passes through three places on its way to GitHub:
 - **The staging area.** A holding pen for changes you've deliberately marked as ready to be saved permanently. Nothing goes here automatically.
 - **The local repository.** Git's permanent record of every commit you've made, stored entirely on your own computer. This exists whether or not you're connected to the internet.
 
-GitHub, the remote repository, is a fourth place entirely, and none of the first three steps touch it. That distinction is the single most important thing to understand this week: **committing and pushing are not the same action, and one of them doesn't involve GitHub at all.**
+GitHub, the remote repository, is a fourth place entirely, and none of the first three steps touch it. That distinction is the single most important thing to understand today: **committing and pushing are not the same action, and one of them doesn't involve GitHub at all.**
 
 ### Why staging is a separate step
 
@@ -177,7 +258,7 @@ Commit often, in small, logical pieces. A commit that says "Add the contact form
 
 Everything so far, staging and committing, happened entirely on your own computer. Your local repository now has a commit that GitHub has never seen. **Push** is the one action that sends your local commits to the remote repository:
 
-Click **Sync Changes** (or the **...** menu → **Push**) in the Source Control view.
+Click **Sync Changes** (or the **...** menu, then **Push**) in the Source Control view.
 
 <details class="demo" open>
 <summary>Result</summary>
@@ -198,7 +279,7 @@ Refresh the repository's page on GitHub. Your change is now live there, exactly 
 
 ## <span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/></svg></span> Publishing to GitHub Pages
 
-Everything above, staging, committing, pushing, gets your work onto GitHub. None of it makes that work a website. Publishing is a separate, one-time switch, and it's the last piece of this week's setup.
+Everything above, staging, committing, pushing, gets your work onto GitHub. None of it makes that work a website. Publishing is a separate, one-time switch, and it's the last piece of today's setup.
 
 ### Why this is a per-repository setting
 
@@ -224,25 +305,28 @@ Saving triggers a short build on GitHub's side, usually well under ten minutes. 
 
 You only need to repeat the toggle itself once per repository. After that, every push you make automatically republishes the live site within a minute or two, the same way pushing updated your commit history a moment ago.
 
-## GitHub 101: the concepts behind the clicks
+## Git, GitHub, and Pages in plain terms
 
-You've now done the whole workflow once. Here's what each piece actually is, so the steps above make sense as concepts, not just a sequence to memorize.
+You've now done the whole workflow once. Here's what each piece actually is, so the steps above make sense as concepts rather than a sequence to memorize.
 
 **Git** is version control software that runs on your computer. It tracks every change you commit, so you can see the full history of a project and, if needed, go back to any earlier point. Git works entirely on your machine and doesn't need the internet.
 
-**GitHub** is a website that hosts Git repositories online. It's where your code lives so it can be shared, backed up, and, in this course, graded from a link. Git and GitHub are related but distinct: Git is the tool, GitHub is one place (among several) that hosts what Git tracks.
+**GitHub** is a website that hosts Git repositories online. It's where your code lives so it can be shared, backed up, and, in this course, graded from a link. Git and GitHub are related but distinct: Git is the tool, GitHub is one place among several that hosts what Git tracks.
 
-**A repository** (or "repo") is a project folder that Git is tracking. Every assignment this semester is its own repository.
+**A repository**, or "repo," is a project folder that Git is tracking. Every assignment this semester is its own repository.
 
-**GitHub Pages** is a free feature of GitHub that takes the files in a repository and publishes them as a real, live website, at a URL like `your-username.github.io/repository-name`. It's how every project you submit this semester becomes something you can actually visit in a browser, not just a folder of files. You turned it on above for your practice repository. Every assignment repository needs that same one-time switch, covered in Publishing to GitHub Pages.
+**GitHub Pages** is a free feature of GitHub that takes the files in a repository and publishes them as a live website, at a URL like `your-username.github.io/repository-name`. It's how every project you submit this semester becomes something you can actually visit in a browser, rather than a folder of files.
 
 ## Keep learning
 
-- [GitHub Docs: Hello World](https://docs.github.com/en/get-started/quickstart/hello-world). GitHub's own walkthrough of creating a repository and making your first commit, a good page to revisit if any step above felt rushed.
-- [VS Code Docs: Source Control Overview](https://code.visualstudio.com/docs/sourcecontrol/overview). The full reference for everything the Source Control panel can do, beyond the stage/commit/push workflow covered here.
-- [pages.github.com](https://pages.github.com/). GitHub's own short introduction to what Pages is and how it works.
-- [Video: Git and GitHub Tutorial for Beginners, by Kevin Stratvert](https://www.youtube.com/watch?v=tRZGeaHPoaw). A clear, beginner-paced walkthrough covering the same core workflow from today's class.
+- [MDN: How the web works](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works). Mozilla's own short explanation of clients, servers, and what happens between typing an address and seeing a page.
+- [GitHub Docs: Hello World](https://docs.github.com/en/get-started/quickstart/hello-world). GitHub's walkthrough of creating a repository and making your first commit, worth revisiting if any step above felt rushed.
+- [VS Code Docs: Source Control Overview](https://code.visualstudio.com/docs/sourcecontrol/overview). The full reference for everything the Source Control panel can do, beyond the workflow covered here.
+- [pages.github.com](https://pages.github.com/). GitHub's short introduction to what Pages is and how it works.
+- [Video: Git and GitHub Tutorial for Beginners, by Kevin Stratvert](https://www.youtube.com/watch?v=tRZGeaHPoaw). A clear, beginner-paced walkthrough of the same core workflow from today's class.
 
 ## Before next class
 
-Confirm your setup works end to end: clone your practice repository (or a fresh one) on your own, make any small change, push it, and confirm Pages is turned on with the live URL loading in a browser, all without following the steps above. If you get stuck at any point, note exactly where, that's exactly the kind of thing worth asking about at the start of next class, before we build on top of this foundation.
+Confirm your setup works end to end, on your own, without following the steps above: clone your practice repository (or a fresh one), make any small change, push it, and confirm the Pages URL loads in a browser. If you get stuck, note exactly which step, because that's worth raising at the start of next class before we build on top of it.
+
+Next week you write your first real HTML, so come in with a working editor and a repository you can push to. Your Web Styles class later this week uses the same setup, so anything broken today blocks both courses.

@@ -25,3 +25,5 @@ Apply a coherent design system across pages, integrate CSS into the cross-course
 ## How the course is organized
 
 The semester runs in a 7/1/7 pattern (seven teaching weeks, a reading week, then seven more teaching weeks), with weeks 14 and 15 set aside for guided project development and open lab time. Each week here pairs with that same week in MTM1511: you build a page's structure in Web Components, then style it here in Web Styles. See the Weekly Content list in the sidebar for the week-by-week breakdown.
+
+Week 1 finishes the setup started in MTM1511 earlier in the week. You'll confirm your tools work, wire a stylesheet into a page, and publish it live. Real CSS work starts in week 2.
