@@ -33,6 +33,7 @@ const mtm1511Sidebar = [
     ],
   },
   { text: 'Resources', link: '/mtm1511/resources/' },
+  { text: 'Glossary', link: '/glossary/' },
 ]
 
 // MTM1544 (CSS) weekly lessons live under /modules/css/. Shared by the course
@@ -65,6 +66,7 @@ const mtm1544Sidebar = [
     ],
   },
   { text: 'Resources', link: '/mtm1544/resources/' },
+  { text: 'Glossary', link: '/glossary/' },
 ]
 
 export default defineUserConfig({
@@ -81,6 +83,7 @@ export default defineUserConfig({
       { text: 'Home', link: '/' },
       { text: 'MTM1511', link: '/mtm1511/' },
       { text: 'MTM1544', link: '/mtm1544/' },
+      { text: 'Glossary', link: '/glossary/' },
     ],
 
     sidebar: {

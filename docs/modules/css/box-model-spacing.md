@@ -417,7 +417,7 @@ You can also edit values directly in that diagram and watch the page respond, wh
 - [Chrome DevTools: Inspect the box model](https://developer.chrome.com/docs/devtools/css/reference). Reference for the diagram described above.
 - [Video: The CSS Box Model, by Kevin Powell](https://www.youtube.com/watch?v=rIO5326FgPE). A clear visual explanation from a CSS teacher worth following generally.
 
-## Try it yourself
+## Try it yourself (about 45 minutes)
 
 Add `* { box-sizing: border-box; }` to the top of your stylesheet before anything else, and leave it there permanently.
 

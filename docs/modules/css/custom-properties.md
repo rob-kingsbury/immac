@@ -249,6 +249,8 @@ A newer function, `light-dark()`, does the same job with less repetition, once y
 
 ## Nesting related rules together
 
+Worth flagging before you start: this is a second, genuinely distinct topic landing in the same week as custom properties, not an extension of what you just learned. Take it as its own thing, in its own sitting if that's what a clean read needs.
+
 Every rule you've written this term names its full selector on its own line, even when several rules are clearly about the same component. A card's border, its heading colour, and its hover state end up as three separate top-level rules, related only by the fact that their selectors all start with `.card`.
 
 **Native CSS nesting** lets you write a rule inside another rule, and have the inner selector understood as relative to the outer one, using `&` to stand for the parent selector.
@@ -366,7 +368,7 @@ If a property seems to have no value at all, a misspelled variable name is the f
 - [MDN: CSS nesting](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting). The full reference, including nested media and container queries.
 - [Video: CSS Custom Properties, by Kevin Powell](https://www.youtube.com/watch?v=PHO6TBq_auI). A practical walkthrough including scoping and theming.
 
-## Try it yourself
+## Try it yourself (about 55 minutes)
 
 Refactor your existing stylesheet. Go through it and find every value you've typed more than once, colours especially, then hoist each into a custom property declared on `:root`. Name them for meaning. When you're done, the top of your file should read as a summary of your design decisions.
 

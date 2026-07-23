@@ -250,7 +250,7 @@ The second half of this week is a critique session. Design work improves fastest
 - [Laws of UX](https://lawsofux.com/). Short, well-illustrated explanations of the perceptual principles behind proximity and hierarchy.
 - [Video: Design Tips for Developers, by Kevin Powell](https://www.youtube.com/watch?v=YIkFvIRcvSc). Concrete, CSS-focused suggestions in the same spirit as this chapter.
 
-## Try it yourself
+## Try it yourself (about 45 minutes, outside the critique session itself)
 
 Before class, audit your own project against the five-step review pass above and write down what you find, honestly. Bring that list to the critique session.
 

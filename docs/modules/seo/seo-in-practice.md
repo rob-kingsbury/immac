@@ -66,7 +66,7 @@ Read it as a set of labelled facts. `@context` says which vocabulary is in use, 
 
 The vocabulary comes from [schema.org](https://schema.org/), which defines types for events, recipes, products, articles, organizations, local businesses, and much more. Nobody memorizes it. You look up the type that fits your page and copy the property names it lists.
 
-Two rules keep structured data useful. It must **describe what's actually on the page**, since marking up an event that isn't there is a policy violation, not a clever trick. And it must be **valid JSON**, because a single missing comma or brace invalidates the entire block and the search engine ignores all of it rather than using the part that parsed. Always run a new block through a validator before considering it done.
+Two rules keep structured data useful. It must **describe what's actually on the page**, since marking up an event that isn't there is a policy violation, not a clever trick. And it must be **valid JSON**, which is exactly why you should make running every new block through a validator a habit before considering it done, the same instinct as the W3C validator for HTML. That habit matters more here than almost anywhere else in this course: a single missing comma or brace invalidates the entire block, and unlike a browser rendering slightly-wrong HTML, there's no visible sign anything went wrong. The search engine just quietly ignores the whole thing rather than using the part that parsed. Run it through the validator and you catch that in seconds; skip it and you might not find out for weeks that a block did nothing at all.
 
 ## Internal linking
 
@@ -118,7 +118,7 @@ That last step matters more than it looks. Re-running is how you learn which cha
 - [The Open Graph protocol](https://ogp.me/). The full, short specification for the `og:` tags in this chapter.
 - [Video: How to Add Open Graph Meta Tags, by Rank Math SEO](https://www.youtube.com/watch?v=PU2RoBaelDc). A step-by-step walkthrough of the tags covered here.
 
-## Try it yourself
+## Try it yourself (about 50 minutes)
 
 Add a full set of Open Graph tags to a project page, including a real preview image at roughly 1200 by 630 pixels, with absolute URLs throughout. Then pick a content type that genuinely fits the page, an Event, Product, or Article, and add a JSON-LD structured data block describing what's actually there. Run it through the Schema Markup Validator until it passes clean.
 

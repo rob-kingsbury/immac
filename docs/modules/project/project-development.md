@@ -31,6 +31,10 @@ Feedback tied to those concrete points ("your gallery page skips from h2 to h4" 
 
 Use the feedback and the studio time to raise the whole project to a professional standard. Revisit each page against the criteria above, fix what validation and the accessibility audit flag, and confirm your responsive images and metadata are in place. The goal by the end of this week is a site with no outstanding structural problems, so next week is pure polish and completion rather than firefighting.
 
+## What this becomes
+
+Worth saying plainly, since it's easy to lose sight of during a busy studio week: this is the piece that goes in your portfolio and the thing you'll be asked to talk through in a job interview. A live, working, multi-page site with structure you can defend is a stronger credential than a grade on its own, because it's the artifact an employer can actually look at.
+
 ## Looking ahead to the final week
 
 The Project Work Lab that follows is open lab time to finish. Come into it with your structure solid and your known issues resolved, so the final week is about completing content and final checks, not repairing foundations. A short pre-submission checklist for that final pass is on the Project Work Lab page.

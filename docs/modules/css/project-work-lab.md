@@ -49,6 +49,7 @@ Run every page through this before you consider the project done. It's the whole
 - The page still works at 200% text zoom, with nothing clipped or overlapping.
 - A `prefers-reduced-motion` rule is present and actually stops the motion.
 - Touch targets are large enough to hit comfortably.
+- Any video has a `<track kind="captions">` with a real caption file, not just a `controls` player.
 - Lighthouse and axe both pass, with anything flagged addressed.
 
 **Design**

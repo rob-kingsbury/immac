@@ -217,7 +217,7 @@ Note the unit on that letter spacing. Using `em` here is correct, because the sp
 
 ## Colour values
 
-CSS accepts several notations for colour, and you'll meet all of them in other people's code.
+CSS accepts several notations for colour, and you'll meet all of them in other people's code. Before the details: this course expects you to know **hex, RGB, and HSL cold**, since the CLR for this course names all three by name. `oklch()` and `color-mix()`, covered later in this section, are real, useful, Baseline-safe additions, not a replacement for those three, worth having specifically for palette work.
 
 **Named colours** are the simplest: `red`, `teal`, `rebeccapurple`. There are about 140 of them. They're convenient for quick tests and too limited for real design work.
 
@@ -232,7 +232,7 @@ color: #2563eb;  /* a mid blue */
 
 When all three pairs are doubled digits, you can write the short form: `#ffffff` becomes `#fff`, and `#2244aa` becomes `#24a`.
 
-**RGB** notation says the same thing in decimal, from 0 to 255 per channel, and it can take a fourth value for opacity from 0 to 1. Between hex and RGB, **RGB is the one to reach for by default**: hex is more compact for a fixed value, RGB is what you'll use everywhere you need to compute or adjust a colour, and it's the notation you'll see most often in colour pickers, design tools, and other people's code.
+**RGB** notation says the same thing in decimal, from 0 to 255 per channel, and it can take a fourth value for opacity from 0 to 1. Between hex and RGB, this course leans on **RGB as the default while you're actively working out a colour**: hex is compact, and it's genuinely what dominates real production stylesheets and design-token systems once a colour is settled, largely because it's what colour pickers export by default. But hex's six digits don't map cleanly onto how much red, green, and blue is actually in a value, where RGB's plain decimal numbers make that relationship visible, which is worth the slightly longer syntax while you're still learning to reason about colour or computing one on the fly. Expect to see and write plenty of hex once a colour is fixed and final; reach for RGB while it's still a decision.
 
 ```css
 color: rgb(37 99 235);
@@ -339,9 +339,7 @@ p {
 
 </CssDemo>
 
-Build the same four-step palette in `oklch()` that you built in HSL, and every step looks like an equal jump in brightness, on any hue. That's the entire advantage: same idea as HSL, better arithmetic underneath.
-
-This course still expects you to know hex, RGB, and HSL cold, and the CLR for this course names all three by name. Treat `oklch()` as a tool worth having for palette work specifically, not a replacement for the notations above.
+Build the same four-step palette in `oklch()` that you built in HSL, and every step looks like an equal jump in brightness, on any hue. That's the entire advantage: same idea as HSL, better arithmetic underneath, exactly the extension role this chapter flagged for it at the start.
 
 ## Deriving colours with color-mix()
 
@@ -422,7 +420,7 @@ Two related habits matter as much as the ratio itself. **Never use colour as the
 - [MDN: color-mix()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix). The function reference, including how the mixing colour space affects the result.
 - [Video: Typography Basics for the Web, by Kevin Powell](https://www.youtube.com/watch?v=lMEHfaV0Cnw). A practical walkthrough of setting readable type in CSS.
 
-## Try it yourself
+## Try it yourself (about 55 minutes)
 
 Set a typographic baseline on your project. Give `body` a font stack ending in a generic family, a base `font-size` in `rem`, and a `line-height` between 1.5 and 1.7. Then give your headings their own sizes in `rem` and a tighter line height, so there's a clear visual step between an `h1`, an `h2`, and body text. Add `text-wrap: balance` to your headings.
 

@@ -126,11 +126,17 @@ Two related points. Setting `font-size: 0` or `color: transparent` to hide text 
 .skip-link {
   position: absolute;
   top: -100px;
+  left: 0;
+  z-index: 100;
+  background: #ffffff;
+  padding: 8px 16px;
 }
 .skip-link:focus {
   top: 0;
 }
 ```
+
+The `top: -100px` alone gets it off-screen, but three more properties are what make it actually work on a real page. `left: 0` pins its horizontal position, since a plain `position: absolute` element with no `left` set can drift depending on whatever else is in the layout. `z-index` puts it above a header or hero image that would otherwise sit on top of it the moment it becomes visible. `background` gives the text something solid behind it instead of whatever's on the page underneath, which might make it unreadable or invisible depending on colour. Skip the last three and the link technically exists and even passes an automated audit, but a real keyboard user who tabs to it may not be able to see or read it.
 
 ## Reduced motion
 
@@ -215,7 +221,7 @@ Four checks, none of which takes long.
 - [axe DevTools](https://www.deque.com/axe/devtools/). A browser extension that audits a page against WCAG.
 - [Video: Accessible Focus Styles, by Kevin Powell](https://www.youtube.com/watch?v=6btMrs0YKuA). A short, concrete walkthrough of focus indicators.
 
-## Try it yourself
+## Try it yourself (about 50 minutes)
 
 Start with the keyboard test on your current project. Put the mouse away, press Tab from the top of the page, and go all the way through. Write down every point where you lost track of where you were. Those are your bugs.
 
@@ -230,5 +236,3 @@ Add the `prefers-reduced-motion` block to the bottom of your stylesheet now. You
 Run both Lighthouse and axe on the page, fix what they flag, then repeat the keyboard test once more. Note anything the manual test found that neither tool did, because that gap is the reason the manual test exists.
 
 Next week turns to a different kind of consistency: naming a value once instead of retyping it everywhere your stylesheet uses it.
-
-Finally, run both Lighthouse and axe on the page, fix what they flag, and then repeat the keyboard test. Note anything the manual test found that neither tool did, because that gap is the reason the manual test exists.

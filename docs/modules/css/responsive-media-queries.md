@@ -162,7 +162,7 @@ That's exactly the tool for a full-screen hero section, and for years `100vh` wa
 
 Two related units round out the family, and you'll see them named in other people's code even if you reach for `dvh` most often yourself. `svh`, the small viewport height, is always calculated as if the chrome is fully showing, the smallest the visible area ever gets. `lvh`, the large viewport height, is calculated as if the chrome is fully hidden, which is the same number the old, buggy `100vh` used. `dvh` is the one that actually tracks reality as it changes, and it's the one to default to for anything meant to fill the screen.
 
-`vw` doesn't have the same bug, since browser chrome eats vertical space, not horizontal, so `100vw` behaves as expected. The dynamic variants exist for height specifically.
+`vw` doesn't have the same chrome-related bug, since browser chrome eats vertical space, not horizontal. It has a different one worth knowing instead: on a desktop browser with a visible scrollbar, `100vw` includes the scrollbar's own width, which `100%` does not. An element set to `width: 100vw` can end up slightly wider than the actual visible page, causing a faint horizontal scroll that's easy to miss until you notice it. `width: 100%` is the safer default for full-width elements; reach for `100vw` only when you deliberately need to measure the true viewport, scrollbar included.
 
 ## Fluid sizing without a query
 
@@ -233,7 +233,7 @@ Resize this panel and the heading scales continuously between its floor and its 
 
 Some of the best responsive behaviour needs no media query at all, and reaching for one first is a habit worth resisting.
 
-You've already built two examples. Flexbox with `flex-wrap: wrap` reflows items onto new lines as space runs out. Grid with `repeat(auto-fit, minmax(200px, 1fr))` changes its column count on its own.
+You've already built two examples. Flexbox with `flex-wrap: wrap` reflows items onto new lines as space runs out. Grid with `repeat(auto-fit, minmax(200px, 1fr))` changes its column count on its own (see last week's Grid chapter for exactly why, including what changes if you swap in `auto-fill` instead).
 
 <CssDemo>
 
@@ -262,6 +262,8 @@ You've already built two examples. Flexbox with `flex-wrap: wrap` reflows items 
 </CssDemo>
 
 Resize this page and that grid rearranges itself. No breakpoint was chosen and no query was written.
+
+That's the viewport-level toolkit: the meta tag, media queries, viewport units, and fluid sizing, everything this chapter has covered so far reacts to the whole browser window. The rest of this chapter is a separate, component-level tool. It's a natural place to pause if you need one; nothing below depends on finishing in the same sitting.
 
 ## Container queries: responding to a component's own space, not the screen
 
@@ -437,13 +439,15 @@ That handles layout. Handling *file size* is the other half, and you met it in M
 
 ## Testing your work
 
-Three ways to test, in increasing order of trustworthiness.
+Four ways to test, in increasing order of trustworthiness.
 
 **Resize the browser window.** Fast, and fine for finding breakpoints.
 
 **Use device emulation in developer tools.** The toggle looks like a phone and tablet icon. It simulates specific device widths and lets you rotate between portrait and landscape. Better than dragging, because you can test exact widths repeatedly.
 
 **Look at it on a real phone.** This is the one that catches what the others miss: actual touch target sizes, actual text legibility, actual rendering. Your project is published to GitHub Pages at a public URL, so you can open it on your own phone in seconds. Do this before you submit anything.
+
+**Look at it in more than one browser.** Everything above tests screen size. It doesn't test whether Chrome, Firefox, and Safari agree on how to render your CSS, and they don't always. A property can be supported in one engine and not another, or supported with a slightly different default. Two habits cover most of what you need: check a feature's support at [caniuse.com](https://caniuse.com/) or [webstatus.dev](https://webstatus.dev/) before depending on it (the same standard this course itself used when deciding what to teach as safe to use), and open your finished page in at least two real browsers, not just two device-emulation profiles of the same one, before calling a layout done.
 
 ## Common mistakes to avoid
 
@@ -456,6 +460,8 @@ Three ways to test, in increasing order of trustworthiness.
 - **Reaching for a media query first.** Try `flex-wrap`, `auto-fit`, `ch`, `min()`, `max()`, and `clamp()` before adding a breakpoint.
 - **Reaching for a container query when a media query was the right tool.** A page's own header and primary navigation are viewport-level decisions. Save container queries for reusable components.
 - **Forgetting `img { max-width: 100% }`.** One oversized image causes horizontal scrolling across the whole page.
+- **Using `100vw` for a full-width element.** On desktop, it includes the scrollbar's width, which `100%` doesn't, so it can cause the exact faint horizontal scroll it looks like it should prevent.
+- **Testing only in one browser.** Resizing a Chrome window tells you nothing about whether Firefox or Safari render the same CSS the same way.
 
 ## Keep learning
 
@@ -467,7 +473,7 @@ Three ways to test, in increasing order of trustworthiness.
 - [MDN: clamp()](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp). The function behind fluid type.
 - [Video: Responsive Design Tutorial, by Kevin Powell](https://www.youtube.com/watch?v=srvUrASNj0s). A practical mobile-first build from scratch.
 
-## Try it yourself
+## Try it yourself (about 75 minutes)
 
 First, confirm the viewport meta tag is in the `<head>` of every page you've built. Then deliberately break it: comment it out, push, and open the page on a real phone to see what happens. Put it back. That's a lesson worth having once.
 
@@ -480,6 +486,8 @@ If your project has a full-screen section, give it `height: 100dvh` rather than 
 Add `img { max-width: 100%; height: auto; }` to your stylesheet, and `max-width: 65ch` to your main text container. Widen the window to full screen and confirm your paragraphs stopped stretching. Give one heading a `clamp()`-based `font-size` and watch it scale as you resize.
 
 Take one component you plan to reuse in more than one layout, a card is the natural choice, mark its wrapper as a container, and write a container query that changes its layout once it has enough width. Place it in two different spots on your page, a wide one and a narrow one, and confirm it responds to each independently of the viewport.
+
+Open your live Pages URL in a second browser you don't normally use, not just a different device-emulation profile of your default one. Note anything that looks even slightly different.
 
 Finally, open your live Pages URL on an actual phone. Check that nothing scrolls sideways, that every link is big enough to tap without care, and that you can read the body text without zooming. Fix whatever fails, push, and check again.
 

@@ -83,7 +83,7 @@ Images far down a page don't need to load until the user scrolls near them. The 
 <img src="gallery-05.jpg" alt="..." loading="lazy" width="800" height="600">
 ```
 
-Use `loading="lazy"` for images below the fold, but not for the main image at the top of the page, which you want loaded immediately, since delaying it would make the page feel slower to arrive, not faster. And keep setting `width` and `height` on every image, lazy-loaded or not: reserving the space stops the layout from jumping as lazy images arrive.
+Use `loading="lazy"` for images below the fold, but not for the main image at the top of the page, which you want loaded immediately, since delaying it would make the page feel slower to arrive, not faster. That top image is usually what a tool like Lighthouse reports as the page's **Largest Contentful Paint (LCP)**, another of the Core Web Vitals, and it's specifically the one you never want lazy-loaded, since LCP measures how long the biggest visible thing takes to appear. And keep setting `width` and `height` on every image, lazy-loaded or not: reserving the space stops the layout from jumping as lazy images arrive, the CLS metric from the Links, Images, and Media chapter.
 
 ## Keep learning
 
@@ -91,7 +91,7 @@ Use `loading="lazy"` for images below the fold, but not for the main image at th
 - [W3Schools: srcset Attribute](https://www.w3schools.com/tags/att_source_srcset.asp) and [The picture Tag](https://www.w3schools.com/tags/tag_picture.asp). Attribute-level references for the two techniques in this chapter.
 - [Video: HTML Responsive Images, srcset, sizes, and the picture Element, by CodeLucky](https://www.youtube.com/watch?v=96GcXfFp8dc). Walks through both techniques with more worked examples.
 
-## Try it yourself
+## Try it yourself (about 40 minutes)
 
 Take a large photo and export it at three widths (roughly 400, 800, and 1600 pixels), saving each as WebP at about 80 percent quality. Note how much smaller they are than the original. Put them into an `<img>` with a `srcset` and `sizes` attribute, then resize your browser window and watch the Network panel in developer tools show a different file loading at different widths. Add `loading="lazy"` to an image lower on the page and confirm, in the Network panel, that it only loads once you scroll to it.
 

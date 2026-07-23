@@ -85,7 +85,7 @@ The image element places a picture on the page. It has no closing tag, and two a
 
 The image above is a placeholder graphic, since a textbook can't ship every photo a real project would have. In your own project, `src` points to a real image file in your folder, and it displays normally, with the same `alt` behaviour.
 
-Add `width` and `height` attributes to match the image's real dimensions. This lets the browser reserve the right space before the image loads, which stops the page from jumping around as things arrive:
+Add `width` and `height` attributes to match the image's real dimensions. This lets the browser reserve the right space before the image loads, which stops the page from jumping around as things arrive, a real, measured metric called **Cumulative Layout Shift (CLS)**, one of the Core Web Vitals a tool like Lighthouse will report on your finished project:
 
 ```html
 <img src="images/cookies.jpg" alt="A tray of fresh chocolate chip cookies"
@@ -119,6 +119,17 @@ Native HTML elements play media without any plugins.
 
 The `controls` attribute gives the user play, pause, and volume. The text inside the element shows only if the browser can't play the file at all, which is different from the file simply not existing yet in your project folder.
 
+**Video needs one more thing to be genuinely accessible: captions.** This isn't optional polish, it's a WCAG requirement (1.2.2, Level A, the same baseline level as the `alt` text you've already been writing) for anyone who's deaf or hard of hearing, and it helps far more people than that in practice, anyone watching with the sound off. A `<track>` element supplies them:
+
+```html
+<video src="video/demo.mp4" controls width="640">
+  <track kind="captions" src="captions/demo-en.vtt" srclang="en" label="English">
+  Your browser does not support the video element.
+</video>
+```
+
+`kind="captions"` tells the browser what the track is for. `src` points to a caption file in the WebVTT format, plain text with timestamps, which you write once per video. `srclang` and `label` identify the language, which matters the moment a video has more than one caption track available. The player's existing `controls` bar automatically gains a captions toggle once a `<track>` is present, no extra markup needed.
+
 To embed content hosted elsewhere, such as a YouTube video or a map, you use an `<iframe>`, which loads another page inside a frame on yours:
 
 ```html
@@ -136,7 +147,7 @@ Always give an `<iframe>` a `title`. Like `alt` text on an image, it tells assis
 - [W3Schools: The iframe Tag](https://www.w3schools.com/tags/tag_iframe.asp). Covers `<iframe>` attributes beyond `src` and `title`.
 - [Video: How to Embed Video in HTML, by PixemWeb](https://www.youtube.com/watch?v=9NTrwrfI-X4). Covers the `<video>` element and its attributes in more depth than this chapter.
 
-## Try it yourself
+## Try it yourself (about 40 minutes)
 
 Take one of your existing pages and connect it up. Add a second HTML page and link the two together with relative paths, in both directions. Place one image with a genuine, descriptive `alt` attribute and correct `width` and `height`. Add an in-page link that jumps to one of your `<h2>` sections using a matching `id`. If you have a short video clip, embed it with the `<video>` element. Open the page and confirm every link lands where you expect.
 

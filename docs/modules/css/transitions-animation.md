@@ -346,7 +346,7 @@ Instead of a fixed duration, `animation-timeline: scroll()` ties the animation's
 
 **It's wrapped in `@supports` deliberately, and that's the actual lesson here, not just the animation.** `@supports` checks whether the browser understands a feature before applying rules that use it, so on a browser that doesn't, the block is skipped entirely and the element simply appears without the scroll effect, fully functional either way. That's how you adopt a feature safely before every browser has caught up: the enhancement is additive, and its absence never breaks anything.
 
-And this specific feature genuinely hasn't caught up everywhere yet. Chrome and Edge have supported it since 2023, and Safari since September 2025, but Firefox ships it behind an experimental flag in its stable release as of writing, even though Mozilla's own public position on the feature is favourable and it's a named priority for closer cross-browser alignment. Treat scroll-driven animation as something to experiment with behind `@supports`, not something to depend on or be tested on in this course. Revisit it later in your career: this is exactly the kind of gap that closes within a year or two.
+And this specific feature genuinely hasn't caught up everywhere yet. Chrome and Edge have supported it since 2023, and Safari since September 2025 (re-verified as of this writing: still behind a flag in Firefox's stable release, on by default only in Firefox's experimental Nightly channel), even though Mozilla's own public position on the feature is favourable and it's a named priority for closer cross-browser alignment. Treat scroll-driven animation as something to experiment with behind `@supports`, not something to depend on or be tested on in this course. Revisit it later in your career: this is exactly the kind of gap that closes within a year or two, so re-check current support before trusting this paragraph's specifics.
 
 ## Common mistakes to avoid
 
@@ -370,7 +370,7 @@ And this specific feature genuinely hasn't caught up everywhere yet. Chrome and 
 - [WCAG: Animation from Interactions](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html). The success criterion behind the reduced-motion requirement.
 - [Video: Learn CSS Transitions, by Kevin Powell](https://www.youtube.com/watch?v=Nloq6uzF8RQ). A practical walkthrough with good taste about restraint.
 
-## Try it yourself
+## Try it yourself (about 40 minutes)
 
 Confirm the `prefers-reduced-motion` block is already at the bottom of your stylesheet before you add anything. It should be there from Week 10.
 

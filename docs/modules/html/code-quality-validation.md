@@ -4,7 +4,7 @@ title: Code Quality and Validation
 
 # Code Quality and Validation
 
-Code that works and code that's good aren't the same thing. A page can render fine in your browser and still be full of invalid markup, inconsistent naming, and structure no one else could maintain. This chapter is about the habits and tools that make your code correct, readable, and easy to debug, which is what "professional standards" actually means in practice. You started building the validator habit back in Forms and Data Structures. This chapter is where it becomes a full routine.
+Code that works and code that's good aren't the same thing. A page can render fine in your browser and still be full of invalid markup, inconsistent naming, and structure no one else could maintain. This chapter is about the habits and tools that make your code correct, readable, and easy to debug, which is what "professional standards" actually means in practice. This is also, concretely, the difference an employer notices in a portfolio or a technical interview: not whether the page works, since almost every candidate's does, but whether the code behind it looks like something a team could safely hand off and build on. You started building the validator habit back in Forms and Data Structures. This chapter is where it becomes a full routine.
 
 ## Validating your HTML
 
@@ -75,13 +75,29 @@ The **validator** checks your source code against the HTML specification: is thi
 
 Between the two, checking your source against the rules and checking what the browser actually did with it, you can find and fix almost any structural problem yourself, before you ask anyone else to look.
 
+## Working like a team: branches and pull requests
+
+Every push so far has gone straight to `main`, which is the right call for a solo assignment where you're the only person touching the repository. It's not how a real team works, and it's worth knowing the difference now rather than meeting it for the first time on the job.
+
+A **branch** is a parallel copy of your repository's history that you can commit to without touching `main` at all. Create one before starting a risky change or a new feature:
+
+```bash
+git checkout -b add-contact-page
+```
+
+You're now on a branch called `add-contact-page`. Commits you make here don't appear on `main` until you explicitly bring them over, so `main` stays in a known-good state the whole time you're working, even mid-change.
+
+A **pull request** (sometimes called a merge request) is how that branch gets back into `main` on GitHub: you push the branch, then open a pull request asking to merge it, which gives a teammate a dedicated screen to read every changed line before it lands, leave comments, and approve or request changes. That review step, not the branch itself, is the actual point. It's why "push straight to main" doesn't scale past a team of one.
+
+This course's one-repo-per-assignment structure doesn't need you to branch for every submission, and nothing here changes that. But the habit is worth building on your own initiative at least once before you graduate: branch, commit, push the branch, open a pull request against your own `main`, and merge it yourself if nobody else is reviewing. Doing it once when nothing is at stake is exactly how you want to first encounter it, rather than on a real team, under a real deadline.
+
 ## Keep learning
 
 - [W3C Markup Validation Service](https://validator.w3.org/). The tool itself, use it on every page before you consider it finished.
 - [W3Schools: HTML5 Syntax](https://www.w3schools.com/html/html5_syntax.asp). A reference for the syntax rules the validator checks against.
 - [Video: How to Validate HTML Code Online, W3C Validator Tutorial](https://www.youtube.com/watch?v=LXfwn-9dvcE). A step-by-step walkthrough of using the validator and reading its output.
 
-## Try it yourself
+## Try it yourself (about 40 minutes)
 
 Take your most complex page so far and run it through the W3C validator. Fix every error and warning until it validates clean. While you're in there, audit your file and folder names against the standards above and rename anything that doesn't comply, updating the links that point to it. Add section-marker comments to the major regions of the page. Finally, open developer tools, inspect your nesting in the Elements panel, and check the Console for any errors you didn't know were there.
 

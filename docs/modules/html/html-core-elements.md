@@ -336,7 +336,7 @@ Use them to label the major regions of a page. Combined with consistent indentat
 - [W3Schools: HTML Quotation Elements](https://www.w3schools.com/html/html_quotation_elements.asp). Covers `<blockquote>`, `<q>`, and related elements like `<cite>` and `<abbr>`.
 - [Video: HTML Tags, Attributes and Elements, by John Morris](https://www.youtube.com/watch?v=vNOyRZIkC7o). A clear walkthrough of the tag/element/attribute vocabulary this chapter opens with.
 
-## Try it yourself
+## Try it yourself (about 45 minutes)
 
 Create a new folder in your cloned repository, add an `index.html` file, and build out the document skeleton, `<!DOCTYPE>` through `<body>`, from memory rather than copying it. Inside `<body>`, add one `<h1>`, at least two `<h2>` sections, a paragraph or two under each, one ordered and one unordered list, and a `<blockquote>`. Mark one or two words with `<strong>` or `<em>` where the meaning calls for it. Add a comment above each major section.
 

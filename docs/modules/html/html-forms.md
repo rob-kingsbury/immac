@@ -24,6 +24,8 @@ A `<form>` wraps a group of controls into one unit that submits together. Two at
 
 **`method="post"`** sends the form's data in the body of the request, invisible in the URL and not stored in browser history. Use POST whenever a submission changes something (creating an account, posting a comment, placing an order) or whenever the data is sensitive (a password, personal information). Because the data isn't in the URL, POST doesn't expose it in bookmarks, browser history, or server logs the way GET would.
 
+One caveat worth being precise about: **POST hides data from those specific places, but it doesn't encrypt anything.** A POST body sent over plain HTTP is just as readable to anyone intercepting the connection as a GET query string would be. The actual protection against that is HTTPS, back from Week 1, encrypting the whole request in transit. Use POST for the reasons above, and rely on HTTPS, which GitHub Pages already gives you automatically, for the reason that matters most: keeping the data unreadable in transit at all.
+
 A rule you can apply without hesitation: if submitting the form twice would create two of something, or if the form carries a password, use `post`. If it only asks a question and gets an answer back, `get` is correct and often better, since the result becomes a shareable, bookmarkable URL.
 
 ```html
@@ -630,10 +632,10 @@ The [W3C Markup Validation Service](https://validator.w3.org/) checks your HTML 
 - [W3Schools: Table colspan and rowspan](https://www.w3schools.com/html/html_table_colspan_rowspan.asp). Focused practice on spanning cells across columns and rows.
 - [Video: HTTP GET vs. POST, by Hussein Nasser](https://www.youtube.com/watch?v=NEKImNnYB70). A clear explanation of the difference between the two methods and when each is appropriate.
 
-## Try it yourself
+## Try it yourself (about 60 minutes)
 
 Build a contact form with a text input for a name, an email input, a `<select>` for a subject, and a `<textarea>` for a message, each with a proper `<label>`. Make the name and email `required`, and set the email field to `type="email"`. Choose `method="post"` for this form and be ready to explain why GET would be the wrong choice here. Add a set of radio buttons in a `<fieldset>` for a preferred contact method, and a submit button using `<button type="submit">`.
 
 Below the form, build a data table with a `<caption>`, a `<thead>` with column headers using `scope="col"`, a `<tbody>` with row headers using `scope="row"`, and a `<tfoot>` with a summary row. Use `colspan` at least once, where a single value genuinely applies across more than one column. Submit the empty form and read the validation messages the browser produces.
 
-That's the last new HTML element this course introduces. After reading week, the focus shifts from what you write to how well it performs, starting with your images.
+That's the last new form or table element this course introduces, though a couple of specialized elements are still ahead in Week 13. After reading week, the focus shifts from what you write to how well it performs, starting with your images.

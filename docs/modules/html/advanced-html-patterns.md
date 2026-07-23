@@ -145,7 +145,7 @@ The platform keeps growing. Checking what's newly available before reaching for 
 - [W3Schools: The meta Tag](https://www.w3schools.com/tags/tag_meta.asp) and [Responsive Web Design: The Viewport](https://www.w3schools.com/css/css_rwd_viewport.asp). References for the document head pieces in this chapter.
 - [Video: 2 HTML Elements I Never Used!? (Details & Summary), by DesignCourse](https://www.youtube.com/watch?v=PQtpZZQU0u0). A practical look at where these elements fit in a real project.
 
-## Try it yourself
+## Try it yourself (about 45 minutes)
 
 Embed a video or map on one of your pages using an `<iframe>` with a `title` and `loading="lazy"`, wrapped in a container element ready for a responsive aspect ratio. Audit the `<head>` of your pages against the checklist above and add anything missing, especially the `charset` and `viewport` tags. Then build an FAQ section with at least three questions using `<details>` and `<summary>`, and confirm each one opens and closes with no scripting at all.
 

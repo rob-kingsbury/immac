@@ -33,7 +33,7 @@ A page where headings jump from `<h2>` to `<h4>`, or where text is made big with
 
 ## Colour contrast
 
-Perceivable content includes making sure text is actually readable. WCAG defines a minimum **contrast ratio** between text and its background: 4.5:1 for normal text, 3:1 for large text (roughly 24px and up, or 19px bold). Light grey text on a white background is a classic failure, it might look clean in a mockup, and it's unreadable for a huge number of users, not only those with a diagnosed vision impairment.
+Perceivable content includes making sure text is actually readable. WCAG defines a minimum **contrast ratio** between text and its background: 4.5:1 for normal text, 3:1 for large text (roughly 24px and up, or 18.66px bold, WCAG's large-text threshold defined in points, 18pt or 14pt bold, which converts to those pixel values). Light grey text on a white background is a classic failure, it might look clean in a mockup, and it's unreadable for a huge number of users, not only those with a diagnosed vision impairment.
 
 ```html
 <!-- Fails contrast: light grey on white -->
@@ -55,7 +55,7 @@ You don't need to calculate ratios by hand. A contrast checker tool (linked at t
 
 ## Keyboard focus
 
-Operable means every interactive element, every link, button, and form field, works without a mouse. Try tabbing through a page: `Tab` moves forward, `Shift+Tab` moves backward, `Enter` or `Space` activates whatever has focus.
+Operable means every interactive element, every link, button, and form field, works without a mouse. Try tabbing through a page: `Tab` moves forward, `Shift+Tab` moves backward. Activation is where it's worth being precise, because links and buttons don't behave identically. A focused **link** activates with `Enter` only; `Space` scrolls the page instead, since that's the browser's native behaviour for a link, not a bug in any particular page. A focused **button** activates with either `Enter` or `Space`. Knowing this in advance matters here specifically: it's what the manual keyboard test just below is built on, and a result that doesn't match what you expected from a link is the test working correctly, not failing.
 
 Browsers show a **focus indicator**, usually an outline, around the element currently selected by the keyboard. Never remove it without replacing it with something equally visible:
 
@@ -119,7 +119,11 @@ Visually that's just an &times; symbol. A screen reader announces "Close menu, b
 <nav aria-label="Footer">...</nav>
 ```
 
-Two other ARIA attributes worth knowing. `aria-hidden="true"` hides purely decorative content from assistive technology, useful on an icon that's beside text already saying the same thing. `aria-expanded` on a button tells a screen reader whether the menu or panel it controls is currently open or closed. Use ARIA to fill genuine gaps like these, not to decorate markup that's already semantic. Bad ARIA is worse than none, because it can announce things that aren't true.
+Two other ARIA attributes worth knowing. `aria-hidden="true"` hides purely decorative content from assistive technology, useful on an icon that's beside text already saying the same thing. **One real trap with it:** never put `aria-hidden="true"` on a wrapper that contains a focusable control, a link or a button inside it. The control stays reachable by `Tab`, since `aria-hidden` doesn't remove anything from the keyboard order, but a screen reader announces nothing when focus lands on it, since `aria-hidden` did remove it from that. The result is a control a keyboard user can tab to and hears nothing about. Only hide an element this way if nothing inside it can ever receive focus.
+
+`aria-expanded` on a button tells a screen reader whether the menu or panel it controls is currently open or closed. It's a plain attribute, not a magic one: a script sets it to `"true"` or `"false"` when the control is toggled, and typically CSS uses that same value to show or hide the panel, targeting it with a selector like `[aria-expanded="true"]`. The attribute and the visual state are two separate things that your own code has to keep in sync; nothing does it automatically.
+
+Use ARIA to fill genuine gaps like these, not to decorate markup that's already semantic. Bad ARIA is worse than none, because it can announce things that aren't true.
 
 ## Accessible forms, in brief
 
@@ -146,6 +150,7 @@ The `for` attribute matches the input's `id`. That link is what lets a screen re
 - **Using colour alone to convey meaning**, such as a red border with no text saying what's wrong. Someone who can't distinguish that colour gets no information at all.
 - **Empty or missing `alt` text on meaningful images.** A blank `alt=""` is correct for decorative images, but wrong for one that carries real information.
 - **ARIA added to markup that's already semantic**, or added incorrectly. Wrong ARIA actively misinforms assistive technology, which is worse than having none.
+- **`aria-hidden="true"` on a wrapper containing a focusable link or button.** The control stays reachable by keyboard but silent to a screen reader, the worst combination of the two.
 - **Testing only by eye.** A page can look perfect and still fail for a keyboard-only or screen-reader user. The next section is how to actually check.
 
 ## Testing what you build
@@ -159,7 +164,7 @@ You can catch a large share of issues yourself, before anyone else sees the page
 - [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/). Enter two colours and get the exact contrast ratio and whether it passes WCAG.
 - [Video: WCAG for Beginners, by Silktide](https://www.youtube.com/watch?v=5H1JGdqLrWo). A clear introduction to the guidelines this chapter is built on.
 
-## Try it yourself
+## Try it yourself (about 50 minutes)
 
 Take the semantic page you built in the Semantic HTML chapter. Add a skip link as the first element in the body, pointing to your `<main>`. Give every image a considered `alt` value, empty if it's decorative. Check any coloured text against the WebAIM contrast checker and fix anything that fails.
 

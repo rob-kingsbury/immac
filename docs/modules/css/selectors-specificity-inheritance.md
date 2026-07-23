@@ -193,7 +193,7 @@ Write those as three numbers and compare left to right. A higher A always wins r
 | `#lead` | 1 | 0 | 0 | 1-0-0 |
 | `#lead .intro p span em` | 1 | 1 | 3 | 1-1-3 |
 
-Note the last two. `#lead` beats `#lead .intro p span em`? No, read again: they tie on A at 1, so B decides, and the long selector wins with 1 versus 0. But a single `#lead` at 1-0-0 beats *any* selector with no ID, no matter how long. Ten classes still lose to one ID, because the columns never carry over.
+Look closely at the last two rows. Both `#lead` and `#lead .intro p span em` contain an ID, so they tie on A at 1, and the tie moves to B. `#lead` alone has no classes, `#lead .intro p span em` has one (`.intro`), so B is 0 versus 1, and the longer selector wins despite looking like the odd one out. Compare `#lead` instead against any selector that has no ID at all, and the result flips completely: A never ties, so `#lead` wins outright regardless of how many classes or elements the other selector piles on. Ten classes still lose to one ID, because the columns never carry over into each other.
 
 <CssDemo>
 
@@ -395,7 +395,7 @@ Put it together into a routine. When a rule doesn't apply:
 - [MDN: Handling conflicts](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts). Cascade, specificity, and inheritance together, from the beginner path.
 - [Video: CSS Specificity Explained, by Kevin Powell](https://www.youtube.com/watch?v=CHyPGSpIhSs). A clear walkthrough with worked examples.
 
-## Try it yourself
+## Try it yourself (about 55 minutes)
 
 Add interactive states to your project. Give every link a `:hover` style and a clearly visible `:focus` style, then put your mouse away and navigate the whole page with the Tab key alone. If you ever lose track of where you are, the focus styling isn't strong enough.
 

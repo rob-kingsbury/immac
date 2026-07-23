@@ -70,6 +70,8 @@ That's enough to see the structure and to map it directly onto HTML regions: a `
 
 Keeping wireframes rough is a feature, not a limitation. A sketch is fast to change, and you *want* to change your mind cheaply at this stage, rather than after everything is coded. Paper and a pencil are a completely legitimate wireframing tool. So is a whiteboard, a slide deck, or a dedicated wireframing app, if you prefer one. The tool doesn't matter. Making the decision before you start coding does.
 
+Worth being clear on a related term you'll hear in your UX Design course: a **prototype** is a step up in fidelity from a wireframe, sometimes clickable, closer to how the finished design will actually look and behave, used there to test a flow before it's built. This course works from wireframes because structure, not interaction, is the job at hand, but a prototype you're handed from that course is read the same way: name the regions, then translate them into semantic HTML, exactly as below.
+
 ## From your UX course to your HTML
 
 In your UX Design course you produce the design side of this planning: user flows, wireframes, and mockups of how a site should look and behave. This course is where those plans become working HTML. The wireframe that says "navigation across the top, three cards below" is your instruction sheet for which semantic elements to reach for and how to nest them.
@@ -122,11 +124,11 @@ Notice there's no real content yet, and no styling. This is the structural pass:
 ## Keep learning
 
 - [W3Schools: HTML Layout Elements and Techniques](https://www.w3schools.com/html/html_layout.asp). A refresher on the semantic layout elements this chapter's plans translate into.
-- [Nielsen Norman Group: Information Architecture vs. Sitemaps](https://www.nngroup.com/articles/information-architecture-sitemaps/). A short, authoritative explanation of the distinction covered at the start of this chapter.
+- [Nielsen Norman Group: Site Map Usability](https://www.nngroup.com/reports/site-map-usability/). The actual research behind the "simple, single-view site map" finding cited earlier in this chapter.
 - [Video: How to Wireframe a Website (beginner tutorial), by Aliena Cai](https://www.youtube.com/watch?v=ctOUj3bke3A). A practical walkthrough of building a wireframe from nothing.
 - [Video: How to Plan a Website Sitemap, by Brainstorm Force](https://www.youtube.com/watch?v=O3BXKqlfHGs). Covers the same site-mapping process as this chapter, with more worked examples.
 
-## Try it yourself
+## Try it yourself (about 45 minutes)
 
 Pick a small site you'd realistically build, three to five pages. Draw its site map as an indented list, and check it against the three-click guideline. Choose one of those pages and sketch a wireframe of it, boxes and labels only, no colour or real content.
 

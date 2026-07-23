@@ -348,7 +348,7 @@ References to go deeper. The W3Schools pages are quick and example-first, good t
 - [Video: HTML5 Semantics, by Net Ninja](https://www.youtube.com/watch?v=kGW8Al_cga4). A short, beginner-friendly walkthrough of the semantic elements.
 - [Video: Semantic HTML Tags, by Dave Gray](https://www.youtube.com/watch?v=kX3TfdUqpuU). A fuller tutorial with live coding.
 
-## Try it yourself
+## Try it yourself (about 45 minutes)
 
 Work through these in order. They're practice, not graded work.
 

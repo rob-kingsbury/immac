@@ -52,7 +52,7 @@ The Elements panel of developer tools shows the DOM tree, not your source. That 
 
 Open it and you can expand and collapse branches, hover any node to highlight it on the page, and see exactly how the browser understood your markup. When a rule isn't matching, the first question is always "is the element where I think it is in the tree," and this panel answers it in seconds.
 
-Below the tree, the Styles panel shows every rule affecting the selected element. Three things there earn their keep:
+Below the tree, the Styles panel shows every rule affecting the selected element. Three things there are worth knowing well:
 
 - **Rules are listed most-specific first,** with the winner at the top.
 - **Overridden declarations are struck through,** so you can see precisely what beat what.
@@ -188,6 +188,8 @@ The syntax is a set of matching operators inside square brackets. `[href^="https
 
 Marking external links and file downloads automatically, with no classes to maintain, is exactly what attribute selectors are for. Note that the marker above is decorative, so per Week 4's rule about generated content, the same information should also be conveyed in the link text itself for anything a visitor genuinely needs to know.
 
+One caveat on `[href^="https"]` specifically: it doesn't actually mean "external," it means "starts with https." That happens to sort external from internal links correctly on a site like the one you're building this term, where every internal link is written as a relative path (`about.html`, not `https://yoursite.com/about.html`). Write even one internal link as a full `https://` URL instead of a relative one, and this selector marks it external too. On a real site large enough to have more than one author, that's a real, confusing bug, not a hypothetical one.
+
 ## Diagnosing rendering problems
 
 Put the whole chapter into a routine. When something on your page looks wrong, work through this in order rather than editing hopefully.
@@ -223,7 +225,7 @@ Working the list beats guessing, and it gets faster with practice until it's aut
 - [Chrome DevTools: Get started with the DOM](https://developer.chrome.com/docs/devtools/dom). A guided tour of the Elements panel.
 - [Video: Chrome DevTools Crash Course, by Traversy Media](https://www.youtube.com/watch?v=x4q86IjJFag). A broad walkthrough of the panels used in this chapter.
 
-## Try it yourself
+## Try it yourself (about 45 minutes)
 
 Open your project in developer tools and sketch its DOM tree on paper, down three levels from `body`. Then check your sketch against the Elements panel. Anywhere the browser's tree differs from what you drew, work out why, because that difference is usually a markup mistake worth fixing.
 

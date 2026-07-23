@@ -117,7 +117,7 @@ Nothing there renders on the page. Every line of it shapes how the page is under
 - [MDN: The title element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/title) and [the meta element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta). Full references for the two tags this chapter leans on.
 - [Video: SEO for Beginners, by Ahrefs](https://www.youtube.com/watch?v=xsVTqzratPs). A clear overview of crawling, indexing, and ranking, useful if the three-stage model above needs another pass.
 
-## Try it yourself
+## Try it yourself (about 40 minutes)
 
 Take one of your project pages and give it a proper document head. Write a unique, specific `<title>` under 60 characters using the *specific thing, separator, site name* pattern. Add a `<meta name="description">` of about 150 characters, written to make a real person want to click rather than to hit a keyword count. Add a self-referencing canonical link.
 

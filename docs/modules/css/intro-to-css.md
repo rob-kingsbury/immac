@@ -63,7 +63,7 @@ Before writing any CSS, confirm the tools from Monday actually work. Run through
 4. **You can push.** Make a trivial change, stage it, commit it, and sync. The change appears on GitHub when you refresh.
 5. **Pages is on** for that repository, and the live URL loads in a browser.
 
-If any one of those fails, fix it now, before the rest of this class. A broken step here blocks every assignment in both courses, and it does not get easier to fix next week.
+If any one of those fails, fix it now, before the rest of this class. A broken step here blocks every assignment in both courses. A stall or an error partway through one of these is often a connection blip or a one-off installer hiccup rather than something you did wrong, so try it once more before assuming the worst. If it's still not working, don't burn the whole class on it alone: flag it with your instructor or in the course's help channel right away.
 
 ## The starter page
 
@@ -264,7 +264,7 @@ That one rule sets the colour on every `h2` and every `p` together. Grouping is 
 
 ### The class selector
 
-Sooner or later you'll want to style *some* paragraphs differently from the rest, and an element selector has no way to single them out. A **class** is a label you put on any elements you choose, using the `class` attribute in the HTML, and then target in CSS with a dot in front of the name:
+Sooner or later you'll want to style *some* paragraphs differently from the rest, and an element selector has no way to single them out. A CSS **class** (a different "class" than the one you're sitting in) is a label you put on any elements you choose, using the `class` attribute in the HTML, and then target in CSS with a dot in front of the name:
 
 <CssDemo>
 
@@ -311,7 +311,7 @@ An **ID** is a label meant to identify one single element on the page. You set i
 
 The rule is strict: **an ID must be unique within a page.** No two elements may share one. That's not a style preference, it's a requirement of valid HTML, and it's why IDs are used far less than classes for styling. If a look might ever apply to a second element, it should have been a class.
 
-IDs earn their keep elsewhere. They're the target of a link that jumps to a section of a page, `href="#summit"`, and they connect a form label to its input, which you'll meet later in MTM1511. For styling, reach for a class first and an ID only when you genuinely mean this one element and no other.
+IDs are still genuinely useful elsewhere. They're the target of a link that jumps to a section of a page, `href="#summit"`, and they connect a form label to its input, which you'll meet later in MTM1511. For styling, reach for a class first and an ID only when you genuinely mean this one element and no other.
 
 ## How the browser decides: the cascade
 
@@ -388,7 +388,7 @@ That round trip, edit locally, push, see it live, is how every assignment in thi
 - [Chrome DevTools: View and change CSS](https://developer.chrome.com/docs/devtools/css). A short guide to the Styles panel used above.
 - [Video: CSS in 100 Seconds, by Fireship](https://www.youtube.com/watch?v=OEV8gMkCHXQ). A fast, high-level overview of what CSS is and where it fits, useful before the detail.
 
-## Try it yourself
+## Try it yourself (about 60 minutes)
 
 Start from the starter page and stylesheet you built during class. Confirm the link works by changing the `background-color` on `body` and watching the page update on save.
 

@@ -59,7 +59,7 @@ As you work this week, keep a short set of notes answering questions like these:
 - What does your custom property block say about your design system?
 - What feedback did you receive, what did you act on, and what did you consciously decide not to change?
 
-That last one carries the most weight. Being able to say "three people suggested a different navigation layout and I kept mine because of X" demonstrates judgment, where changing everything anyone suggested demonstrates the opposite.
+That last one carries the most weight. Being able to say "three people suggested a different navigation layout and I kept mine because of X" demonstrates judgment, where changing everything anyone suggested demonstrates the opposite. It's also, plainly, interview practice: this is close to word-for-word the question a hiring manager asks about a portfolio piece, and this project is likely to be exactly that.
 
 ## Looking ahead to the final week
 

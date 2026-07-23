@@ -83,6 +83,16 @@ The important split is `<head>` versus `<body>`. The **head** holds information 
 
 The rest of today is installation and configuration. Work through it in order, because a couple of the steps depend on an earlier one having finished. If something fails, say so rather than skipping it. A broken tool today blocks both of your web courses for the whole week.
 
+By the end of class, five things need to be true. Check yourself against this list as you go, not just at the very end:
+
+1. VS Code is installed and opens.
+2. `git --version` returns a real version number in a terminal.
+3. You have a GitHub account.
+4. A practice repository is cloned onto your computer in VS Code.
+5. That repository's Pages site loads at a real URL in a browser.
+
+If a step stalls or throws an error partway through, that's often a connection blip or a one-off installer hiccup, not something you did wrong. Try it once more before you assume you've broken something. If it still won't go, don't sit with it alone: flag it with your instructor or in the course's help channel right away, ideally before you leave today's class, since your Web Styles class this week assumes this setup already works.
+
 ### Installing Visual Studio Code
 
 VS Code is the editor you'll write every line of code in this semester. Download it from [code.visualstudio.com](https://code.visualstudio.com/) and run the installer with the default options. It's free, and it runs on Windows, macOS, and Linux.
@@ -162,6 +172,8 @@ Open the Extensions view in VS Code (the icon in the Activity Bar on the left, o
 
 VS Code has a built-in terminal panel, and on Windows it defaults to PowerShell. This course standardizes on **Git Bash**, since it's the terminal Git itself ships with, and its commands work identically on Windows, macOS, and Linux.
 
+**Restart VS Code now, if you haven't already since installing Git.** VS Code only detects Git Bash as an option if Git was already installed the last time it started up, so if it's been open through the Git install above, it won't show up yet.
+
 Open the Command Palette (`Ctrl+Shift+P`, or `Cmd+Shift+P` on macOS), type "Terminal: Select Default Profile," and choose **Git Bash** from the list. The next terminal you open (`` Ctrl+` ``) will use it.
 
 <details class="demo" open>
@@ -171,7 +183,7 @@ Command Palette shows: PowerShell, Command Prompt, <strong>Git Bash</strong>, Az
 </div>
 </details>
 
-If Git Bash doesn't appear in that list, close and reopen VS Code after installing Git. The two installs need to happen in that order for VS Code to detect it.
+If Git Bash still doesn't appear, close and reopen VS Code once more, this restart is the fix for almost every case.
 
 ## <span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7 L9 7 L11 9 L21 9 L21 19 L3 19 Z"/></svg></span> Creating a GitHub account and a demo repository
 
@@ -317,6 +329,8 @@ You've now done the whole workflow once. Here's what each piece actually is, so 
 
 **GitHub Pages** is a free feature of GitHub that takes the files in a repository and publishes them as a live website, at a URL like `your-username.github.io/repository-name`. It's how every project you submit this semester becomes something you can actually visit in a browser, rather than a folder of files.
 
+Worth being direct about why this week is so setup-heavy: this isn't a simplified classroom version of how the industry works, it's the actual daily workflow. Clone, edit, stage, commit, push, is what a working web developer does dozens of times a week, on real teams, from day one of a real job. Learning it for real now, however slow it feels today, is time you don't spend relearning it later.
+
 ## Keep learning
 
 - [MDN: How the web works](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works). Mozilla's own short explanation of clients, servers, and what happens between typing an address and seeing a page.
@@ -327,6 +341,6 @@ You've now done the whole workflow once. Here's what each piece actually is, so 
 
 ## Before next class
 
-Confirm your setup works end to end, on your own, without following the steps above: clone your practice repository (or a fresh one), make any small change, push it, and confirm the Pages URL loads in a browser. If you get stuck, note exactly which step, because that's worth raising at the start of next class before we build on top of it.
+Confirm your setup works end to end, without following the steps above as a script: clone your practice repository (or a fresh one), make any small change, push it, and confirm the Pages URL loads in a browser. This is meant to be a genuine test, so work through a snag before reaching for help. But if you're stuck for more than a few minutes, that's not a sign you're behind, it's exactly what the course's help channel is for. Either way, note exactly which step gave you trouble, because that's worth raising at the start of next class before we build on top of it.
 
 Next week you write your first real HTML, so come in with a working editor and a repository you can push to. Your Web Styles class later this week uses the same setup, so anything broken today blocks both courses.

@@ -25,7 +25,7 @@ Content and media:
 
 - Every image has an appropriate `alt` value (descriptive, or empty for decorative images).
 - Images are sized and compressed for the web, using responsive techniques where it helps.
-- Any embedded media has a `title` and is wrapped for responsive display.
+- Any embedded media has a `title` and is wrapped for responsive display, and any video has a `<track kind="captions">` with a real caption file.
 
 Accessibility:
 

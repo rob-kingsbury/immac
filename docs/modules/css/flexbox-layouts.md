@@ -367,7 +367,7 @@ Note that there are **two** flex containers here, nested. The header is a flex c
 - [Flexbox Froggy](https://flexboxfroggy.com/). A short game that drills the alignment properties. Genuinely the fastest way to make them stick.
 - [Video: Learn Flexbox in 15 Minutes, by Web Dev Simplified](https://www.youtube.com/watch?v=fYq5PXgSsbE). A quick, practical run through the same properties.
 
-## Try it yourself
+## Try it yourself (about 45 minutes)
 
 Build a navigation bar on your project page. Put a site name and a set of links inside a `<header>`, make it a flex container, and use `space-between` and `align-items: center` to pin the name left and the links right, vertically centred. Make the links themselves a nested flex container with a `gap`. Give them `:hover` and `:focus` styles.
 

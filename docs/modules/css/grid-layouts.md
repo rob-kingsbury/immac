@@ -85,7 +85,7 @@ The sidebar stays 250 pixels wide at every screen size, and the main column abso
 
 ### `repeat()` and `minmax()`
 
-Writing `1fr 1fr 1fr 1fr 1fr 1fr` gets old. `repeat()` shortens it:
+Writing `1fr 1fr 1fr 1fr 1fr 1fr` is repetitive. `repeat()` shortens it:
 
 ```css
 grid-template-columns: repeat(6, 1fr);
@@ -123,6 +123,44 @@ grid-template-columns: repeat(6, 1fr);
 </CssDemo>
 
 Read that declaration as an instruction: fit as many columns as you can, where each is at least 160 pixels and otherwise shares the space equally. Narrow the browser window and the column count drops on its own. This one line replaces what used to take several media queries, and it's worth committing to memory.
+
+That's the behaviour with five items filling the row. Here's the same rule with only two:
+
+<CssDemo>
+
+```html
+<div class="grid">
+  <div class="cell">One</div>
+  <div class="cell">Two</div>
+</div>
+```
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+.cell {
+  background-color: #ede9fe;
+  border: 1px solid #a78bfa;
+  padding: 18px;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+}
+```
+
+</CssDemo>
+
+The two cells stretch to fill the whole row, not because you told them to, but because of what `auto-fit` actually does. It computes how many tracks of at least 160 pixels can fit in the container, creates exactly that many, and then hands every leftover pixel of space to the tracks that exist. With room for five and only two items, three tracks' worth of space gets split between the two you have.
+
+Sometimes that's not what you want. If two items should stay at their minimum width and leave visible empty space instead of stretching, swap in `auto-fill`:
+
+```css
+grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+```
+
+`auto-fill` creates the same number of tracks `auto-fit` would, but it leaves the extra ones in place as empty columns instead of collapsing them into the tracks holding content, so your two real items stay at 160 pixels instead of growing. Reach for `auto-fit` when you want content to grow and fill the space, and `auto-fill` when you want consistently sized items with gaps left over, a photo grid where every thumbnail should stay the same size is a common case for it.
 
 ## Rows
 
@@ -317,6 +355,8 @@ Three layout systems nested in one small example, each doing the job it's best a
 
 ## Nested grids, and when they won't line up
 
+Worth knowing before you read any further: you won't need what this section teaches on every layout. It solves one specific, recognisable problem, and a plain nested grid is simpler and correct for everything else.
+
 Put a grid inside a grid item, and you get an ordinary **nested grid**: the inner grid defines its own tracks from scratch, with no relationship to the outer one.
 
 <CssDemo>
@@ -365,7 +405,58 @@ Look closely at the two cards. Even though the first card's heading is much shor
 
 This solves a specific, recognisable problem: a row of cards where a short piece of content in one card should still line up with the corresponding content in every other card, the way a well-set table's columns line up even though the text in each cell is a different length. Before subgrid, this needed either JavaScript to measure and match heights, or accepting the misalignment.
 
-You won't need subgrid on every layout. Reach for it specifically when independent cards need to line up internally, and a plain nested grid otherwise, which is simpler and correct for everything else.
+Reach for it specifically when independent cards need to line up internally, as the opening note said, not as a default for every nested grid.
+
+## The third layout tool: position
+
+Grid and Flexbox both lay out a group of items in relation to each other. Sometimes you need something different: take one element out of that flow entirely and place it exactly where you want, on top of everything else. That's the job of the `position` property, and it comes up constantly, a badge sitting on a photo's corner, a dropdown menu, a "skip to content" link that only appears when focused.
+
+By default, every element has `position: static`. It sits in normal document flow, in the order you wrote it, and `top`/`right`/`bottom`/`left` do nothing to it. Two other values are what you'll reach for most:
+
+<CssDemo>
+
+```html
+<div class="frame">
+  <div class="box">In normal flow</div>
+  <div class="badge">Tag</div>
+</div>
+```
+
+```css
+.frame {
+  position: relative;
+  background-color: #f1f5f9;
+  border: 1px solid #94a3b8;
+  padding: 20px;
+  font-family: system-ui, sans-serif;
+}
+.box {
+  background-color: #dbeafe;
+  padding: 12px;
+}
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #ef4444;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+```
+
+</CssDemo>
+
+`.frame` has `position: relative`, which does something subtle but important: it doesn't move `.frame` at all, but it makes `.frame` the **containing block** for any absolutely positioned element inside it. `.badge` has `position: absolute`, which pulls it completely out of normal flow (it no longer takes up space, and nothing else shifts to make room for it) and positions it using `top`/`right`/`bottom`/`left`, measured from the edges of its containing block, `.frame`, rather than from the page.
+
+That's the whole mechanism: **`position: absolute` positions an element relative to its nearest ancestor that isn't `static`.** Skip the `position: relative` on the parent, and the browser keeps looking up the tree until it finds one, sometimes all the way to the page itself, which is almost never what you meant. This is why an absolutely positioned element that "won't stay where you put it" is nearly always missing a `position: relative` somewhere on an ancestor, not a mistake in the `top`/`left` values themselves.
+
+Two more values worth knowing by name. `position: fixed` behaves like `absolute` but measures from the browser window instead of a containing block, and stays in place even when the page scrolls, which is how a persistent header or a cookie banner is usually built. `position: sticky` acts like normal flow until the page scrolls past a threshold you set, then locks in place like `fixed`, which is how a section heading that "sticks" to the top while its section scrolls is built.
+
+**`z-index` decides which element sits on top when two positioned elements overlap.** It only works on an element that already has a `position` other than `static`, and it takes a plain number: higher stacks above lower. You'll need it any time something you positioned ends up hidden behind something else, a header, a hero image, a modal background.
+
+You already met one real use of `position: absolute` without the mechanism behind it, back in MTM1511's Advanced HTML Patterns, and you'll meet it again next in this course's own Accessible Styling week for the `.visually-hidden` pattern and the skip link. Both make a lot more sense now that you know what `position: absolute` is actually doing and why it needs a positioned ancestor to behave.
 
 ## Inspecting a grid
 
@@ -382,6 +473,7 @@ Turn it on whenever a grid item lands somewhere unexpected. Seeing the actual li
 - **Forgetting that `gap` is not a margin.** It only applies between tracks, which is usually what you want, but it means the outer edge spacing has to come from padding on the container.
 - **Placing every item by line number.** Auto-placement handles most cases. Explicit placement is for the exceptions, and hand-placing everything makes a grid that breaks whenever the content changes.
 - **Reaching for subgrid when a plain nested grid would do.** It solves one specific problem, cards whose internal rows need to align with their siblings. Most nested grids don't need it.
+- **`position: absolute` with no `position: relative` on a parent.** The element positions itself against the nearest ancestor that isn't `static`, which without one set deliberately is often the whole page, not the box you meant.
 
 ## Keep learning
 
@@ -392,7 +484,7 @@ Turn it on whenever a grid item lands somewhere unexpected. Seeing the actual li
 - [Chrome DevTools: Inspect CSS Grid](https://developer.chrome.com/docs/devtools/css/grid). How to use the overlay described above.
 - [Video: Learn CSS Grid in 20 Minutes, by Web Dev Simplified](https://www.youtube.com/watch?v=9zBsdzdE4sM). A practical run through the same ground.
 
-## Try it yourself
+## Try it yourself (about 60 minutes)
 
 Rebuild your page's overall structure with Grid. Define a layout with a header, a main content area, and a footer using `grid-template-areas`, and make the CSS read like the shape it produces. Add a sidebar as a second column at a fixed width, with the main area on `1fr`.
 
