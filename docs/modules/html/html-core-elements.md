@@ -86,12 +86,13 @@ Inside `<html>`, add a `<head>`. It holds information *about* the page, its char
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My First Page</title>
   </head>
 </html>
 ```
 
-`<meta charset="UTF-8">` tells the browser how to decode the text in the file, and it should be the first thing inside `<head>`. `<title>` sets what appears in the browser tab, not anything inside the visible page.
+`<meta charset="UTF-8">` tells the browser how to decode the text in the file, and it should be the first thing inside `<head>`. `<meta name="viewport" content="width=device-width, initial-scale=1">` tells a phone or tablet to render the page at its actual screen width instead of shrinking down a desktop-sized layout to fit, which is why a page without it looks fine on your laptop and unreadably tiny on a phone. Include it on every page from here on. You'll see exactly why it matters once you reach responsive design in MTM1544. `<title>` sets what appears in the browser tab, not anything inside the visible page.
 
 Finally, add a `<body>`. Everything that actually shows up in the browser window goes here:
 
@@ -100,6 +101,7 @@ Finally, add a `<body>`. Everything that actually shows up in the browser window
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My First Page</title>
   </head>
   <body>
@@ -338,7 +340,7 @@ Use them to label the major regions of a page. Combined with consistent indentat
 
 ## Try it yourself (about 45 minutes)
 
-Create a new folder in your cloned repository, add an `index.html` file, and build out the document skeleton, `<!DOCTYPE>` through `<body>`, from memory rather than copying it. Inside `<body>`, add one `<h1>`, at least two `<h2>` sections, a paragraph or two under each, one ordered and one unordered list, and a `<blockquote>`. Mark one or two words with `<strong>` or `<em>` where the meaning calls for it. Add a comment above each major section.
+Create a new folder in your cloned repository, add an `index.html` file, and build out the document skeleton, `<!DOCTYPE>` through `<body>`, from memory rather than copying it. Include the charset and viewport meta tags, both belong in every page you'll ever build from here on. Inside `<body>`, add one `<h1>`, at least two `<h2>` sections, a paragraph or two under each, one ordered and one unordered list, and a `<blockquote>`. Mark one or two words with `<strong>` or `<em>` where the meaning calls for it. Add a comment above each major section.
 
 Open the page in your browser, then open developer tools and inspect your own elements. Watch how the block elements each claim a full row while the inline ones share a line. Then commit and push your change using the workflow from last week, stage, commit, sync, and confirm it shows up on GitHub.
 

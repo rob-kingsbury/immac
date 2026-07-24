@@ -68,6 +68,7 @@ Every page you write this semester starts from the same skeleton. You'll build t
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mountain Trail Guide</title>
   </head>
   <body>

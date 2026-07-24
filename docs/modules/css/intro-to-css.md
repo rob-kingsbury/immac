@@ -124,6 +124,7 @@ The third is an **external stylesheet**, where your CSS lives in its own separat
 ```html
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Page</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
