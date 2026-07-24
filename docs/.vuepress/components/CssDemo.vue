@@ -53,7 +53,7 @@ onMounted(async () => {
   const css = read('css')
   const html = read('html')
   const shadow = host.value.attachShadow({ mode: 'open' })
-  shadow.innerHTML = `<style>:host{display:block}${css}</style>${html}`
+  shadow.innerHTML = `<style>:host{display:block;color:#1a1a1a}${css}</style>${html}`
 })
 </script>
 

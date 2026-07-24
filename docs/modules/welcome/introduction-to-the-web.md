@@ -189,6 +189,8 @@ If Git Bash still doesn't appear, close and reopen VS Code once more, this resta
 
 If you don't already have one, create a free account at [github.com](https://github.com/). Use an email address you'll still control after you graduate, not a college address that expires.
 
+Once you have an account, apply for the [GitHub Student Developer Pack](https://github.com/education/students). It's free for as long as you're enrolled, and it upgrades your account to GitHub Pro, which matters specifically for this course: a free account can only run GitHub Pages from a **public** repository, so your code and commit history would be visible to anyone, including classmates. Pro removes that requirement, so your assignment repositories can stay private while your GitHub Pages site is still reachable at its live link for submission. Verification can take a couple of days and may ask for proof of enrollment beyond your email, so apply now rather than the week an assignment is due. You can carry on with today's practice below while it processes.
+
 Once signed in, create a new repository to practice with today:
 
 1. Click the **+** icon in the top right of any GitHub page, then **New repository**.
