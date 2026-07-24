@@ -4,8 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predocs:dev": "node scripts/build-search-index.mjs",
     "docs:dev": "vuepress dev docs",
+    "predocs:build": "node scripts/build-search-index.mjs",
     "docs:build": "vuepress build docs"
+  },
+  "dependencies": {
+    "fuse.js": "^7.5.0"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.30",
