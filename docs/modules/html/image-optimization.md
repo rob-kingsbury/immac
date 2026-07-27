@@ -10,9 +10,11 @@ The Links, Images, and Media chapter covered placing images. This chapter is abo
 
 ## How to read this chapter
 
-**The core path is everything down to the checklist.** Work through the six steps in order, build the example at the end, and you have what the assignment needs.
+**The core path is everything down to the checklist.** Work through the seven steps in order, build the example at the end, and you have what the assignment needs. Budget about 35 minutes to read it, plus the 45 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional. They explain why the browser behaves the way it does, and they are here because this page is meant to still be useful to you in a job two years from now. Skip them on a busy week and nothing breaks.
+Sections headed **Going deeper** are optional and add roughly 10 minutes. They explain why the browser behaves the way it does, and they are here because this page is meant to still be useful to you in a job two years from now. Skip them on a busy week and nothing breaks.
+
+**One tool, for everything below.** [Squoosh](https://squoosh.app/) is free, runs in the browser, and does the whole job on its own: resize to an exact pixel width, set a quality level, convert to WebP or AVIF, and export. If you already work in Photoshop, Affinity, or GIMP, use those instead. If you own no image editor at all, Squoosh is the only one you need for this chapter.
 
 ## The problem, in numbers
 
@@ -22,13 +24,15 @@ On a good office connection that page arrives in about a second. On a weak mobil
 
 The frustrating part is that almost none of those pixels were needed. If each photo displays in a 600 pixel wide box, you sent nearly seven times the width required, which is close to fifty times the pixel data, for an image that looks identical to the visitor.
 
-Six steps fix it, and none of them are difficult.
+Seven steps fix it, and none of them are difficult.
+
+If you already make these calls professionally, for photography, video, or client design work, Steps 1 to 3 will be familiar ground. Skim them and start reading closely at Step 4, where the markup begins.
 
 ## Step 1: Size the image to its job
 
 The most common mistake is serving a huge image scaled down by the browser. A 4000 pixel wide photo displayed in a 400 pixel box still downloads all 4000 pixels. The browser shrinks it on screen, so it looks correct, and the visitor paid the full download cost for pixels they never saw.
 
-Export images close to the size they actually display. Do this in your image editor, before the file reaches your project.
+Export images close to the size they actually display. Do this before the file reaches your project, in Squoosh or whichever editor you already use. In Squoosh the control is the Resize panel on the right, where you set the width in pixels and it scales the height to match.
 
 There is one wrinkle. Phones and modern laptops pack more physical pixels into the same physical space, which is what "Retina" describes. On a screen with a device pixel ratio of 2, a 400 pixel wide box is painted with 800 physical pixels, and an image exported at exactly 400 looks soft.
 
@@ -79,19 +83,20 @@ AVIF also tends to smooth fine detail at aggressive quality settings in a way th
 
 Compression discards data to shrink the file. For photographs a surprising amount can go before anyone notices, because the eye is far more sensitive to shapes and edges than to exact colour values.
 
-Most export tools give you a quality slider from 0 to 100. For web photographs the useful range is roughly **75 to 85**. Below about 70 you start seeing artifacts around edges. Above about 90 the file grows quickly for a difference nobody can see.
+Most export tools give you a quality slider from 0 to 100. For web photographs the useful range is roughly **75 to 85**. Below about 70 you start seeing compression artifacts, the blocky patches and smeared halos that appear around hard edges when too much data has been thrown away. Above about 90 the file grows quickly for a difference nobody can see.
 
 Run one comparison yourself, once, so that you trust the numbers rather than the advice. Take a photograph and export it three times:
 
 ```text
 original.jpg   quality 100   2,400 KB
-photo-85.jpg   quality 85      310 KB
-photo-75.jpg   quality 75      210 KB
+photo-85.jpg   quality 85      310 KB    <- top of the useful range
+photo-75.jpg   quality 75      210 KB    <- bottom of the useful range
+photo-50.jpg   quality 50      120 KB    <- artifacts now visible, do not ship
 ```
 
 The exact figures depend on the photo. The pattern does not. Dropping from 100 to 85 typically removes most of the file for none of the visible quality, and that is the single largest saving available in this chapter.
 
-[Squoosh](https://squoosh.app/) is a free browser tool that shows the original and the compressed version side by side with a slider, along with the resulting file size. Use it to calibrate your eye, then apply the same settings in whatever editor you normally use.
+Squoosh does this comparison and the export in the same screen. It shows the original and the compressed version side by side with a draggable divider, reports the resulting file size as you move the quality slider, and exports the result. Set the format to WebP on the right, set quality, set the width in the Resize panel, and download. That is the entire workflow for this chapter in one tool.
 
 ## Step 4: Reserve the space
 
@@ -112,6 +117,33 @@ The fix is to state the image's real dimensions in the markup:
 ```
 
 Those numbers are the image's actual pixel dimensions, not the size you want it displayed at. The browser divides them to get an aspect ratio, reserves a box of the correct shape immediately, and fills it when the file arrives. Nothing moves.
+
+<div class="diagram">
+<svg viewBox="0 0 640 250" role="img" aria-label="Two page layouts compared. On the left, without width and height attributes, the browser reserves no space for the image, so when the image finally loads it pushes the paragraph text down the page. On the right, with width and height set, the browser reserves a correctly shaped empty box before the image arrives, and the paragraph text stays exactly where it started.">
+  <text x="10" y="18" class="d-lbl">Without width and height</text>
+  <rect x="10" y="30" width="290" height="205" rx="8" class="d-surface d-border" stroke-width="1.5"/>
+  <line x1="26" y1="52" x2="284" y2="52" class="d-muted-stroke" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="30" y="46" class="d-lbl-muted">text started here</text>
+  <rect x="26" y="62" width="258" height="66" rx="4" class="d-accent-soft d-accent-stroke" stroke-width="1.5"/>
+  <text x="155" y="100" text-anchor="middle" class="d-lbl-mono">image arrives late</text>
+  <line x1="26" y1="150" x2="284" y2="150" class="d-muted-stroke" stroke-width="5"/>
+  <line x1="26" y1="168" x2="284" y2="168" class="d-muted-stroke" stroke-width="5"/>
+  <line x1="26" y1="186" x2="215" y2="186" class="d-muted-stroke" stroke-width="5"/>
+  <line x1="155" y1="56" x2="155" y2="142" class="d-accent-stroke" stroke-width="2"/>
+  <path d="M 149 134 L 155 144 L 161 134 Z" class="d-accent"/>
+  <text x="155" y="212" text-anchor="middle" class="d-lbl">content jumps down</text>
+
+  <text x="340" y="18" class="d-lbl">With width and height</text>
+  <rect x="340" y="30" width="290" height="205" rx="8" class="d-surface d-border" stroke-width="1.5"/>
+  <rect x="356" y="62" width="258" height="66" rx="4" fill="none" class="d-muted-stroke" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="485" y="100" text-anchor="middle" class="d-lbl-mono">space reserved</text>
+  <line x1="356" y1="150" x2="614" y2="150" class="d-muted-stroke" stroke-width="5"/>
+  <line x1="356" y1="168" x2="614" y2="168" class="d-muted-stroke" stroke-width="5"/>
+  <line x1="356" y1="186" x2="545" y2="186" class="d-muted-stroke" stroke-width="5"/>
+  <text x="485" y="212" text-anchor="middle" class="d-lbl">nothing moves</text>
+</svg>
+<figcaption>Two attributes are the whole difference. The reserved box on the right is the same shape as the image that will fill it.</figcaption>
+</div>
 
 For that to work with a responsive layout, your <abbr title="Cascading Style Sheets">CSS</abbr> needs to let the height follow the width:
 
@@ -351,6 +383,7 @@ Run this over every image before you submit work in this course:
 - `srcset` and `sizes` where the image flexes with the layout
 - `<picture>` where you need a different crop or a format fallback
 - `alt` text that describes the image, or `alt=""` if it is decorative
+- Video, if any, has a `poster`, sets `preload` to `metadata` or `none`, and does not autoplay
 
 ## Keep learning
 
@@ -365,12 +398,14 @@ Run this over every image before you submit work in this course:
 
 Take one large photograph, ideally straight off a phone, and note its file size.
 
-Export it at three widths, roughly 400, 800, and 1600 pixels, saving each as WebP at about 80 percent quality. Write down the four file sizes together. The comparison is the point of the exercise.
+Export it at three widths, roughly 400, 800, and 1600 pixels, saving each as WebP at about 80 percent quality. In Squoosh that is the Resize panel for the width, the format dropdown set to WebP, and the quality slider, then Download. Repeat three times. Write down the four file sizes together, because the comparison is the point of the exercise.
 
-Put the three files into an `<img>` with `srcset` and `sizes`, and add `width`, `height`, and `alt`. Open your page, open developer tools, and switch to the Network panel. Resize the browser window and reload at a narrow width and again at a wide one. Confirm that a different file is requested each time.
+Put the three files into an `<img>` with `srcset` and `sizes`, and add `alt` plus `width` and `height`. Use the dimensions of your **largest** file for those two attributes, since all three share the same shape and the browser only needs the ratio.
+
+Open your page and open developer tools with **F12**, or **Ctrl+Shift+I**, or **Cmd+Option+I** on a Mac. Switch to the **Network** tab, in the same row of tabs as Elements and Console. Reload the page, then use the **Img** filter button below that row to hide the CSS, font, and favicon requests so only images remain. Resize the browser window and reload at a narrow width and again at a wide one. Confirm that a different file is requested each time.
 
 Then add a second image lower down the page with `loading="lazy"`, reload at the top, and confirm in the Network panel that it does not appear in the list until you scroll toward it.
 
-Finally, remove the `width` and `height` from one image, throttle your connection to a slow speed in the Network panel, and reload. Watch the text below the image jump when it arrives. Put the attributes back and watch the jump disappear.
+Finally, remove the `width` and `height` from one image. In the Network panel toolbar, find the throttling dropdown, which reads **No throttling** by default and sits near the top of the panel, and set it to **Slow 4G**. Reload and watch the text below the image jump when it arrives. Put the attributes back, reload again, and watch the jump disappear. That is the diagram from Step 4, happening to your own page.
 
 Your media loads fast. Next week is about making sure people can find your pages in the first place.
