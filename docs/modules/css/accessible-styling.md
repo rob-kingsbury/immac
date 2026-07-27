@@ -4,9 +4,9 @@ title: Accessible Styling
 
 # Accessible Styling
 
-In MTM1511 you learned that accessibility is mostly a structural problem: correct landmarks, a sane heading order, real alt text, labelled form controls. All of that is HTML's job, and doing it well gets you a long way.
+In MTM1511 you learned that accessibility is mostly a structural problem: correct landmarks, a sane heading order, real alt text, labelled form controls. All of that is <abbr title="HyperText Markup Language">HTML</abbr>'s job, and doing it well gets you a long way.
 
-Then CSS arrives and can undo it. A stylesheet can hide the focus ring, shrink text below legibility, break at a visitor's chosen zoom level, or animate something that makes a person physically unwell. This week is about the styling decisions that determine whether the accessible structure underneath actually reaches people.
+Then <abbr title="Cascading Style Sheets">CSS</abbr> arrives and can undo it. A stylesheet can hide the focus ring, shrink text below legibility, break at a visitor's chosen zoom level, or animate something that makes a person physically unwell. This week is about the styling decisions that determine whether the accessible structure underneath actually reaches people.
 
 You've already done part of this work. Colour contrast was Week 3, and it stays a requirement rather than becoming a separate topic here.
 
@@ -23,7 +23,7 @@ Browsers supply a default focus ring. It is not beautiful, and the internet is f
 }
 ```
 
-That single declaration makes a page unusable for keyboard users, and it's a WCAG failure. If you don't like the default, **replace it, don't remove it.**
+That single declaration makes a page unusable for keyboard users, and it's a <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> failure. If you don't like the default, **replace it, don't remove it.**
 
 <CssDemo>
 

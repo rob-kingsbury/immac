@@ -56,7 +56,7 @@ body {
 
 A font stack can only name fonts a visitor already has. **Web fonts** remove that limit by having the browser download a font file along with the page, so you can use a typeface nobody's machine has installed.
 
-The easiest source is a hosted service such as [Google Fonts](https://fonts.google.com/). You choose a font, and it gives you a `<link>` to paste into your HTML `<head>`, before your own stylesheet:
+The easiest source is a hosted service such as [Google Fonts](https://fonts.google.com/). You choose a font, and it gives you a `<link>` to paste into your <abbr title="HyperText Markup Language">HTML</abbr> `<head>`, before your own stylesheet:
 
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,7 +64,7 @@ The easiest source is a hosted service such as [Google Fonts](https://fonts.goog
 <link rel="stylesheet" href="css/styles.css">
 ```
 
-Then use the font's name in your CSS as normal, still with fallbacks behind it:
+Then use the font's name in your <abbr title="Cascading Style Sheets">CSS</abbr> as normal, still with fallbacks behind it:
 
 ```css
 body {
@@ -200,7 +200,7 @@ p {
   letter-spacing: 0.08em;
   font-size: 0.8rem;
   font-weight: 700;
-  color: #64748b;
+  color: #5b6b85;
 }
 .centred {
   text-align: center;
@@ -217,7 +217,7 @@ Note the unit on that letter spacing. Using `em` here is correct, because the sp
 
 ## Colour values
 
-CSS accepts several notations for colour, and you'll meet all of them in other people's code. Before the details: this course expects you to know **hex, RGB, and HSL cold**, since the CLR for this course names all three by name. `oklch()` and `color-mix()`, covered later in this section, are real, useful, Baseline-safe additions, not a replacement for those three, worth having specifically for palette work.
+CSS accepts several notations for colour, and you'll meet all of them in other people's code. Before the details: this course expects you to know **hex, <abbr title="Red, Green, Blue">RGB</abbr>, and <abbr title="Hue, Saturation, Lightness">HSL</abbr> cold**, since the <abbr title="Course Learning Requirement">CLR</abbr> for this course names all three by name. `oklch()` and `color-mix()`, covered later in this section, are real, useful, Baseline-safe additions, not a replacement for those three, worth having specifically for palette work.
 
 **Named colours** are the simplest: `red`, `teal`, `rebeccapurple`. There are about 140 of them. They're convenient for quick tests and too limited for real design work.
 
@@ -361,9 +361,9 @@ This is the part of the chapter that isn't a matter of taste.
 
 Text has to be readable by people with low vision, colour vision deficiencies, or simply a cheap screen in bright sunlight. The measure is **contrast ratio**, the difference in relative luminance between the text colour and the colour behind it. It runs from 1:1, identical and invisible, to 21:1, pure black on pure white.
 
-The WCAG guidelines you met in MTM1511 set the thresholds:
+The <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> guidelines you met in MTM1511 set the thresholds:
 
-| Text | Minimum (AA) | Enhanced (AAA) |
+| Text | Minimum (<abbr title="WCAG Level AA conformance">AA</abbr>) | Enhanced (<abbr title="WCAG Level AAA conformance">AAA</abbr>) |
 |---|---|---|
 | Normal body text | 4.5 : 1 | 7 : 1 |
 | Large text, 18.66px bold or 24px and up | 3 : 1 | 4.5 : 1 |

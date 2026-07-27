@@ -42,7 +42,7 @@ A common rule of thumb: no page should be more than two or three clicks from the
 
 ## Content hierarchy
 
-Within a single page, hierarchy is the order of importance of the content. It's the same idea as the heading levels from Core HTML Elements, applied to planning rather than markup. What's the one thing this page is about (the `<h1>`)? What are its major parts (the `<h2>` sections)? What's supporting detail underneath?
+Within a single page, hierarchy is the order of importance of the content. It's the same idea as the heading levels from Core <abbr title="HyperText Markup Language">HTML</abbr> Elements, applied to planning rather than markup. What's the one thing this page is about (the `<h1>`)? What are its major parts (the `<h2>` sections)? What's supporting detail underneath?
 
 Deciding hierarchy up front is what lets you drop into semantic HTML cleanly. If you know a page is an article with three sections, you already know it needs one `<main>`, one `<article>`, and three `<section>` elements before you type a single tag. Planning the hierarchy and choosing the semantic elements are really the same decision, made at two different times.
 
@@ -70,7 +70,7 @@ That's enough to see the structure and to map it directly onto HTML regions: a `
 
 Keeping wireframes rough is a feature, not a limitation. A sketch is fast to change, and you *want* to change your mind cheaply at this stage, rather than after everything is coded. Paper and a pencil are a completely legitimate wireframing tool. So is a whiteboard, a slide deck, or a dedicated wireframing app, if you prefer one. The tool doesn't matter. Making the decision before you start coding does.
 
-Worth being clear on a related term you'll hear in your UX Design course: a **prototype** is a step up in fidelity from a wireframe, sometimes clickable, closer to how the finished design will actually look and behave, used there to test a flow before it's built. This course works from wireframes because structure, not interaction, is the job at hand, but a prototype you're handed from that course is read the same way: name the regions, then translate them into semantic HTML, exactly as below.
+Worth being clear on a related term you'll hear in your <abbr title="User Experience">UX</abbr> Design course: a **prototype** is a step up in fidelity from a wireframe, sometimes clickable, closer to how the finished design will actually look and behave, used there to test a flow before it's built. This course works from wireframes because structure, not interaction, is the job at hand, but a prototype you're handed from that course is read the same way: name the regions, then translate them into semantic HTML, exactly as below.
 
 ## From your UX course to your HTML
 

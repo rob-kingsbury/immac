@@ -2,7 +2,7 @@
 title: The DOM and CSS Targeting
 ---
 
-# The DOM and CSS Targeting
+# The <abbr title="Document Object Model">DOM</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> Targeting
 
 Welcome back from reading week. You've been writing selectors since Week 1 without a precise picture of what they're selecting *from*. This week supplies it. The browser doesn't apply your CSS to a text file. It applies it to a structure it built in memory called the **DOM**, and once you can see that structure, targeting stops being trial and error.
 
@@ -10,7 +10,7 @@ This is the diagnostic week. By the end of it you should be able to work out why
 
 ## What the DOM is
 
-**DOM** stands for Document Object Model. When a browser receives your HTML, it doesn't keep the text. It parses it and builds a tree of objects in memory, one for each element, nested exactly as your tags were nested. That tree is the DOM, and it's what your CSS actually styles.
+**DOM** stands for Document Object Model. When a browser receives your <abbr title="HyperText Markup Language">HTML</abbr>, it doesn't keep the text. It parses it and builds a tree of objects in memory, one for each element, nested exactly as your tags were nested. That tree is the DOM, and it's what your CSS actually styles.
 
 Take this markup:
 
@@ -173,7 +173,7 @@ You can also target elements by their attributes, which is powerful for forms an
 }
 a[href^="https"]::after {
   content: " ↗";
-  color: #64748b;
+  color: #5b6b85;
 }
 a[href$=".pdf"]::after {
   content: " (PDF)";
@@ -188,7 +188,7 @@ The syntax is a set of matching operators inside square brackets. `[href^="https
 
 Marking external links and file downloads automatically, with no classes to maintain, is exactly what attribute selectors are for. Note that the marker above is decorative, so per Week 4's rule about generated content, the same information should also be conveyed in the link text itself for anything a visitor genuinely needs to know.
 
-One caveat on `[href^="https"]` specifically: it doesn't actually mean "external," it means "starts with https." That happens to sort external from internal links correctly on a site like the one you're building this term, where every internal link is written as a relative path (`about.html`, not `https://yoursite.com/about.html`). Write even one internal link as a full `https://` URL instead of a relative one, and this selector marks it external too. On a real site large enough to have more than one author, that's a real, confusing bug, not a hypothetical one.
+One caveat on `[href^="https"]` specifically: it doesn't actually mean "external," it means "starts with https." That happens to sort external from internal links correctly on a site like the one you're building this term, where every internal link is written as a relative path (`about.html`, not `https://yoursite.com/about.html`). Write even one internal link as a full `https://` <abbr title="Uniform Resource Locator">URL</abbr> instead of a relative one, and this selector marks it external too. On a real site large enough to have more than one author, that's a real, confusing bug, not a hypothetical one.
 
 ## Diagnosing rendering problems
 

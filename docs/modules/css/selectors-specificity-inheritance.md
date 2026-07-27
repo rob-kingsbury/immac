@@ -6,7 +6,7 @@ title: Selectors, Specificity, and Inheritance
 
 In Week 1 you met three selectors and a rough rule for what happens when they conflict: more specific beats less specific, and later beats earlier. That rough rule carries you a long way, and Week 3's colour and type work has already leaned on it without saying so. This week replaces it with the real mechanism, adds the selectors that respond to what a visitor is doing, and explains why some properties pass down to child elements while others don't.
 
-This is the chapter that turns "my CSS isn't working" from a mystery into a diagnosis.
+This is the chapter that turns "my <abbr title="Cascading Style Sheets">CSS</abbr> isn't working" from a mystery into a diagnosis.
 
 ## Pseudo-classes: selecting by state
 
@@ -81,7 +81,7 @@ Another group selects elements by their position among their siblings, with no c
 
 </CssDemo>
 
-Striped table rows, a first item styled as a header, a last item with no bottom border: all of it without adding a single class to the HTML. That's the point of structural pseudo-classes. The styling survives when the content changes, because it's based on position rather than on labels somebody has to remember to apply.
+Striped table rows, a first item styled as a header, a last item with no bottom border: all of it without adding a single class to the <abbr title="HyperText Markup Language">HTML</abbr>. That's the point of structural pseudo-classes. The styling survives when the content changes, because it's based on position rather than on labels somebody has to remember to apply.
 
 ## Pseudo-elements: styling parts of an element
 

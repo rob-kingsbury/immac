@@ -1,6 +1,41 @@
-// Placeholder palette: swap $accentColor for Algonquin College's exact brand hex.
-// Chosen to sit in the same "institutional teal/green" family as IMD's site.
-$accentColor: #1a7a5e;
-$textColor: #2c3e50;
-$borderColor: #eaecef;
-$codeBgColor: #282c34;
+// Placeholder palette: swap the hex values below for Algonquin College's exact
+// brand colour. Chosen to sit in the same "institutional teal/green" family
+// as IMD's site.
+//
+// NOTE: this file used to define $accentColor / $textColor / $borderColor /
+// $codeBgColor SCSS variables, following older VuePress theming docs. As of
+// @vuepress/theme-default 2.0.0-rc.132 (the version this project builds
+// against), none of those variable names are read anywhere in the theme --
+// grep the installed package and there is no reference to $accentColor at
+// all. That meant the "brand teal" here was never actually applied; every
+// page was still rendering the theme's stock green (#3eaf7c), which is also
+// too light to give white button text AA contrast (an axe-core scan flags
+// the homepage's primary hero buttons and the active navbar link on exactly
+// this basis). The theme's real customization surface is the CSS custom
+// properties it defines in vars.scss / vars-dark.scss, so those are
+// overridden directly here instead, for light and dark mode both.
+:root {
+  --vp-c-accent: #1a7a5e;
+  --vp-c-accent-bg: #1a7a5e;
+  --vp-c-accent-hover: #145f49;
+  --vp-c-accent-soft: rgb(26 122 94 / 14%);
+}
+
+// --vp-c-accent-text (the text/icon colour paired with --vp-c-accent-bg,
+// e.g. white text on a primary button) stays var(--vp-c-white) in both
+// modes, unchanged from the theme default -- it's already white and that's
+// the correct choice once the background itself is dark enough.
+[data-theme='dark'] {
+  // Text/link use (against the dark page background) wants a *brighter*
+  // teal so it still reads clearly -- the theme's own stock dark accent
+  // already clears 4.5:1 here, so it's kept rather than replaced.
+  --vp-c-accent: #3dd68c;
+
+  // Button-background use (paired with white text) needs to stay dark
+  // regardless of theme, the same way it does in light mode -- the theme's
+  // own dark default (#3aa675) does not (~3:1, fails AA for normal text),
+  // so this is darkened rather than just carried over.
+  --vp-c-accent-bg: #145f49;
+  --vp-c-accent-hover: #0f4a3a;
+  --vp-c-accent-soft: rgb(61 214 140 / 16%);
+}

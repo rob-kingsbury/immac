@@ -5,6 +5,45 @@
   scroll-behavior: auto;
 }
 
+// Skip-to-content link. The theme ships no skip link at all, so this is
+// injected as the first element in <body> by docs/.vuepress/client.js.
+// Standard visually-hidden-until-focused pattern: off-screen normally, snaps
+// into view the moment it receives keyboard focus (the very first Tab stop
+// on any page), so keyboard and screen-reader users can bypass the navbar
+// and sidebar without a hidden control that sighted mouse users never see.
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--vp-c-bg-elv, #fff);
+  color: var(--vp-c-text, #212721);
+  border: 1px solid var(--vp-c-divider, #e2e2e3);
+  border-radius: 0 0 6px 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 120ms ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+// Prism's shipped comment colour (#636f88) measures ~2.5:1 against the code
+// block's dark background (#2e3440) -- axe-core's color-contrast rule flags
+// this on essentially every page with a code comment or a <!DOCTYPE>, since
+// .token.doctype-tag and .token.name inherit the same colour with no rule of
+// their own. Lightened to clear WCAG AA's 4.5:1 without otherwise touching
+// the syntax theme.
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #99a2ba;
+}
+
 // Sidebar hierarchy.
 // Goal: weeks read as the primary level, and the active chapter's sections read
 // as clearly nested underneath, so the open nav is easy to scan.
@@ -60,7 +99,7 @@ details.demo {
   border: 1px solid var(--vp-c-divider, #e2e2e3);
   border-radius: 0 0 8px 8px;
   margin: 0 0 1.4rem;
-  background: var(--vp-c-bg-soft, #f6f6f7);
+  background: var(--vp-c-bg-alt);
   overflow: hidden;
 }
 
@@ -71,7 +110,10 @@ details.demo > summary {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  opacity: 0.7;
+  // 0.7 measured at ~4.3:1 against the box's own background (axe-core
+  // color-contrast flagged this on every demo instance sitewide) -- 0.75
+  // clears WCAG AA's 4.5:1 for this small, non-bold label text.
+  opacity: 0.75;
   user-select: none;
 }
 
@@ -126,7 +168,7 @@ details.demo[open] > summary {
   width: 1.25em;
   height: 1.25em;
   margin-right: 0.4em;
-  color: var(--vp-c-text-accent, #3b82f6);
+  color: var(--vp-c-accent);
 }
 
 .step-icon svg {
@@ -156,7 +198,7 @@ details.demo[open] > summary {
   flex-shrink: 0;
   width: 2.4rem;
   height: 2.4rem;
-  color: var(--vp-c-text-accent, #3b82f6);
+  color: var(--vp-c-accent);
 }
 
 .mock-dialog-icon svg {
@@ -188,14 +230,14 @@ details.demo[open] > summary {
   border-radius: 6px;
   font-size: 0.85rem;
   border: 1px solid var(--vp-c-divider, #e2e2e3);
-  background: var(--vp-c-bg-soft, #f6f6f7);
+  background: var(--vp-c-bg-alt);
   color: inherit;
   cursor: default;
 }
 
 .mock-dialog-btn-primary {
-  border-color: var(--vp-c-text-accent, #3b82f6);
-  background: var(--vp-c-text-accent, #3b82f6);
+  border-color: var(--vp-c-accent);
+  background: var(--vp-c-accent);
   color: #fff;
 }
 
@@ -209,7 +251,7 @@ details.demo[open] > summary {
   padding: 1.3rem 1.1rem;
   border: 1px solid var(--vp-c-divider, #e2e2e3);
   border-radius: 10px;
-  background: var(--vp-c-bg-soft, #f6f6f7);
+  background: var(--vp-c-bg-alt);
   display: flex;
   justify-content: center;
   overflow-x: auto;
@@ -225,7 +267,7 @@ details.demo[open] > summary {
 .diagram-caption {
   margin-top: 0.7rem;
   font-size: 0.85rem;
-  color: var(--vp-c-text-2, #5c6773);
+  color: var(--vp-c-text-mute);
   text-align: center;
 }
 
@@ -234,18 +276,18 @@ details.demo[open] > summary {
 .d-lbl {
   font-size: 12px;
   font-weight: 600;
-  fill: var(--vp-c-text-1, #2c3e50);
+  fill: var(--vp-c-text);
 }
 .d-lbl-muted {
   font-size: 10.5px;
   font-weight: 500;
   letter-spacing: 0.02em;
-  fill: var(--vp-c-text-2, #5c6773);
+  fill: var(--vp-c-text-mute);
 }
 .d-lbl-mono {
   font-family: ui-monospace, 'SF Mono', Consolas, 'Courier New', monospace;
   font-size: 11px;
-  fill: var(--vp-c-text-1, #2c3e50);
+  fill: var(--vp-c-text);
 }
 .d-surface {
   fill: var(--vp-c-bg-elv, #fff);
@@ -254,16 +296,16 @@ details.demo[open] > summary {
   stroke: var(--vp-c-divider, #e2e2e3);
 }
 .d-muted-stroke {
-  stroke: var(--vp-c-text-2, #5c6773);
+  stroke: var(--vp-c-text-mute);
 }
 .d-accent {
-  fill: var(--vp-c-text-accent, #3b82f6);
+  fill: var(--vp-c-accent);
 }
 .d-accent-stroke {
-  stroke: var(--vp-c-text-accent, #3b82f6);
+  stroke: var(--vp-c-accent);
 }
 .d-accent-soft {
-  fill: color-mix(in srgb, var(--vp-c-text-accent, #3b82f6) 14%, var(--vp-c-bg-elv, #fff));
+  fill: color-mix(in srgb, var(--vp-c-accent) 14%, var(--vp-c-bg-elv, #fff));
 }
 
 // CssDemo: a live CSS example. The source fence(s) show the code with normal

@@ -63,7 +63,7 @@ Run every page through this before you consider the project done. It's the whole
 
 Do all four of these on the **live** site, not on your local copy.
 
-1. **Click through every page** as a visitor would, following links rather than typing URLs.
+1. **Click through every page** as a visitor would, following links rather than typing <abbr title="Uniform Resource Locator">URL</abbr>s.
 2. **Resize from narrow to wide** in one continuous drag, watching for anything that breaks in between rather than only at your breakpoints.
 3. **Put the mouse away** and navigate the whole site with Tab and Enter.
 4. **Open it on a real phone.** Your project is at a public URL, so this takes seconds and catches what nothing else does.

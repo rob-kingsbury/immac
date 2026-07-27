@@ -96,16 +96,16 @@ Add `width` and `height` attributes to match the image's real dimensions. This l
 
 The format you save an image in affects both quality and load time. The four you'll use:
 
-- **SVG** for logos, icons, and anything drawn from shapes. It's vector, so it stays sharp at any size and the file stays tiny.
-- **WebP** as the modern default for photographs. It compresses smaller than JPG at the same quality and every current browser supports it.
+- **<abbr title="Scalable Vector Graphics">SVG</abbr>** for logos, icons, and anything drawn from shapes. It's vector, so it stays sharp at any size and the file stays tiny.
+- **WebP** as the modern default for photographs. It compresses smaller than <abbr title="Joint Photographic Experts Group">JPG</abbr> at the same quality and every current browser supports it.
 - **JPG** for photographs where you need the widest possible compatibility.
-- **PNG** when you need a lossless image or transparency and can't use SVG.
+- **<abbr title="Portable Network Graphics">PNG</abbr>** when you need a lossless image or transparency and can't use SVG.
 
 You'll go deeper on optimizing and serving these images, including responsive `srcset` and lazy loading, in the Optimizing Images and Media chapter later this semester. For now, the rule of thumb is: drawings as SVG, photos as WebP or JPG.
 
 ## Embedding audio and video
 
-Native HTML elements play media without any plugins.
+Native <abbr title="HyperText Markup Language">HTML</abbr> elements play media without any plugins.
 
 ```html
 <video src="video/demo.mp4" controls width="640">
@@ -119,7 +119,7 @@ Native HTML elements play media without any plugins.
 
 The `controls` attribute gives the user play, pause, and volume. The text inside the element shows only if the browser can't play the file at all, which is different from the file simply not existing yet in your project folder.
 
-**Video needs one more thing to be genuinely accessible: captions.** This isn't optional polish, it's a WCAG requirement (1.2.2, Level A, the same baseline level as the `alt` text you've already been writing) for anyone who's deaf or hard of hearing, and it helps far more people than that in practice, anyone watching with the sound off. A `<track>` element supplies them:
+**Video needs one more thing to be genuinely accessible: captions.** This isn't optional polish, it's a <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> requirement (1.2.2, Level A, the same baseline level as the `alt` text you've already been writing) for anyone who's deaf or hard of hearing, and it helps far more people than that in practice, anyone watching with the sound off. A `<track>` element supplies them:
 
 ```html
 <video src="video/demo.mp4" controls width="640">
@@ -138,7 +138,7 @@ To embed content hosted elsewhere, such as a YouTube video or a map, you use an 
         width="560" height="315"></iframe>
 ```
 
-Always give an `<iframe>` a `title`. Like `alt` text on an image, it tells assistive technology what the frame contains. `VIDEO_ID` is the string of characters after `v=` in a normal YouTube URL, not the whole URL itself.
+Always give an `<iframe>` a `title`. Like `alt` text on an image, it tells assistive technology what the frame contains. `VIDEO_ID` is the string of characters after `v=` in a normal YouTube <abbr title="Uniform Resource Locator">URL</abbr>, not the whole URL itself.
 
 ## Keep learning
 

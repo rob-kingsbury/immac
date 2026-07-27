@@ -6,11 +6,11 @@ title: Code Quality and Validation
 
 Code that works and code that's good aren't the same thing. A page can render fine in your browser and still be full of invalid markup, inconsistent naming, and structure no one else could maintain. This chapter is about the habits and tools that make your code correct, readable, and easy to debug, which is what "professional standards" actually means in practice. This is also, concretely, the difference an employer notices in a portfolio or a technical interview: not whether the page works, since almost every candidate's does, but whether the code behind it looks like something a team could safely hand off and build on. You started building the validator habit back in Forms and Data Structures. This chapter is where it becomes a full routine.
 
-## Validating your HTML
+## Validating your <abbr title="HyperText Markup Language">HTML</abbr>
 
 A browser is forgiving. Leave off a closing tag or nest elements wrongly, and it will usually guess what you meant and render something. That guess can differ between browsers, and it hides mistakes that bite you later. A validator catches them.
 
-The [W3C Markup Validation Service](https://validator.w3.org/) checks your HTML against the official rules and reports every error and warning with a line number. Paste in your markup, upload a file, or point it at a live URL, and it tells you exactly what's wrong.
+The [W3C Markup Validation Service](https://validator.w3.org/) checks your HTML against the official rules and reports every error and warning with a line number. Paste in your markup, upload a file, or point it at a live <abbr title="Uniform Resource Locator">URL</abbr>, and it tells you exactly what's wrong.
 
 Here's roughly what an error looks like when a closing tag is missing:
 
@@ -19,7 +19,7 @@ Here's roughly what an error looks like when a closing tag is missing:
 <div class="demo-render">
 <div style="font-family: monospace; font-size: 0.85rem; border-left: 4px solid #cc0000; background: #fff0f0; padding: 0.6rem 0.9rem;">
 <strong>Error:</strong> End tag for "body" seen, but there were open elements.<br>
-<span style="opacity: 0.7;">From line 12, column 1; to line 12, column 7</span>
+<span style="opacity: 0.8;">From line 12, column 1; to line 12, column 7</span>
 </div>
 </div>
 </details>
@@ -71,7 +71,7 @@ It's worth being precise about what each tool actually checks, since they answer
 
 The **validator** checks your source code against the HTML specification: is this valid, well-formed markup, regardless of how any particular browser happens to render it. It catches mistakes a forgiving browser would otherwise hide.
 
-**Developer tools** show you what the browser actually built from your code, the live DOM, right now, in this browser. It catches mistakes in what actually renders, including things a validator can't see, like a `<div>` that ended up empty because a JavaScript error stopped a script partway through.
+**Developer tools** show you what the browser actually built from your code, the live <abbr title="Document Object Model">DOM</abbr>, right now, in this browser. It catches mistakes in what actually renders, including things a validator can't see, like a `<div>` that ended up empty because a JavaScript error stopped a script partway through.
 
 Between the two, checking your source against the rules and checking what the browser actually did with it, you can find and fix almost any structural problem yourself, before you ask anyone else to look.
 

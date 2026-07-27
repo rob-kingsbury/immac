@@ -4,7 +4,7 @@ title: Introduction to the Web
 
 # Introduction to the Web
 
-Welcome to Web Components. By the end of this semester you'll have built a multi-page website from scratch, using the structural language every website on the internet is built from: HTML.
+Welcome to Web Components. By the end of this semester you'll have built a multi-page website from scratch, using the structural language every website on the internet is built from: <abbr title="HyperText Markup Language">HTML</abbr>.
 
 This first week has two halves. The first is the mental model, what the web actually is and where HTML sits in it. The second is hands-on setup, installing and configuring every tool you'll use for the rest of the term. It's a lot of setup in one class, but it's a one-time cost. Once it works, the weekly workflow is three clicks, and from next week on we write code.
 
@@ -20,16 +20,16 @@ Every piece of work you submit is a real, live website, hosted on GitHub Pages u
 
 Every website involves two computers. A **client** is the machine making the request, which in this course means your browser on your laptop. A **server** is a machine somewhere else that stores the website's files and hands them out when asked. That's the entire relationship the web is built on, and everything else is detail on top of it.
 
-The conversation between them follows a protocol called **HTTP**, the HyperText Transfer Protocol. A protocol is just an agreed set of rules for how two machines talk, the same way a phone call has conventions about who speaks first. When you type an address into your browser, this happens:
+The conversation between them follows a protocol called **<abbr title="Hypertext Transfer Protocol">HTTP</abbr>**, the HyperText Transfer Protocol. A protocol is just an agreed set of rules for how two machines talk, the same way a phone call has conventions about who speaks first. When you type an address into your browser, this happens:
 
 1. Your browser sends an HTTP **request** to the server that owns that address, essentially asking "please send me this page."
 2. The server finds the file and sends back an HTTP **response**, containing the HTML.
 3. Your browser reads that HTML and renders it into the page you see.
 4. If the HTML references other files, a stylesheet, images, fonts, the browser makes a separate request for each one and assembles the finished page as they arrive.
 
-You'll see the **HTTPS** version almost everywhere now, which is the same protocol with the traffic encrypted so nobody in between can read or alter it. Browsers flag plain HTTP pages as not secure, and GitHub Pages serves your work over HTTPS automatically, so this is one thing you get for free.
+You'll see the **<abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr>** version almost everywhere now, which is the same protocol with the traffic encrypted so nobody in between can read or alter it. Browsers flag plain HTTP pages as not secure, and GitHub Pages serves your work over HTTPS automatically, so this is one thing you get for free.
 
-Two pieces of vocabulary worth having straight. A **URL** is the full address of a resource, and its parts have names: in `https://example.com/about/team.html`, `https` is the protocol, `example.com` is the domain, and `/about/team.html` is the path to a specific file on that server. **DNS**, the Domain Name System, is the lookup service that turns a human-readable domain like `example.com` into the numeric address your browser actually connects to. You don't have to configure any of this, but knowing the pieces exist makes error messages far less mysterious later.
+Two pieces of vocabulary worth having straight. A **<abbr title="Uniform Resource Locator">URL</abbr>** is the full address of a resource, and its parts have names: in `https://example.com/about/team.html`, `https` is the protocol, `example.com` is the domain, and `/about/team.html` is the path to a specific file on that server. **<abbr title="Domain Name System">DNS</abbr>**, the Domain Name System, is the lookup service that turns a human-readable domain like `example.com` into the numeric address your browser actually connects to. You don't have to configure any of this, but knowing the pieces exist makes error messages far less mysterious later.
 
 One consequence matters for this course specifically. Because the server just hands over files and the browser does the rendering, **the browser is the thing you're really writing for**. Two browsers can interpret the same file slightly differently, which is why testing your work in more than one is a habit worth building early.
 
@@ -37,7 +37,7 @@ One consequence matters for this course specifically. Because the server just ha
 
 HTML stands for **HyperText Markup Language**. Every website you have ever visited, from a personal blog to the largest search engine, is built on it. Understanding what it does, and just as importantly what it doesn't do, is the first real concept in this course.
 
-**HTML describes structure and meaning, not appearance.** When you write HTML you're labelling content: this is a heading, this is a paragraph, this is a list, this is a link. You are not saying what colour it is, how large the text should be, or where it sits on the page. That's a separate job, done by CSS, which you'll learn in your Web Styles course. Keeping those two jobs separate, structure in HTML and appearance in CSS, is one of the most important habits this course will build in you.
+**HTML describes structure and meaning, not appearance.** When you write HTML you're labelling content: this is a heading, this is a paragraph, this is a list, this is a link. You are not saying what colour it is, how large the text should be, or where it sits on the page. That's a separate job, done by <abbr title="Cascading Style Sheets">CSS</abbr>, which you'll learn in your Web Styles course. Keeping those two jobs separate, structure in HTML and appearance in CSS, is one of the most important habits this course will build in you.
 
 **A browser reads HTML and turns it into the page you see.** Without any styling at all an HTML page still displays, just plainly: headings look bigger than paragraphs, lists show bullets, links are blue and underlined. That plain rendering is the browser's built-in idea of what each element means, before any designer touches it.
 

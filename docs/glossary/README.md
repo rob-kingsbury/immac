@@ -12,11 +12,11 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Alt text.** The `alt` attribute on an `<img>`, describing what the image shows. Read aloud by screen readers, shown if the image fails to load, and read by search engines. See [Links, Images, and Media](/modules/html/links-images-media.md).
 
-**ARIA.** Accessible Rich Internet Applications, a set of attributes that add accessibility information HTML alone can't provide. Use only when a native HTML element can't do the job. See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
+**<abbr title="Accessible Rich Internet Applications">ARIA</abbr>.** Accessible Rich Internet Applications, a set of attributes that add accessibility information <abbr title="HyperText Markup Language">HTML</abbr> alone can't provide. Use only when a native HTML element can't do the job. See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
 
 **Attribute.** Extra information carried inside an opening tag, written as `name="value"`, such as `href` on an `<a>`. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 
-**Attribute selector.** A CSS selector that targets elements by an attribute's value, such as `[href^="https"]`. See [The DOM and CSS Targeting](/modules/css/dom-css-targeting.md).
+**Attribute selector.** A <abbr title="Cascading Style Sheets">CSS</abbr> selector that targets elements by an attribute's value, such as `[href^="https"]`. See [The <abbr title="Document Object Model">DOM</abbr> and CSS Targeting](/modules/css/dom-css-targeting.md).
 
 ## B
 
@@ -52,7 +52,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Declaration.** One property-and-value pair inside a CSS rule, such as `color: red;`. See [Introduction to CSS](/modules/css/intro-to-css.md).
 
-**DNS (Domain Name System).** The lookup service that turns a human-readable domain into the numeric address a browser connects to. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**<abbr title="Domain Name System">DNS</abbr> (Domain Name System).** The lookup service that turns a human-readable domain into the numeric address a browser connects to. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 
 **DOM (Document Object Model).** The live, in-memory tree structure a browser builds from your HTML, and what developer tools' Elements panel actually shows. See [The DOM and CSS Targeting](/modules/css/dom-css-targeting.md).
 
@@ -72,7 +72,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## G
 
-**GET.** An HTTP method that appends form data to the URL as a query string. Correct for anything that only retrieves or filters information. See [HTML Forms and Data Structures](/modules/html/html-forms.md).
+**<abbr title="HTTP method for retrieving data">GET</abbr>.** An <abbr title="Hypertext Transfer Protocol">HTTP</abbr> method that appends form data to the <abbr title="Uniform Resource Locator">URL</abbr> as a query string. Correct for anything that only retrieves or filters information. See [HTML Forms and Data Structures](/modules/html/html-forms.md).
 
 **Git.** Version control software that runs on your own computer, tracking every committed change. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 
@@ -84,11 +84,11 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Heading hierarchy.** The logical order of `<h1>` through `<h6>` elements on a page, with no skipped levels, which screen reader users navigate by. See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
 
-**HSL.** A colour notation of hue, saturation, and lightness, useful for building a palette of related colours by hand. See [Typography and Colour](/modules/css/typography-colour.md).
+**<abbr title="Hue, Saturation, Lightness">HSL</abbr>.** A colour notation of hue, saturation, and lightness, useful for building a palette of related colours by hand. See [Typography and Colour](/modules/css/typography-colour.md).
 
 **HTML.** HyperText Markup Language, which describes a page's structure and meaning, not its appearance. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 
-**HTTP / HTTPS.** The protocol a browser and server use to communicate; HTTPS is the encrypted version. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**HTTP / <abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr>.** The protocol a browser and server use to communicate; HTTPS is the encrypted version. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 
 ## I
 
@@ -100,7 +100,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## J
 
-**JSON-LD.** The current recommended format for structured data, a block of machine-readable facts about a page placed in the document head. See [SEO in Practice](/modules/seo/seo-in-practice.md).
+**<abbr title="JSON for Linking Data">JSON-LD</abbr>.** The current recommended format for structured data, a block of machine-readable facts about a page placed in the document head. See [<abbr title="Search Engine Optimization">SEO</abbr> in Practice](/modules/seo/seo-in-practice.md).
 
 ## L
 
@@ -128,7 +128,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Positioning context.** See containing block.
 
-**POST.** An HTTP method that sends form data in the request body, used for anything that changes something or carries sensitive data. See [HTML Forms and Data Structures](/modules/html/html-forms.md).
+**<abbr title="HTTP method for submitting data">POST</abbr>.** An HTTP method that sends form data in the request body, used for anything that changes something or carries sensitive data. See [HTML Forms and Data Structures](/modules/html/html-forms.md).
 
 **Protocol.** An agreed set of rules for how two machines communicate, such as HTTP. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 
@@ -182,7 +182,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## W
 
-**WCAG.** The Web Content Accessibility Guidelines, the international standard for accessible web content, built on the POUR principles (Perceivable, Operable, Understandable, Robust). See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
+**<abbr title="Web Content Accessibility Guidelines">WCAG</abbr>.** The Web Content Accessibility Guidelines, the international standard for accessible web content, built on the <abbr title="Perceivable, Operable, Understandable, Robust">POUR</abbr> principles (Perceivable, Operable, Understandable, Robust). See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
 
 **Web font.** A typeface downloaded along with the page, rather than relying on a font already installed on the visitor's machine. See [Typography and Colour](/modules/css/typography-colour.md).
 

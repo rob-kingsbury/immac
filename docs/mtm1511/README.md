@@ -2,7 +2,7 @@
 title: 'MTM1511: Web Components (HTML)'
 ---
 
-# MTM1511: Web Components (HTML)
+# MTM1511: Web Components (<abbr title="HyperText Markup Language">HTML</abbr>)
 
 Every website begins with a solid foundation. This course explores the structural elements that give web pages meaning and accessibility through the careful use of semantic HTML. By examining how organization and hierarchy influence user experience, you'll learn to build web content that is both functional and inclusive, culminating in a multi-page website built to professional standards.
 

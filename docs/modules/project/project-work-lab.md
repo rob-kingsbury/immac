@@ -41,4 +41,4 @@ Discoverability:
 
 ## Submitting your work
 
-Your site is submitted as a link to its live GitHub Pages URL, following the process covered in the Git and GitHub onboarding. Before you submit, open that live URL yourself in a fresh browser tab and click through the whole site as a visitor would. A project that works on your computer but breaks once published is almost always a file-path or naming problem, exactly the kind of issue the checklist above is built to catch. When the live site passes every check, you're done.
+Your site is submitted as a link to its live GitHub Pages <abbr title="Uniform Resource Locator">URL</abbr>, following the process covered in the Git and GitHub onboarding. Before you submit, open that live URL yourself in a fresh browser tab and click through the whole site as a visitor would. A project that works on your computer but breaks once published is almost always a file-path or naming problem, exactly the kind of issue the checklist above is built to catch. When the live site passes every check, you're done.

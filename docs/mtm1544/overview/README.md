@@ -4,13 +4,13 @@ title: Course Overview
 
 # Course Overview
 
-MTM1544 covers styling web pages with modern, hand-coded CSS: the visual and layout layer applied on top of the HTML structure from MTM1511. By the end of the course, you'll have taken a multi-page site from unstyled markup to a responsive, accessible, fully designed website, and be able to explain the decisions behind it.
+MTM1544 covers styling web pages with modern, hand-coded <abbr title="Cascading Style Sheets">CSS</abbr>: the visual and layout layer applied on top of the <abbr title="HyperText Markup Language">HTML</abbr> structure from MTM1511. By the end of the course, you'll have taken a multi-page site from unstyled markup to a responsive, accessible, fully designed website, and be able to explain the decisions behind it.
 
 ## Course Learning Requirements
 
 When you have earned credit for this course, you will have demonstrated the ability to:
 
-**CLR 1: Hand code CSS functionality for use in web pages and websites.**
+**<abbr title="Course Learning Requirement">CLR</abbr> 1: Hand code CSS functionality for use in web pages and websites.**
 Apply CSS selectors to target elements precisely, explain the cascade, specificity, and inheritance, use CSS properties for typography, colour, spacing, borders, and backgrounds, and maintain a consistent style across pages with external stylesheets.
 
 **CLR 2: Design and lay out web pages for cross-browser and cross-platform application.**

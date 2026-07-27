@@ -79,6 +79,18 @@ export default defineUserConfig({
   clientConfigFile: path.resolve(__dirname, './client.js'),
 
   theme: defaultTheme({
+    // No logo image is configured, so the navbar brand renders as a plain
+    // text link ("IMM Web Courses"). VPNavbarBrand.vue only hides that text
+    // from screen readers (aria-hidden) when it's decided the text is
+    // redundant with a logo's own alt text -- but its check compares
+    // logoAlt against the site title and *defaults logoAlt to the title
+    // itself* when unset, so with no logo at all the comparison still comes
+    // back true and the link's only text gets hidden, leaving the link with
+    // no accessible name (an axe-core "link-name" violation). Setting
+    // logoAlt to something that can never equal the title keeps that text
+    // visible to assistive tech, which is correct here since there's no
+    // logo image to fall back on.
+    logoAlt: '',
     navbar: [
       { text: 'Home', link: '/' },
       { text: 'MTM1511', link: '/mtm1511/' },

@@ -363,7 +363,7 @@ Note that there are **two** flex containers here, nested. The header is a flex c
 ## Keep learning
 
 - [MDN: Flexbox](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox). The full beginner walkthrough of every property here.
-- [CSS-Tricks: A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). The reference chart everybody keeps open while writing Flexbox. Bookmark it.
+- [<abbr title="Cascading Style Sheets">CSS</abbr>-Tricks: A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). The reference chart everybody keeps open while writing Flexbox. Bookmark it.
 - [Flexbox Froggy](https://flexboxfroggy.com/). A short game that drills the alignment properties. Genuinely the fastest way to make them stick.
 - [Video: Learn Flexbox in 15 Minutes, by Web Dev Simplified](https://www.youtube.com/watch?v=fYq5PXgSsbE). A quick, practical run through the same properties.
 

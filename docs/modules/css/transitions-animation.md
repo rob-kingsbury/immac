@@ -10,7 +10,7 @@ This week covers transitions and transforms, which handle nearly all the motion 
 
 ## What a transition does
 
-By default, a CSS change is instant. A `:hover` rule that changes a background colour switches it in a single frame. The `transition` property tells the browser to move between the two values over time instead.
+By default, a <abbr title="Cascading Style Sheets">CSS</abbr> change is instant. A `:hover` rule that changes a background colour switches it in a single frame. The `transition` property tells the browser to move between the two values over time instead.
 
 <CssDemo>
 
@@ -244,7 +244,7 @@ Everything together, on the card pattern you built in Week 5:
   outline-offset: 3px;
 }
 .name { display: block; font-weight: 700; color: #0f172a; margin-bottom: 3px; }
-.meta { display: block; font-size: 0.85rem; color: #64748b; }
+.meta { display: block; font-size: 0.85rem; color: #5b6b85; }
 ```
 
 </CssDemo>
@@ -257,7 +257,7 @@ Note that `:focus-visible` gets the same treatment as `:hover`, plus a visible o
 
 This is the part that isn't optional.
 
-For people with vestibular disorders, motion on screen can cause nausea, dizziness, and headaches. Large movements, parallax, and anything that scales or slides across a lot of the viewport are the worst offenders. Operating systems expose a "reduce motion" setting, and honouring it is a WCAG requirement.
+For people with vestibular disorders, motion on screen can cause nausea, dizziness, and headaches. Large movements, parallax, and anything that scales or slides across a lot of the viewport are the worst offenders. Operating systems expose a "reduce motion" setting, and honouring it is a <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> requirement.
 
 You added this block in Week 10. Now it's protecting something real:
 

@@ -165,25 +165,30 @@ onBeforeUnmount(() => {
         v-model="query"
         type="text"
         role="combobox"
-        aria-expanded="open"
+        aria-label="Search the course content"
+        :aria-expanded="open"
         aria-controls="search-listbox"
         aria-autocomplete="list"
+        :aria-activedescendant="activeIndex > -1 ? 'search-option-' + activeIndex : undefined"
         placeholder="Search the course content"
         @focus="openDropdown"
         @keydown="onKeydown"
       />
     </div>
 
-    <div v-if="open" id="search-listbox" role="listbox" class="search-dropdown">
+    <div v-if="open" id="search-listbox" role="listbox" aria-label="Search suggestions" class="search-dropdown">
       <template v-if="!query.trim()">
-        <div v-if="recent.length" class="search-section">
+        <div v-if="recent.length" class="search-section" role="group" aria-label="Recent searches">
           <div class="search-section-label">Recent searches</div>
           <button
             v-for="(term, i) in recent"
+            :id="'search-option-' + i"
             :key="'recent-' + term"
             type="button"
+            role="option"
+            :aria-selected="i === activeIndex"
             class="search-row search-row-term"
-            :class="{ 'is-active': flatItems[activeIndex]?.kind === 'recent' && flatItems[activeIndex]?.term === term }"
+            :class="{ 'is-active': i === activeIndex }"
             @click="runTermSearch(term)"
             @mouseenter="activeIndex = i"
           >
@@ -192,14 +197,17 @@ onBeforeUnmount(() => {
           </button>
         </div>
 
-        <div class="search-section">
+        <div class="search-section" role="group" aria-label="Popular searches">
           <div class="search-section-label">Popular searches</div>
           <button
             v-for="(term, i) in POPULAR_SEARCHES"
+            :id="'search-option-' + (recent.length + i)"
             :key="'popular-' + term"
             type="button"
+            role="option"
+            :aria-selected="(recent.length + i) === activeIndex"
             class="search-row search-row-term"
-            :class="{ 'is-active': flatItems[activeIndex]?.kind === 'popular' && flatItems[activeIndex]?.term === term }"
+            :class="{ 'is-active': (recent.length + i) === activeIndex }"
             @click="runTermSearch(term)"
             @mouseenter="activeIndex = recent.length + i"
           >
@@ -210,12 +218,15 @@ onBeforeUnmount(() => {
       </template>
 
       <template v-else>
-        <div class="search-section">
+        <div class="search-section" role="group" aria-label="Results">
           <div class="search-section-label">Results</div>
           <button
             v-for="(item, i) in results"
+            :id="'search-option-' + i"
             :key="item.route"
             type="button"
+            role="option"
+            :aria-selected="i === activeIndex"
             class="search-row search-row-result"
             :class="{ 'is-active': i === activeIndex }"
             @click="go(item.route, query)"
@@ -224,7 +235,7 @@ onBeforeUnmount(() => {
             <span class="sr-title">{{ item.title }}</span>
             <span class="sr-excerpt">{{ item.excerpt }}</span>
           </button>
-          <div v-if="!results.length" class="search-empty">No pages match "{{ query }}".</div>
+          <div v-if="!results.length" class="search-empty" role="status">No pages match "{{ query }}".</div>
         </div>
       </template>
     </div>
@@ -268,6 +279,15 @@ onBeforeUnmount(() => {
   font-size: 0.85rem;
   color: var(--vp-c-text, #212721);
   width: 12rem;
+}
+.search-field input:focus-visible {
+  outline: 2px solid var(--vp-c-accent, #006341);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.search-row:focus-visible {
+  outline: 2px solid var(--vp-c-accent, #006341);
+  outline-offset: -2px;
 }
 .search-field input::placeholder {
   color: var(--vp-c-text-subtle, #6b6b6b);

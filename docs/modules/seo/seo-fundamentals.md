@@ -2,9 +2,9 @@
 title: SEO Fundamentals
 ---
 
-# SEO Fundamentals
+# <abbr title="Search Engine Optimization">SEO</abbr> Fundamentals
 
-Search engine optimization sounds like marketing, but a large part of it is just well-built HTML. A search engine is a program that reads your markup and tries to work out what your page is about. The clearer your structure, the better it understands, and the better it can match your page to what people search for.
+Search engine optimization sounds like marketing, but a large part of it is just well-built <abbr title="HyperText Markup Language">HTML</abbr>. A search engine is a program that reads your markup and tries to work out what your page is about. The clearer your structure, the better it understands, and the better it can match your page to what people search for.
 
 This week covers how a search engine actually sees a page, and the metadata in your document head that controls how that page appears in a results list. Next week takes the same page further, into social sharing, structured data, and a hands-on audit.
 
@@ -18,7 +18,7 @@ Getting a page into search results is three separate stages, and confusing them 
 
 **Ranking** is the ordering. When somebody types a query, the engine searches its index and sorts the matches. This is the part nobody controls directly. What you control is making the first two stages go smoothly and giving the ranking stage clear, honest signals.
 
-Two files sit at the edges of this process and are worth knowing by name. A **`robots.txt`** file at the root of a site tells crawlers which paths they should not request. A **sitemap**, usually `sitemap.xml`, lists the URLs you want discovered, which helps on a large site where linking alone might leave pages buried. Neither is something you need to hand-write for this course's projects, but "the crawler couldn't reach it" is a real cause of a missing page, and these are where that gets diagnosed.
+Two files sit at the edges of this process and are worth knowing by name. A **`robots.txt`** file at the root of a site tells crawlers which paths they should not request. A **sitemap**, usually `sitemap.xml`, lists the <abbr title="Uniform Resource Locator">URL</abbr>s you want discovered, which helps on a large site where linking alone might leave pages buried. Neither is something you need to hand-write for this course's projects, but "the crawler couldn't reach it" is a real cause of a missing page, and these are where that gets diagnosed.
 
 The encouraging part is that everything you've already learned helps. Semantic elements, a logical heading order, descriptive link text, and real `alt` attributes are all signals a crawler uses. Good HTML is good SEO. The rest is adding a few specific pieces of information the crawler looks for.
 
@@ -70,7 +70,7 @@ This mockup isn't live HTML from your page, it's a rendering of how a search eng
 
 Search engines read your heading structure to understand hierarchy and topic, the same outline you build for accessibility. Your `<h1>` should clearly state the page's subject, and your `<h2>` headings should describe its real sections. A crawler builds an outline from those levels exactly the way a screen reader does, which is why the accessibility work you did earlier pays off twice.
 
-Use the words your audience would actually search for, but write for people first. Two failure modes are worth naming. **Keyword stuffing**, repeating a target phrase unnaturally, reads badly to humans and is something search engines specifically penalize rather than reward. And **heading levels chosen for size**, picking `<h4>` because you wanted smaller text, breaks the outline that both the crawler and the screen reader depend on. Headings are structure. Size is CSS.
+Use the words your audience would actually search for, but write for people first. Two failure modes are worth naming. **Keyword stuffing**, repeating a target phrase unnaturally, reads badly to humans and is something search engines specifically penalize rather than reward. And **heading levels chosen for size**, picking `<h4>` because you wanted smaller text, breaks the outline that both the crawler and the screen reader depend on. Headings are structure. Size is <abbr title="Cascading Style Sheets">CSS</abbr>.
 
 The goal is a page that genuinely answers a question well. The keywords follow from writing about the real topic.
 

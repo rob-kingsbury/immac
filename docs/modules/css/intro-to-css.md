@@ -2,7 +2,7 @@
 title: Introduction to CSS
 ---
 
-# Introduction to CSS
+# Introduction to <abbr title="Cascading Style Sheets">CSS</abbr>
 
 In MTM1511 earlier this week you set up your development environment and published a page to the web. This class finishes that setup from the styling side and gets a real stylesheet running.
 
@@ -10,7 +10,7 @@ By the end of today you'll have a `css` folder, a `styles.css` file linked to a 
 
 ## What CSS is
 
-CSS stands for Cascading Style Sheets. It is a language whose only job is to describe how HTML should look: the colours, the spacing, the fonts, the sizes, and eventually the whole layout of the page. Like HTML, it is plain text you type into a file, and you will spend this entire course writing it by hand.
+CSS stands for Cascading Style Sheets. It is a language whose only job is to describe how <abbr title="HyperText Markup Language">HTML</abbr> should look: the colours, the spacing, the fonts, the sizes, and eventually the whole layout of the page. Like HTML, it is plain text you type into a file, and you will spend this entire course writing it by hand.
 
 The important idea, and the one worth holding onto from day one, is that HTML and CSS have separate jobs. HTML describes what content *is*, a heading, a paragraph, a list. CSS describes how that content should *appear*. Keeping those two jobs in two separate places is not an accident or a limitation. It is the whole point, and it buys you two things that matter enormously as your sites grow. You can completely restyle a page without touching a word of its content, and you can control the look of many pages from one place, so changing a colour once updates it everywhere.
 
@@ -61,7 +61,7 @@ Before writing any CSS, confirm the tools from Monday actually work. Run through
 2. **Git is recognized.** Open a terminal in VS Code and run `git --version`. You should get a version number, not an error.
 3. **You have a repository cloned locally**, open in VS Code as a folder rather than a single loose file.
 4. **You can push.** Make a trivial change, stage it, commit it, and sync. The change appears on GitHub when you refresh.
-5. **Pages is on** for that repository, and the live URL loads in a browser.
+5. **Pages is on** for that repository, and the live <abbr title="Uniform Resource Locator">URL</abbr> loads in a browser.
 
 If any one of those fails, fix it now, before the rest of this class. A broken step here blocks every assignment in both courses. A stall or an error partway through one of these is often a connection blip or a one-off installer hiccup rather than something you did wrong, so try it once more before assuming the worst. If it's still not working, don't burn the whole class on it alone: flag it with your instructor or in the course's help channel right away.
 
@@ -211,7 +211,7 @@ As your stylesheets grow, you will want to leave notes to yourself, explaining w
 ```css
 /* Site-wide heading colour */
 h1 {
-  color: teal;
+  color: #006969;
 }
 ```
 
@@ -234,7 +234,7 @@ The **element selector**, also called a type selector, targets every element of 
 
 ```css
 p {
-  color: teal;
+  color: #006969;
   line-height: 1.6;
 }
 ```
@@ -255,7 +255,7 @@ When you want the same rule to apply to more than one kind of element, you can l
 
 ```css
 h2, p {
-  color: teal;
+  color: #006969;
 }
 ```
 
@@ -279,7 +279,7 @@ Sooner or later you'll want to style *some* paragraphs differently from the rest
 .intro {
   font-size: 1.3rem;
   font-weight: 600;
-  color: teal;
+  color: #006969;
 }
 ```
 
@@ -330,7 +330,7 @@ That's what the "cascading" in Cascading Style Sheets means. The browser gathers
 
 ```css
 p {
-  color: teal;
+  color: #006969;
 }
 p {
   color: crimson;
@@ -357,7 +357,7 @@ Both rules match, both are equally specific, so the last one read is the one tha
   color: goldenrod;
 }
 p {
-  color: teal;
+  color: #006969;
 }
 ```
 

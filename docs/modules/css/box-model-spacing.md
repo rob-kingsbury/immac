@@ -4,7 +4,7 @@ title: The Box Model and Spacing
 
 # The Box Model and Spacing
 
-Last week you connected a stylesheet and wrote your first rules. This week is the single most important structural idea in CSS, and the one that explains most of the layout confusion beginners run into: **every element on a page is a rectangular box**, and every box is built from the same four layers.
+Last week you connected a stylesheet and wrote your first rules. This week is the single most important structural idea in <abbr title="Cascading Style Sheets">CSS</abbr>, and the one that explains most of the layout confusion beginners run into: **every element on a page is a rectangular box**, and every box is built from the same four layers.
 
 Once you can see those layers, spacing stops being guesswork. Almost every "why is there a gap there" question in your first months of CSS is answered by knowing which of the four layers put it there.
 

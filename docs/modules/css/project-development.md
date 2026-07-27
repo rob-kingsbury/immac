@@ -4,7 +4,7 @@ title: Project Development
 
 # Project Development
 
-The teaching chapters are done. These final two weeks are where the site you've been building all term becomes a finished piece. This week is guided development: refining your styling, getting feedback, and joining your CSS to the HTML project from MTM1511. No new CSS is introduced. The work is applying what you already know to your own project.
+The teaching chapters are done. These final two weeks are where the site you've been building all term becomes a finished piece. This week is guided development: refining your styling, getting feedback, and joining your <abbr title="Cascading Style Sheets">CSS</abbr> to the <abbr title="HyperText Markup Language">HTML</abbr> project from MTM1511. No new CSS is introduced. The work is applying what you already know to your own project.
 
 ## The cross-course connection
 

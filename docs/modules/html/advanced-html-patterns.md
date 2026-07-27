@@ -2,7 +2,7 @@
 title: Advanced HTML Patterns
 ---
 
-# Advanced HTML Patterns
+# Advanced <abbr title="HyperText Markup Language">HTML</abbr> Patterns
 
 By now you can build a complete, valid, accessible page. This chapter rounds out your HTML with the patterns that come up on real sites: embedding content from other services safely, keeping that content responsive, polishing the document head, and a look at where HTML is heading so your knowledge doesn't go stale.
 
@@ -31,7 +31,7 @@ An `<iframe>` has a fixed `width` and `height`, which breaks on small screens: a
 </div>
 ```
 
-The container gets a fixed aspect ratio in CSS (16 by 9 for most video) and the `<iframe>` is set to fill it completely. The result scales smoothly from desktop to phone without distortion. You'll write the CSS side in your styling course; the HTML pattern is the wrapper element around the embed, and it's worth building the habit of wrapping every embed now, before you have a page full of unwrapped ones to fix later.
+The container gets a fixed aspect ratio in <abbr title="Cascading Style Sheets">CSS</abbr> (16 by 9 for most video) and the `<iframe>` is set to fill it completely. The result scales smoothly from desktop to phone without distortion. You'll write the CSS side in your styling course; the HTML pattern is the wrapper element around the embed, and it's worth building the habit of wrapping every embed now, before you have a page full of unwrapped ones to fix later.
 
 ## Document head best practices
 
@@ -53,7 +53,7 @@ Two of these are easy to forget and important. The `charset` declaration ensures
 
 ## The details and summary elements
 
-Some interactive patterns that used to require JavaScript are now built directly into HTML. `<details>` and `<summary>` create an expand-and-collapse disclosure widget, an FAQ answer that opens on click, with no scripting at all.
+Some interactive patterns that used to require JavaScript are now built directly into HTML. `<details>` and `<summary>` create an expand-and-collapse disclosure widget, an <abbr title="Frequently Asked Questions">FAQ</abbr> answer that opens on click, with no scripting at all.
 
 ```html
 <details>
@@ -141,7 +141,7 @@ The platform keeps growing. Checking what's newly available before reaching for 
 ## Keep learning
 
 - [W3Schools: The details Tag](https://www.w3schools.com/tags/tag_details.asp) and [The dialog Tag](https://www.w3schools.com/tags/tag_dialog.asp). Full attribute references for both elements.
-- [MDN: Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API). The full guide, including the `popovertarget` variants for explicit show and hide behaviour.
+- [MDN: Popover <abbr title="Application Programming Interface">API</abbr>](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API). The full guide, including the `popovertarget` variants for explicit show and hide behaviour.
 - [W3Schools: The meta Tag](https://www.w3schools.com/tags/tag_meta.asp) and [Responsive Web Design: The Viewport](https://www.w3schools.com/css/css_rwd_viewport.asp). References for the document head pieces in this chapter.
 - [Video: 2 HTML Elements I Never Used!? (Details & Summary), by DesignCourse](https://www.youtube.com/watch?v=PQtpZZQU0u0). A practical look at where these elements fit in a real project.
 
