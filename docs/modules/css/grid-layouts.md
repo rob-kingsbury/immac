@@ -2,7 +2,7 @@
 title: CSS Grid Layouts
 ---
 
-# CSS Grid Layouts
+# <abbr title="Cascading Style Sheets">CSS</abbr> Grid Layouts
 
 Last week's Flexbox arranges things in a line. **Grid** arranges things in rows *and* columns at the same time, which makes it the tool for page-level layout: a header across the top, a sidebar beside a main column, a footer along the bottom, a gallery in a tidy matrix.
 
@@ -393,7 +393,7 @@ Put a grid inside a grid item, and you get an ordinary **nested grid**: the inne
   padding: 10px 14px;
 }
 .card h4 { margin: 0; }
-.meta { margin: 0; color: #64748b; }
+.meta { margin: 0; color: #5b6b85; }
 .badge { margin: 0; font-weight: 600; }
 ```
 
@@ -438,7 +438,7 @@ By default, every element has `position: static`. It sits in normal document flo
   position: absolute;
   top: 8px;
   right: 8px;
-  background-color: #ef4444;
+  background-color: #dc2626;
   color: white;
   padding: 4px 10px;
   border-radius: 999px;
@@ -456,7 +456,7 @@ Two more values worth knowing by name. `position: fixed` behaves like `absolute`
 
 **`z-index` decides which element sits on top when two positioned elements overlap.** It only works on an element that already has a `position` other than `static`, and it takes a plain number: higher stacks above lower. You'll need it any time something you positioned ends up hidden behind something else, a header, a hero image, a modal background.
 
-You already met one real use of `position: absolute` without the mechanism behind it, back in MTM1511's Advanced HTML Patterns, and you'll meet it again next in this course's own Accessible Styling week for the `.visually-hidden` pattern and the skip link. Both make a lot more sense now that you know what `position: absolute` is actually doing and why it needs a positioned ancestor to behave.
+You already met one real use of `position: absolute` without the mechanism behind it, back in MTM1511's Advanced <abbr title="HyperText Markup Language">HTML</abbr> Patterns, and you'll meet it again next in this course's own Accessible Styling week for the `.visually-hidden` pattern and the skip link. Both make a lot more sense now that you know what `position: absolute` is actually doing and why it needs a positioned ancestor to behave.
 
 ## Inspecting a grid
 

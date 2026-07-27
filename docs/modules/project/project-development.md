@@ -4,7 +4,7 @@ title: Project Development
 
 # Project Development
 
-The teaching chapters are done. These final two weeks are where your multi-page website comes together as a finished piece. This week is guided development: refining what you've built, getting feedback, and bringing in the styling side from your CSS course. No new HTML concepts are introduced. The work is applying everything you already know to your own project.
+The teaching chapters are done. These final two weeks are where your multi-page website comes together as a finished piece. This week is guided development: refining what you've built, getting feedback, and bringing in the styling side from your <abbr title="Cascading Style Sheets">CSS</abbr> course. No new <abbr title="HyperText Markup Language">HTML</abbr> concepts are introduced. The work is applying everything you already know to your own project.
 
 ## The cross-course connection
 

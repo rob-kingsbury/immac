@@ -2,7 +2,7 @@
 title: Core HTML Elements
 ---
 
-# Core HTML Elements
+# Core <abbr title="HyperText Markup Language">HTML</abbr> Elements
 
 Your tools are set up, your repository is cloned, and your first push already worked. This week is where the actual subject of the course begins: your first real HTML document, and the everyday elements you'll reach for on almost every page after it.
 
@@ -53,7 +53,7 @@ Elements can also **nest** inside each other, which is how you build more comple
 <div class="demo-render">
 <ul>
   <li>HTML</li>
-  <li>CSS</li>
+  <li><abbr title="Cascading Style Sheets">CSS</abbr></li>
   <li>JavaScript</li>
 </ul>
 </div>

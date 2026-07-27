@@ -2,13 +2,13 @@
 title: Semantic HTML
 ---
 
-# Semantic HTML
+# Semantic <abbr title="HyperText Markup Language">HTML</abbr>
 
 You could build almost any page using nothing but `<div>` elements. It would look identical to a well-built page, and it would be far worse: harder to maintain, weaker in search results, and close to unusable for anyone relying on a screen reader. Semantic HTML is the alternative. It means choosing elements that describe what a piece of content *is*, not just that it exists. This chapter covers every semantic element you'll use regularly, how to decide between the tricky ones, and why the choice matters.
 
 ## Structure versus presentation
 
-HTML's job is structure and meaning. CSS's job is appearance. Semantic HTML is what keeps those two jobs separate, and that separation is the single most important idea in this course.
+HTML's job is structure and meaning. <abbr title="Cascading Style Sheets">CSS</abbr>'s job is appearance. Semantic HTML is what keeps those two jobs separate, and that separation is the single most important idea in this course.
 
 When you mark a heading as an `<h2>`, you are saying "this is a second-level heading," not "make this text big and bold." How big and how bold is a decision for CSS, and it can change without touching the HTML. Keeping meaning in the HTML and appearance in the CSS is what lets a site be restyled, made accessible, and understood by machines, all from the same clean structure.
 
@@ -81,6 +81,8 @@ Four elements describe the major regions of nearly every page. Assistive technol
 
 Put together, these four give a page its skeleton:
 
+<CssDemo>
+
 ```html
 <body>
   <header>
@@ -104,27 +106,7 @@ Put together, these four give a page its skeleton:
 </body>
 ```
 
-<details class="demo" open>
-<summary>Result</summary>
-<div class="demo-render">
-<header>
-  <h1>Corner Bakery</h1>
-  <nav aria-label="Main">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-<p><em>(main content goes here)</em></p>
-
-<footer>
-  <p>&copy; 2026 Corner Bakery</p>
-</footer>
-</div>
-</details>
+</CssDemo>
 
 Visually this is nothing special, a heading, a menu, and a copyright line. That's the point: semantic elements don't change how a page looks on their own. They change what the code *means* to everything other than your eyes, a screen reader, a search engine, the next developer.
 
@@ -147,6 +129,8 @@ An `<article>` is a self-contained piece of content that would still make sense 
 
 A `<section>` is a thematic grouping of related content, almost always with its own heading. The "Ingredients" part of a recipe, the "Reviews" part of a product page, the "Our Team" part of an about page. A `<section>` is not just any box; if the content isn't a distinct, headed part of the page, it probably wants a `<div>` instead.
 
+<CssDemo>
+
 ```html
 <section>
   <h2>Reviews</h2>
@@ -157,18 +141,7 @@ A `<section>` is a thematic grouping of related content, almost always with its 
 </section>
 ```
 
-<details class="demo" open>
-<summary>Result</summary>
-<div class="demo-render">
-<section>
-  <h2>Reviews</h2>
-  <article>
-    <h3>Best sourdough in town</h3>
-    <p>Five stars...</p>
-  </article>
-</section>
-</div>
-</details>
+</CssDemo>
 
 Notice that sections and articles nest naturally. A "Reviews" `<section>` can contain many review `<article>` elements, and an `<article>` can contain its own `<section>` elements. Choose based on meaning, not nesting depth.
 
@@ -218,7 +191,7 @@ A few patterns come up again and again in beginner code. Watching for them will 
 - **`<nav>` around every link.** Reserve it for major navigation blocks. A single "read more" link is not navigation.
 - **Using headings for size.** Picking `<h3>` because it "looks right" rather than because it's the correct level. Choose the level for the outline; size it with CSS.
 
-## Why it matters: accessibility and SEO
+## Why it matters: accessibility and <abbr title="Search Engine Optimization">SEO</abbr>
 
 Semantic markup pays off in two concrete, measurable ways, and both come free once you choose the right elements.
 
@@ -288,9 +261,9 @@ Here is a realistic article page marked up entirely with semantic elements. Read
 <details class="demo" open>
 <summary>Result</summary>
 <div class="demo-render">
-<header>
+<header role="none">
   <h1>Corner Bakery Blog</h1>
-  <nav aria-label="Main">
+  <nav role="none">
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/blog/">Blog</a></li>
@@ -322,7 +295,7 @@ Here is a realistic article page marked up entirely with semantic elements. Read
   </footer>
 </article>
 
-<aside>
+<aside role="none">
   <h2>Related posts</h2>
   <ul>
     <li><a href="#">Choosing a starter</a></li>

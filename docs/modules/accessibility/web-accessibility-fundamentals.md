@@ -4,13 +4,13 @@ title: Web Accessibility Fundamentals
 
 # Web Accessibility Fundamentals
 
-Accessibility means building pages that everyone can use, including people who navigate with a keyboard, a screen reader, voice control, or a magnifier. It isn't a separate feature you bolt on at the end. Most of it comes free when you write good HTML, which is why it lands here, right after semantic markup, and not in some optional final chapter.
+Accessibility means building pages that everyone can use, including people who navigate with a keyboard, a screen reader, voice control, or a magnifier. It isn't a separate feature you bolt on at the end. Most of it comes free when you write good <abbr title="HyperText Markup Language">HTML</abbr>, which is why it lands here, right after semantic markup, and not in some optional final chapter.
 
-## What WCAG is
+## What <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> is
 
 The Web Content Accessibility Guidelines (WCAG) are the international standard for accessible web content. The current version is WCAG 2.2. You don't need to memorize it, but you should know how it's organized, because it's the reference everyone points to.
 
-WCAG is built on four principles, often shortened to POUR:
+WCAG is built on four principles, often shortened to <abbr title="Perceivable, Operable, Understandable, Robust">POUR</abbr>:
 
 - **Perceivable.** People can sense the content, so images need text alternatives and video needs captions.
 - **Operable.** People can use the interface, so everything works by keyboard, not just a mouse.
@@ -29,7 +29,7 @@ This is the single biggest accessibility win available, and you get it just by u
 
 Headings are the other structure screen reader users navigate by. Many pull up a list of all headings to skim a page, exactly like a sighted reader scanning subheadings. For that to work, the heading order has to be logical: one `<h1>`, `<h2>` for major sections, `<h3>` for subsections, and no skipped levels.
 
-A page where headings jump from `<h2>` to `<h4>`, or where text is made big with CSS instead of marked as a real heading, is disorienting to navigate. The fix costs nothing: use the right heading level for the structure, and style the size separately.
+A page where headings jump from `<h2>` to `<h4>`, or where text is made big with <abbr title="Cascading Style Sheets">CSS</abbr> instead of marked as a real heading, is disorienting to navigate. The fix costs nothing: use the right heading level for the structure, and style the size separately.
 
 ## Colour contrast
 
@@ -93,7 +93,7 @@ Keyboard and screen reader users move through a page in order. Without help, tha
 
 The skip link above is shown in place so you can see and click it. In a finished site it's usually hidden with CSS until a keyboard user tabs to it, which is a technique covered in your styling course. The HTML pattern belongs here: a link to the `id` of your `<main>`, placed as the very first thing in `<body>`.
 
-## ARIA roles and labels
+## <abbr title="Accessible Rich Internet Applications">ARIA</abbr> roles and labels
 
 ARIA (Accessible Rich Internet Applications) is a set of attributes that add accessibility information when HTML alone can't. The first rule of ARIA is the one worth memorizing: don't use it if a native HTML element already does the job. A real `<button>` is better than a `<div>` with `role="button"`, every time, since the real element already comes with keyboard support and the correct behaviour built in.
 

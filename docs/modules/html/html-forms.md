@@ -2,7 +2,7 @@
 title: HTML Forms and Data Structures
 ---
 
-# HTML Forms and Data Structures
+# <abbr title="HyperText Markup Language">HTML</abbr> Forms and Data Structures
 
 Forms are how the web listens. A search box, a login, a contact page, a checkout: all forms. This week covers how to build one that's well structured and accessible, plus how to present tabular data correctly. You won't process the submitted data here, since that needs a back end you'll meet in a later course. The focus is the markup, and getting it right.
 
@@ -16,15 +16,15 @@ A `<form>` wraps a group of controls into one unit that submits together. Two at
 </form>
 ```
 
-`action` is the URL that receives the submitted data. `method` is the HTTP method used to send it, and the choice between the two available methods, `get` and `post`, is not a style preference. It changes how and where the data travels, and picking the wrong one is a real, gradeable mistake.
+`action` is the <abbr title="Uniform Resource Locator">URL</abbr> that receives the submitted data. `method` is the <abbr title="Hypertext Transfer Protocol">HTTP</abbr> method used to send it, and the choice between the two available methods, `get` and `post`, is not a style preference. It changes how and where the data travels, and picking the wrong one is a real, gradeable mistake.
 
-### GET versus POST
+### <abbr title="HTTP method for retrieving data">GET</abbr> versus <abbr title="HTTP method for submitting data">POST</abbr>
 
 **`method="get"`** appends the form's data to the `action` URL as a query string, visible right in the address bar: `search.html?query=sourdough&sort=recent`. Because the data lives in the URL, a GET request can be bookmarked, shared as a link, and revisited, and the browser's back button works normally with it. That makes GET the correct method for anything that only retrieves or filters information and changes nothing on the server: a search box, a filter, a "view this page" link built from a form.
 
 **`method="post"`** sends the form's data in the body of the request, invisible in the URL and not stored in browser history. Use POST whenever a submission changes something (creating an account, posting a comment, placing an order) or whenever the data is sensitive (a password, personal information). Because the data isn't in the URL, POST doesn't expose it in bookmarks, browser history, or server logs the way GET would.
 
-One caveat worth being precise about: **POST hides data from those specific places, but it doesn't encrypt anything.** A POST body sent over plain HTTP is just as readable to anyone intercepting the connection as a GET query string would be. The actual protection against that is HTTPS, back from Week 1, encrypting the whole request in transit. Use POST for the reasons above, and rely on HTTPS, which GitHub Pages already gives you automatically, for the reason that matters most: keeping the data unreadable in transit at all.
+One caveat worth being precise about: **POST hides data from those specific places, but it doesn't encrypt anything.** A POST body sent over plain HTTP is just as readable to anyone intercepting the connection as a GET query string would be. The actual protection against that is <abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr>, back from Week 1, encrypting the whole request in transit. Use POST for the reasons above, and rely on HTTPS, which GitHub Pages already gives you automatically, for the reason that matters most: keeping the data unreadable in transit at all.
 
 A rule you can apply without hesitation: if submitting the form twice would create two of something, or if the form carries a password, use `post`. If it only asks a question and gets an answer back, `get` is correct and often better, since the result becomes a shareable, bookmarkable URL.
 
@@ -203,7 +203,7 @@ The browser shows its own error messages and blocks submission until the rules a
 
 ## Tables for data
 
-Tables are for tabular data (rows and columns of related values), never for page layout. Using a table to position things visually is an old, broken habit from before CSS could lay out a page, and it wrecks accessibility, because a screen reader tries to read a layout table as if it were real data and produces nonsense.
+Tables are for tabular data (rows and columns of related values), never for page layout. Using a table to position things visually is an old, broken habit from before <abbr title="Cascading Style Sheets">CSS</abbr> could lay out a page, and it wrecks accessibility, because a screen reader tries to read a layout table as if it were real data and produces nonsense.
 
 A table is built from several elements that nest inside one another. Rather than look at a finished table and try to reverse-engineer it, build one from scratch, one element at a time, the same way you'll build your own.
 

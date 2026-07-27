@@ -2,7 +2,7 @@
 title: CSS Custom Properties and Variables
 ---
 
-# CSS Custom Properties and Variables
+# <abbr title="Cascading Style Sheets">CSS</abbr> Custom Properties and Variables
 
 By now your stylesheet has a few hundred lines in it, and the same brand blue is probably typed in eight places. Change the brand and you're hunting through the file hoping you caught every one.
 
@@ -122,7 +122,7 @@ That block is worth building carefully, because it becomes the vocabulary for th
 
 **Use a scale rather than arbitrary numbers.** Four or five spacing values used consistently produce a page that looks deliberate. Twenty ad-hoc pixel values produce one that looks approximate, and the difference is visible even to people who can't name it.
 
-**Pair custom properties with HSL.** Week 3 showed how changing one lightness value generates a matched palette. Doing that inside variables means your whole colour system is a few numbers you can adjust together.
+**Pair custom properties with <abbr title="Hue, Saturation, Lightness">HSL</abbr>.** Week 3 showed how changing one lightness value generates a matched palette. Doing that inside variables means your whole colour system is a few numbers you can adjust together.
 
 ## Scoping and the cascade
 

@@ -6,7 +6,7 @@ title: Visual Design Principles
 
 You can now build almost any layout you can describe. This week is about deciding what to describe.
 
-The gap between a page that works and a page that looks designed is rarely more CSS. It's usually four principles applied consistently: **hierarchy, contrast, alignment, and proximity**. None of them is a matter of taste, all of them are teachable, and all of them are visible in a page's CSS once you know what to look for.
+The gap between a page that works and a page that looks designed is rarely more <abbr title="Cascading Style Sheets">CSS</abbr>. It's usually four principles applied consistently: **hierarchy, contrast, alignment, and proximity**. None of them is a matter of taste, all of them are teachable, and all of them are visible in a page's CSS once you know what to look for.
 
 This week also runs as a peer critique workshop, so the second half of the chapter is about giving and receiving feedback usefully.
 
@@ -55,7 +55,7 @@ The eye ranks by size, weight, colour, and position. Something large, bold, dark
 }
 .ranked .b {
   font-size: 0.8rem;
-  color: #64748b;
+  color: #5b6b85;
   margin: 0;
 }
 ```
@@ -179,7 +179,7 @@ The most common failure is uniform spacing, where every gap is the same and noth
 }
 .even p { margin: 0 0 14px 0; }
 .h { font-weight: 700; color: #0f172a; }
-.d { color: #64748b; font-size: 0.9rem; }
+.d { color: #5b6b85; font-size: 0.9rem; }
 .grouped p { margin: 0; }
 .grouped .d { margin-bottom: 0; }
 .grouped .sep { margin-top: 20px; }
@@ -245,9 +245,9 @@ The second half of this week is a critique session. Design work improves fastest
 
 ## Keep learning
 
-- [Refactoring UI](https://www.refactoringui.com/). Practical visual design advice aimed specifically at developers. The free articles cover hierarchy and spacing well.
+- [Refactoring <abbr title="User Interface">UI</abbr>](https://www.refactoringui.com/). Practical visual design advice aimed specifically at developers. The free articles cover hierarchy and spacing well.
 - [MDN: Beginner's guide to design](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Design_and_accessibility). Design fundamentals in a web context.
-- [Laws of UX](https://lawsofux.com/). Short, well-illustrated explanations of the perceptual principles behind proximity and hierarchy.
+- [Laws of <abbr title="User Experience">UX</abbr>](https://lawsofux.com/). Short, well-illustrated explanations of the perceptual principles behind proximity and hierarchy.
 - [Video: Design Tips for Developers, by Kevin Powell](https://www.youtube.com/watch?v=YIkFvIRcvSc). Concrete, CSS-focused suggestions in the same spirit as this chapter.
 
 ## Try it yourself (about 45 minutes, outside the critique session itself)

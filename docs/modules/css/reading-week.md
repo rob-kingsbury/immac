@@ -4,7 +4,7 @@ title: Reading Week
 
 # Reading Week
 
-No scheduled classes this week. Classes resume the following week with The DOM and CSS Targeting.
+No scheduled classes this week. Classes resume the following week with The <abbr title="Document Object Model">DOM</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> Targeting.
 
 The first seven weeks covered a lot of ground, and the second half builds directly on it. If any of the following is still shaky, this is the week to shore it up, because everything from here assumes it.
 

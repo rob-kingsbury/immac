@@ -2,7 +2,7 @@
 title: SEO in Practice
 ---
 
-# SEO in Practice
+# <abbr title="Search Engine Optimization">SEO</abbr> in Practice
 
 Last week covered how a search engine finds and understands a page, and the metadata that controls how it appears in a results list. This week is the applied half: how your page looks when somebody shares it, how to hand a search engine machine-readable facts about your content, how links between your own pages help both readers and crawlers, and how to audit a real page and fix what the tools flag.
 
@@ -36,7 +36,7 @@ These live in the document head alongside your title and description. Note that 
 
 This mockup uses a placeholder graphic in place of a real `og:image`, since a textbook can't ship every project's preview photo, but the layout is the shape a social platform builds from your tags.
 
-Three practical notes. The `og:image` matters most, since the picture is what makes a shared link get noticed at all; aim for around 1200 by 630 pixels, the size most platforms display well. The `og:url` should be an **absolute** URL including `https://`, not a relative path, because the platform reading it isn't on your site. And platforms cache these aggressively, so if you fix a bad preview image you'll usually need the platform's own debugging tool to force a refresh rather than just re-sharing the link.
+Three practical notes. The `og:image` matters most, since the picture is what makes a shared link get noticed at all; aim for around 1200 by 630 pixels, the size most platforms display well. The `og:url` should be an **absolute** <abbr title="Uniform Resource Locator">URL</abbr> including `https://`, not a relative path, because the platform reading it isn't on your site. And platforms cache these aggressively, so if you fix a bad preview image you'll usually need the platform's own debugging tool to force a refresh rather than just re-sharing the link.
 
 Some platforms also read a parallel set of `twitter:` tags, but most fall back to Open Graph when those are absent, so a solid set of `og:` tags covers the majority of cases.
 
@@ -44,7 +44,7 @@ Some platforms also read a parallel set of `twitter:` tags, but most fall back t
 
 Structured data is machine-readable information about your content, written in a vocabulary search engines already understand. Where your headings and text describe a page in prose, structured data states facts plainly: this is an event, it starts at this time, it's at this address. Supply it and a search engine can build a richer result, showing star ratings, event dates, recipe times, and the like.
 
-The current recommended format is **JSON-LD**, a block of data placed in the page head. It's written in JSON, so the punctuation is strict.
+The current recommended format is **<abbr title="JSON for Linking Data">JSON-LD</abbr>**, a block of data placed in the page head. It's written in <abbr title="JavaScript Object Notation">JSON</abbr>, so the punctuation is strict.
 
 ```html
 <script type="application/ld+json">
@@ -66,7 +66,7 @@ Read it as a set of labelled facts. `@context` says which vocabulary is in use, 
 
 The vocabulary comes from [schema.org](https://schema.org/), which defines types for events, recipes, products, articles, organizations, local businesses, and much more. Nobody memorizes it. You look up the type that fits your page and copy the property names it lists.
 
-Two rules keep structured data useful. It must **describe what's actually on the page**, since marking up an event that isn't there is a policy violation, not a clever trick. And it must be **valid JSON**, which is exactly why you should make running every new block through a validator a habit before considering it done, the same instinct as the W3C validator for HTML. That habit matters more here than almost anywhere else in this course: a single missing comma or brace invalidates the entire block, and unlike a browser rendering slightly-wrong HTML, there's no visible sign anything went wrong. The search engine just quietly ignores the whole thing rather than using the part that parsed. Run it through the validator and you catch that in seconds; skip it and you might not find out for weeks that a block did nothing at all.
+Two rules keep structured data useful. It must **describe what's actually on the page**, since marking up an event that isn't there is a policy violation, not a clever trick. And it must be **valid JSON**, which is exactly why you should make running every new block through a validator a habit before considering it done, the same instinct as the W3C validator for <abbr title="HyperText Markup Language">HTML</abbr>. That habit matters more here than almost anywhere else in this course: a single missing comma or brace invalidates the entire block, and unlike a browser rendering slightly-wrong HTML, there's no visible sign anything went wrong. The search engine just quietly ignores the whole thing rather than using the part that parsed. Run it through the validator and you catch that in seconds; skip it and you might not find out for weeks that a block did nothing at all.
 
 ## Internal linking
 

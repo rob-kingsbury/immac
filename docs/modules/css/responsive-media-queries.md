@@ -12,7 +12,7 @@ This is the longest chapter in the course, because it covers everything that rea
 
 ## The viewport meta tag
 
-Before any CSS matters, one line of HTML has to be right. Without it, everything else in this chapter silently fails.
+Before any <abbr title="Cascading Style Sheets">CSS</abbr> matters, one line of <abbr title="HyperText Markup Language">HTML</abbr> has to be right. Without it, everything else in this chapter silently fails.
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@ That default is still there. `width=device-width` turns it off, telling the brow
 
 **Without this tag, your media queries will appear not to work.** They're being evaluated against that imaginary 980 pixel width, so a phone matches your desktop rules. This is the single most common cause of "my responsive CSS works when I resize my laptop but not on my actual phone," and it's a one-line fix.
 
-Two things not to do with it. Don't set `maximum-scale=1` or `user-scalable=no`, both of which block pinch zoom. People with low vision rely on zoom, and disabling it is a WCAG failure.
+Two things not to do with it. Don't set `maximum-scale=1` or `user-scalable=no`, both of which block pinch zoom. People with low vision rely on zoom, and disabling it is a <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> failure.
 
 ## Media query syntax
 
@@ -118,7 +118,7 @@ Back in Week 2 you met `%`, which measures against a parent. **Viewport units** 
 
 That's exactly the tool for a full-screen hero section, and for years `100vh` was the standard way to build one. It has a real bug on phones, though, and it's common enough to be worth understanding precisely rather than working around by accident.
 
-**A phone's browser chrome, the address bar and toolbar, can show or hide as you scroll.** When it's showing, it takes up real screen space. When it hides, the page gets taller. `100vh` was defined against the *larger* of those two states, the one with the chrome hidden. So the moment the chrome is actually showing, which is most of the time, a `100vh` box is taller than what's genuinely visible, and its bottom portion sits behind the browser's own UI or pushes the page into an unwanted scroll.
+**A phone's browser chrome, the address bar and toolbar, can show or hide as you scroll.** When it's showing, it takes up real screen space. When it hides, the page gets taller. `100vh` was defined against the *larger* of those two states, the one with the chrome hidden. So the moment the chrome is actually showing, which is most of the time, a `100vh` box is taller than what's genuinely visible, and its bottom portion sits behind the browser's own <abbr title="User Interface">UI</abbr> or pushes the page into an unwanted scroll.
 
 <div class="diagram">
 <svg viewBox="0 0 520 340" role="img" aria-label="Two identical phones, both with the browser address bar visible. On the left, a box sized with 100vh is calculated for the larger viewport the chrome would allow, so it extends past the visible screen and is cut off at the bottom. On the right, the same box sized with 100dvh matches the actual current visible area exactly, with no overflow.">
@@ -408,7 +408,7 @@ You now have two tools that look similar and answer different questions. The rul
 
 **Use media queries for your page's overall structure. Use container queries for the components inside it.**
 
-| | Media queries | Container queries |
+| Property | Media queries | Container queries |
 |---|---|---|
 | Reacts to | the viewport | the nearest container |
 | Best for | page-level layout, navigation, global grid changes | reusable components: cards, sidebars, anything used in more than one spot |
@@ -445,7 +445,7 @@ Four ways to test, in increasing order of trustworthiness.
 
 **Use device emulation in developer tools.** The toggle looks like a phone and tablet icon. It simulates specific device widths and lets you rotate between portrait and landscape. Better than dragging, because you can test exact widths repeatedly.
 
-**Look at it on a real phone.** This is the one that catches what the others miss: actual touch target sizes, actual text legibility, actual rendering. Your project is published to GitHub Pages at a public URL, so you can open it on your own phone in seconds. Do this before you submit anything.
+**Look at it on a real phone.** This is the one that catches what the others miss: actual touch target sizes, actual text legibility, actual rendering. Your project is published to GitHub Pages at a public <abbr title="Uniform Resource Locator">URL</abbr>, so you can open it on your own phone in seconds. Do this before you submit anything.
 
 **Look at it in more than one browser.** Everything above tests screen size. It doesn't test whether Chrome, Firefox, and Safari agree on how to render your CSS, and they don't always. A property can be supported in one engine and not another, or supported with a slightly different default. Two habits cover most of what you need: check a feature's support at [caniuse.com](https://caniuse.com/) or [webstatus.dev](https://webstatus.dev/) before depending on it (the same standard this course itself used when deciding what to teach as safe to use), and open your finished page in at least two real browsers, not just two device-emulation profiles of the same one, before calling a layout done.
 
