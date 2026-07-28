@@ -138,7 +138,26 @@ Optional, not needed for the Week 7 build, but worth knowing the first time a fo
 <input type="email" id="contact-email" name="email" autocomplete="email">
 ```
 
-One attribute, and it's an accessibility win as much as a convenience one: some visitors rely on autofill because typing is slow or difficult for them. Reserve `autocomplete="off"` for a field that should never be autofilled, such as a one-time code.
+One attribute, and it's an accessibility win as much as a convenience one: some visitors rely on autofill because typing is slow or difficult for them. It's also how you satisfy WCAG Success Criterion 1.3.5, Identify Input Purpose, the AA-level requirement named back in Web Accessibility Fundamentals (Week 6): `autocomplete`'s token vocabulary is the HTML-level technique for meeting it. Reserve `autocomplete="off"` for a field that should never be autofilled, such as a one-time code.
+
+### Going deeper: inputmode, a hint for the keyboard only
+
+Optional. `type` and `inputmode` sound like they do the same job, but they don't. `type` changes what the browser validates and, for several values, which keyboard shows. `inputmode` changes only the on-screen keyboard. It adds no validation of its own.
+
+That difference matters most on a field that's digit-heavy but not actually a number, a credit card field or a phone number typed with spaces or dashes:
+
+```html
+<!-- Wrong tool: type="number" adds spinner arrows nobody wants here, and
+     rejects the spaces most people type between groups of digits -->
+<input type="number" id="cc" name="cc-number">
+
+<!-- Right: type="text" keeps spaces and dashes legal, inputmode="numeric"
+     still gives mobile users a number pad instead of a full keyboard -->
+<input type="text" inputmode="numeric" id="cc" name="cc-number"
+       pattern="[\d ]*" autocomplete="cc-number">
+```
+
+A field with its own dedicated type, `type="email"` or `type="tel"`, already gets the right keyboard and the right validation together, so `inputmode` rarely comes up there. Reach for `type="text"` plus `inputmode` only when nothing built into `type` fits the data, the same situation `pattern` covers above.
 
 ## Buttons
 

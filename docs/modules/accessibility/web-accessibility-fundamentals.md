@@ -247,6 +247,8 @@ Forms are where accessibility most often breaks, so here's the core rule now, wi
 
 The `for` attribute matches the input's `id`. That link is what lets a screen reader announce "Email address, edit text" when the user reaches the field, and it makes the label clickable to focus the input. A placeholder is not a label, and never a substitute for one, since it disappears the moment someone starts typing.
 
+There's a second, related requirement worth naming here, since accessibility standards are this page's home turf. WCAG Success Criterion 1.3.5, Identify Input Purpose, is an AA-level criterion. It asks that a field's purpose, "this collects an email address," "this collects a postal code," be identifiable in code, not just implied by a visible label. The HTML-level way to meet it is the `autocomplete` attribute, using its fixed vocabulary of tokens like `name`, `email`, and `street-address`. The Forms and Data Structures chapter in Week 7 covers `autocomplete` in full; the connection to SC 1.3.5 belongs here.
+
 ## Common mistakes to avoid
 
 - **Removing the focus outline with nothing to replace it.** Leaves keyboard users with no way to see where they are.
