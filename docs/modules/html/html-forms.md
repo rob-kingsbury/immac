@@ -271,7 +271,7 @@ Optional, a light touch only. `type="email"` and `min`/`max` cover most validati
        title="A Canadian postal code, like A1A 1A1">
 ```
 
-That matches the letter-digit-letter, space, digit-letter-digit shape of a Canadian postal code, space optional. The `title` attribute matters here: most browsers show its text as the hint when a value doesn't match, so without it the visitor just sees a generic "please match the requested format" with no clue what the format actually is.
+That matches the letter-digit-letter, space, digit-letter-digit shape of a Canadian postal code, space optional. The `title` attribute is worth adding here: many browsers show its text in the validation tooltip when a value doesn't match, instead of a generic "please match the requested format" with no clue what the format actually is. That helps a sighted user in a browser that shows the tooltip, but it's not a substitute for a real accessibility fix. As you already learned in Web Accessibility Fundamentals, `title` isn't announced consistently across screen readers, so a student who genuinely needs this format explained to everyone should also state the pattern in visible text near the field, not rely on `title` alone.
 
 `pattern` works on `text`, `search`, `url`, `tel`, `email`, and `password`. Types like `number` and `date` already carry their own constraints (`min`, `max`, `step`) and ignore `pattern` if you add it.
 

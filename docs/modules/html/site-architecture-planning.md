@@ -39,7 +39,7 @@ Menu          -> Menu (Food), Menu (Drinks)
 Order Ahead   -> Catering, Gift Cards
 ```
 
-If "Hours and Location" keeps landing next to "Contact" every time you sort, that's a stronger signal for how to group your navigation than guessing would have been. Those piles are the site map from the next section, before you've drawn a single box.
+If "Hours and Location" keeps landing next to "Contact" every time you sort, that's a stronger signal for how to group your navigation than guessing would have been. That's what card sorting is for: catching a grouping like that before you've drawn a single box, rather than after. The worked site map in the next section keeps the Corner Bakery example flatter, since it's a smaller project used to walk through the rest of this chapter, but the sorting instinct is exactly the same one you'd apply to a fuller site of your own: group by how a visitor actually thinks about the content, not by how the pages happen to occur to you.
 
 ## Site maps
 
