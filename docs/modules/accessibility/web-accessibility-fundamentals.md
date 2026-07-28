@@ -12,7 +12,7 @@ Accessibility means building pages that everyone can use, including people who n
 
 **The core path is everything down to the checklist near the end.** Read the sections in order, try the demos as you go, and do the exercise at the end. Budget about 30 minutes for the reading, plus the 50 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add roughly 15 minutes altogether. They cover what "AA" conformance actually means in practice, an attribute you've typed into every skeleton since [Introduction to the Web](/modules/welcome/introduction-to-the-web.md) without knowing why, what your testing tools can and can't see, and how a screen reader names a control that has no visible label. Skip them if you are short on time and nothing breaks. They're written to still be worth reading later, when there's no time pressure at all.
+Sections headed **Going deeper** are optional and add roughly 15 minutes altogether. They cover what "AA" conformance actually means in practice, an attribute you've typed into every skeleton since [HTML Document Structure](/modules/html/html-document-structure/README.md) without knowing why, what your testing tools can and can't see, and how a screen reader names a control that has no visible label. Skip them if you are short on time and nothing breaks. They're written to still be worth reading later, when there's no time pressure at all.
 
 ## What <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> is
 

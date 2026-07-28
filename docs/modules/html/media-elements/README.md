@@ -6,8 +6,6 @@ prerequisites:
 
 # Media Elements
 
-*This module is a partial deposit: it covers embedding audio and video directly. A later pass adds video's place in overall page weight alongside images.*
-
 ## Embedding audio and video
 
 Native <abbr title="HyperText Markup Language">HTML</abbr> elements play media without any plugins.
@@ -75,6 +73,34 @@ The browser checks each `<source>` in order and plays the first one it can decod
 
 One detail that's easy to get backwards: once you're using `<source>` children, drop the `src` attribute from the `<video>` or `<audio>` tag itself. The source list replaces it entirely. A `src` left on the parent element alongside `<source>` children is redundant at best, and confusing the moment the two disagree about what should actually play.
 
+## Media: video is heavier still
+
+Everything [Image Optimization](/modules/html/image-optimization/README.md) covers applies to video with the numbers multiplied. A short clip can outweigh every image on the page combined, so the defaults matter more.
+
+```html
+<video controls
+       width="800" height="450"
+       poster="talk-poster.webp"
+       preload="metadata">
+  <source src="talk.webm" type="video/webm">
+  <source src="talk.mp4" type="video/mp4">
+  Your browser does not support embedded video.
+  <a href="talk.mp4">Download the video</a> instead.
+</video>
+```
+
+Four decisions in that block are worth stating.
+
+`poster` shows a still image before playback begins, so the visitor sees something immediately rather than a black rectangle, and you control what that something is.
+
+`preload="metadata"` loads only enough to know the video's length and dimensions. The default behaviour can begin pulling the video itself, which is a large download for a visitor who may never press play. Use `preload="none"` when the video is well down the page.
+
+Multiple `<source>` elements work the same way as above, and `width` and `height` reserve the space exactly as they do for images.
+
+Avoid `autoplay`. It consumes data without consent, it is hostile on a metered connection, and browsers block it with sound anyway.
+
+For anything longer than a short clip, host it on a video platform and embed it. Streaming services deliver several qualities and adapt to the connection, which is well beyond what a static site can do.
+
 ## The checklist
 
 Run this over your page before you move on:
@@ -82,6 +108,7 @@ Run this over your page before you move on:
 - `<video>` and `<audio>` both have `controls`, so the visitor can play, pause, and adjust volume
 - Video includes a `<track kind="captions">` pointing at a WebVTT file
 - Every `<iframe>` has a `title` describing what it contains
+- Video, if any, has a `poster`, sets `preload` to `metadata` or `none`, and does not autoplay
 
 ## Keep learning
 

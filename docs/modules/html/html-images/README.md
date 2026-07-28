@@ -43,7 +43,7 @@ The format you save an image in affects both quality and load time. The four you
 
 SVG's limit is content, not quality. It describes a picture as a set of drawing instructions, shapes, lines, fills, so a logo stays sharp at any size and the file stays a couple of kilobytes. A photograph doesn't have clean shapes to describe that way. Converted to SVG, it becomes thousands of tiny coloured paths and ends up far larger than the JPG you started with. Save SVG for what it's actually good at and reach for a photographic format for everything else.
 
-You'll go deeper on optimizing and serving these images, including responsive `srcset` and lazy loading, in [Optimizing Images and Media](/modules/html/image-optimization.md). For now, the rule of thumb is: drawings as SVG, photos as WebP or JPG.
+You'll go deeper on optimizing and serving these images, including responsive `srcset` and lazy loading, in [Optimizing Images and Media](/modules/html/image-optimization/README.md). For now, the rule of thumb is: drawings as SVG, photos as WebP or JPG.
 
 ## The checklist
 

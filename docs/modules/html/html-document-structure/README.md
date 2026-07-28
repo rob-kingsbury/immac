@@ -82,7 +82,7 @@ This exercise pulls together the whole group of elements that live inside the sk
 
 Create a new folder in your cloned repository, add an `index.html` file, and build out the document skeleton, `<!DOCTYPE>` through `<body>`, from memory rather than copying it. Include the charset and viewport meta tags, both belong in every page you'll ever build from here on. Inside `<body>`, add one `<h1>`, at least two `<h2>` sections, a paragraph or two under each, one ordered and one unordered list, and a `<blockquote>`. Mark one or two words with `<strong>` or `<em>` where the meaning calls for it. Somewhere in your text, work in an ampersand or a copyright line and write it with the matching entity, `&amp;` or `&copy;`, instead of typing the character directly. Add a comment above each major section.
 
-Open the page in your browser, then open developer tools and inspect your own elements. Watch how the block elements each claim a full row while the inline ones share a line. Then commit and push your change using the workflow from [Introduction to the Web](/modules/welcome/introduction-to-the-web.md), stage, commit, sync, and confirm it shows up on GitHub.
+Open the page in your browser, then open developer tools and inspect your own elements. Watch how the block elements each claim a full row while the inline ones share a line. Then commit and push your change using the workflow from [Staging, Committing, and Pushing](/modules/git/git-basics/staging-committing-pushing.md), stage, commit, sync, and confirm it shows up on GitHub.
 
 Your page is a single block of text and lists right now. [HTML Anchors](/modules/html/html-anchors/README.md) connects it to the rest of the web.
 

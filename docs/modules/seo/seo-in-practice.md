@@ -2,7 +2,7 @@
 title: SEO in Practice
 prerequisites:
   - seo/seo-fundamentals
-  - html/site-architecture-planning
+  - web-basics/site-maps
 ---
 
 # <abbr title="Search Engine Optimization">SEO</abbr> in Practice

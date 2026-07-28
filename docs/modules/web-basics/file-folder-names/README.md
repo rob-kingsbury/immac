@@ -2,11 +2,10 @@
 title: File and Folder Names
 prerequisites:
   - web-basics/file-paths
+  - web-basics/site-maps
 ---
 
 # File and Folder Names
-
-*This module is a partial deposit: it covers naming files and folders. A later pass adds mirroring your file structure to your site map.*
 
 ## File and folder naming standards
 
@@ -35,12 +34,54 @@ GitHub Pages (Linux): 404, because about.html and About.html are different files
 
 Rename the file to lowercase, update every link that points to it, and the mismatch is gone for good. This is exactly the kind of bug that costs you fifteen minutes right before a deadline if you build the naming habit late instead of early.
 
+## Mirroring your file structure to your site map
+
+A [site map](/modules/web-basics/site-maps/README.md) is a planning tool, but it also doubles as a specification for your folder structure, if you let it.
+
+Take a bakery site map:
+
+```text
+Home
+├── About
+├── Menu
+│   ├── Food
+│   └── Drinks
+└── Contact
+```
+
+A folder structure that mirrors it exactly looks like this:
+
+```text
+/
+├── index.html
+├── about.html
+├── menu/
+│   ├── food.html
+│   └── drinks.html
+└── contact.html
+```
+
+Every branch in the tree became either a file or a folder at the same depth. "Menu" is a section with two pages under it, so it became a folder, `menu/`, holding `food.html` and `drinks.html`. A page with nothing nested under it, like About or Contact, is just a file at the top level.
+
+This isn't a rule GitHub Pages enforces. Nothing stops you from putting every file in one folder with names like `menu-food.html`. But when the folder structure matches the site map, the relative path from anywhere in the project matches the branch you already drew, which is one less thing to hold in your head:
+
+```html
+<!-- Written from a page inside /menu/, linking back to the home page -->
+<a href="../index.html">Home</a>
+
+<!-- Written from the home page, linking into the Menu section -->
+<a href="menu/drinks.html">Drinks</a>
+```
+
+Six months from now, when you or someone else opens this project cold, a folder named `menu/` containing `food.html` and `drinks.html` reads as self-documenting. A flat folder of eleven similarly named files does not. Decide your folder structure at the same time you draw your site map, not after you've already started creating files, and the two will always agree with each other.
+
 ## The checklist
 
 Run this over your project before you consider it finished:
 
 - File and folder names follow the lowercase, hyphenated, descriptive standard
 - Every link's path matches the real file name and case exactly
+- Folder structure mirrors the site map, so a relative link matches the branch it lives on
 
 ## Keep learning
 

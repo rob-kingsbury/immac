@@ -1,12 +1,12 @@
 ---
 title: Introduction to CSS
 prerequisites:
-  - welcome/introduction-to-the-web
+  - git/github-pages
 ---
 
 # Introduction to <abbr title="Cascading Style Sheets">CSS</abbr>
 
-In MTM1511's [Introduction to the Web](/modules/welcome/introduction-to-the-web.md), you set up your development environment and published a page to the web. This chapter finishes that setup from the styling side and gets a real stylesheet running.
+In MTM1511, starting from [Setting Up Your Development Environment](/modules/tools/vscode/README.md), you set up your development environment and published a page to the web. This chapter finishes that setup from the styling side and gets a real stylesheet running.
 
 By the end of this chapter you'll have a `css` folder, a `styles.css` file linked to a page, a way to confirm the connection actually works, and enough CSS to write your first rules. Nothing here is throwaway. This is the file you'll build on for the rest of this course. [The Box Model and Spacing](/modules/css/box-model-spacing.md) is where the real CSS work starts.
 
@@ -71,7 +71,7 @@ This matters for two reasons. First, "no styling" is never really true in a brow
 
 ## Confirming your setup
 
-Before writing any CSS, confirm the tools set up in MTM1511's [Introduction to the Web](/modules/welcome/introduction-to-the-web.md) actually work. Run through this list now, because every later chapter in this course assumes all five are true.
+Before writing any CSS, confirm the tools set up in MTM1511, starting from [Setting Up Your Development Environment](/modules/tools/vscode/README.md), actually work. Run through this list now, because every later chapter in this course assumes all five are true.
 
 1. **VS Code opens** and the Extensions view lists Live Server as installed.
 2. **Git is recognized.** Open a terminal in VS Code and run `git --version`. You should get a version number, not an error.
@@ -407,7 +407,7 @@ Get in the habit of inspecting rather than guessing. It's the fastest debugging 
 
 ## Publishing what you built
 
-Finish by getting this work onto the live site, using the workflow from MTM1511's [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+Finish by getting this work onto the live site, using the workflow from MTM1511's [Staging, Committing, and Pushing](/modules/git/git-basics/staging-committing-pushing.md).
 
 Stage your changed files in the Source Control panel, write a commit message describing what you did, commit, then sync to push. Give GitHub a minute, then open your Pages URL in a browser. Your styled page should be there, publicly, at a real address.
 

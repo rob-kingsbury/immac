@@ -479,6 +479,6 @@ Work through these in order.
 4. Add an `<aside>` with related links, and confirm the page still makes sense if you imagine removing it.
 5. Open developer tools, and in the Elements or Accessibility panel, look at how the browser now recognizes the landmark regions you created. Find the role name it lists next to `<header>`, `<nav>`, `<main>`, and `<footer>`, and match each one against the Going Deeper section above. Compare that to the same page built only with `<div>` elements.
 
-You can now build a single page with real meaning. [Site Architecture and Planning](/modules/html/site-architecture-planning.md) zooms out to the whole site: which pages exist, and how they connect.
+You can now build a single page with real meaning. [Information Architecture](/modules/web-basics/information-architecture/README.md) zooms out to the whole site: which pages exist, and how they connect.
 
 If you can look at a design and name its regions out loud (that's a `<header>`, that's the `<main>`, those repeating blocks are `<article>` elements), you have the skill this chapter is teaching.

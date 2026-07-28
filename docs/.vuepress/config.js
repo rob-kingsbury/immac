@@ -15,7 +15,20 @@ const mtm1511Sidebar = [
     text: 'Weekly Content',
     collapsible: false,
     children: [
-      { text: 'Week 1: Introduction to the Web', link: '/modules/welcome/introduction-to-the-web.md' },
+      {
+        text: 'Week 1: Introduction to the Web',
+        collapsible: true,
+        children: [
+          { text: 'How the Web Works', link: '/modules/web-basics/how-the-web-works/README.md' },
+          { text: 'HTML Basics', link: '/modules/html/html-basics/README.md' },
+          { text: 'Setting Up Your Development Environment', link: '/modules/tools/vscode/README.md' },
+          { text: 'Creating a GitHub Account and a Demo Repository', link: '/modules/git/github-basics/README.md' },
+          { text: 'Git Basics', link: '/modules/git/git-basics/README.md' },
+          { text: 'Staging, Committing, and Pushing', link: '/modules/git/git-basics/staging-committing-pushing.md' },
+          { text: 'GitHub Pages', link: '/modules/git/github-pages/README.md' },
+          { text: 'Git, GitHub, and Pages in Plain Terms', link: '/modules/git/git-basics/git-github-pages-in-plain-terms.md' },
+        ],
+      },
       {
         // Week 2 is the first week split from one week-shaped page into
         // topic-shaped modules. The week is a group; each child is a module
@@ -45,7 +58,18 @@ const mtm1511Sidebar = [
         ],
       },
       { text: 'Week 4: Semantic HTML', link: '/modules/html/semantic-html.md' },
-      { text: 'Week 5: Site Architecture and Planning', link: '/modules/html/site-architecture-planning.md' },
+      {
+        text: 'Week 5: Site Architecture and Planning',
+        collapsible: true,
+        children: [
+          { text: 'Information Architecture', link: '/modules/web-basics/information-architecture/README.md' },
+          { text: 'Site Maps', link: '/modules/web-basics/site-maps/README.md' },
+          { text: 'Translating a Plan into Structure', link: '/modules/web-basics/site-maps/translating-to-structure.md' },
+          { text: 'File and Folder Names', link: '/modules/web-basics/file-folder-names/README.md' },
+          { text: 'Wireframes', link: '/modules/web-basics/wireframes/README.md' },
+          { text: 'HTML Navigation', link: '/modules/html/html-navigation/README.md' },
+        ],
+      },
       { text: 'Week 6: Web Accessibility Fundamentals', link: '/modules/accessibility/web-accessibility-fundamentals.md' },
       {
         text: 'Week 7: HTML Forms and Data Structures',
@@ -58,7 +82,16 @@ const mtm1511Sidebar = [
         ],
       },
       { text: 'Week 8: Reading Week', link: '/modules/reading-week.md' },
-      { text: 'Week 9: Optimizing Images and Media', link: '/modules/html/image-optimization.md' },
+      {
+        text: 'Week 9: Optimizing Images and Media',
+        collapsible: true,
+        children: [
+          { text: 'Optimizing Images and Media', link: '/modules/html/image-optimization/README.md' },
+          { text: 'Responsive Images', link: '/modules/html/responsive-images/README.md' },
+          { text: 'Putting It Together', link: '/modules/html/image-optimization/putting-it-together.md' },
+          { text: 'Media Elements', link: '/modules/html/media-elements/README.md' },
+        ],
+      },
       { text: 'Week 10: SEO Fundamentals', link: '/modules/seo/seo-fundamentals.md' },
       { text: 'Week 11: SEO in Practice', link: '/modules/seo/seo-in-practice.md' },
       {

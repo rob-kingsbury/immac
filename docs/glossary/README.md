@@ -14,7 +14,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **<abbr title="Accessible Rich Internet Applications">ARIA</abbr>.** Accessible Rich Internet Applications, a set of attributes that add accessibility information <abbr title="HyperText Markup Language">HTML</abbr> alone can't provide. Use only when a native HTML element can't do the job. See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
 
-**Attribute.** Extra information carried inside an opening tag, written as `name="value"`, such as `href` on an `<a>`. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**Attribute.** Extra information carried inside an opening tag, written as `name="value"`, such as `href` on an `<a>`. See [HTML Basics](/modules/html/html-basics/README.md).
 
 **Attribute selector.** A <abbr title="Cascading Style Sheets">CSS</abbr> selector that targets elements by an attribute's value, such as `[href^="https"]`. See [The <abbr title="Document Object Model">DOM</abbr> and CSS Targeting](/modules/css/dom-css-targeting.md).
 
@@ -34,13 +34,13 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Class.** A label you assign to any elements you choose, using the `class` attribute, then target in CSS with a dot in front of the name (`.intro`). See [Introduction to CSS](/modules/css/intro-to-css.md).
 
-**Client.** The machine making a web request, in this course your browser. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**Client.** The machine making a web request, in this course your browser. See [How the Web Works](/modules/web-basics/how-the-web-works/README.md).
 
 **CLS (Cumulative Layout Shift).** A Core Web Vital measuring how much a page's content jumps around as it loads. Prevented by setting `width` and `height` on images. See [HTML Images](/modules/html/html-images/README.md).
 
 **Combinator.** A symbol that selects elements by their relationship to another element: descendant (a space), child (`>`), or adjacent sibling (`+`). See [The DOM and CSS Targeting](/modules/css/dom-css-targeting.md).
 
-**Commit.** A permanent, named snapshot of staged changes, saved to your local Git repository. Distinct from pushing, which sends commits to GitHub. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**Commit.** A permanent, named snapshot of staged changes, saved to your local Git repository. Distinct from pushing, which sends commits to GitHub. See [Staging, Committing, and Pushing](/modules/git/git-basics/staging-committing-pushing.md).
 
 **Container query.** A CSS rule that responds to the size of a component's own container, not the browser viewport. See [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md).
 
@@ -52,13 +52,13 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Declaration.** One property-and-value pair inside a CSS rule, such as `color: red;`. See [Introduction to CSS](/modules/css/intro-to-css.md).
 
-**<abbr title="Domain Name System">DNS</abbr> (Domain Name System).** The lookup service that turns a human-readable domain into the numeric address a browser connects to. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**<abbr title="Domain Name System">DNS</abbr> (Domain Name System).** The lookup service that turns a human-readable domain into the numeric address a browser connects to. See [How the Web Works](/modules/web-basics/how-the-web-works/README.md).
 
 **DOM (Document Object Model).** The live, in-memory tree structure a browser builds from your HTML, and what developer tools' Elements panel actually shows. See [The DOM and CSS Targeting](/modules/css/dom-css-targeting.md).
 
 ## E
 
-**Element.** The smallest unit of HTML, usually an opening tag, content, and a closing tag. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**Element.** The smallest unit of HTML, usually an opening tag, content, and a closing tag. See [HTML Basics](/modules/html/html-basics/README.md).
 
 **Element selector.** A CSS selector that targets every element of a given tag name, such as `p`. See [Introduction to CSS](/modules/css/intro-to-css.md).
 
@@ -74,11 +74,11 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **<abbr title="HTTP method for retrieving data">GET</abbr>.** An <abbr title="Hypertext Transfer Protocol">HTTP</abbr> method that appends form data to the <abbr title="Uniform Resource Locator">URL</abbr> as a query string. Correct for anything that only retrieves or filters information. See [HTML Form](/modules/html/html-form/README.md).
 
-**Git.** Version control software that runs on your own computer, tracking every committed change. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**Git.** Version control software that runs on your own computer, tracking every committed change. See [Git, GitHub, and Pages in Plain Terms](/modules/git/git-basics/git-github-pages-in-plain-terms.md).
 
-**GitHub.** A website that hosts Git repositories online, where this course's work is shared and graded from a link. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**GitHub.** A website that hosts Git repositories online, where this course's work is shared and graded from a link. See [Git, GitHub, and Pages in Plain Terms](/modules/git/git-basics/git-github-pages-in-plain-terms.md).
 
-**GitHub Pages.** A free GitHub feature that publishes a repository's files as a live website. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**GitHub Pages.** A free GitHub feature that publishes a repository's files as a live website. See [GitHub Pages](/modules/git/github-pages/README.md).
 
 ## H
 
@@ -86,9 +86,9 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **<abbr title="Hue, Saturation, Lightness">HSL</abbr>.** A colour notation of hue, saturation, and lightness, useful for building a palette of related colours by hand. See [Typography and Colour](/modules/css/typography-colour.md).
 
-**HTML.** HyperText Markup Language, which describes a page's structure and meaning, not its appearance. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**HTML.** HyperText Markup Language, which describes a page's structure and meaning, not its appearance. See [HTML Basics](/modules/html/html-basics/README.md).
 
-**HTTP / <abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr>.** The protocol a browser and server use to communicate; HTTPS is the encrypted version. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**HTTP / <abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr>.** The protocol a browser and server use to communicate; HTTPS is the encrypted version. See [How the Web Works](/modules/web-basics/how-the-web-works/README.md).
 
 ## I
 
@@ -104,7 +104,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## L
 
-**LCP (Largest Contentful Paint).** A Core Web Vital measuring how long the largest visible element takes to appear. See [Optimizing Images and Media](/modules/html/image-optimization.md).
+**LCP (Largest Contentful Paint).** A Core Web Vital measuring how long the largest visible element takes to appear. See [Optimizing Images and Media](/modules/html/image-optimization/README.md).
 
 **Landmark region.** A semantic element like `<header>`, `<nav>`, `<main>`, or `<footer>` that a screen reader user can jump to directly. See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
 
@@ -130,7 +130,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **<abbr title="HTTP method for submitting data">POST</abbr>.** An HTTP method that sends form data in the request body, used for anything that changes something or carries sensitive data. See [HTML Form](/modules/html/html-form/README.md).
 
-**Protocol.** An agreed set of rules for how two machines communicate, such as HTTP. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**Protocol.** An agreed set of rules for how two machines communicate, such as HTTP. See [How the Web Works](/modules/web-basics/how-the-web-works/README.md).
 
 **Pseudo-class.** A CSS selector that targets an element by its state, such as `:hover` or `:focus`. See [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md).
 
@@ -138,13 +138,13 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Pull request.** A request on GitHub to merge one branch into another, giving a reviewer a dedicated screen to read the change before it lands. See [Working Like a Team](/modules/git/github-collaboration/README.md).
 
-**Push.** The Git action that sends local commits to a remote repository like GitHub. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**Push.** The Git action that sends local commits to a remote repository like GitHub. See [Staging, Committing, and Pushing](/modules/git/git-basics/staging-committing-pushing.md).
 
 ## R
 
 **Relative path.** A link written relative to the current page's location, used to link between your own site's pages. See [File Paths](/modules/web-basics/file-paths/README.md).
 
-**Repository.** A project folder that Git is tracking, one per assignment in this course. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**Repository.** A project folder that Git is tracking, one per assignment in this course. See [Creating a GitHub Account and a Demo Repository](/modules/git/github-basics/README.md).
 
 **Responsive design.** The practice of building one page that works well across every screen size, rather than separate sites per device. See [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md).
 
@@ -154,7 +154,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Semantic HTML.** Using elements for what their content actually is, rather than a generic `<div>` for everything. See [Semantic HTML](/modules/html/semantic-html.md).
 
-**Server.** A machine that stores a website's files and sends them out when a client requests them. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**Server.** A machine that stores a website's files and sends them out when a client requests them. See [How the Web Works](/modules/web-basics/how-the-web-works/README.md).
 
 **Skip link.** A hidden-until-focused link, first in the page, that jumps a keyboard user straight to the main content. See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
 
@@ -172,7 +172,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## U
 
-**URL.** The full address of a resource, made up of a protocol, a domain, and a path. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
+**URL.** The full address of a resource, made up of a protocol, a domain, and a path. See [How the Web Works](/modules/web-basics/how-the-web-works/README.md).
 
 ## V
 
