@@ -54,7 +54,7 @@ The void elements you've met so far:
 | `<meta>` | Carries page metadata, like the character encoding or the viewport setting |
 | `<br>` | Forces a single line break inside text |
 
-You'll meet a third one in [Links, Images, and Media](/modules/html/links-images-media.md): `<img>`, which points at an image file rather than wrapping one. A handful of others exist (`<hr>`, `<input>`, `<link>`) and you'll meet them as their topics come up. The list is short and effectively fixed, because the browser needs to know, while it's still reading a tag, whether a closing tag is coming later or not.
+You'll meet a third one in [HTML Images](/modules/html/html-images/README.md): `<img>`, which points at an image file rather than wrapping one. A handful of others exist (`<hr>`, `<input>`, `<link>`) and you'll meet them as their topics come up. The list is short and effectively fixed, because the browser needs to know, while it's still reading a tag, whether a closing tag is coming later or not.
 
 One older habit is worth naming so it doesn't confuse you when you see it in someone else's code: `<br />`, with a trailing slash before the closing bracket. That comes from XHTML, a stricter, XML-based version of HTML that required every element to be explicitly closed, void or not. Modern HTML doesn't require the slash. Both `<br>` and `<br />` render identically, and this course writes the plain form throughout.
 

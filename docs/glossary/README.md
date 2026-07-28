@@ -8,9 +8,9 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## A
 
-**Absolute path.** A full web address, starting with the protocol, `https://`. Used to link to another website. See [Links, Images, and Media](/modules/html/links-images-media.md).
+**Absolute path.** A full web address, starting with the protocol, `https://`. Used to link to another website. See [File Paths](/modules/web-basics/file-paths/README.md).
 
-**Alt text.** The `alt` attribute on an `<img>`, describing what the image shows. Read aloud by screen readers, shown if the image fails to load, and read by search engines. See [Links, Images, and Media](/modules/html/links-images-media.md).
+**Alt text.** The `alt` attribute on an `<img>`, describing what the image shows. Read aloud by screen readers, shown if the image fails to load, and read by search engines. See [HTML Images](/modules/html/html-images/README.md).
 
 **<abbr title="Accessible Rich Internet Applications">ARIA</abbr>.** Accessible Rich Internet Applications, a set of attributes that add accessibility information <abbr title="HyperText Markup Language">HTML</abbr> alone can't provide. Use only when a native HTML element can't do the job. See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
 
@@ -24,7 +24,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Box model.** The four layers around any element's content: content, padding, border, and margin. See [The Box Model and Spacing](/modules/css/box-model-spacing.md).
 
-**Branch.** A parallel copy of a Git repository's history you can commit to without touching `main`. See [Code Quality and Validation](/modules/html/code-quality-validation.md).
+**Branch.** A parallel copy of a Git repository's history you can commit to without touching `main`. See [Working Like a Team](/modules/git/github-collaboration/README.md).
 
 **Breakpoint.** A viewport width at which a responsive layout changes. Chosen from where your own content starts to look wrong, not from a list of devices. See [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md).
 
@@ -36,7 +36,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Client.** The machine making a web request, in this course your browser. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 
-**CLS (Cumulative Layout Shift).** A Core Web Vital measuring how much a page's content jumps around as it loads. Prevented by setting `width` and `height` on images. See [Links, Images, and Media](/modules/html/links-images-media.md).
+**CLS (Cumulative Layout Shift).** A Core Web Vital measuring how much a page's content jumps around as it loads. Prevented by setting `width` and `height` on images. See [HTML Images](/modules/html/html-images/README.md).
 
 **Combinator.** A symbol that selects elements by their relationship to another element: descendant (a space), child (`>`), or adjacent sibling (`+`). See [The DOM and CSS Targeting](/modules/css/dom-css-targeting.md).
 
@@ -72,7 +72,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## G
 
-**<abbr title="HTTP method for retrieving data">GET</abbr>.** An <abbr title="Hypertext Transfer Protocol">HTTP</abbr> method that appends form data to the <abbr title="Uniform Resource Locator">URL</abbr> as a query string. Correct for anything that only retrieves or filters information. See [HTML Forms and Data Structures](/modules/html/html-forms.md).
+**<abbr title="HTTP method for retrieving data">GET</abbr>.** An <abbr title="Hypertext Transfer Protocol">HTTP</abbr> method that appends form data to the <abbr title="Uniform Resource Locator">URL</abbr> as a query string. Correct for anything that only retrieves or filters information. See [HTML Form](/modules/html/html-form/README.md).
 
 **Git.** Version control software that runs on your own computer, tracking every committed change. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 
@@ -128,7 +128,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Positioning context.** See containing block.
 
-**<abbr title="HTTP method for submitting data">POST</abbr>.** An HTTP method that sends form data in the request body, used for anything that changes something or carries sensitive data. See [HTML Forms and Data Structures](/modules/html/html-forms.md).
+**<abbr title="HTTP method for submitting data">POST</abbr>.** An HTTP method that sends form data in the request body, used for anything that changes something or carries sensitive data. See [HTML Form](/modules/html/html-form/README.md).
 
 **Protocol.** An agreed set of rules for how two machines communicate, such as HTTP. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 
@@ -136,13 +136,13 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Pseudo-element.** A CSS selector that targets part of an element or inserts generated content, written with two colons, such as `::before`. See [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md).
 
-**Pull request.** A request on GitHub to merge one branch into another, giving a reviewer a dedicated screen to read the change before it lands. See [Code Quality and Validation](/modules/html/code-quality-validation.md).
+**Pull request.** A request on GitHub to merge one branch into another, giving a reviewer a dedicated screen to read the change before it lands. See [Working Like a Team](/modules/git/github-collaboration/README.md).
 
 **Push.** The Git action that sends local commits to a remote repository like GitHub. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 
 ## R
 
-**Relative path.** A link written relative to the current page's location, used to link between your own site's pages. See [Links, Images, and Media](/modules/html/links-images-media.md).
+**Relative path.** A link written relative to the current page's location, used to link between your own site's pages. See [File Paths](/modules/web-basics/file-paths/README.md).
 
 **Repository.** A project folder that Git is tracking, one per assignment in this course. See [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 

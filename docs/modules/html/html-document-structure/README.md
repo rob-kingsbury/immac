@@ -84,4 +84,6 @@ Create a new folder in your cloned repository, add an `index.html` file, and bui
 
 Open the page in your browser, then open developer tools and inspect your own elements. Watch how the block elements each claim a full row while the inline ones share a line. Then commit and push your change using the workflow from [Introduction to the Web](/modules/welcome/introduction-to-the-web.md), stage, commit, sync, and confirm it shows up on GitHub.
 
-Your page is a single block of text and lists right now. [Links, Images, and Media](/modules/html/links-images-media.md) connects it to the rest of the web.
+Your page is a single block of text and lists right now. [HTML Anchors](/modules/html/html-anchors/README.md) connects it to the rest of the web.
+
+The skeleton above is enough to publish a page. [Document Head Best Practices](/modules/html/html-document-structure/head-best-practices.md) revisits the `<head>` once you have more to put in it: a description search engines can show, a canonical URL, a favicon.

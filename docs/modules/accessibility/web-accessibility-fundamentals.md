@@ -249,7 +249,7 @@ Forms are where accessibility most often breaks, so here's the core rule now, wi
 
 The `for` attribute matches the input's `id`. That link is what lets a screen reader announce "Email address, edit text" when the user reaches the field, and it makes the label clickable to focus the input. A placeholder is not a label, and never a substitute for one, since it disappears the moment someone starts typing.
 
-There's a second, related requirement worth naming here, since accessibility standards are this page's home turf. WCAG Success Criterion 1.3.5, Identify Input Purpose, is an AA-level criterion. It asks that a field's purpose, "this collects an email address," "this collects a postal code," be identifiable in code, not just implied by a visible label. The HTML-level way to meet it is the `autocomplete` attribute, using its fixed vocabulary of tokens like `name`, `email`, and `street-address`. [HTML Forms and Data Structures](/modules/html/html-forms.md) covers `autocomplete` in full; the connection to SC 1.3.5 belongs here.
+There's a second, related requirement worth naming here, since accessibility standards are this page's home turf. WCAG Success Criterion 1.3.5, Identify Input Purpose, is an AA-level criterion. It asks that a field's purpose, "this collects an email address," "this collects a postal code," be identifiable in code, not just implied by a visible label. The HTML-level way to meet it is the `autocomplete` attribute, using its fixed vocabulary of tokens like `name`, `email`, and `street-address`. [HTML Input](/modules/html/html-input/README.md) covers `autocomplete` in full; the connection to SC 1.3.5 belongs here.
 
 ## Common mistakes to avoid
 
@@ -316,4 +316,4 @@ Take the semantic page you built in the Semantic HTML chapter. Add a skip link a
 
 Then put the mouse aside and navigate the whole page with Tab and Enter only, confirming you can always see where focus is. Finally, run the Lighthouse accessibility audit and read every item it reports, fixing what you can.
 
-Your pages now work for everyone who reaches them. [HTML Forms and Data Structures](/modules/html/html-forms.md) adds forms, the one place your site collects something back.
+Your pages now work for everyone who reaches them. [HTML Form](/modules/html/html-form/README.md) adds forms, the one place your site collects something back.

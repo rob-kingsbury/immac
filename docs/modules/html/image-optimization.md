@@ -1,7 +1,7 @@
 ---
 title: Optimizing Images and Media
 prerequisites:
-  - html/links-images-media
+  - html/html-images
 ---
 
 # Optimizing Images and Media

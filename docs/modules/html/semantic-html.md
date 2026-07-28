@@ -2,7 +2,7 @@
 title: Semantic HTML
 prerequisites:
   - html/html-headings
-  - html/links-images-media
+  - html/html-images
 ---
 
 # Semantic <abbr title="HyperText Markup Language">HTML</abbr>
