@@ -85,6 +85,22 @@ Four elements describe the major regions of nearly every page. Assistive technol
 </footer>
 ```
 
+### search
+
+`<search>` is newer than the other four, but it already works the same way in every current browser. It wraps a search form and marks that whole region as a search landmark, the same way `<nav>` marks a navigation region, no extra ARIA needed.
+
+```html
+<search>
+  <form action="/search" method="get">
+    <label for="site-search">Search this site</label>
+    <input type="search" id="site-search" name="q">
+    <button type="submit">Search</button>
+  </form>
+</search>
+```
+
+Not every page needs it. Add `<search>` only when the page genuinely has a search form, the same way you'd only add `<nav>` around an actual navigation menu.
+
 Put together, these four give a page its skeleton:
 
 <CssDemo>
@@ -431,6 +447,7 @@ Run this over every page before you submit work in this course:
 - Exactly one `<nav>` for the primary menu, with an `aria-label` if there's more than one on the page
 - Exactly one `<main>`, and it is not nested inside `<article>`, `<aside>`, `<header>`, or `<footer>`
 - Exactly one `<footer>` describing the whole page, used for closing content
+- Any search form wrapped in `<search>`, not just `<form>`
 - Every `<section>` has its own heading and is a real, distinct part of the page outline
 - Every `<article>` could stand on its own if pulled out and placed somewhere else
 - `<aside>` used only for content the main point survives without
