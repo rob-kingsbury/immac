@@ -100,7 +100,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## J
 
-**<abbr title="JSON for Linking Data">JSON-LD</abbr>.** The current recommended format for structured data, a block of machine-readable facts about a page placed in the document head. See [<abbr title="Search Engine Optimization">SEO</abbr> in Practice](/modules/seo/seo-in-practice.md).
+**<abbr title="JSON for Linking Data">JSON-LD</abbr>.** The current recommended format for structured data, a block of machine-readable facts about a page placed in the document head. See [Structured Data](/modules/seo/structured-data/README.md).
 
 ## L
 
@@ -122,7 +122,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **oklch().** A newer colour function where equal steps in lightness look like equal steps to the human eye, unlike HSL. See [Typography and Colour](/modules/css/typography-colour.md).
 
-**Open Graph.** A vocabulary of `<meta>` tags controlling how a page appears as a preview card when shared on social platforms. See [SEO in Practice](/modules/seo/seo-in-practice.md).
+**Open Graph.** A vocabulary of `<meta>` tags controlling how a page appears as a preview card when shared on social platforms. See [Open Graph](/modules/seo/open-graph/README.md).
 
 ## P
 
@@ -162,7 +162,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Sticky positioning.** `position: sticky`, which acts like normal flow until a scroll threshold, then locks in place. See [CSS Grid Layouts](/modules/css/grid-layouts.md).
 
-**Structured data.** Machine-readable facts about a page's content, written in a vocabulary search engines understand. See [SEO in Practice](/modules/seo/seo-in-practice.md).
+**Structured data.** Machine-readable facts about a page's content, written in a vocabulary search engines understand. See [Structured Data](/modules/seo/structured-data/README.md).
 
 **Subgrid.** A nested grid that reuses its parent grid's track sizing instead of inventing its own, used to align independent cards' internal content. See [CSS Grid Layouts](/modules/css/grid-layouts.md).
 

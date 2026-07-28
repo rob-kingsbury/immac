@@ -162,4 +162,4 @@ Then add a second image lower down the page with `loading="lazy"`, reload at the
 
 Finally, remove the `width` and `height` from one image. In the Network panel toolbar, find the throttling dropdown, which reads **No throttling** by default and sits near the top of the panel, and set it to **Slow 4G**. Reload and watch the text below the image jump when it arrives. Put the attributes back, reload again, and watch the jump disappear.
 
-Your media loads fast. [SEO Fundamentals](/modules/seo/seo-fundamentals.md) is about making sure people can find your pages in the first place.
+Your media loads fast. [SEO Basics](/modules/seo/seo-basics/README.md) is about making sure people can find your pages in the first place.

@@ -112,8 +112,25 @@ const mtm1511Sidebar = [
           { text: 'Media Elements', link: '/modules/html/media-elements/README.md' },
         ],
       },
-      { text: 'Week 10: SEO Fundamentals', link: '/modules/seo/seo-fundamentals.md' },
-      { text: 'Week 11: SEO in Practice', link: '/modules/seo/seo-in-practice.md' },
+      {
+        text: 'Week 10: SEO Fundamentals',
+        collapsible: true,
+        children: [
+          { text: 'SEO Basics', link: '/modules/seo/seo-basics/README.md' },
+          { text: 'SEO Meta Tags', link: '/modules/seo/seo-meta-tags/README.md' },
+          { text: 'Canonical Links and URL Structure', link: '/modules/seo/seo-meta-tags/canonical-and-urls.md' },
+          { text: 'SEO Content', link: '/modules/seo/seo-content/README.md' },
+        ],
+      },
+      {
+        text: 'Week 11: SEO in Practice',
+        collapsible: true,
+        children: [
+          { text: 'Open Graph', link: '/modules/seo/open-graph/README.md' },
+          { text: 'Structured Data', link: '/modules/seo/structured-data/README.md' },
+          { text: 'SEO Audit', link: '/modules/seo/seo-audit/README.md' },
+        ],
+      },
       {
         text: 'Week 12: Code Quality and Validation',
         collapsible: true,
