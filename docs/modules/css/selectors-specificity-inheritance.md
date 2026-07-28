@@ -47,7 +47,7 @@ A **pseudo-class** selects an element based on its state rather than its markup.
 
 </CssDemo>
 
-**Never style `:hover` without also styling `:focus`.** Hover only exists for people using a pointer. A keyboard user, or someone using assistive technology, navigates with Tab and sees focus states instead. Styling one and not the other builds a page that works for mouse users and quietly fails for everyone else. This comes back in depth in [Accessible Styling](/modules/css/accessible-styling.md), but the habit starts now.
+**Never style `:hover` without also styling `:focus`.** Hover only exists for people using a pointer. A keyboard user, or someone using assistive technology, navigates with Tab and sees focus states instead. Styling one and not the other builds a page that works for mouse users and quietly fails for everyone else. This comes back in depth in [Keyboard Access](/modules/accessibility/keyboard-access/README.md), but the habit starts now.
 
 Two more pseudo-classes matter for links specifically. `:visited` matches a link the visitor has already been to, and `:link` matches one they haven't.
 
@@ -402,7 +402,7 @@ Run this over your selectors and rules before you move on:
 - Any selector's specificity can be read off as three numbers, A-B-C, and two selectors' specificity can be compared correctly
 - Classes are used for styling, not IDs or long descendant chains
 - `:where()` is used instead of `:is()` when the goal is a selector that adds nothing to specificity
-- `!important` does not appear anywhere in the stylesheet, with one narrow, deliberate exception you'll meet in [Accessible Styling](/modules/css/accessible-styling.md) (the `prefers-reduced-motion` guard, which has to override anything else on the page)
+- `!important` does not appear anywhere in the stylesheet, with one narrow, deliberate exception you'll meet in [Reduced Motion](/modules/accessibility/reduced-motion/README.md) (the `prefers-reduced-motion` guard, which has to override anything else on the page)
 - The cascade order, origin and importance, then specificity, then source order, can explain why any rule on the page won or lost
 - Text properties are set once on a parent and left to inherit, rather than repeated on every child
 - Box properties are set directly on the element that needs them, since they don't inherit

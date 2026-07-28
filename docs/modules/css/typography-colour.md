@@ -11,7 +11,7 @@ In [The Box Model and Spacing](/modules/css/box-model-spacing.md) you gave every
 
 ## How to read this chapter
 
-**The core path is fonts and spacing, then "Colour values" through HSL, then "Accessible colour contrast."** Hex, RGB, and HSL are the three colour notations this course's CLR names directly, and they're worth knowing cold. Budget about 30 minutes to read the core path, plus the 55 minutes the exercise takes.
+**The core path is fonts and spacing, then "Colour values" through HSL.** Hex, RGB, and HSL are the three colour notations this course's CLR names directly, and they're worth knowing cold. Budget about 30 minutes to read the core path, plus the 55 minutes the exercise takes.
 
 **"A newer colour space: oklch" and "Deriving colours with color-mix()," sitting between those two core sections, are extensions, not requirements.** They're real, Baseline-safe tools worth having, and the exercise gives you room to try both. But they sit outside what the CLR requires, so treat them as about 10 minutes of optional reading.
 
@@ -115,7 +115,7 @@ The `font-size` property takes several units, and the choice matters more than i
 
 </CssDemo>
 
-**Use `rem` for font sizes.** The reason is accessibility, and it's covered properly in [Accessible Styling](/modules/css/accessible-styling.md), but the short version is that a visitor who has increased their browser's default text size gets the larger text they asked for with `rem`, and gets ignored with `px`. That's a real barrier for a real group of people, and avoiding it costs you nothing.
+**Use `rem` for font sizes.** The reason is accessibility, and it's covered properly in [Text Scaling](/modules/accessibility/text-scaling/README.md), but the short version is that a visitor who has increased their browser's default text size gets the larger text they asked for with `rem`, and gets ignored with `px`. That's a real barrier for a real group of people, and avoiding it costs you nothing.
 
 ## Font weight
 
@@ -367,47 +367,7 @@ That reads as "85% of this blue, 15% black," which gives you a darkened hover st
 
 ## Accessible colour contrast
 
-This is the part of the chapter that isn't a matter of taste.
-
-Text has to be readable by people with low vision, colour vision deficiencies, or simply a cheap screen in bright sunlight. The measure is **contrast ratio**, the difference in relative luminance between the text colour and the colour behind it. It runs from 1:1, identical and invisible, to 21:1, pure black on pure white.
-
-The <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> guidelines you met in MTM1511 set the thresholds:
-
-| Text | Minimum (<abbr title="WCAG Level AA conformance">AA</abbr>) | Enhanced (<abbr title="WCAG Level AAA conformance">AAA</abbr>) |
-|---|---|---|
-| Normal body text | 4.5 : 1 | 7 : 1 |
-| Large text, 18.66px bold or 24px and up | 3 : 1 | 4.5 : 1 |
-| Interface components and meaningful graphics | 3 : 1 | not defined |
-
-**AA is the standard to meet in this course**, and it's the level most organizations are legally held to.
-
-<CssDemo>
-
-```html
-<p class="fail">Light grey on white, about 1.9:1. This fails badly.</p>
-<p class="pass">Dark slate on white, about 12:1. Comfortable for everyone.</p>
-```
-
-```css
-p {
-  font-family: system-ui, sans-serif;
-  background-color: #ffffff;
-  padding: 12px;
-  margin: 0 0 6px 0;
-}
-.fail {
-  color: #c8c8c8;
-}
-.pass {
-  color: #1e293b;
-}
-```
-
-</CssDemo>
-
-You don't calculate these by hand. Two tools do it for you. The [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) takes two colours and reports the ratio with a pass or fail against each threshold. And your browser's developer tools show the contrast ratio directly in the colour picker when you inspect a text element, with a warning when it fails.
-
-Two related habits matter as much as the ratio itself. **Never use colour as the only way to convey information**, because a red "error" that looks identical in shape to a green "success" tells a colour-blind user nothing; pair colour with text or an icon. And **check your hover and focus states too**, since a link that meets contrast at rest can easily fail once it changes colour.
+Choosing a palette isn't only a matter of taste. Text has to stay readable by people with low vision, colour vision deficiencies, or simply a cheap screen in bright sunlight, which is a hard requirement, not a style preference. [Colour Contrast](/modules/accessibility/colour-contrast/README.md) covers the contrast ratio, the WCAG thresholds, and the tools that check a pair of colours for you. Check every text and background pair you pick in this chapter against it before you settle on a final palette.
 
 ## Common mistakes to avoid
 
@@ -430,8 +390,7 @@ Run this over your typography and colour choices before you move on:
 - Comfortable writing hex, RGB, and HSL by hand, the three notations this course requires
 - Can explain why `oklch()` solves HSL's lightness-perception problem
 - Hover, focus, and other derived states built with `color-mix()`, not a second colour typed by hand
-- Every text and background pair checked against WCAG AA, 4.5:1 for normal text and 3:1 for large text
-- Colour is never the only way information is conveyed
+- Every text and background pair checked against WCAG AA, covered in [Colour Contrast](/modules/accessibility/colour-contrast/README.md)
 
 ## Keep learning
 
@@ -442,6 +401,7 @@ Run this over your typography and colour choices before you move on:
 - [MDN: oklch()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch). The function reference, with the lightness-uniformity explanation in more depth.
 - [MDN: color-mix()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix). The function reference, including how the mixing colour space affects the result.
 - [Video: Typography Basics for the Web, by Kevin Powell](https://www.youtube.com/watch?v=lMEHfaV0Cnw). A practical walkthrough of setting readable type in CSS.
+- [Colour Contrast](/modules/accessibility/colour-contrast/README.md). The contrast ratio, WCAG thresholds, and checking tools referenced above.
 
 ## Try it yourself (about 55 minutes)
 

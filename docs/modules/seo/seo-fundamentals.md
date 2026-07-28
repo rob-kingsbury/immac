@@ -2,7 +2,7 @@
 title: SEO Fundamentals
 prerequisites:
   - html/html-document-structure
-  - html/semantic-html
+  - html/html-semantics
 ---
 
 # <abbr title="Search Engine Optimization">SEO</abbr> Fundamentals

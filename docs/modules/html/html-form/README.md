@@ -2,7 +2,7 @@
 title: HTML Form
 prerequisites:
   - html/html-basics
-  - accessibility/web-accessibility-fundamentals
+  - accessibility/wcag
 ---
 
 # The <abbr title="HyperText Markup Language">HTML</abbr> Form Element
@@ -56,7 +56,9 @@ Every control needs a `<label>`, connected by matching the label's `for` to the 
 <input type="text" id="name" name="name">
 ```
 
-This is the same rule from [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md), and it's worth repeating because it's the most common thing beginners skip. The label makes a screen reader announce the field correctly, and it makes the label text clickable to focus the input, which is easier for everyone. A greyed-out `placeholder` is a hint, not a label. It disappears as soon as the user types, so it can never replace a real label.
+This is a foundational accessibility requirement, worth stating plainly because it's the most common thing beginners skip. The label makes a screen reader announce the field correctly, and it makes the label text clickable to focus the input, which is easier for everyone. A greyed-out `placeholder` is a hint, not a label. It disappears as soon as the user types, so it can never replace a real label.
+
+There's a second, related requirement, covered in [Accessible Forms, in Brief](/modules/html/html-form/accessible-forms.md): identifying not just that a field needs a label, but what kind of data it collects.
 
 ## Grouping with fieldset and legend
 

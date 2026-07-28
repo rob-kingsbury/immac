@@ -1,7 +1,7 @@
 ---
 title: Information Architecture
 prerequisites:
-  - html/semantic-html
+  - html/html-semantics
 ---
 
 # Information Architecture

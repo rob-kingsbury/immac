@@ -2,18 +2,18 @@
 title: Transitions and Motion
 prerequisites:
   - css/selectors-specificity-inheritance
-  - css/accessible-styling
+  - accessibility/reduced-motion
 ---
 
 # Transitions and Motion
 
 Motion is the last layer. Used well, it makes an interface feel responsive and explains what just changed. Used carelessly, it makes a page feel slow, and for some people it causes genuine physical symptoms.
 
-This chapter covers transitions and transforms, which handle nearly all the motion a site like yours needs, and it takes the accessibility constraint from [Accessible Styling](/modules/css/accessible-styling.md) seriously rather than as an afterthought.
+This chapter covers transitions and transforms, which handle nearly all the motion a site like yours needs, and it takes the accessibility constraint from [Reduced Motion](/modules/accessibility/reduced-motion/README.md) seriously rather than as an afterthought.
 
 ## How to read this chapter
 
-**The core path is everything down through motion and accessibility.** Read the sections on transitions, the four shorthand parts, duration, timing functions, transforms, and the complete interactive component, then work through the accessibility rules that follow. That's about 20 minutes of reading, plus the 40-minute exercise at the end.
+**The core path is everything down through the complete interactive component.** Read the sections on transitions, the four shorthand parts, duration, timing functions, transforms, and the complete interactive component, then confirm your `prefers-reduced-motion` guard is still in place from Reduced Motion before you start adding animation. That's about 20 minutes of reading, plus the 40-minute exercise at the end.
 
 Two sections after that are already marked as extension material, in the chapter's own words. "Keyframe animations, briefly" is exactly what it sounds like: worth knowing exist, but transitions on interaction cover almost everything this project needs. "Future of motion: scroll-driven animation" is explicitly not yet something to build a project around, which is why it's wrapped in `@supports` in the first place. A short **Going deeper** section on `will-change` sits between the transform explanation and the complete component. Skip any or all of these if you are short on time. Nothing in the core path depends on them.
 
@@ -280,46 +280,11 @@ Everything together, on a card built from the same Flexbox layout you used in [F
 
 Three properties transitioning together over 200ms with `ease-out`, a small lift, a deeper shadow, and a border colour change. It's restrained, and restraint is what makes it read as quality rather than as decoration.
 
-Note that `:focus-visible` gets the same treatment as `:hover`, plus a visible outline. That's the rule from [Accessible Styling](/modules/css/accessible-styling.md) holding.
+Note that `:focus-visible` gets the same treatment as `:hover`, plus a visible outline. That's the rule from [Keyboard Access](/modules/accessibility/keyboard-access/README.md) holding.
 
 ## Motion and accessibility
 
-This is the part that isn't optional.
-
-For people with vestibular disorders, motion on screen can cause nausea, dizziness, and headaches. Large movements, parallax, and anything that scales or slides across a lot of the viewport are the worst offenders. Operating systems expose a "reduce motion" setting, and honouring it is a <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> requirement.
-
-You added this block in [Accessible Styling](/modules/css/accessible-styling.md). Now it's protecting something real:
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-```
-
-The better-mannered approach writes motion as the enhancement rather than the default:
-
-```css
-.trail {
-  /* no transition here */
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .trail {
-    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
-  }
-}
-```
-
-Either is acceptable in this course. What isn't acceptable is animation with no reduced-motion handling at all.
-
-Three further rules. **Motion must never be the only signal**, so a state change that's communicated by movement also needs a colour, text, or icon change. **Nothing should flash more than three times per second**, because that can trigger seizures. And **never animate something the user didn't initiate** and can't stop, which is why auto-playing carousels are so widely disliked.
+This is the part that isn't optional, and it isn't new to this chapter: the `prefers-reduced-motion` guard from [Reduced Motion](/modules/accessibility/reduced-motion/README.md) is what's protecting every transition and transform you've just added. If you haven't added that block to your stylesheet yet, do it now, before you go further. Every rule in that chapter, never the only signal, nothing flashing more than three times a second, nothing that animates without the visitor starting it, applies to everything in this chapter too.
 
 ## Keyframe animations, briefly
 
@@ -398,9 +363,7 @@ The rules above, as something you can run over a project in a couple of minutes.
 - Duration falls in the 150 to 400ms range for most interface motion
 - The properties being animated are `transform` and `opacity`, not layout properties like `width`, `height`, or `top`
 - `:focus-visible` gets the same treatment as `:hover`
-- `prefers-reduced-motion` handling is in place
-- Motion is never the only signal of a state change
-- Nothing flashes more than three times per second
+- `prefers-reduced-motion` handling is in place, covered in [Reduced Motion](/modules/accessibility/reduced-motion/README.md)
 
 ## Keep learning
 
@@ -410,12 +373,12 @@ The rules above, as something you can run over a project in a couple of minutes.
 - [MDN: Scroll-driven animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations). The full reference, including `view()` timelines for elements entering the viewport.
 - [MDN: @supports](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports). How to check for a feature before depending on it.
 - [cubic-bezier.com](https://cubic-bezier.com/). Draw a custom timing curve and preview it.
-- [WCAG: Animation from Interactions](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html). The success criterion behind the reduced-motion requirement.
+- [Reduced Motion](/modules/accessibility/reduced-motion/README.md). The full reduced-motion requirement referenced throughout this chapter, including the WCAG success criterion behind it.
 - [Video: Learn CSS Transitions, by Kevin Powell](https://www.youtube.com/watch?v=Nloq6uzF8RQ). A practical walkthrough with good taste about restraint.
 
 ## Try it yourself (about 40 minutes)
 
-Confirm the `prefers-reduced-motion` block is already at the bottom of your stylesheet before you add anything. It should be there from [Accessible Styling](/modules/css/accessible-styling.md).
+Confirm the `prefers-reduced-motion` block is already at the bottom of your stylesheet before you add anything. It should be there from [Reduced Motion](/modules/accessibility/reduced-motion/README.md).
 
 Then add transitions to every interactive element on your project: links, buttons, and cards. Use 150 to 250ms and `ease-out`, name the properties explicitly rather than using `all`, and declare the transition on the base rule. Make sure every `:hover` treatment is matched by `:focus-visible`.
 

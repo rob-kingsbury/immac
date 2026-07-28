@@ -7,13 +7,7 @@ prerequisites:
 
 # Semantic <abbr title="HyperText Markup Language">HTML</abbr>
 
-You could build almost any page using nothing but `<div>` elements. It would look identical to a well-built page, and it would be far worse: harder to maintain, weaker in search results, and close to unusable for anyone relying on a screen reader. Semantic HTML is the alternative. It means choosing elements that describe what a piece of content *is*, not just that it exists. This chapter covers every semantic element you'll use regularly, how to decide between the tricky ones, and why the choice matters.
-
-## How to read this chapter
-
-**The core path is everything down to the checklist.** Landmarks, the section/article/aside decision, and the smaller semantic elements like `<figure>` and `<time>` are the core of this chapter. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
-
-Sections headed **Going deeper** are optional and add roughly 15 minutes combined. They explain what a browser is actually doing under the elements you just learned: the accessibility information it exposes automatically, a real element you'll meet in other people's code, and why the heading-level rule from [HTML Headings](/modules/html/html-headings/README.md) still holds once content is nested inside `<article>` and `<section>`. Skip them if you are short on time and nothing breaks.
+You could build almost any page using nothing but `<div>` elements. It would look identical to a well-built page, and it would be far worse: harder to maintain, weaker in search results, and close to unusable for anyone relying on a screen reader. Semantic HTML is the alternative. It means choosing elements that describe what a piece of content *is*, not just that it exists.
 
 ## Structure versus presentation
 
@@ -179,7 +173,7 @@ This is the mechanical reason "use the semantic element, not a `<div>` plus <abb
 
 Nobody writes the first version on purpose. It exists here to make the point stick: `<header>` is not a nicer-looking `<div>`, it is a `<div>` plus `role="banner"` plus a promise that you meant it.
 
-There is one condition worth knowing, because the full worked example later in this chapter depends on it. `<header>` and `<footer>` only carry `banner` and `contentinfo` when they describe the whole page, which in practice means sitting directly under `<body>`. Nest either one inside `<article>`, `<aside>`, `<main>`, `<nav>`, or `<section>`, and its role quietly changes to `generic`, the same as a `<div>`, because a page can hold many articles and each one claiming to be the page's banner would be confusing rather than useful. `<nav>` and `<main>` don't have this exception; they keep their role wherever they sit. Look ahead to the worked example: the outer `<header>` and `<footer>` are the page's banner and contentinfo. The `<header>` and `<footer>` inside the `<article>` are not landmarks at all. Same elements, different meaning, decided entirely by nesting.
+There is one condition worth knowing, because the [full worked example](/modules/html/html-semantics/worked-example.md) depends on it. `<header>` and `<footer>` only carry `banner` and `contentinfo` when they describe the whole page, which in practice means sitting directly under `<body>`. Nest either one inside `<article>`, `<aside>`, `<main>`, `<nav>`, or `<section>`, and its role quietly changes to `generic`, the same as a `<div>`, because a page can hold many articles and each one claiming to be the page's banner would be confusing rather than useful. `<nav>` and `<main>` don't have this exception; they keep their role wherever they sit. In the worked example, the outer `<header>` and `<footer>` are the page's banner and contentinfo. The `<header>` and `<footer>` inside the `<article>` are not landmarks at all. Same elements, different meaning, decided entirely by nesting.
 
 ## Grouping content: section, article, and aside
 
@@ -259,20 +253,11 @@ The practical result is that the rule from [HTML Headings](/modules/html/html-he
 </main>
 ```
 
-This is exactly what the full worked example at the end of this chapter does. The page's `<h1>` is the blog's name. The article's title is an `<h2>`. Its subsections are `<h3>`. Wrapping content in `<article>` or `<section>` does not change what number comes next; you still choose it the way you did in Core HTML Elements, by what the outline should say, not by how many sectioning elements it happens to sit inside.
+This is exactly what the [full worked example](/modules/html/html-semantics/worked-example.md) does. The page's `<h1>` is the blog's name. The article's title is an `<h2>`. Its subsections are `<h3>`. Wrapping content in `<article>` or `<section>` does not change what number comes next; you still choose it the way you did with headings, by what the outline should say, not by how many sectioning elements it happens to sit inside.
 
 ## More elements that carry meaning
 
-Semantics go beyond the big landmarks. Several smaller elements replace generic markup with meaning, and using them is part of writing professional HTML.
-
-`<figure>` and `<figcaption>` pair an image, diagram, or code sample with a caption, tying the two together as a single unit:
-
-```html
-<figure>
-  <img src="crumb.jpg" alt="Cross-section of a sourdough loaf showing an open crumb">
-  <figcaption>An open crumb is the sign of a well-proofed dough.</figcaption>
-</figure>
-```
+Semantics go beyond the big landmarks. Several smaller elements replace generic markup with meaning, and using them is part of writing professional HTML. Pairing an image or code sample with a caption gets its own treatment in [HTML Figure](/modules/html/html-figure/README.md).
 
 `<time>` marks a date or time in a machine-readable way, which search engines and browsers can use:
 
@@ -280,7 +265,7 @@ Semantics go beyond the big landmarks. Several smaller elements replace generic 
 <p>Class starts <time datetime="2026-03-15T18:00">March 15 at 6 p.m.</time></p>
 ```
 
-`<address>` marks contact information for the nearest `<article>` or the page as a whole. `<mark>` highlights text for reference, such as a search term found in a result. And from earlier chapters, `<strong>` marks importance and `<em>` marks emphasis, both of which are semantic even though they're inline.
+`<address>` marks contact information for the nearest `<article>` or the page as a whole. `<mark>` highlights text for reference, such as a search term found in a result. And `<strong>` marks importance and `<em>` marks emphasis, both of which are semantic even though they're inline.
 
 ### Going deeper: hgroup, one element for a heading and its subtitle
 
@@ -324,122 +309,9 @@ A few patterns come up again and again in beginner code. Watching for them will 
 
 Semantic markup pays off in two concrete, measurable ways, and both come free once you choose the right elements.
 
-For accessibility, landmarks let assistive technology build a map of the page, the same map the diagram earlier in this chapter drew out. A screen reader user can list every landmark and jump straight to the `<main>`, skip the `<nav>`, or move between `<article>` elements, none of which is possible with anonymous `<div>` boxes. Screen readers also let users navigate by heading, so the heading outline you build doubles as a table of contents. Good structure is not an accessibility feature you add later; it is accessibility, built in from the first tag.
+For accessibility, landmarks let assistive technology build a map of the page, the same map the diagram earlier in this chapter drew out. A screen reader user can list every landmark and jump straight to the `<main>`, skip the `<nav>`, or move between `<article>` elements, none of which is possible with anonymous `<div>` boxes. This is the single biggest accessibility win available in this course, and you get it just by using semantic HTML instead of `<div>` boxes: one `<main>` per page and a `<nav>` around your menu are, on their own, enough for a screen reader user to move around your site efficiently. Screen readers also let users navigate by heading, so the heading outline you build doubles as a table of contents. Good structure is not an accessibility feature you add later; it is accessibility, built in from the first tag.
 
 For SEO, search engines read the same structure to understand your content. A heading inside an `<article>` inside `<main>` is clearly the important content of the page. The identical text buried in nested `<div>` elements is just text with no signal attached. Semantic HTML is one of the cheapest and most durable ranking signals available, and you earn it simply by using the correct element.
-
-## How this connects to your styling course
-
-Clean semantic structure is also what makes a page pleasant to style in MTM1544. Well-named landmarks and a logical outline give CSS clear, meaningful targets to work with. A tangle of unnamed `<div>` elements is painful to style and easy to break. The structural quality you build here directly determines how smoothly the styling goes, which is why HTML comes before CSS.
-
-## A full worked example
-
-Here is a realistic article page marked up entirely with semantic elements. Read it as a model for the structure your own pages should follow.
-
-```html
-<body>
-  <header>
-    <h1>Corner Bakery Blog</h1>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/blog/">Blog</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <article>
-      <header>
-        <h2>The Case for a Longer Rise</h2>
-        <p>Posted <time datetime="2026-02-10">February 10, 2026</time></p>
-      </header>
-
-      <section>
-        <h3>Flavour</h3>
-        <p>A slow fermentation develops...</p>
-      </section>
-
-      <section>
-        <h3>Texture</h3>
-        <figure>
-          <img src="crumb.jpg" alt="Open crumb of a slowly fermented loaf">
-          <figcaption>Twenty-four hours of cold proofing.</figcaption>
-        </figure>
-      </section>
-
-      <footer>
-        <address>Written by the Corner Bakery team</address>
-      </footer>
-    </article>
-
-    <aside>
-      <h2>Related posts</h2>
-      <ul>
-        <li><a href="#">Choosing a starter</a></li>
-      </ul>
-    </aside>
-  </main>
-
-  <footer>
-    <p>&copy; 2026 Corner Bakery</p>
-  </footer>
-</body>
-```
-
-<details class="demo" open>
-<summary>Result</summary>
-<div class="demo-render">
-<header role="none">
-  <h1>Corner Bakery Blog</h1>
-  <nav role="none">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/blog/">Blog</a></li>
-    </ul>
-  </nav>
-</header>
-
-<article>
-  <header>
-    <h2>The Case for a Longer Rise</h2>
-    <p>Posted <time datetime="2026-02-10">February 10, 2026</time></p>
-  </header>
-
-  <section>
-    <h3>Flavour</h3>
-    <p>A slow fermentation develops...</p>
-  </section>
-
-  <section>
-    <h3>Texture</h3>
-    <figure>
-      <img src="/images/placeholder.svg" alt="Open crumb of a slowly fermented loaf">
-      <figcaption>Twenty-four hours of cold proofing.</figcaption>
-    </figure>
-  </section>
-
-  <footer>
-    <address>Written by the Corner Bakery team</address>
-  </footer>
-</article>
-
-<aside role="none">
-  <h2>Related posts</h2>
-  <ul>
-    <li><a href="#">Choosing a starter</a></li>
-  </ul>
-</aside>
-
-<footer>
-  <p>&copy; 2026 Corner Bakery</p>
-</footer>
-</div>
-</details>
-
-The Result box uses a placeholder graphic in place of a real photo, since a textbook can't ship every image a real project would have. In your own project, `src` points at an actual image file in your folder, and the caption and `alt` text work exactly the same way.
-
-Notice that the `<article>` has its own `<header>` and `<footer>`, separate from the page's. That is legal and correct: those elements describe the nearest section they belong to, whether that's the whole page or a single article. It's also the example from the ARIA roles section above, made concrete: the page's outer `<header>` and `<footer>` are landmarks, `banner` and `contentinfo`. The `<header>` and `<footer>` nested inside the `<article>` are not; a screen reader treats them as generic grouping, because the article, not the page, is what they belong to.
 
 ## The checklist
 
@@ -454,7 +326,6 @@ Run this over every page before you move on:
 - Every `<section>` has its own heading and is a real, distinct part of the page outline
 - Every `<article>` could stand on its own if pulled out and placed somewhere else
 - `<aside>` used only for content the main point survives without
-- `<figure>` and `<figcaption>` paired for any image, diagram, or code sample that needs a caption
 - `<time datetime="...">` used for any date or time that should be machine-readable
 - Heading levels chosen by outline position, never by size, and never reset just because a heading sits inside an `<article>` or `<section>`
 
@@ -469,16 +340,4 @@ References to go deeper. The W3Schools pages are quick and example-first, good t
 - [Video: HTML5 Semantics, by Net Ninja](https://www.youtube.com/watch?v=kGW8Al_cga4). A short, beginner-friendly walkthrough of the semantic elements.
 - [Video: Semantic HTML Tags, by Dave Gray](https://www.youtube.com/watch?v=kX3TfdUqpuU). A fuller tutorial with live coding.
 
-## Try it yourself (about 45 minutes)
-
-Work through these in order.
-
-1. Take a page you built in an earlier chapter and rebuild its skeleton with `<header>`, `<nav>`, one `<main>`, and `<footer>`.
-2. Inside `<main>`, add at least one `<section>` with its own heading, and one `<article>` that could stand on its own.
-3. Add a `<figure>` with a `<figcaption>` for one image, and mark one date with `<time>`.
-4. Add an `<aside>` with related links, and confirm the page still makes sense if you imagine removing it.
-5. Open developer tools, and in the Elements or Accessibility panel, look at how the browser now recognizes the landmark regions you created. Find the role name it lists next to `<header>`, `<nav>`, `<main>`, and `<footer>`, and match each one against the Going Deeper section above. Compare that to the same page built only with `<div>` elements.
-
-You can now build a single page with real meaning. [Information Architecture](/modules/web-basics/information-architecture/README.md) zooms out to the whole site: which pages exist, and how they connect.
-
-If you can look at a design and name its regions out loud (that's a `<header>`, that's the `<main>`, those repeating blocks are `<article>` elements), you have the skill this chapter is teaching.
+If you can look at a design and name its regions out loud (that's a `<header>`, that's the `<main>`, those repeating blocks are `<article>` elements), you have the skill this chapter is teaching. The [full worked example](/modules/html/html-semantics/worked-example.md) puts every element above into one realistic page.

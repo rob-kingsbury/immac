@@ -57,7 +57,15 @@ const mtm1511Sidebar = [
           { text: 'Media Elements', link: '/modules/html/media-elements/README.md' },
         ],
       },
-      { text: 'Week 4: Semantic HTML', link: '/modules/html/semantic-html.md' },
+      {
+        text: 'Week 4: Semantic HTML',
+        collapsible: true,
+        children: [
+          { text: 'Semantic HTML', link: '/modules/html/html-semantics/README.md' },
+          { text: 'A Full Worked Example', link: '/modules/html/html-semantics/worked-example.md' },
+          { text: 'HTML Figure', link: '/modules/html/html-figure/README.md' },
+        ],
+      },
       {
         text: 'Week 5: Site Architecture and Planning',
         collapsible: true,
@@ -70,12 +78,24 @@ const mtm1511Sidebar = [
           { text: 'HTML Navigation', link: '/modules/html/html-navigation/README.md' },
         ],
       },
-      { text: 'Week 6: Web Accessibility Fundamentals', link: '/modules/accessibility/web-accessibility-fundamentals.md' },
+      {
+        text: 'Week 6: Web Accessibility Fundamentals',
+        collapsible: true,
+        children: [
+          { text: 'WCAG', link: '/modules/accessibility/wcag/README.md' },
+          { text: 'ARIA', link: '/modules/accessibility/aria/README.md' },
+          { text: 'Skip Navigation', link: '/modules/accessibility/skip-navigation/README.md' },
+          { text: 'Keyboard Access', link: '/modules/accessibility/keyboard-access/README.md' },
+          { text: 'Colour Contrast', link: '/modules/accessibility/colour-contrast/README.md' },
+          { text: 'Testing for Accessibility', link: '/modules/accessibility/testing/README.md' },
+        ],
+      },
       {
         text: 'Week 7: HTML Forms and Data Structures',
         collapsible: true,
         children: [
           { text: 'HTML Form', link: '/modules/html/html-form/README.md' },
+          { text: 'Accessible Forms, in Brief', link: '/modules/html/html-form/accessible-forms.md' },
           { text: 'HTML Input', link: '/modules/html/html-input/README.md' },
           { text: 'Built-in Form Validation', link: '/modules/html/html-form-validation/README.md' },
           { text: 'HTML Table', link: '/modules/html/html-table/README.md' },
@@ -141,7 +161,19 @@ const mtm1544Sidebar = [
       { text: 'Week 7: Responsive Design and Media Queries', link: '/modules/css/responsive-media-queries.md' },
       { text: 'Week 8: Reading Week', link: '/modules/css/reading-week.md' },
       { text: 'Week 9: The DOM and CSS Targeting', link: '/modules/css/dom-css-targeting.md' },
-      { text: 'Week 10: Accessible Styling', link: '/modules/css/accessible-styling.md' },
+      {
+        text: 'Week 10: Accessible Styling',
+        collapsible: true,
+        children: [
+          { text: 'Keyboard Access', link: '/modules/accessibility/keyboard-access/README.md' },
+          { text: 'Text Scaling', link: '/modules/accessibility/text-scaling/README.md' },
+          { text: 'Visually Hidden', link: '/modules/accessibility/visually-hidden/README.md' },
+          { text: 'Reduced Motion', link: '/modules/accessibility/reduced-motion/README.md' },
+          { text: 'Contrast Preferences and Forced Colors', link: '/modules/accessibility/colour-contrast/contrast-preferences.md' },
+          { text: 'Touch Targets', link: '/modules/accessibility/touch-targets/README.md' },
+          { text: 'Testing for Accessibility', link: '/modules/accessibility/testing/README.md' },
+        ],
+      },
       { text: 'Week 11: CSS Custom Properties and Variables', link: '/modules/css/custom-properties.md' },
       { text: 'Week 12: Visual Design Principles', link: '/modules/css/visual-design-principles.md' },
       { text: 'Week 13: Transitions and Motion', link: '/modules/css/transitions-animation.md' },

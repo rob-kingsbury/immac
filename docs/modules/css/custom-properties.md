@@ -226,7 +226,7 @@ Scoping leads directly to themes. Declare an alternative set of values under a s
 
 The styling rules are written once and shared. Only the values differ.
 
-The same approach handles a system dark mode preference, using a media query in the same family as `prefers-reduced-motion` from [Accessible Styling](/modules/css/accessible-styling.md):
+The same approach handles a system dark mode preference, using a media query in the same family as `prefers-reduced-motion` from [Reduced Motion](/modules/accessibility/reduced-motion/README.md):
 
 ```css
 :root {

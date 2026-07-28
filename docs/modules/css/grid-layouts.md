@@ -465,7 +465,7 @@ Two more values worth knowing by name. `position: fixed` behaves like `absolute`
 
 **`z-index` decides which element sits on top when two positioned elements overlap.** It only works on an element that already has a `position` other than `static`, and it takes a plain number: higher stacks above lower. You'll need it any time something you positioned ends up hidden behind something else, a header, a hero image, a modal background.
 
-You'll meet `position: absolute` again soon, in this course's own [Accessible Styling](/modules/css/accessible-styling.md), for the `.visually-hidden` pattern and the skip link. Both will make a lot more sense once you're there, now that you know what `position: absolute` is actually doing and why it needs a positioned ancestor to behave.
+You'll meet `position: absolute` again soon, in this course's own [Visually Hidden](/modules/accessibility/visually-hidden/README.md), for the `.visually-hidden` pattern and the skip link. Both will make a lot more sense once you're there, now that you know what `position: absolute` is actually doing and why it needs a positioned ancestor to behave.
 
 ## Inspecting a grid
 

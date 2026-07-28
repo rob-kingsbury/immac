@@ -514,4 +514,4 @@ If you read the `:not()` section, find one place on your page where you can styl
 
 Finally, break something on purpose. Introduce a deliberate typo in a class name so a rule stops applying, then use the six-step routine above to find it without looking at your own edit. Time yourself. Do it again with a specificity conflict instead of a typo. The point is to make the routine automatic before you need it under pressure in the project weeks.
 
-You can now diagnose anything that goes wrong. [Accessible Styling](/modules/css/accessible-styling.md) turns to making sure your page works for everyone, not just the visitor who matches your own screen, browser, and abilities.
+You can now diagnose anything that goes wrong. [Keyboard Access](/modules/accessibility/keyboard-access/README.md) turns to making sure your page works for everyone, not just the visitor who matches your own screen, browser, and abilities.

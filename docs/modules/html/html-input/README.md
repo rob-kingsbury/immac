@@ -92,7 +92,7 @@ Optional, not needed for the in-class build, but worth knowing the first time a 
 <input type="email" id="contact-email" name="email" autocomplete="email">
 ```
 
-One attribute, and it's an accessibility win as much as a convenience one: some visitors rely on autofill because typing is slow or difficult for them. It's also how you satisfy WCAG Success Criterion 1.3.5, Identify Input Purpose, the AA-level requirement named back in [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md): `autocomplete`'s token vocabulary is the HTML-level technique for meeting it. Reserve `autocomplete="off"` for a field that should never be autofilled, such as a one-time code.
+One attribute, and it's an accessibility win as much as a convenience one: some visitors rely on autofill because typing is slow or difficult for them. It's also how you satisfy WCAG Success Criterion 1.3.5, Identify Input Purpose, the AA-level requirement covered in [Accessible Forms, in Brief](/modules/html/html-form/accessible-forms.md): `autocomplete`'s token vocabulary is the HTML-level technique for meeting it. Reserve `autocomplete="off"` for a field that should never be autofilled, such as a one-time code.
 
 ### Going deeper: inputmode, a hint for the keyboard only
 

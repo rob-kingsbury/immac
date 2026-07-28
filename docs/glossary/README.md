@@ -12,7 +12,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Alt text.** The `alt` attribute on an `<img>`, describing what the image shows. Read aloud by screen readers, shown if the image fails to load, and read by search engines. See [HTML Images](/modules/html/html-images/README.md).
 
-**<abbr title="Accessible Rich Internet Applications">ARIA</abbr>.** Accessible Rich Internet Applications, a set of attributes that add accessibility information <abbr title="HyperText Markup Language">HTML</abbr> alone can't provide. Use only when a native HTML element can't do the job. See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
+**<abbr title="Accessible Rich Internet Applications">ARIA</abbr>.** Accessible Rich Internet Applications, a set of attributes that add accessibility information <abbr title="HyperText Markup Language">HTML</abbr> alone can't provide. Use only when a native HTML element can't do the job. See [ARIA](/modules/accessibility/aria/README.md).
 
 **Attribute.** Extra information carried inside an opening tag, written as `name="value"`, such as `href` on an `<a>`. See [HTML Basics](/modules/html/html-basics/README.md).
 
@@ -82,7 +82,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## H
 
-**Heading hierarchy.** The logical order of `<h1>` through `<h6>` elements on a page, with no skipped levels, which screen reader users navigate by. See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
+**Heading hierarchy.** The logical order of `<h1>` through `<h6>` elements on a page, with no skipped levels, which screen reader users navigate by. See [HTML Headings](/modules/html/html-headings/README.md).
 
 **<abbr title="Hue, Saturation, Lightness">HSL</abbr>.** A colour notation of hue, saturation, and lightness, useful for building a palette of related colours by hand. See [Typography and Colour](/modules/css/typography-colour.md).
 
@@ -106,7 +106,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **LCP (Largest Contentful Paint).** A Core Web Vital measuring how long the largest visible element takes to appear. See [Optimizing Images and Media](/modules/html/image-optimization/README.md).
 
-**Landmark region.** A semantic element like `<header>`, `<nav>`, `<main>`, or `<footer>` that a screen reader user can jump to directly. See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
+**Landmark region.** A semantic element like `<header>`, `<nav>`, `<main>`, or `<footer>` that a screen reader user can jump to directly. See [Semantic HTML](/modules/html/html-semantics/README.md).
 
 ## M
 
@@ -152,11 +152,11 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Selector.** The part of a CSS rule that decides which elements the rule applies to. See [Introduction to CSS](/modules/css/intro-to-css.md).
 
-**Semantic HTML.** Using elements for what their content actually is, rather than a generic `<div>` for everything. See [Semantic HTML](/modules/html/semantic-html.md).
+**Semantic HTML.** Using elements for what their content actually is, rather than a generic `<div>` for everything. See [Semantic HTML](/modules/html/html-semantics/README.md).
 
 **Server.** A machine that stores a website's files and sends them out when a client requests them. See [How the Web Works](/modules/web-basics/how-the-web-works/README.md).
 
-**Skip link.** A hidden-until-focused link, first in the page, that jumps a keyboard user straight to the main content. See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
+**Skip link.** A hidden-until-focused link, first in the page, that jumps a keyboard user straight to the main content. See [Skip Navigation](/modules/accessibility/skip-navigation/README.md).
 
 **Specificity.** The calculated score (IDs, then classes, then elements) a browser uses to decide which of two conflicting, equally-recent CSS rules wins. See [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md).
 
@@ -182,7 +182,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## W
 
-**<abbr title="Web Content Accessibility Guidelines">WCAG</abbr>.** The Web Content Accessibility Guidelines, the international standard for accessible web content, built on the <abbr title="Perceivable, Operable, Understandable, Robust">POUR</abbr> principles (Perceivable, Operable, Understandable, Robust). See [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md).
+**<abbr title="Web Content Accessibility Guidelines">WCAG</abbr>.** The Web Content Accessibility Guidelines, the international standard for accessible web content, built on the <abbr title="Perceivable, Operable, Understandable, Robust">POUR</abbr> principles (Perceivable, Operable, Understandable, Robust). See [WCAG](/modules/accessibility/wcag/README.md).
 
 **Web font.** A typeface downloaded along with the page, rather than relying on a font already installed on the visitor's machine. See [Typography and Colour](/modules/css/typography-colour.md).
 
