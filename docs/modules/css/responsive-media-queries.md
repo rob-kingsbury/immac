@@ -10,6 +10,12 @@ This is the longest chapter in the course, because it covers everything that rea
 
 ![The same web page shown on a desktop monitor and a mobile phone, with the layout rearranged to suit each screen width.](/images/mobile-desktop.jpg)
 
+## How to read this chapter
+
+**The core path is everything in this chapter except "Container queries: responding to a component's own space, not the screen" and "Media queries or container queries?"** That covers the viewport meta tag, media query syntax, mobile-first, breakpoints, viewport units and `dvh`, fluid sizing without a query, responsive images, and testing your work, plus the mistakes to avoid and the checklist. This is already the longest chapter in the course, so the core path takes longer too: budget about 35 minutes to read it, plus the 75 minutes the exercise takes.
+
+**The two container query sections are an extension, not a requirement.** Container queries are a newer, component-level tool, and this chapter treats them as a distinct skill from the media queries this week's CLR centers on. The chapter itself already marks this as a natural place to pause. Treat those two sections as about 15 minutes of optional reading. Skip them on a busy week and you can still write mobile-first, breakpoint-driven CSS and complete the assignment.
+
 ## The viewport meta tag
 
 Before any <abbr title="Cascading Style Sheets">CSS</abbr> matters, one line of <abbr title="HyperText Markup Language">HTML</abbr> has to be right. Without it, everything else in this chapter silently fails.
@@ -462,6 +468,17 @@ Four ways to test, in increasing order of trustworthiness.
 - **Forgetting `img { max-width: 100% }`.** One oversized image causes horizontal scrolling across the whole page.
 - **Using `100vw` for a full-width element.** On desktop, it includes the scrollbar's width, which `100%` doesn't, so it can cause the exact faint horizontal scroll it looks like it should prevent.
 - **Testing only in one browser.** Resizing a Chrome window tells you nothing about whether Firefox or Safari render the same CSS the same way.
+
+## The checklist
+
+Run this over your layout before you submit work in this course:
+
+- Viewport meta tag present in the `<head>` of every page
+- Media queries written mobile-first, using `min-width`, not `max-width`
+- `dvh` used instead of `100vh` for anything meant to fill the screen
+- Body text capped with `max-width: 65ch` or similar for a readable line length
+- `clamp()` used for fluid type where a hard breakpoint isn't needed
+- Can explain when a container query is the right tool and when a media query is
 
 ## Keep learning
 

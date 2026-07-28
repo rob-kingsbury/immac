@@ -8,6 +8,12 @@ In MTM1511 earlier this week you set up your development environment and publish
 
 By the end of today you'll have a `css` folder, a `styles.css` file linked to a page, a way to confirm the connection actually works, and enough CSS to write your first rules. Nothing here is throwaway. This is the file you'll add to every week for the rest of the term. Next week the real CSS work starts.
 
+## How to read this chapter
+
+**The core path is everything except the two sections marked Going deeper.** Read those parts in order, work through the setup and stylesheet steps as you go, and finish with the exercise at the end, and you have what this week's assignment needs. Budget about 30 minutes for the reading and 60 minutes for the exercise.
+
+The two **Going deeper** sections are optional and add about 10 minutes combined. They answer two questions almost everyone asks in the first weeks of a CSS course, even though neither one is required to finish this week's work. Skip them if the week is already full. Nothing later in the course depends on having read them now, they'll simply feel familiar when the same topics come back properly in later weeks.
+
 ## What CSS is
 
 CSS stands for Cascading Style Sheets. It is a language whose only job is to describe how <abbr title="HyperText Markup Language">HTML</abbr> should look: the colours, the spacing, the fonts, the sizes, and eventually the whole layout of the page. Like HTML, it is plain text you type into a file, and you will spend this entire course writing it by hand.
@@ -52,6 +58,14 @@ p {
 The words did not change. The heading is still a heading and the paragraph is still a paragraph. CSS, and nothing else, created the difference in appearance. You will be able to write every line of that styling yourself before this course is done.
 
 **A note on the Result panels in this course.** They are not screenshots. Each one runs real CSS in your browser, live, and each is kept separate from the others so the many examples on one page never accidentally style each other. Wherever the code is shown above a Result, that code is exactly what the panel renders. Type it into your own stylesheet and you get the same thing.
+
+### Going deeper: why an unstyled page still looks like something
+
+Look back at the "Without CSS" panel above. No stylesheet was linked, no `style` attribute was written anywhere, and yet the heading is bold and larger than the paragraph, and there's visible space between them. If CSS is the only thing that controls appearance, where did that formatting come from?
+
+Every browser ships with its own built-in stylesheet, called the **user-agent stylesheet**, and it applies to every page automatically, before any CSS you write gets anywhere near it. It's why an `h1` is bold and large by default, why a `p` has space above and below it, why an unordered list gets bullets and indentation, and why a link shows up blue and underlined. None of that is the browser inventing a design. It's the browser applying its own default rules, the same way your own rules will apply once you write them.
+
+This matters for two reasons. First, "no styling" is never really true in a browser, only "no styling from you", so don't be surprised that a bare HTML page already has some shape to it. Second, browsers don't all ship identical defaults, close enough that it rarely matters this early, but different enough that professional projects often start with a small stylesheet that flattens those differences before the site's own styles take over. That's a technique for later, not something this course asks you to add yet, but it's why you'll sometimes see the term "CSS reset" mentioned in other people's projects.
 
 ## Confirming your setup
 
@@ -365,6 +379,20 @@ p {
 
 The ID wins even though it's written first, because it's the most specific of the three. That ordering, ID over class over element, is the practical version of a rule you'll learn to calculate exactly in the Selectors, Specificity, and Inheritance week later this term. For now, the useful takeaway is a debugging instinct: when a rule seems to be ignored, something more specific is probably beating it.
 
+### Going deeper: a third way to win, and why this course avoids it
+
+Later wins and more specific wins are not the whole story. CSS has a third tool that overrides both: adding `!important` to a declaration.
+
+```css
+p {
+  color: crimson !important;
+}
+```
+
+A declaration marked `!important` beats an ordinary declaration regardless of specificity or source order. You'll see it in code you didn't write, and the first time one of your own rules refuses to apply, reaching for it can look like a quick fix.
+
+It isn't, and this course doesn't use it. `!important` doesn't resolve the conflict between two rules, it forces a winner and buries the reason underneath. The only way to override an `!important` declaration is another `!important` declaration, so once a stylesheet has one, it tends to collect more, until nobody can tell which rule actually controls anything. When a rule you wrote doesn't seem to apply, the fix is to find what's beating it in developer tools and adjust the selector, not to reach for `!important`. You'll cover exactly how source order, specificity, and `!important` fit together, as one complete system, in the Selectors, Specificity, and Inheritance week later this term.
+
 ## Checking your work in developer tools
 
 Guessing why a style didn't apply wastes a lot of time when the browser will simply tell you. Right-click any element on your page and choose **Inspect**. Developer tools open with that element selected and a Styles panel showing every rule affecting it.
@@ -380,6 +408,18 @@ Finish by getting today's work onto the live site, using the workflow from MTM15
 Stage your changed files in the Source Control panel, write a commit message describing what you did, commit, then sync to push. Give GitHub a minute, then open your Pages URL in a browser. Your styled page should be there, publicly, at a real address.
 
 That round trip, edit locally, push, see it live, is how every assignment in this course is submitted. Doing it once today while the stakes are zero means it's routine by the time it counts.
+
+## Before you move on
+
+Run through this before you consider the week done:
+
+- Your `index.html` links an external stylesheet correctly: `rel="stylesheet"` and a working `href`, sitting inside the `<head>`
+- You can name every part of a rule on sight, selector, declaration block, property, and value
+- You can choose between an element, class, or ID selector for a given job, and say why that one and not the other two
+- You can predict which of two conflicting rules wins, using the two cascade tie-breakers covered this week: source order and specificity
+- You're comfortable opening developer tools, inspecting an element, and reading which rule won and which lost
+
+If any of those doesn't feel solid yet, that's what the exercise below is for. Work back through the relevant section above before next week's chapter, since everything from here builds on this one.
 
 ## Keep learning
 

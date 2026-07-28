@@ -10,6 +10,12 @@ The two are not rivals. Flexbox is one-dimensional, Grid is two-dimensional, and
 
 Everything here is hand-coded. This course deliberately does not use a layout framework, because a framework hides exactly the mechanics you're here to learn.
 
+## How to read this chapter
+
+**The core path is everything from "Rows and columns" through "Grid and Flexbox together," then "The third layout tool: position" through the checklist.** That covers track sizing, `gap`, placing items by line or by name, aligning content, pairing Grid with Flexbox, and positioning an element outside normal flow, plus the mistakes worth checking before you submit. Budget about 25 minutes to read it, plus the 60 minutes the exercise takes.
+
+**"Nested grids, and when they won't line up," sitting between those two stretches, is the exception.** Subgrid is real, well-supported CSS, and the section explains it properly, but it solves one specific problem, a row of independent cards whose internal content needs to line up, and a plain nested grid is simpler and correct for everything else. That's the same extension role oklch and color-mix played in Typography and Colour. Budget about 8 minutes for it if you have the time; skip it on a busy week and the assignment still works.
+
 ## Rows and columns
 
 As with Flexbox, you set a property on a container and its direct children become items. Here it's `display: grid`, plus a definition of what the columns should be.
@@ -474,6 +480,19 @@ Turn it on whenever a grid item lands somewhere unexpected. Seeing the actual li
 - **Placing every item by line number.** Auto-placement handles most cases. Explicit placement is for the exceptions, and hand-placing everything makes a grid that breaks whenever the content changes.
 - **Reaching for subgrid when a plain nested grid would do.** It solves one specific problem, cards whose internal rows need to align with their siblings. Most nested grids don't need it.
 - **`position: absolute` with no `position: relative` on a parent.** The element positions itself against the nearest ancestor that isn't `static`, which without one set deliberately is often the whole page, not the box you meant.
+
+## The checklist
+
+Run this over your layout choices before you submit work in this course:
+
+- Can explain the difference between Grid's two-dimensional layout and Flexbox's one-dimensional layout
+- Comfortable writing `grid-template-columns` and `grid-template-rows` with track sizing, including `fr` units and `repeat()`/`minmax()`
+- Uses `gap` for spacing between tracks, not margin on individual items
+- Can place an item deliberately, either with grid line numbers or with `grid-template-areas`
+- Knows when Grid should handle the whole layout and when a region inside it should switch to Flexbox
+- Knows when `subgrid` solves a real alignment problem across siblings, and when a plain nested grid is enough
+- Checked that any absolutely positioned element has a `position: relative` ancestor to position against
+- Used the developer tools grid overlay to confirm line numbers when an item landed somewhere unexpected
 
 ## Keep learning
 

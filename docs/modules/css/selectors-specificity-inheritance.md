@@ -8,6 +8,12 @@ In Week 1 you met three selectors and a rough rule for what happens when they co
 
 This is the chapter that turns "my <abbr title="Cascading Style Sheets">CSS</abbr> isn't working" from a mystery into a diagnosis.
 
+## How to read this chapter
+
+**The core path is everything in this chapter except the "Grouping selectors without paying for it" subsection.** Pseudo-classes, pseudo-elements, combinators, specificity, the full cascade, and inheritance are what this week's CLR requires, and they're what the assignment expects you to use with confidence. Budget about 30 minutes to read the core path, plus the 55 minutes the exercise takes.
+
+**"Grouping selectors without paying for it: :is() and :where()," sitting inside the specificity section, is an extension, not a requirement.** `:where()` is a real, well-supported tool worth having, and the exercise gives you a chance to try it once. But it sits outside what the CLR names for this week, so treat it as about 10 minutes of optional reading. Skip it on a busy week and you can still calculate specificity by hand and complete the assignment.
+
 ## Pseudo-classes: selecting by state
 
 A **pseudo-class** selects an element based on its state rather than its markup. It's written as a selector followed by a colon and the state name. The states you'll use constantly relate to what the visitor is doing right now.
@@ -385,6 +391,20 @@ Put it together into a routine. When a rule doesn't apply:
 - **A `::before` with no `content` property.** Nothing renders, and there's no error to tell you why.
 - **Putting real information in generated content.** It isn't reliably available to assistive technology.
 - **Expecting `padding` or `border` to inherit.** They don't, and no amount of retyping will change that.
+
+## The checklist
+
+Run this over your selectors and rules before you submit work in this course:
+
+- Every `:hover` style has a matching `:focus` style, so keyboard users see the same feedback mouse users do
+- Any selector's specificity can be read off as three numbers, A-B-C, and two selectors' specificity can be compared correctly
+- Classes are used for styling, not IDs or long descendant chains
+- `:where()` is used instead of `:is()` when the goal is a selector that adds nothing to specificity
+- `!important` does not appear anywhere in the stylesheet
+- The cascade order, origin and importance, then specificity, then source order, can explain why any rule on the page won or lost
+- Text properties are set once on a parent and left to inherit, rather than repeated on every child
+- Box properties are set directly on the element that needs them, since they don't inherit
+- Every `::before` and `::after` has a `content` property, and never carries information a visitor needs
 
 ## Keep learning
 
