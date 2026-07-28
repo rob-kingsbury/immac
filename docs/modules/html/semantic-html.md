@@ -6,6 +6,12 @@ title: Semantic HTML
 
 You could build almost any page using nothing but `<div>` elements. It would look identical to a well-built page, and it would be far worse: harder to maintain, weaker in search results, and close to unusable for anyone relying on a screen reader. Semantic HTML is the alternative. It means choosing elements that describe what a piece of content *is*, not just that it exists. This chapter covers every semantic element you'll use regularly, how to decide between the tricky ones, and why the choice matters.
 
+## How to read this chapter
+
+**The core path is everything down to the checklist.** Landmarks, the section/article/aside decision, and the smaller semantic elements like `<figure>` and `<time>` are what the assignment grades. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
+
+Sections headed **Going deeper** are optional and add roughly 15 minutes combined. They explain what a browser is actually doing under the elements you just learned: the accessibility information it exposes automatically, a real element you'll meet in other people's code, and why a rule from Week 2 still holds once content is nested inside `<article>` and `<section>`. Skip them on a busy week and nothing breaks.
+
 ## Structure versus presentation
 
 HTML's job is structure and meaning. <abbr title="Cascading Style Sheets">CSS</abbr>'s job is appearance. Semantic HTML is what keeps those two jobs separate, and that separation is the single most important idea in this course.
@@ -110,6 +116,52 @@ Put together, these four give a page its skeleton:
 
 Visually this is nothing special, a heading, a menu, and a copyright line. That's the point: semantic elements don't change how a page looks on their own. They change what the code *means* to everything other than your eyes, a screen reader, a search engine, the next developer.
 
+<div class="diagram">
+<svg viewBox="0 0 640 400" role="img" aria-label="A landmark map of a page. A header spans the top and contains a nav region on its right side. Below it, a main region takes up most of the width on the left, with an aside region beside it on the right holding related content. A footer spans the full width at the bottom. Each of these five regions is a stop a screen reader user can jump straight to, in any order, without reading everything in between.">
+  <rect x="10" y="10" width="620" height="380" rx="10" class="d-surface d-border" stroke-width="1.5"/>
+
+  <rect x="26" y="26" width="588" height="66" rx="6" class="d-surface d-border" stroke-width="1.5"/>
+  <text x="42" y="50" class="d-lbl">header</text>
+  <rect x="420" y="46" width="176" height="30" rx="4" class="d-surface d-border" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="508" y="65" text-anchor="middle" class="d-lbl-mono">nav</text>
+
+  <rect x="26" y="106" width="380" height="212" rx="6" class="d-accent-soft d-accent-stroke" stroke-width="1.5"/>
+  <text x="42" y="130" class="d-lbl">main</text>
+  <text x="216" y="220" text-anchor="middle" class="d-lbl-muted">the one region per page</text>
+
+  <rect x="420" y="106" width="176" height="212" rx="6" class="d-surface d-border" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="436" y="130" class="d-lbl">aside</text>
+
+  <rect x="26" y="332" width="588" height="52" rx="6" class="d-surface d-border" stroke-width="1.5"/>
+  <text x="42" y="362" class="d-lbl">footer</text>
+</svg>
+<figcaption>Five landmarks, one page. This is the map a screen reader builds from the elements above: jump straight to <code>main</code>, or move between <code>header</code>, <code>nav</code>, <code>aside</code>, and <code>footer</code> by name, without reading past the boxes in between.</figcaption>
+</div>
+
+### Going deeper: the ARIA roles you get for free
+
+Every landmark element you just read about does two things at once. It gives the browser a name for the region, and it exposes a role to assistive technology through the accessibility tree, automatically, with no extra markup.
+
+`<header>` maps to the role `banner`. `<nav>` maps to `navigation`. `<main>` maps to `main`. `<footer>` maps to `contentinfo`. A screen reader asking "what regions does this page have" is really asking for this list of roles, and it gets the answer for free the moment you choose the right element.
+
+This is the mechanical reason "use the semantic element, not a `<div>` plus <abbr title="Accessible Rich Internet Applications">ARIA</abbr>" is the right default, not just a style preference. The two blocks below produce an identical result in the accessibility tree:
+
+```html
+<!-- The long way: a div, and the role written by hand -->
+<div role="banner">
+  <h1>Corner Bakery</h1>
+</div>
+
+<!-- The short way: the browser adds the role for you -->
+<header>
+  <h1>Corner Bakery</h1>
+</header>
+```
+
+Nobody writes the first version on purpose. It exists here to make the point stick: `<header>` is not a nicer-looking `<div>`, it is a `<div>` plus `role="banner"` plus a promise that you meant it.
+
+There is one condition worth knowing, because the full worked example later in this chapter depends on it. `<header>` and `<footer>` only carry `banner` and `contentinfo` when they describe the whole page, which in practice means sitting directly under `<body>`. Nest either one inside `<article>`, `<aside>`, `<main>`, `<nav>`, or `<section>`, and its role quietly changes to `generic`, the same as a `<div>`, because a page can hold many articles and each one claiming to be the page's banner would be confusing rather than useful. `<nav>` and `<main>` don't have this exception; they keep their role wherever they sit. Look ahead to the worked example: the outer `<header>` and `<footer>` are the page's banner and contentinfo. The `<header>` and `<footer>` inside the `<article>` are not landmarks at all. Same elements, different meaning, decided entirely by nesting.
+
 ## Grouping content: section, article, and aside
 
 Inside `<main>`, three elements organize your content. This is where beginners hesitate most, so here is a clear rule for each.
@@ -160,6 +212,36 @@ An `<aside>` holds content related to the main content but not essential to it: 
 
 When in doubt between `<section>` and `<div>`, ask whether the block has its own heading and belongs in the page outline. Headed and meaningful means `<section>`. A styling wrapper with no heading means `<div>`.
 
+### Going deeper: why headings don't reset inside sections
+
+An early draft of the HTML5 specification proposed something clever: every `<article>`, `<section>`, `<aside>`, and `<nav>` would start its own private heading count. You could write `<h1>` inside every single article on a page, and a browser would work out the *real* level from how deeply that article was nested, the way a word processor renumbers headings when you promote or demote them. This was called the outline algorithm.
+
+No browser ever built it, and no screen reader ever calculated it from one. Authors who wrote nested `<h1>` elements expecting the algorithm to sort it out got a page that, to any real assistive technology, contained six headings that all claimed to be the top of the page. The specification eventually caught up to that reality: nesting multiple `<h1>` elements this way is now non-conforming, not a feature browsers simply haven't finished yet.
+
+The practical result is that the rule from Week 2 still applies, unchanged, no matter how many `<article>` and `<section>` elements a page nests: one `<h1>` per page, and never skip a level. Sectioning content organizes what's on the page. It does not renumber the headings inside it.
+
+```html
+<!-- Wrong: written as if nesting resets the count. No browser reads it this way. -->
+<article>
+  <h1>The Case for a Longer Rise</h1>
+  <section>
+    <h1>Flavour</h1>
+  </section>
+</article>
+
+<!-- Right: one h1 for the page, everything after it continues the sequence -->
+<main>
+  <article>
+    <h2>The Case for a Longer Rise</h2>
+    <section>
+      <h3>Flavour</h3>
+    </section>
+  </article>
+</main>
+```
+
+This is exactly what the full worked example at the end of this chapter does. The page's `<h1>` is the blog's name. The article's title is an `<h2>`. Its subsections are `<h3>`. Wrapping content in `<article>` or `<section>` does not change what number comes next; you still choose it the way you did in Week 2, by what the outline should say, not by how many sectioning elements it happens to sit inside.
+
 ## More elements that carry meaning
 
 Semantics go beyond the big landmarks. Several smaller elements replace generic markup with meaning, and using them is part of writing professional HTML.
@@ -181,6 +263,34 @@ Semantics go beyond the big landmarks. Several smaller elements replace generic 
 
 `<address>` marks contact information for the nearest `<article>` or the page as a whole. `<mark>` highlights text for reference, such as a search term found in a result. And from earlier chapters, `<strong>` marks importance and `<em>` marks emphasis, both of which are semantic even though they're inline.
 
+### Going deeper: hgroup, one element for a heading and its subtitle
+
+Go back to the very first example in this chapter, the `<header>` for Corner Bakery:
+
+```html
+<header>
+  <h1>Corner Bakery</h1>
+  <p>Fresh bread daily since 1998</p>
+</header>
+```
+
+That tagline paragraph sits next to the heading, but nothing in the markup says the two belong together. A sighted visitor reads them as a pair because of how they're positioned on screen. A screen reader user browsing by heading hears "Corner Bakery" and, separately, may or may not notice the paragraph that follows it.
+
+`<hgroup>` exists for exactly this pairing: a heading plus secondary content such as a subtitle, an alternative title, or a tagline, wrapped as one semantic unit.
+
+```html
+<header>
+  <hgroup>
+    <h1>Corner Bakery</h1>
+    <p>Fresh bread daily since 1998</p>
+  </hgroup>
+</header>
+```
+
+`<hgroup>` allows one heading, `<h1>` through `<h6>`, plus any number of `<p>` elements before or after it. Only that one heading counts toward the page's heading outline; the paragraphs inside `<hgroup>` are announced as part of the group, not mistaken for headings of their own or counted as a skipped level.
+
+This is current, standard <abbr title="HyperText Markup Language">HTML</abbr>, not an experimental feature. It has shipped across major browsers since 2015. Reach for it whenever a heading has a subtitle riding along with it: a page title with a tagline, an article title with a byline-style subheading, a product name with its short description. A heading with no companion text does not need it.
+
 ## Common mistakes to avoid
 
 A few patterns come up again and again in beginner code. Watching for them will put your markup ahead of most.
@@ -195,7 +305,7 @@ A few patterns come up again and again in beginner code. Watching for them will 
 
 Semantic markup pays off in two concrete, measurable ways, and both come free once you choose the right elements.
 
-For accessibility, landmarks let assistive technology build a map of the page. A screen reader user can list every landmark and jump straight to the `<main>`, skip the `<nav>`, or move between `<article>` elements, none of which is possible with anonymous `<div>` boxes. Screen readers also let users navigate by heading, so the heading outline you build doubles as a table of contents. Good structure is not an accessibility feature you add later; it is accessibility, built in from the first tag.
+For accessibility, landmarks let assistive technology build a map of the page, the same map the diagram earlier in this chapter drew out. A screen reader user can list every landmark and jump straight to the `<main>`, skip the `<nav>`, or move between `<article>` elements, none of which is possible with anonymous `<div>` boxes. Screen readers also let users navigate by heading, so the heading outline you build doubles as a table of contents. Good structure is not an accessibility feature you add later; it is accessibility, built in from the first tag.
 
 For SEO, search engines read the same structure to understand your content. A heading inside an `<article>` inside `<main>` is clearly the important content of the page. The identical text buried in nested `<div>` elements is just text with no signal attached. Semantic HTML is one of the cheapest and most durable ranking signals available, and you earn it simply by using the correct element.
 
@@ -310,7 +420,23 @@ Here is a realistic article page marked up entirely with semantic elements. Read
 
 The Result box uses a placeholder graphic in place of a real photo, since a textbook can't ship every image a real project would have. In your own project, `src` points at an actual image file in your folder, and the caption and `alt` text work exactly the same way.
 
-Notice that the `<article>` has its own `<header>` and `<footer>`, separate from the page's. That is legal and correct: those elements describe the nearest section they belong to, whether that's the whole page or a single article.
+Notice that the `<article>` has its own `<header>` and `<footer>`, separate from the page's. That is legal and correct: those elements describe the nearest section they belong to, whether that's the whole page or a single article. It's also the example from the ARIA roles section above, made concrete: the page's outer `<header>` and `<footer>` are landmarks, `banner` and `contentinfo`. The `<header>` and `<footer>` nested inside the `<article>` are not; a screen reader treats them as generic grouping, because the article, not the page, is what they belong to.
+
+## The checklist
+
+Run this over every page before you submit work in this course:
+
+- Reached for a semantic element before falling back to `<div>`
+- Exactly one `<header>` describing the whole page, used for introductory content, not just "the top"
+- Exactly one `<nav>` for the primary menu, with an `aria-label` if there's more than one on the page
+- Exactly one `<main>`, and it is not nested inside `<article>`, `<aside>`, `<header>`, or `<footer>`
+- Exactly one `<footer>` describing the whole page, used for closing content
+- Every `<section>` has its own heading and is a real, distinct part of the page outline
+- Every `<article>` could stand on its own if pulled out and placed somewhere else
+- `<aside>` used only for content the main point survives without
+- `<figure>` and `<figcaption>` paired for any image, diagram, or code sample that needs a caption
+- `<time datetime="...">` used for any date or time that should be machine-readable
+- Heading levels chosen by outline position, never by size, and never reset just because a heading sits inside an `<article>` or `<section>`
 
 ## Keep learning
 
@@ -318,6 +444,8 @@ References to go deeper. The W3Schools pages are quick and example-first, good t
 
 - [W3Schools: HTML Semantic Elements](https://www.w3schools.com/html/html5_semantic_elements.asp). Every semantic tag with a runnable example you can edit in place.
 - [W3Schools: HTML Layout Elements and Techniques](https://www.w3schools.com/html/html_layout.asp). How the landmark elements fit together into a full page layout.
+- [MDN: ARIA landmark roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles#4._landmark_roles). The full role list behind the Going Deeper section above, including roles for content this chapter doesn't cover.
+- [MDN: the hgroup element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hgroup). Full syntax and content rules.
 - [Video: HTML5 Semantics, by Net Ninja](https://www.youtube.com/watch?v=kGW8Al_cga4). A short, beginner-friendly walkthrough of the semantic elements.
 - [Video: Semantic HTML Tags, by Dave Gray](https://www.youtube.com/watch?v=kX3TfdUqpuU). A fuller tutorial with live coding.
 
@@ -329,7 +457,7 @@ Work through these in order. They're practice, not graded work.
 2. Inside `<main>`, add at least one `<section>` with its own heading, and one `<article>` that could stand on its own.
 3. Add a `<figure>` with a `<figcaption>` for one image, and mark one date with `<time>`.
 4. Add an `<aside>` with related links, and confirm the page still makes sense if you imagine removing it.
-5. Open developer tools, and in the Elements or Accessibility panel, look at how the browser now recognizes the landmark regions you created. Compare that to the same page built only with `<div>` elements.
+5. Open developer tools, and in the Elements or Accessibility panel, look at how the browser now recognizes the landmark regions you created. Find the role name it lists next to `<header>`, `<nav>`, `<main>`, and `<footer>`, and match each one against the Going Deeper section above. Compare that to the same page built only with `<div>` elements.
 
 You can now build a single page with real meaning. Next week zooms out to the whole site: which pages exist, and how they connect.
 

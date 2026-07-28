@@ -6,7 +6,16 @@ title: Introduction to the Web
 
 Welcome to Web Components. By the end of this semester you'll have built a multi-page website from scratch, using the structural language every website on the internet is built from: <abbr title="HyperText Markup Language">HTML</abbr>.
 
-This first week has two halves. The first is the mental model, what the web actually is and where HTML sits in it. The second is hands-on setup, installing and configuring every tool you'll use for the rest of the term. It's a lot of setup in one class, but it's a one-time cost. Once it works, the weekly workflow is three clicks, and from next week on we write code.
+## How to read this chapter
+
+Every other week in this course splits into a required core and an optional "Going deeper" you can skip on a busy week. **This week doesn't split that way, and pretending it does would be dishonest about what's actually required.** The mental model below explains what you're doing every time you write HTML for the rest of the term. The setup that follows it gives you the tools to actually do that work. Skip either one and you're stuck by next class, so both halves are core reading, not just the setup.
+
+Budget your time in two pieces:
+
+- **The mental model, through "The shape of a document":** about 20 to 25 minutes, working through the code examples as you go rather than reading past them.
+- **Setting up your development environment, through "Publishing to GitHub Pages":** 60 to 90 minutes of hands-on work, more if an install hits a snag. This is the half where reading it later doesn't work, since each step depends on the one before it finishing.
+
+There's no optional reading in this chapter. Everything below is something you'll use next week, and it's a one-time cost: once it works, the weekly workflow is three clicks, and from next week on we write code.
 
 ## What this course covers
 
@@ -27,9 +36,56 @@ The conversation between them follows a protocol called **<abbr title="Hypertext
 3. Your browser reads that HTML and renders it into the page you see.
 4. If the HTML references other files, a stylesheet, images, fonts, the browser makes a separate request for each one and assembles the finished page as they arrive.
 
+Written out, steps 1 and 2 look roughly like this:
+
+```text
+Request  ->  GET /about/team.html HTTP/1.1
+             Host: example.com
+
+Response <-  HTTP/1.1 200 OK
+             Content-Type: text/html
+             (the page's HTML follows)
+```
+
+`GET` is the request naming a specific file. `200 OK` is the server saying it found that file and here it is; you'll meet other status codes, `404` for a file that doesn't exist, once you're publishing real pages. The same exchange, drawn as the two machines actually involved:
+
+<div class="diagram">
+<svg viewBox="0 0 640 200" role="img" aria-label="A browser and a server exchanging an HTTP request and response. The browser sends a request naming a file. The server sends back a response containing that file's HTML. The browser then renders the page and makes separate requests for anything else it references.">
+  <text x="130" y="24" text-anchor="middle" class="d-lbl">Browser (client)</text>
+  <rect x="30" y="36" width="200" height="86" rx="8" class="d-surface d-border" stroke-width="1.5"/>
+  <text x="130" y="84" text-anchor="middle" class="d-lbl-muted">your laptop</text>
+
+  <text x="510" y="24" text-anchor="middle" class="d-lbl">Server</text>
+  <rect x="410" y="36" width="200" height="86" rx="8" class="d-surface d-border" stroke-width="1.5"/>
+  <text x="510" y="84" text-anchor="middle" class="d-lbl-muted">hosts the files</text>
+
+  <line x1="230" y1="55" x2="410" y2="55" class="d-accent-stroke" stroke-width="2"/>
+  <path d="M 400 49 L 410 55 L 400 61 Z" class="d-accent"/>
+  <text x="320" y="45" text-anchor="middle" class="d-lbl-mono">1  request: GET /about/team.html</text>
+
+  <line x1="410" y1="103" x2="230" y2="103" class="d-muted-stroke" stroke-width="2"/>
+  <path d="M 240 97 L 230 103 L 240 109 Z" class="d-accent"/>
+  <text x="320" y="120" text-anchor="middle" class="d-lbl-mono">2  response: 200 OK + team.html</text>
+
+  <text x="320" y="160" text-anchor="middle" class="d-lbl-muted">3  browser renders the HTML</text>
+  <text x="320" y="177" text-anchor="middle" class="d-lbl-muted">4  separate requests follow for images, styles, fonts</text>
+</svg>
+<figcaption>The same four steps from the list above, drawn as the exchange between the two machines. Steps 3 and 4 happen entirely on the browser's side, once the response arrives.</figcaption>
+</div>
+
 You'll see the **<abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr>** version almost everywhere now, which is the same protocol with the traffic encrypted so nobody in between can read or alter it. Browsers flag plain HTTP pages as not secure, and GitHub Pages serves your work over HTTPS automatically, so this is one thing you get for free.
 
-Two pieces of vocabulary worth having straight. A **<abbr title="Uniform Resource Locator">URL</abbr>** is the full address of a resource, and its parts have names: in `https://example.com/about/team.html`, `https` is the protocol, `example.com` is the domain, and `/about/team.html` is the path to a specific file on that server. **<abbr title="Domain Name System">DNS</abbr>**, the Domain Name System, is the lookup service that turns a human-readable domain like `example.com` into the numeric address your browser actually connects to. You don't have to configure any of this, but knowing the pieces exist makes error messages far less mysterious later.
+Two pieces of vocabulary worth having straight. A **<abbr title="Uniform Resource Locator">URL</abbr>** is the full address of a resource, and its parts have names: in `https://example.com/about/team.html`, `https` is the protocol, `example.com` is the domain, and `/about/team.html` is the path to a specific file on that server. A second example, with different values, so the pattern reads as a pattern rather than something memorized from one instance:
+
+```text
+https://algonquincollege.com/programs/imm-webcourses.html
+   |               |                        |
+protocol         domain                    path
+```
+
+Same three parts, different address. The protocol and domain rarely change once a site is live; the path is what changes from page to page as you add more of them.
+
+**<abbr title="Domain Name System">DNS</abbr>**, the Domain Name System, is the lookup service that turns a human-readable domain like `example.com` into the numeric address your browser actually connects to. You don't have to configure any of this, but knowing the pieces exist makes error messages far less mysterious later.
 
 One consequence matters for this course specifically. Because the server just hands over files and the browser does the rendering, **the browser is the thing you're really writing for**. Two browsers can interpret the same file slightly differently, which is why testing your work in more than one is a habit worth building early.
 
@@ -80,9 +136,35 @@ Every page you write this semester starts from the same skeleton. You'll build t
 
 The important split is `<head>` versus `<body>`. The **head** holds information *about* the page, its title, its character encoding, and later its stylesheet link, none of which appears on the page itself. The **body** holds everything a visitor actually sees. Almost all the markup you write this term goes in the body.
 
+Put content in the wrong one and the browser still runs, which is exactly what makes the mistake easy to miss:
+
+```html
+<!-- Wrong: the heading is inside <head>, so nothing shows on the page -->
+<head>
+  <title>Mountain Trail Guide</title>
+  <h1>Mountain Trail Guide</h1>
+</head>
+<body>
+  <p>Three routes, from an easy lakeside loop to a steep summit climb.</p>
+</body>
+```
+
+```html
+<!-- Right: <head> holds only metadata; anything a visitor should see goes in <body> -->
+<head>
+  <title>Mountain Trail Guide</title>
+</head>
+<body>
+  <h1>Mountain Trail Guide</h1>
+  <p>Three routes, from an easy lakeside loop to a steep summit climb.</p>
+</body>
+```
+
+The wrong version doesn't throw an error. The browser tab still shows the title correctly, and the page looks like it loaded fine, right up until you notice the `<h1>` never actually appears. An editor that only flags broken syntax won't catch this either, since nothing about it is technically invalid. It's worth testing once yourself so the failure looks familiar if you ever meet it again.
+
 ## Setting up your development environment
 
-The rest of today is installation and configuration. Work through it in order, because a couple of the steps depend on an earlier one having finished. If something fails, say so rather than skipping it. A broken tool today blocks both of your web courses for the whole week.
+The rest of today is installation and configuration, the second core half named at the top of this chapter, not optional supplementary material. Work through it in order, because a couple of the steps depend on an earlier one having finished. If something fails, say so rather than skipping it. A broken tool today blocks both of your web courses for the whole week.
 
 By the end of class, five things need to be true. Check yourself against this list as you go, not just at the very end:
 
@@ -334,6 +416,23 @@ You've now done the whole workflow once. Here's what each piece actually is, so 
 
 Worth being direct about why this week is so setup-heavy: this isn't a simplified classroom version of how the industry works, it's the actual daily workflow. Clone, edit, stage, commit, push, is what a working web developer does dozens of times a week, on real teams, from day one of a real job. Learning it for real now, however slow it feels today, is time you don't spend relearning it later.
 
+## The checklist
+
+Run this over your own understanding and your own machine before next class:
+
+- Can explain what a client and a server each do, and what a request and a response are
+- Can break a URL into its protocol, domain, and path
+- Can state why HTML describes structure and meaning, not appearance
+- Can point to an element's opening tag, closing tag, and any attributes it carries
+- Knows why visible content goes in `<body>`, not `<head>`
+- VS Code is installed and opens
+- `git --version` returns a real version number in a terminal
+- Git knows your name and email (`git config --global user.name` and `user.email` are set)
+- Git Bash is the default terminal in VS Code
+- You have a GitHub account and a practice repository cloned in VS Code
+- You've staged, committed, and pushed at least one change
+- Your practice repository's GitHub Pages site loads at a real URL in a browser
+
 ## Keep learning
 
 - [MDN: How the web works](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works). Mozilla's own short explanation of clients, servers, and what happens between typing an address and seeing a page.
@@ -342,7 +441,7 @@ Worth being direct about why this week is so setup-heavy: this isn't a simplifie
 - [pages.github.com](https://pages.github.com/). GitHub's short introduction to what Pages is and how it works.
 - [Video: Git and GitHub Tutorial for Beginners, by Kevin Stratvert](https://www.youtube.com/watch?v=tRZGeaHPoaw). A clear, beginner-paced walkthrough of the same core workflow from today's class.
 
-## Before next class
+## Try it yourself: before next class (about 15 minutes)
 
 Confirm your setup works end to end, without following the steps above as a script: clone your practice repository (or a fresh one), make any small change, push it, and confirm the Pages URL loads in a browser. This is meant to be a genuine test, so work through a snag before reaching for help. But if you're stuck for more than a few minutes, that's not a sign you're behind, it's exactly what the course's help channel is for. Either way, note exactly which step gave you trouble, because that's worth raising at the start of next class before we build on top of it.
 
