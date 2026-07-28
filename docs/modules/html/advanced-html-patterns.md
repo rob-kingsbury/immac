@@ -10,7 +10,7 @@ By now you can build a complete, valid, accessible page. This chapter rounds out
 
 **The core path is everything down to the checklist.** Read the sections in order, try the embed pattern and the <abbr title="Frequently Asked Questions">FAQ</abbr> pattern as you go, and you have what the assignment needs. Budget about 30 minutes to read, plus the 45 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add roughly 15 minutes combined. One covers a newer accordion variant of `<details>`, the other covers locking down what a third-party embed is allowed to do. Skip both this week if you're short on time; nothing in the assignment depends on them.
+One section headed **Going deeper** is optional and adds roughly 5 minutes: a newer accordion variant of `<details>`. Skip it this week if you're short on time; nothing in the assignment depends on it.
 
 This chapter also spends real time on three elements you will not build with in this course: `<dialog>`, `<template>`, and `popover`. That's deliberate, not an oversight. Knowing what a tool is for, and knowing when it isn't yet the right tool for what you can actually build, are both part of being good at this. This week is where that judgment call gets made explicit instead of left for you to guess at.
 
@@ -29,10 +29,6 @@ Most sites include things they didn't build: a YouTube video, a Google Map, a bo
 
 A few practices make embeds behave. Always give the `<iframe>` a `title` describing its content, for the same accessibility reason images need `alt`. Add `loading="lazy"` so an embed lower on the page doesn't slow the initial load. And paste embed codes only from services you trust, since an `<iframe>` loads and runs another site's content inside your page, effectively giving that site a window into yours. The `sandbox` attribute below is the other half of that trust question: it lets you take an embed whose content you trust but whose permissions you'd rather limit.
 
-One thing an `<iframe>` doesn't hand you is control over what's inside it. Captions on an embedded video, keyboard behaviour inside an embedded map, colour contrast in a booking widget: all of that belongs to the site you embedded, and your page inherits whatever accessibility work that site did or didn't do. Your responsibility stops at the frame boundary, the `title`, and deciding whether the embed belongs on the page at all. That's a real limit, not a loophole, and it's worth knowing where it sits before a client asks why an embedded widget doesn't behave like the rest of the accessible page you built around it.
-
-### Going deeper: restricting what an embed can do with sandbox
-
 An `<iframe>` with no `sandbox` attribute can, by default, run scripts, submit forms, open popups, and navigate the page it's embedded in, essentially everything the embedded site could do if a visitor opened it directly in its own tab. Most embed code you paste in, a video player, a map, doesn't need all of that.
 
 The `sandbox` attribute turns those permissions off, then lets you switch specific ones back on by name:
@@ -49,7 +45,9 @@ The `sandbox` attribute turns those permissions off, then lets you switch specif
 
 Written with no value at all, `sandbox` blocks everything and is the strictest setting available. Each `allow-*` token you add back is a permission you've decided that specific embed genuinely needs. `allow-scripts` lets it run JavaScript, which most video and map embeds require just to function. Get the token list wrong and the embed tends to break silently rather than showing an error, so add `sandbox`, reload, and confirm the embed still works before you trust the result.
 
-This is a well-established attribute, not a new one, and it's supported anywhere `<iframe>` itself is. It's in Going deeper because most embed code from a reputable provider already works fine without it, and `sandbox` matters most for a source you trust less than that.
+This is a well-established attribute, not a new one, and it's supported anywhere `<iframe>` itself is. Add it to every third-party embed you paste in, the same habit as `title` and `loading="lazy"` above, since most embed code from a reputable provider works fine under it and it costs you nothing when it does.
+
+One thing an `<iframe>` doesn't hand you is control over what's inside it. Captions on an embedded video, keyboard behaviour inside an embedded map, colour contrast in a booking widget: all of that belongs to the site you embedded, and your page inherits whatever accessibility work that site did or didn't do. Your responsibility stops at the frame boundary, the `title`, and deciding whether the embed belongs on the page at all. That's a real limit, not a loophole, and it's worth knowing where it sits before a client asks why an embedded widget doesn't behave like the rest of the accessible page you built around it.
 
 ## Responsive media containers
 
@@ -261,7 +259,7 @@ Nothing inside a `<template>` renders and nothing inside it runs, not even an `<
 
 Run this over your Week 13 work before you submit:
 
-- Every `<iframe>` embed has a `title` and `loading="lazy"`
+- Every `<iframe>` embed has a `title`, `loading="lazy"`, and a `sandbox` attribute with only the permissions it needs
 - Each embed sits inside a container ready to hold a fixed aspect ratio in CSS
 - The document `<head>` has `charset`, `viewport`, `title`, `description`, `canonical`, favicon, and stylesheet
 - Every `<details>` has a real `<summary>` as its first child, not the browser's default label
