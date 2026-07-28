@@ -8,6 +8,14 @@ By now your stylesheet has a few hundred lines in it, and the same brand blue is
 
 **Custom properties**, usually called CSS variables, fix that. You name a value once, use the name everywhere, and change it in a single place. They also do something no find-and-replace can: they respond to the cascade, which makes theming possible in a few lines.
 
+## How to read this chapter
+
+This chapter covers two required topics, not one. Custom properties come first: declaring them, using `var()`, building a design system, scoping, and theming. Native CSS nesting comes second, flagged clearly when it starts, because it's a genuinely different feature that happens to land in the same week. Both are required reading and both show up in this week's assignment.
+
+Budget about 20 minutes for the custom properties sections, another 10 for nesting, and the full 55 minutes for the exercise at the end.
+
+One section, marked **Going deeper**, is optional and adds about 5 minutes. It covers `@property`, a more advanced way to register a custom property that most of this course won't need. Skip it on a busy week and nothing in the exercise depends on it.
+
 ## Declaring and using a variable
 
 A custom property is written like a normal declaration, with a name that starts with two hyphens:
@@ -247,6 +255,36 @@ A newer function, `light-dark()`, does the same job with less repetition, once y
 
 `color-scheme: light dark` tells the browser this page supports both, and `light-dark()` picks its first argument in light mode and its second in dark mode, automatically, without a separate `@media` block duplicating the variable names. It's newer than the rest of this chapter and worth knowing, but the `@media (prefers-color-scheme: dark)` pattern above works everywhere and is what this course expects you to reach for by default.
 
+## Going deeper: giving a variable a type with @property
+
+Everything above treats a custom property as text. The browser stores whatever's after the colon and hands it to `var()` unchanged, which is exactly why a plain custom property can't be smoothly animated. Try to transition `--accent` from `#0e7490` to `#b45309` and nothing moves: the browser sees two strings, not two colours, and a transition needs values it can interpolate between.
+
+The `@property` at-rule fixes that by registering a custom property with a declared type:
+
+```css
+@property --accent {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0e7490;
+}
+```
+
+`syntax` states the type, here a colour. `inherits` controls whether the property behaves like the ones declared on `:root` (`true`) or stays local to wherever it's set (`false`). `initial-value` is required unless `syntax` is the universal `"*"`, since a typed property needs a valid value to fall back to.
+
+Once `--accent` is registered this way, the same variable that could previously only swap now supports a smooth transition:
+
+```css
+.card {
+  border-color: var(--accent);
+  transition: --accent 0.3s ease;
+}
+.card:hover {
+  --accent: #b45309;
+}
+```
+
+This is a genuine extension past what this course requires. Everything above this section, all the scoping and theming work, needs nothing more than a plain `--variable`. Reach for `@property` specifically when a custom property needs to animate, and not before.
+
 ## Nesting related rules together
 
 Worth flagging before you start: this is a second, genuinely distinct topic landing in the same week as custom properties, not an extension of what you just learned. Take it as its own thing, in its own sitting if that's what a clean read needs.
@@ -359,6 +397,20 @@ If a property seems to have no value at all, a misspelled variable name is the f
 - **Nesting three or four levels deep because you can.** It produces the same fragile, over-specific selectors Week 4 warned about, just formatted differently.
 - **Writing `:hover` instead of `&:hover` inside a nested rule.** Without the `&`, it's understood as a descendant selector, not the parent itself, and won't match what you meant.
 
+## Before you move on
+
+Check your stylesheet against this list before you consider the week's work done.
+
+- Every variable name starts with `--`, and you've treated it as case sensitive
+- `var()` is used with a sensible fallback wherever a value might be missing
+- Variables are named for what they mean, not what they currently look like
+- Spacing comes from a small scale, not ad-hoc numbers typed by feel
+- You understand scoping: redeclaring a variable on a narrower selector changes it there and nowhere else
+- At least one theme, dark mode or a component variant, is built using only variable overrides
+- Contrast has been checked separately in every theme, not just the default one
+- You can explain the difference between `&:hover` and a bare `:hover` inside a nested rule
+- You know nesting doesn't change how specificity is calculated, only how the rule is written
+
 ## Keep learning
 
 - [MDN: Using CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties). The complete guide, including inheritance and fallback behaviour.
@@ -366,6 +418,7 @@ If a property seems to have no value at all, a misspelled variable name is the f
 - [MDN: prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme). Reading the visitor's light or dark preference.
 - [MDN: light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark). The function reference for the newer theming shortcut.
 - [MDN: CSS nesting](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting). The full reference, including nested media and container queries.
+- [MDN: @property](https://developer.mozilla.org/en-US/docs/Web/CSS/@property). The reference for registering a custom property's type, covered in Going deeper.
 - [Video: CSS Custom Properties, by Kevin Powell](https://www.youtube.com/watch?v=PHO6TBq_auI). A practical walkthrough including scoping and theming.
 
 ## Try it yourself (about 55 minutes)

@@ -8,6 +8,12 @@ Motion is the last layer. Used well, it makes an interface feel responsive and e
 
 This week covers transitions and transforms, which handle nearly all the motion a site like yours needs, and it takes the accessibility constraint from Week 10 seriously rather than as an afterthought.
 
+## How to read this chapter
+
+**The core path is everything down through motion and accessibility.** Read the sections on transitions, the four shorthand parts, duration, timing functions, transforms, and the complete interactive component, then work through the accessibility rules that follow. That covers what the assignment needs: about 20 minutes of reading, plus the 40-minute exercise at the end.
+
+Two sections after that are already marked as extension material, in the chapter's own words. "Keyframe animations, briefly" is exactly what it sounds like: worth knowing exist, but transitions on interaction cover almost everything this project needs. "Future of motion: scroll-driven animation" is explicitly not yet something to build a project around, which is why it's wrapped in `@supports` in the first place. A short **Going deeper** section on `will-change` sits between the transform explanation and the complete component. Skip any or all of these on a busy week. Nothing in the assignment depends on them.
+
 ## What a transition does
 
 By default, a <abbr title="Cascading Style Sheets">CSS</abbr> change is instant. A `:hover` rule that changes a background colour switches it in a single frame. The `transition` property tells the browser to move between the two values over time instead.
@@ -203,9 +209,29 @@ Transforms combine in one declaration, applied in the order written:
 transform: translateY(-8px) scale(1.03);
 ```
 
+## Going deeper: will-change
+
+*Optional. Nothing in this week's assignment depends on it, and skipping it on a busy week costs you nothing.*
+
+The section above explained why `transform` and `opacity` are cheap to animate: the browser handles them late in rendering, separately from the rest of the page, so nothing else has to be recalculated. `will-change` is a property that tries to buy the browser even more lead time, by naming which properties on an element are about to change so it can prepare ahead of the change itself, rather than reacting to it.
+
+```css
+.trail:hover,
+.trail:focus-visible {
+  will-change: transform, box-shadow;
+  transform: translateY(-4px);
+}
+```
+
+It reads like a free upgrade, and MDN is direct about why it isn't. The browser is already trying to optimize everything on the page. Applying `will-change` to a lot of elements, or leaving it in place permanently, works against that: it reserves memory and rendering resources for changes that aren't actually happening most of the time, which can slow a page down instead of speeding it up. MDN's own guidance treats it as a response to a performance problem you've actually measured, not something to add in advance in case you need it.
+
+The other half of the guidance is timing. The ideal pattern is to apply `will-change` shortly before a change starts and remove it once the change finishes, which MDN's example does with JavaScript: a `mouseenter` listener sets it, and the transition's end event clears it back to `auto`. That's outside what this course covers. The CSS-only approximation is what the example above does: scope `will-change` to the same `:hover` and `:focus-visible` rule that triggers the animation, rather than declaring it on the base rule where it would sit on the element for the entire life of the page. It's less precise than the scripted version, but it's a long way from the actual mistake, which is treating `will-change` as a default you add to every animated element.
+
+For a hover state on a handful of cards, none of this is likely to matter, because `transform` and `opacity` are already handled efficiently on their own. `will-change` earns its place on something animating often, at scale, or on a device where you've actually watched the interface stutter. Reach for it when you've measured a problem, not as a habit.
+
 ## A complete interactive component
 
-Everything together, on the card pattern you built in Week 5:
+Everything together, on a card built from the same Flexbox layout you used in Week 5, with the polish this chapter adds on top:
 
 <CssDemo>
 
@@ -360,10 +386,24 @@ And this specific feature genuinely hasn't caught up everywhere yet. Chrome and 
 - **Animating everything.** If every element moves, none of the movement means anything.
 - **Depending on scroll-driven animation without `@supports`.** It isn't supported everywhere yet. Treat it as an enhancement, never as something the page needs to function.
 
+## The checklist
+
+The rules above, as something you can run over a project in a couple of minutes. Check every transition or animation you wrote against this before you submit:
+
+- The transition is declared on the base rule, not only on `:hover`
+- Properties are named explicitly, rather than using `transition: all`
+- Duration falls in the 150 to 400ms range for most interface motion
+- The properties being animated are `transform` and `opacity`, not layout properties like `width`, `height`, or `top`
+- `:focus-visible` gets the same treatment as `:hover`
+- `prefers-reduced-motion` handling is in place
+- Motion is never the only signal of a state change
+- Nothing flashes more than three times per second
+
 ## Keep learning
 
 - [MDN: Using CSS transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions). The full property reference.
 - [MDN: Using CSS transforms](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms/Using_CSS_transforms). Every transform function, including the 3D ones.
+- [MDN: will-change](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change). The full property reference, including the performance guidance the Going Deeper section above summarizes.
 - [MDN: Scroll-driven animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations). The full reference, including `view()` timelines for elements entering the viewport.
 - [MDN: @supports](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports). How to check for a feature before depending on it.
 - [cubic-bezier.com](https://cubic-bezier.com/). Draw a custom timing curve and preview it.
