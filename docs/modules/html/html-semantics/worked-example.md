@@ -66,8 +66,8 @@ Here is a realistic article page marked up entirely with semantic elements. Read
   <h1>Corner Bakery Blog</h1>
   <nav role="none">
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/blog/">Blog</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Blog</a></li>
     </ul>
   </nav>
 </header>
