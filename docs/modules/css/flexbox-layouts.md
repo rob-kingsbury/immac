@@ -416,6 +416,8 @@ Three properties go on the items rather than the container, and they're usually 
 
 Two shorthand values are worth memorizing. `flex: 1` means grow to fill, shrink if needed, ignore my natural width. `flex: 0 0 auto` means never grow, never shrink, stay exactly my natural size, which is what you want for something like a logo that shouldn't stretch.
 
+`flex` also takes a full three-value form, `flex: <grow> <shrink> <basis>`, when you want a starting size before the growing and shrinking happen. `flex: 1 1 200px` means "start every item at 200px, then let them grow and shrink equally to fill the row." That starting number is the `flex-basis` from a moment ago, and it's what the exercise below means by giving a card "a sensible `flex-basis`": a realistic minimum width for that card's content, so the cards resize from something reasonable instead of from nothing.
+
 There's also `align-self`, which overrides the container's `align-items` for one item only.
 
 ### Going deeper: the order property
