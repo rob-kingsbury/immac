@@ -1,16 +1,18 @@
 ---
 title: Links, Images, and Media
+prerequisites:
+  - html/html-core-elements
 ---
 
 # Links, Images, and Media
 
-Last week gave you the elements for a page of text. A page of text is a document. Links, images, and media are what turn it into the web. This chapter covers how to connect pages together, how to place images correctly, and how to embed audio and video.
+[Core HTML Elements](/modules/html/html-core-elements.md) gave you the elements for a page of text. A page of text is a document. Links, images, and media are what turn it into the web. This chapter covers how to connect pages together, how to place images correctly, and how to embed audio and video.
 
 ## How to read this chapter
 
 **The core path is everything down to the checklist.** Read it in order, build the examples as you go, and you have what the assignment and the Try it yourself exercise need. Budget about 25 minutes for it, plus the 40 minutes the exercise takes.
 
-Three sections are headed **Going deeper**. They're optional, marked clearly every time, and add roughly 20 minutes total if you read all three: sending email and phone calls directly from a link, opening a link safely in a new tab, and giving video or audio more than one file to try. Skip them on a busy week. Nothing in the core path or the exercise depends on them.
+Three sections are headed **Going deeper**. They're optional, marked clearly every time, and add roughly 20 minutes total if you read all three: sending email and phone calls directly from a link, opening a link safely in a new tab, and giving video or audio more than one file to try. Skip them if you are short on time. Nothing in the core path or the exercise depends on them.
 
 ## Links and the anchor element
 
@@ -27,7 +29,7 @@ The anchor element `<a>` creates a link. Its `href` attribute says where the lin
 </div>
 </details>
 
-The text between the tags is what the user clicks. Write it so it makes sense on its own. "Read the syllabus" is a good link. "Click here" is not, because screen reader users often pull up a list of just the links on a page, and a list of ten "click here" entries tells them nothing. The same rule applies if you're skimming your own page later, out of context: good link text tells you where it goes before you click it. Search engines read link text the same way, using it as a signal for what the destination page is about, so a vague link is a small SEO cost as well as an accessibility one. You'll cover this properly in the SEO Fundamentals chapter later this semester.
+The text between the tags is what the user clicks. Write it so it makes sense on its own. "Read the syllabus" is a good link. "Click here" is not, because screen reader users often pull up a list of just the links on a page, and a list of ten "click here" entries tells them nothing. The same rule applies if you're skimming your own page later, out of context: good link text tells you where it goes before you click it. Search engines read link text the same way, using it as a signal for what the destination page is about, so a vague link is a small SEO cost as well as an accessibility one. You'll cover this properly in [SEO Fundamentals](/modules/seo/seo-fundamentals.md).
 
 ### Going deeper: mailto: and tel: links
 
@@ -202,7 +204,7 @@ The format you save an image in affects both quality and load time. The four you
 
 SVG's limit is content, not quality. It describes a picture as a set of drawing instructions, shapes, lines, fills, so a logo stays sharp at any size and the file stays a couple of kilobytes. A photograph doesn't have clean shapes to describe that way. Converted to SVG, it becomes thousands of tiny coloured paths and ends up far larger than the JPG you started with. Save SVG for what it's actually good at and reach for a photographic format for everything else.
 
-You'll go deeper on optimizing and serving these images, including responsive `srcset` and lazy loading, in the Optimizing Images and Media chapter later this semester. For now, the rule of thumb is: drawings as SVG, photos as WebP or JPG.
+You'll go deeper on optimizing and serving these images, including responsive `srcset` and lazy loading, in [Optimizing Images and Media](/modules/html/image-optimization.md). For now, the rule of thumb is: drawings as SVG, photos as WebP or JPG.
 
 ## Embedding audio and video
 
@@ -267,7 +269,7 @@ The fix is to offer more than one file and let the browser pick. Replace the sin
 </audio>
 ```
 
-The browser checks each `<source>` in order and plays the first one it can decode, skipping the rest without downloading them. That's the same mechanism the `<picture>` element uses for images, which you'll meet properly in the Optimizing Images and Media chapter, just applied to media that plays over time instead of a still image. This is a different problem from what that later chapter solves: this is about whether a file plays at all, not about serving a smaller file to a smaller screen.
+The browser checks each `<source>` in order and plays the first one it can decode, skipping the rest without downloading them. That's the same mechanism the `<picture>` element uses for images, which you'll meet properly in [Optimizing Images and Media](/modules/html/image-optimization.md), just applied to media that plays over time instead of a still image. This is a different problem from what that chapter solves: this is about whether a file plays at all, not about serving a smaller file to a smaller screen.
 
 The `type` attribute is what lets the browser check without downloading anything first. It's a <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> type, the same kind of value a server sends to describe a file it's returning, and it tells the browser what it's looking at before committing to a download it might not be able to use.
 
@@ -300,4 +302,4 @@ Run this over your page before you submit work in this course:
 
 Take one of your existing pages and connect it up. Add a second HTML page and link the two together with relative paths, in both directions. Place one image with a genuine, descriptive `alt` attribute and correct `width` and `height`. Add an in-page link that jumps to one of your `<h2>` sections using a matching `id`. If you have a short video clip, embed it with the `<video>` element. Open the page and confirm every link lands where you expect.
 
-You now have two connected pages. Next week gives every element on them real meaning, with semantic HTML.
+You now have two connected pages. [Semantic HTML](/modules/html/semantic-html.md) gives every element on them real meaning.

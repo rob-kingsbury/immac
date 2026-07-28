@@ -1,5 +1,7 @@
 ---
 title: Optimizing Images and Media
+prerequisites:
+  - html/links-images-media
 ---
 
 # Optimizing Images and Media
@@ -12,7 +14,7 @@ The Links, Images, and Media chapter covered placing images. This chapter is abo
 
 **The core path is everything down to the checklist.** Work through the seven steps in order, build the example at the end, and you have what the assignment needs. Budget about 35 minutes to read it, plus the 45 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add roughly 10 minutes. They explain why the browser behaves the way it does, and they are here because this page is meant to still be useful to you in a job two years from now. Skip them on a busy week and nothing breaks.
+Sections headed **Going deeper** are optional and add roughly 10 minutes. They explain why the browser behaves the way it does, and they are here because this page is meant to still be useful to you in a job two years from now. Skip them if you are short on time and nothing breaks.
 
 **One tool, for everything below.** [Squoosh](https://squoosh.app/) is free, runs in the browser, and does the whole job on its own: resize to an exact pixel width, set a quality level, convert to WebP or AVIF, and export. If you already work in Photoshop, Affinity, or GIMP, use those instead. If you own no image editor at all, Squoosh is the only one you need for this chapter.
 
@@ -408,4 +410,4 @@ Then add a second image lower down the page with `loading="lazy"`, reload at the
 
 Finally, remove the `width` and `height` from one image. In the Network panel toolbar, find the throttling dropdown, which reads **No throttling** by default and sits near the top of the panel, and set it to **Slow 4G**. Reload and watch the text below the image jump when it arrives. Put the attributes back, reload again, and watch the jump disappear. That is the diagram from Step 4, happening to your own page.
 
-Your media loads fast. Next week is about making sure people can find your pages in the first place.
+Your media loads fast. [SEO Fundamentals](/modules/seo/seo-fundamentals.md) is about making sure people can find your pages in the first place.

@@ -1,16 +1,18 @@
 ---
 title: Core HTML Elements
+prerequisites:
+  - welcome/introduction-to-the-web
 ---
 
 # Core <abbr title="HyperText Markup Language">HTML</abbr> Elements
 
-Your tools are set up, your repository is cloned, and your first push already worked. This week is where the actual subject of the course begins: your first real HTML document, and the everyday elements you'll reach for on almost every page after it.
+Your tools are set up, your repository is cloned, and your first push already worked. This chapter is where the actual subject of the course begins: your first real HTML document, and the everyday elements you'll reach for on almost every page after it.
 
 ## How to read this chapter
 
 **The core path is everything from "What an HTML element actually is" down to the checklist near the end.** Work through it in order, build the examples as you go, and you have what the assignment and the Try it yourself exercise need. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add roughly 15 minutes total if you read all of them. They're marked clearly, every time, so you always know when you've stepped off the required path. They exist because this page is meant to still answer real questions for you a year or two from now, not just get you through this week's assignment. Skip them on a busy week. Nothing here depends on them.
+Sections headed **Going deeper** are optional and add roughly 15 minutes total if you read all of them. They're marked clearly, every time, so you always know when you've stepped off the required path. They exist because this page is meant to still answer real questions for you a year or two from now, not just get you through this chapter's assignment. Skip them if you are short on time. Nothing here depends on them.
 
 ## What an HTML element actually is
 
@@ -65,7 +67,7 @@ Elements can also **nest** inside each other, which is how you build more comple
 </div>
 </details>
 
-Indentation isn't required for the browser to understand nested code, but it's required for *you* to understand it six weeks from now. Consistent indentation, one level deeper for each child element, is a habit worth building this week, not in week twelve.
+Indentation isn't required for the browser to understand nested code, but it's required for *you* to understand it later on. Consistent indentation, one level deeper for each child element, is a habit worth building now, not later.
 
 ## Building a complete HTML document
 
@@ -202,7 +204,7 @@ The void elements you've met so far:
 | `<meta>` | Carries page metadata, like the character encoding or the viewport setting |
 | `<br>` | Forces a single line break inside text |
 
-You'll meet a third one next week: `<img>`, which points at an image file rather than wrapping one. A handful of others exist (`<hr>`, `<input>`, `<link>`) and you'll meet them as their topics come up. The list is short and effectively fixed, because the browser needs to know, while it's still reading a tag, whether a closing tag is coming later or not.
+You'll meet a third one in [Links, Images, and Media](/modules/html/links-images-media.md): `<img>`, which points at an image file rather than wrapping one. A handful of others exist (`<hr>`, `<input>`, `<link>`) and you'll meet them as their topics come up. The list is short and effectively fixed, because the browser needs to know, while it's still reading a tag, whether a closing tag is coming later or not.
 
 One older habit is worth naming so it doesn't confuse you when you see it in someone else's code: `<br />`, with a trailing slash before the closing bracket. That comes from XHTML, a stricter, XML-based version of HTML that required every element to be explicitly closed, void or not. Modern HTML doesn't require the slash. Both `<br>` and `<br />` render identically, and this course writes the plain form throughout.
 
@@ -312,7 +314,7 @@ You've written an `<h1>` and it showed up large and bold. You've written a `<ul>
 
 Every browser ships with its own built-in stylesheet, called the **user-agent stylesheet**, and it applies to every page on the web before any CSS you write gets a chance to run. It's what makes an `<h1>` big and an `<h2>` smaller, a `<ul>` indented with bullets and an `<ol>` indented with numbers, a `<p>` followed by a blank line. None of that is a rule you wrote. It's a default, applied automatically, that exists so a plain HTML document with zero authored styling is still readable instead of a wall of identical, run-together text.
 
-This is worth sitting with for a second, because it's the clearest possible proof of something Week 1 already told you: HTML describes structure, not appearance. The browser's default stylesheet is itself just CSS, applied by the browser instead of by you. When MTM1544 teaches you to write your own CSS, you aren't switching a page from "no style" to "styled." You're overriding the browser's styling with your own. An unstyled page was never actually unstyled. It was styled by whoever built the browser.
+This is worth sitting with for a second, because it's the clearest possible proof of something [Introduction to the Web](/modules/welcome/introduction-to-the-web.md) already told you: HTML describes structure, not appearance. The browser's default stylesheet is itself just CSS, applied by the browser instead of by you. When MTM1544 teaches you to write your own CSS, you aren't switching a page from "no style" to "styled." You're overriding the browser's styling with your own. An unstyled page was never actually unstyled. It was styled by whoever built the browser.
 
 Different browsers' default stylesheets aren't identical to each other, either, which is one reason professional CSS work often starts by deliberately resetting or normalizing these defaults before building custom styles on top. You'll meet that idea properly in MTM1544. For now, the smaller and more important takeaway is this: every visual decision you're seeing right now, heading size, bullet points, paragraph spacing, is a style, even the ones nobody in this room wrote.
 
@@ -459,6 +461,14 @@ HTML comments are notes for you and your teammates that the browser ignores enti
 
 Use them to label the major regions of a page. Combined with consistent indentation (nest each child element one level deeper than its parent), comments are what keep a file readable when it grows past a screen or two. Getting this habit now, on small files, means it's automatic by the time your project files are long.
 
+## Checking your markup with the validator
+
+A browser is remarkably forgiving. Miss a closing tag, misspell an attribute, or nest two elements in the wrong order, and most pages still render close enough to normal that nothing looks obviously broken. The browser is silently guessing at what you meant, and a guess that happens to look fine today can behave differently in a different browser, or once you add more markup around it. That's what makes broken markup dangerous: the mistake can hide indefinitely instead of announcing itself.
+
+The [W3C Markup Validation Service](https://validator.w3.org/) checks your HTML against the actual specification instead of just trying its best to display it. Paste in your page's URL, or upload the file directly, and it reports every place your markup deviates from what's valid, with a line number and a plain description of the problem.
+
+Get in the habit of running your page through it before you consider it done. [Code Quality and Validation](/modules/html/code-quality-validation.md) covers this in full.
+
 ## The checklist
 
 Run this over your page before you submit work in this course:
@@ -474,6 +484,7 @@ Run this over your page before you submit work in this course:
 - `<strong>` and `<em>` are used for meaning, not just to make text bold or italic
 - Block elements (headings, paragraphs, lists, blockquotes) stack full width; inline elements (`<a>`, `<strong>`, `<em>`, `<q>`) sit inside the line
 - A comment labels each major section of the file
+- Zero errors in the [W3C Markup Validation Service](https://validator.w3.org/)
 
 ## Keep learning
 
@@ -489,6 +500,6 @@ Run this over your page before you submit work in this course:
 
 Create a new folder in your cloned repository, add an `index.html` file, and build out the document skeleton, `<!DOCTYPE>` through `<body>`, from memory rather than copying it. Include the charset and viewport meta tags, both belong in every page you'll ever build from here on. Inside `<body>`, add one `<h1>`, at least two `<h2>` sections, a paragraph or two under each, one ordered and one unordered list, and a `<blockquote>`. Mark one or two words with `<strong>` or `<em>` where the meaning calls for it. Somewhere in your text, work in an ampersand or a copyright line and write it with the matching entity, `&amp;` or `&copy;`, instead of typing the character directly. Add a comment above each major section.
 
-Open the page in your browser, then open developer tools and inspect your own elements. Watch how the block elements each claim a full row while the inline ones share a line. Then commit and push your change using the workflow from last week, stage, commit, sync, and confirm it shows up on GitHub.
+Open the page in your browser, then open developer tools and inspect your own elements. Watch how the block elements each claim a full row while the inline ones share a line. Then commit and push your change using the workflow from [Introduction to the Web](/modules/welcome/introduction-to-the-web.md), stage, commit, sync, and confirm it shows up on GitHub.
 
-Your page is a single block of text and lists right now. Next week connects it to the rest of the web, with links, images, and media.
+Your page is a single block of text and lists right now. [Links, Images, and Media](/modules/html/links-images-media.md) connects it to the rest of the web.

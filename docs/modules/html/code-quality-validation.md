@@ -1,5 +1,8 @@
 ---
 title: Code Quality and Validation
+prerequisites:
+  - html/html-core-elements
+  - welcome/introduction-to-the-web
 ---
 
 # Code Quality and Validation
@@ -10,7 +13,7 @@ Code that works and code that's good aren't the same thing. A page can render fi
 
 **The core path is everything up to the closing checklist**, in order: validating your HTML, naming files and folders sensibly, writing comments that pull their weight, using developer tools to see what actually rendered, and understanding how a real team moves code from a branch into `main`. Budget about 30 minutes to read it, plus the 40 minutes the closing exercise takes.
 
-Three sections headed **Going deeper** are optional, adding about 20 minutes combined. They cover a layer of editor and repository habits that go a step beyond what this course requires you to submit: catching problems before you even save, keeping repository clutter out of version control, and writing a README that actually tells a stranger what your project is. Skip them on a busy week. Nothing about this week's assignment depends on them, but two years into a job, you'll likely be glad you read them once.
+Three sections headed **Going deeper** are optional, adding about 20 minutes combined. They cover a layer of editor and repository habits that go a step beyond what this course requires you to submit: catching problems before you even save, keeping repository clutter out of version control, and writing a README that actually tells a stranger what your project is. Skip them if you are short on time. Nothing about this chapter's assignment depends on them, but two years into a job, you'll likely be glad you read them once.
 
 ## Validating your HTML
 
@@ -170,7 +173,7 @@ None of the three replaces the others. A page can pass every check your editor o
 
 Every push so far has gone straight to `main`, which is the right call for a solo assignment where you're the only person touching the repository. It's not how a real team works, and it's worth knowing the difference now rather than meeting it for the first time on the job.
 
-A **branch** is a parallel copy of your repository's history that you can commit to without touching `main` at all. Every command in this section is typed into a terminal, unlike the staging/commit/push workflow from Week 1, which you've done through VS Code's Source Control panel. Branching and pull requests are commands and a GitHub screen, not buttons in that same panel, so open a terminal (Git Bash, the one you set as your default back in Week 1) for this part. Create a branch before starting a risky change or a new feature:
+A **branch** is a parallel copy of your repository's history that you can commit to without touching `main` at all. Every command in this section is typed into a terminal, unlike the staging/commit/push workflow from [Introduction to the Web](/modules/welcome/introduction-to-the-web.md), which you've done through VS Code's Source Control panel. Branching and pull requests are commands and a GitHub screen, not buttons in that same panel, so open a terminal (Git Bash, the one you set as your default back in Introduction to the Web) for this part. Create a branch before starting a risky change or a new feature:
 
 ```bash
 git checkout -b add-contact-page
@@ -296,4 +299,4 @@ Take your most complex page so far and run it through the W3C validator. Fix eve
 
 If your project folder has picked up a stray `.DS_Store` or `Thumbs.db`, add a `.gitignore` now and confirm the file disappears from the Source Control panel. Then look at your README and add whichever of the three things it's currently missing: what the project is, the live link, or a line describing what the page actually shows.
 
-Your markup is clean and it validates. Next week rounds out the HTML you know with a few more elements that solve real, specific problems.
+Your markup is clean and it validates. [Advanced HTML Patterns](/modules/html/advanced-html-patterns.md) rounds out the HTML you know with a few more elements that solve real, specific problems.

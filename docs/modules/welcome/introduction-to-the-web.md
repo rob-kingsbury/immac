@@ -4,24 +4,24 @@ title: Introduction to the Web
 
 # Introduction to the Web
 
-Welcome to Web Components. By the end of this semester you'll have built a multi-page website from scratch, using the structural language every website on the internet is built from: <abbr title="HyperText Markup Language">HTML</abbr>.
+Welcome to Web Components. By the end of this course you'll have built a multi-page website from scratch, using the structural language every website on the internet is built from: <abbr title="HyperText Markup Language">HTML</abbr>.
 
 ## How to read this chapter
 
-Every other week in this course splits into a required core and an optional "Going deeper" you can skip on a busy week. **This week doesn't split that way, and pretending it does would be dishonest about what's actually required.** The mental model below explains what you're doing every time you write HTML for the rest of the term. The setup that follows it gives you the tools to actually do that work. Skip either one and you're stuck by next class, so both halves are core reading, not just the setup.
+Every other chapter in this course splits into a required core and an optional "Going deeper" you can skip if you're short on time. **This chapter doesn't split that way, and pretending it does would be dishonest about what's actually required.** The mental model below explains what you're doing every time you write HTML for the rest of the term. The setup that follows it gives you the tools to actually do that work. Skip either one and you're stuck by next class, so both halves are core reading, not just the setup.
 
 Budget your time in two pieces:
 
 - **The mental model, through "The shape of a document":** about 20 to 25 minutes, working through the code examples as you go rather than reading past them.
 - **Setting up your development environment, through "Publishing to GitHub Pages":** 60 to 90 minutes of hands-on work, more if an install hits a snag. This is the half where reading it later doesn't work, since each step depends on the one before it finishing.
 
-There's no optional reading in this chapter. Everything below is something you'll use next week, and it's a one-time cost: once it works, the weekly workflow is three clicks, and from next week on we write code.
+There's no optional reading in this chapter. Everything below is something you'll use for the rest of the course, and it's a one-time cost: once it works, the ongoing workflow is three clicks, and from here on we write code.
 
 ## What this course covers
 
-This course is about structure and meaning, not appearance. You'll learn semantic HTML: the elements that describe what a piece of content *is*, a heading, a list, a navigation menu, an article, rather than how it looks. Styling those elements, the colours and layout and spacing, is the subject of your Web Styles course, taught right after this one each week. The two courses build the same project from two different angles. This one gives it structure, the other gives it a visual design.
+This course is about structure and meaning, not appearance. You'll learn semantic HTML: the elements that describe what a piece of content *is*, a heading, a list, a navigation menu, an article, rather than how it looks. Styling those elements, the colours and layout and spacing, is the subject of your Web Styles course. The two courses build the same project from two different angles. This one gives it structure, the other gives it a visual design.
 
-Over the semester you'll cover, in order: the building blocks of a web page, links and media, semantic structure, how to plan a whole site, accessibility, forms, image optimization, search engine visibility, and code quality. In the last weeks you'll bring all of it together into a finished, multi-page project.
+This course covers the building blocks of a web page, links and media, semantic structure, how to plan a whole site, accessibility, forms, image optimization, search engine visibility, and code quality, bringing all of it together into a finished, multi-page project.
 
 Every piece of work you submit is a real, live website, hosted on GitHub Pages under your own account. Setting that up is the second half of today.
 
@@ -117,7 +117,7 @@ Some elements carry extra information in **attributes**, written inside the open
 
 ### The shape of a document
 
-Every page you write this semester starts from the same skeleton. You'll build this properly next week, so read it now for the shape rather than the detail:
+Every page you write in this course starts from the same skeleton. You'll build this properly in [Core HTML Elements](/modules/html/html-core-elements.md), so read it now for the shape rather than the detail:
 
 ```html
 <!DOCTYPE html>
@@ -164,7 +164,7 @@ The wrong version doesn't throw an error. The browser tab still shows the title 
 
 ## Setting up your development environment
 
-The rest of today is installation and configuration, the second core half named at the top of this chapter, not optional supplementary material. Work through it in order, because a couple of the steps depend on an earlier one having finished. If something fails, say so rather than skipping it. A broken tool today blocks both of your web courses for the whole week.
+The rest of today is installation and configuration, the second core half named at the top of this chapter, not optional supplementary material. Work through it in order, because a couple of the steps depend on an earlier one having finished. If something fails, say so rather than skipping it. A broken tool today blocks both of your web courses.
 
 By the end of class, five things need to be true. Check yourself against this list as you go, not just at the very end:
 
@@ -174,11 +174,11 @@ By the end of class, five things need to be true. Check yourself against this li
 4. A practice repository is cloned onto your computer in VS Code.
 5. That repository's Pages site loads at a real URL in a browser.
 
-If a step stalls or throws an error partway through, that's often a connection blip or a one-off installer hiccup, not something you did wrong. Try it once more before you assume you've broken something. If it still won't go, don't sit with it alone: flag it with your instructor or in the course's help channel right away, ideally before you leave today's class, since your Web Styles class this week assumes this setup already works.
+If a step stalls or throws an error partway through, that's often a connection blip or a one-off installer hiccup, not something you did wrong. Try it once more before you assume you've broken something. If it still won't go, don't sit with it alone: flag it with your instructor or in the course's help channel right away, ideally before you leave today's class, since your Web Styles course assumes this setup already works.
 
 ### Installing Visual Studio Code
 
-VS Code is the editor you'll write every line of code in this semester. Download it from [code.visualstudio.com](https://code.visualstudio.com/) and run the installer with the default options. It's free, and it runs on Windows, macOS, and Linux.
+VS Code is the editor you'll write every line of code in this course. Download it from [code.visualstudio.com](https://code.visualstudio.com/) and run the installer with the default options. It's free, and it runs on Windows, macOS, and Linux.
 
 ### Installing Git
 
@@ -288,7 +288,7 @@ github.com/your-username/git-practice, a new repository containing one file, REA
 </div>
 </details>
 
-This is now a real, live **repository**, a project folder that Git tracks and GitHub hosts. Everything you build this semester follows this same pattern: one repository per assignment.
+This is now a real, live **repository**, a project folder that Git tracks and GitHub hosts. Everything you build in this course follows this same pattern: one repository per assignment.
 
 ## <span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="15"/><polyline points="7 10 12 15 17 10"/><polyline points="4 19 4 21 20 21 20 19"/></svg></span> Cloning the repository in VS Code
 
@@ -304,7 +304,7 @@ You now have a local, working copy of the repository, connected to GitHub. This 
 
 ## <span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="7 12 10 15 17 8"/></svg></span> Staging, committing, and pushing
 
-This is the workflow you'll repeat constantly this semester, and it has three distinct steps that beginners often blur into one. They're not interchangeable, and understanding why each one exists is what makes the rest of this course make sense.
+This is the workflow you'll repeat constantly in this course, and it has three distinct steps that beginners often blur into one. They're not interchangeable, and understanding why each one exists is what makes the rest of this course make sense.
 
 ### The three places your work lives
 
@@ -364,7 +364,7 @@ Source Control panel: Changes (0), Staged Changes (0), nothing pending to sync.
 </div>
 </details>
 
-This is the distinction worth holding onto for the rest of the semester: you can commit many times in a row, building up local history, without ever touching GitHub. Nothing your instructor or a classmate can see changes until you push. If you finish an assignment locally but forget to push, GitHub still shows your old version, and so does your submission link.
+This is the distinction worth holding onto for the rest of the course: you can commit many times in a row, building up local history, without ever touching GitHub. Nothing your instructor or a classmate can see changes until you push. If you finish an assignment locally but forget to push, GitHub still shows your old version, and so does your submission link.
 
 ### The first time you push: signing in
 
@@ -380,7 +380,7 @@ Everything above, staging, committing, pushing, gets your work onto GitHub. None
 
 ### Why this is a per-repository setting
 
-GitHub Pages isn't something you turn on once for the whole course. It's tied to one specific repository, and every assignment this semester lives in its own repository. That means this short setup repeats once per assignment, not once ever. It's quick once you've done it the first time, but it's easy to forget on a new repository and then wonder why the submission link doesn't load.
+GitHub Pages isn't something you turn on once for the whole course. It's tied to one specific repository, and every assignment in this course lives in its own repository. That means this short setup repeats once per assignment, not once ever. It's quick once you've done it the first time, but it's easy to forget on a new repository and then wonder why the submission link doesn't load.
 
 ### Turning on Pages for this repository
 
@@ -410,11 +410,11 @@ You've now done the whole workflow once. Here's what each piece actually is, so 
 
 **GitHub** is a website that hosts Git repositories online. It's where your code lives so it can be shared, backed up, and, in this course, graded from a link. Git and GitHub are related but distinct: Git is the tool, GitHub is one place among several that hosts what Git tracks.
 
-**A repository**, or "repo," is a project folder that Git is tracking. Every assignment this semester is its own repository.
+**A repository**, or "repo," is a project folder that Git is tracking. Every assignment in this course is its own repository.
 
-**GitHub Pages** is a free feature of GitHub that takes the files in a repository and publishes them as a live website, at a URL like `your-username.github.io/repository-name`. It's how every project you submit this semester becomes something you can actually visit in a browser, rather than a folder of files.
+**GitHub Pages** is a free feature of GitHub that takes the files in a repository and publishes them as a live website, at a URL like `your-username.github.io/repository-name`. It's how every project you submit in this course becomes something you can actually visit in a browser, rather than a folder of files.
 
-Worth being direct about why this week is so setup-heavy: this isn't a simplified classroom version of how the industry works, it's the actual daily workflow. Clone, edit, stage, commit, push, is what a working web developer does dozens of times a week, on real teams, from day one of a real job. Learning it for real now, however slow it feels today, is time you don't spend relearning it later.
+Worth being direct about why this chapter is so setup-heavy: this isn't a simplified classroom version of how the industry works, it's the actual daily workflow. Clone, edit, stage, commit, push, is what a working web developer does dozens of times a week, on real teams, from day one of a real job. Learning it for real now, however slow it feels today, is time you don't spend relearning it later.
 
 ## The checklist
 
@@ -445,4 +445,4 @@ Run this over your own understanding and your own machine before next class:
 
 Confirm your setup works end to end, without following the steps above as a script: clone your practice repository (or a fresh one), make any small change, push it, and confirm the Pages URL loads in a browser. This is meant to be a genuine test, so work through a snag before reaching for help. But if you're stuck for more than a few minutes, that's not a sign you're behind, it's exactly what the course's help channel is for. Either way, note exactly which step gave you trouble, because that's worth raising at the start of next class before we build on top of it.
 
-Next week you write your first real HTML, so come in with a working editor and a repository you can push to. Your Web Styles class later this week uses the same setup, so anything broken today blocks both courses.
+[Core HTML Elements](/modules/html/html-core-elements.md) is where you write your first real HTML, so come in with a working editor and a repository you can push to. Your Web Styles course uses the same setup, so anything broken today blocks both courses.

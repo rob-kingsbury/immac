@@ -1,5 +1,8 @@
 ---
 title: SEO Fundamentals
+prerequisites:
+  - html/html-core-elements
+  - html/semantic-html
 ---
 
 # <abbr title="Search Engine Optimization">SEO</abbr> Fundamentals
@@ -8,13 +11,13 @@ Search engine optimization sounds like marketing, but a large part of it is just
 
 Here's the direct version of why this matters to your career: a client or an employer judges a web developer partly on whether their pages actually get found, not just whether they render correctly. "I built a site" and "I built a site that shows up when someone searches for it" are different claims, and this chapter is what turns the first into the second.
 
-This week covers how a search engine actually sees a page, and the metadata in your document head that controls how that page appears in a results list. Next week takes the same page further, into social sharing, structured data, and a hands-on audit.
+This chapter covers how a search engine actually sees a page, and the metadata in your document head that controls how that page appears in a results list. [SEO in Practice](/modules/seo/seo-in-practice.md) takes the same page further, into social sharing, structured data, and a hands-on audit.
 
 ## How to read this chapter
 
 **The core path is everything down to the checklist.** Read it in order and complete the Try it yourself exercise, and you have what the assignment needs. Budget about 20 minutes to read it, plus the 40 minutes the exercise takes.
 
-Three sections are headed **Going deeper**. They're optional, marked clearly every time, and add roughly 20 minutes total if you read all three: a page-level alternative to `robots.txt`, why a URL is a search signal too, and the real mechanism behind title truncation in search results. Skip them on a busy week. Nothing in the core path or the exercise depends on them.
+Three sections are headed **Going deeper**. They're optional, marked clearly every time, and add roughly 20 minutes total if you read all three: a page-level alternative to `robots.txt`, why a URL is a search signal too, and the real mechanism behind title truncation in search results. Skip them if you are short on time. Nothing in the core path or the exercise depends on them.
 
 ## How a search engine reads a page
 
@@ -210,7 +213,7 @@ None of this asks you to do extra work. It asks you to keep doing the file namin
 
 ## A complete head, so far
 
-Putting this week's pieces together, a well-formed document head looks like this:
+Putting this chapter's pieces together, a well-formed document head looks like this:
 
 ```html
 <head>

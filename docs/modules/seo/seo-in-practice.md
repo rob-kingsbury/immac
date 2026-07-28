@@ -1,18 +1,21 @@
 ---
 title: SEO in Practice
+prerequisites:
+  - seo/seo-fundamentals
+  - html/site-architecture-planning
 ---
 
 # <abbr title="Search Engine Optimization">SEO</abbr> in Practice
 
-Last week covered how a search engine finds and understands a page, and the metadata that controls how it appears in a results list. This week is the applied half: how your page looks when somebody shares it, how to hand a search engine machine-readable facts about your content, how links between your own pages help both readers and crawlers, and how to audit a real page and fix what the tools flag.
+[SEO Fundamentals](/modules/seo/seo-fundamentals.md) covered how a search engine finds and understands a page, and the metadata that controls how it appears in a results list. This chapter is the applied half: how your page looks when somebody shares it, how to hand a search engine machine-readable facts about your content, how links between your own pages help both readers and crawlers, and how to audit a real page and fix what the tools flag.
 
-This is also the week that shows up in a portfolio review. A rich, correctly-formed preview card when you share your own project link, and a clean Lighthouse SEO score you can point to, are both concrete things a hiring manager can look at directly, not just take your word for.
+This is also the chapter that shows up in a portfolio review. A rich, correctly-formed preview card when you share your own project link, and a clean Lighthouse SEO score you can point to, are both concrete things a hiring manager can look at directly, not just take your word for.
 
 ## How to read this chapter
 
 **The core path is everything down to the checklist.** Read it in order and complete the Try it yourself exercise, and you have what the assignment needs. Budget about 25 minutes to read it, plus the 50 minutes the exercise takes.
 
-Three sections are headed **Going deeper**. They're optional, marked clearly every time, and add roughly 20 minutes total if you read all three: a second structured data example built around a product with a price, marking up the same breadcrumb trail you already know how to build in <abbr title="HyperText Markup Language">HTML</abbr>, and a short look at the `twitter:` tags mentioned in passing below. Skip them on a busy week. Nothing in the core path or the exercise depends on them.
+Three sections are headed **Going deeper**. They're optional, marked clearly every time, and add roughly 20 minutes total if you read all three: a second structured data example built around a product with a price, marking up the same breadcrumb trail you already know how to build in <abbr title="HyperText Markup Language">HTML</abbr>, and a short look at the `twitter:` tags mentioned in passing below. Skip them if you are short on time. Nothing in the core path or the exercise depends on them.
 
 ## Open Graph and social sharing
 
@@ -246,7 +249,7 @@ The score itself is the least useful part of the output. Lighthouse checks what 
 A full audit pass on a page looks like this:
 
 1. Run Lighthouse and record the SEO score and every flagged item.
-2. Check the document head by eye against last week's checklist: unique title, description, canonical, charset, viewport.
+2. Check the document head by eye against [SEO Fundamentals](/modules/seo/seo-fundamentals.md)'s checklist: unique title, description, canonical, charset, viewport.
 3. Paste any JSON-LD into the [Schema Markup Validator](https://validator.schema.org/) and fix what it reports.
 4. Check the preview card in a social platform's own sharing debugger.
 5. Confirm every page of the site is reachable by following links from the home page.

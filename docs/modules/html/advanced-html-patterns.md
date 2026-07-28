@@ -1,5 +1,9 @@
 ---
 title: Advanced HTML Patterns
+prerequisites:
+  - html/links-images-media
+  - html/semantic-html
+  - seo/seo-fundamentals
 ---
 
 # Advanced <abbr title="HyperText Markup Language">HTML</abbr> Patterns
@@ -10,9 +14,9 @@ By now you can build a complete, valid, accessible page. This chapter rounds out
 
 **The core path is everything down to the checklist.** Read the sections in order, try the embed pattern and the <abbr title="Frequently Asked Questions">FAQ</abbr> pattern as you go, and you have what the assignment needs. Budget about 30 minutes to read, plus the 45 minutes the exercise takes.
 
-One section headed **Going deeper** is optional and adds roughly 5 minutes: a newer accordion variant of `<details>`. Skip it this week if you're short on time; nothing in the assignment depends on it.
+One section headed **Going deeper** is optional and adds roughly 5 minutes: a newer accordion variant of `<details>`. Skip it if you're short on time; nothing in the assignment depends on it.
 
-This chapter also spends real time on three elements you will not build with in this course: `<dialog>`, `<template>`, and `popover`. That's deliberate, not an oversight. Knowing what a tool is for, and knowing when it isn't yet the right tool for what you can actually build, are both part of being good at this. This week is where that judgment call gets made explicit instead of left for you to guess at.
+This chapter also spends real time on three elements you will not build with in this course: `<dialog>`, `<template>`, and `popover`. That's deliberate, not an oversight. Knowing what a tool is for, and knowing when it isn't yet the right tool for what you can actually build, are both part of being good at this. This chapter is where that judgment call gets made explicit instead of left for you to guess at.
 
 ## Embedding third-party content
 
@@ -81,7 +85,7 @@ The `<head>` holds information about the page rather than visible content, and a
 
 Two of these are easy to forget and important. The `charset` declaration ensures characters and symbols display correctly, and without it, special characters can render as garbled text. The `viewport` meta tag is what makes a page respond properly to mobile screens rather than rendering a shrunken desktop layout that a phone user has to pinch and zoom to read. Both belong in the head of every page you build, no exceptions.
 
-The other two are easy to get backwards. `canonical` tells a search engine which <abbr title="Uniform Resource Locator">URL</abbr> is the "real" one when the same content is reachable at more than one address, your GitHub Pages project URL and a custom domain, for instance. Point it at whichever address you want indexed and shared. `description` is the summary a search result shows under your title, not a place for keywords, and you'll put real work into writing a good one when the SEO weeks get there. Neither attribute changes how the page looks or behaves for a visitor; both change how the page is found and understood by something reading the markup rather than rendering it, which is the whole reason the `<head>` exists as a section separate from the visible page.
+The other two are easy to get backwards. `canonical` tells a search engine which <abbr title="Uniform Resource Locator">URL</abbr> is the "real" one when the same content is reachable at more than one address, your GitHub Pages project URL and a custom domain, for instance. Point it at whichever address you want indexed and shared. `description` is the summary a search result shows under your title, not a place for keywords, and you'll put real work into writing a good one in [SEO Fundamentals](/modules/seo/seo-fundamentals.md) and [SEO in Practice](/modules/seo/seo-in-practice.md). Neither attribute changes how the page looks or behaves for a visitor; both change how the page is found and understood by something reading the markup rather than rendering it, which is the whole reason the `<head>` exists as a section separate from the visible page.
 
 ## The details and summary elements
 
@@ -257,7 +261,7 @@ Nothing inside a `<template>` renders and nothing inside it runs, not even an `<
 
 ## The checklist
 
-Run this over your Week 13 work before you submit:
+Run this over your work before you submit:
 
 - Every `<iframe>` embed has a `title`, `loading="lazy"`, and a `sandbox` attribute with only the permissions it needs
 - Each embed sits inside a container ready to hold a fixed aspect ratio in CSS
@@ -283,6 +287,6 @@ Audit the `<head>` of your pages against the checklist above and add anything mi
 
 Then build an <abbr title="Frequently Asked Questions">FAQ</abbr> section with at least four questions using `<details>` and `<summary>`. Nest at least one follow-up question inside its parent's `<details>`, the way the oven question nests inside the beginner question earlier in this chapter, and set one top-level `<details>` to start expanded with the `open` attribute. Confirm every one of them opens and closes with no scripting.
 
-Finally, write one or two sentences, in your project README or wherever your instructor asks for it, on why you didn't build with `<dialog>` or `popover` this term, and what would need to be true for you to reach for one of them instead. That sentence is a better test of whether you understood this week than the markup is.
+Finally, write one or two sentences, in your project README or wherever your instructor asks for it, on why you didn't build with `<dialog>` or `popover` this term, and what would need to be true for you to reach for one of them instead. That sentence is a better test of whether you understood this chapter than the markup is.
 
-You've now covered everything MTM1511 teaches about HTML. The final weeks bring your finished structure into MTM1544, where it gets styled.
+You've now covered everything MTM1511 teaches about HTML. Your finished structure now moves into MTM1544, where it gets styled.

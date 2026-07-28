@@ -1,18 +1,21 @@
 ---
 title: HTML Forms and Data Structures
+prerequisites:
+  - html/html-core-elements
+  - accessibility/web-accessibility-fundamentals
 ---
 
 # <abbr title="HyperText Markup Language">HTML</abbr> Forms and Data Structures
 
-Forms are how the web listens. A search box, a login, a contact page, a checkout: all forms. This week covers how to build one that's well structured and accessible, plus how to present tabular data correctly. You won't process the submitted data here, since that needs a back end you'll meet in a later course. The focus is the markup, and getting it right.
+Forms are how the web listens. A search box, a login, a contact page, a checkout: all forms. This chapter covers how to build one that's well structured and accessible, plus how to present tabular data correctly. You won't process the submitted data here, since that needs a back end you'll meet in a later course. The focus is the markup, and getting it right.
 
 ## How to read this chapter
 
-**This week works differently.** Week 7 is an in-class worklab. You take the Week 7 quiz in the first ten minutes of class as a readiness check, and once you score 9/10 or better, this week's assignment unlocks and you build it live, during that same period, submitting before class ends. No separate take-home window this time. Read this page before class if you can, it saves time once the quiz opens the assignment, but the real work happens live, against this exact content.
+**This chapter works differently.** It's designed as an in-class worklab. You take a readiness quiz in the first ten minutes of class, and once you score 9/10 or better, the assignment unlocks and you build it live, during that same period, submitting before class ends. No separate take-home window this time. Read this page before class if you can, it saves time once the quiz opens the assignment, but the real work happens live, against this exact content.
 
-**The core path is everything down to the checklist**: forms, labels, fieldsets, validation, tables, the same ground the assignment covers. Skim it in about 20 minutes before class, or read closely if you have more time. **"Going deeper" sections are optional**, more so this week given the time pressure. Skip them during class and come back later if you want the extra ground.
+**The core path is everything down to the checklist**: forms, labels, fieldsets, validation, tables, the same ground the assignment covers. Skim it in about 20 minutes before class, or read closely if you have more time. **"Going deeper" sections are optional**, more so given the time pressure. Skip them during class and come back later if you want the extra ground.
 
-**"Try it yourself" near the end is not extra practice this week.** It's the graded in-class build itself, the same steps as the assignment brief.
+**"Try it yourself" near the end is not extra practice here.** It's the graded in-class build itself, the same steps as the assignment brief.
 
 ## The form element
 
@@ -32,7 +35,7 @@ A `<form>` wraps a group of controls into one unit that submits together. Two at
 
 **`method="post"`** sends the form's data in the body of the request, invisible in the URL and not stored in browser history. Use POST whenever a submission changes something (creating an account, posting a comment, placing an order) or whenever the data is sensitive (a password, personal information). Because the data isn't in the URL, POST doesn't expose it in bookmarks, browser history, or server logs the way GET would.
 
-One caveat worth being precise about: **POST hides data from those specific places, but it doesn't encrypt anything.** A POST body sent over plain HTTP is just as readable to anyone intercepting the connection as a GET query string would be. The actual protection against that is <abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr>, back from Week 1, encrypting the whole request in transit. Use POST for the reasons above, and rely on HTTPS, which GitHub Pages already gives you automatically, for the reason that matters most: keeping the data unreadable in transit at all.
+One caveat worth being precise about: **POST hides data from those specific places, but it doesn't encrypt anything.** A POST body sent over plain HTTP is just as readable to anyone intercepting the connection as a GET query string would be. The actual protection against that is <abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr>, covered in [Introduction to the Web](/modules/welcome/introduction-to-the-web.md), encrypting the whole request in transit. Use POST for the reasons above, and rely on HTTPS, which GitHub Pages already gives you automatically, for the reason that matters most: keeping the data unreadable in transit at all.
 
 A rule you can apply without hesitation: if submitting the form twice would create two of something, or if the form carries a password, use `post`. If it only asks a question and gets an answer back, `get` is correct and often better, since the result becomes a shareable, bookmarkable URL.
 
@@ -126,7 +129,7 @@ For longer text use `<textarea>`, and for a list of options use `<select>`:
 
 ### Going deeper: autocomplete
 
-Optional, not needed for the Week 7 build, but worth knowing the first time a form fills in your address before you've typed a letter.
+Optional, not needed for the in-class build, but worth knowing the first time a form fills in your address before you've typed a letter.
 
 `autocomplete` tells the browser what kind of value a field expects, using a fixed set of keywords from the <abbr title="HyperText Markup Language">HTML</abbr> spec: `name`, `email`, `tel`, `street-address`, `postal-code`, `cc-number`, and dozens more. The browser and the operating system's password manager use that hint to fill the field from data already saved elsewhere.
 
@@ -138,7 +141,7 @@ Optional, not needed for the Week 7 build, but worth knowing the first time a fo
 <input type="email" id="contact-email" name="email" autocomplete="email">
 ```
 
-One attribute, and it's an accessibility win as much as a convenience one: some visitors rely on autofill because typing is slow or difficult for them. It's also how you satisfy WCAG Success Criterion 1.3.5, Identify Input Purpose, the AA-level requirement named back in Web Accessibility Fundamentals (Week 6): `autocomplete`'s token vocabulary is the HTML-level technique for meeting it. Reserve `autocomplete="off"` for a field that should never be autofilled, such as a one-time code.
+One attribute, and it's an accessibility win as much as a convenience one: some visitors rely on autofill because typing is slow or difficult for them. It's also how you satisfy WCAG Success Criterion 1.3.5, Identify Input Purpose, the AA-level requirement named back in [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md): `autocomplete`'s token vocabulary is the HTML-level technique for meeting it. Reserve `autocomplete="off"` for a field that should never be autofilled, such as a one-time code.
 
 ### Going deeper: inputmode, a hint for the keyboard only
 
@@ -739,7 +742,7 @@ Here's everything from this section in one table: `<table>`, `<caption>`, `<thea
 
 Forms and tables are two of the easiest structures to write invalid HTML in: an unclosed `<td>`, a `<label for>` that doesn't match any `id`, a `<tr>` sitting outside a `<thead>` or `<tbody>`. The browser usually renders something anyway, quietly guessing at what you meant, which means a real mistake can sit in your code for weeks without ever looking wrong on screen.
 
-The [W3C Markup Validation Service](https://validator.w3.org/) checks your HTML against the official rules and reports every error with a line number. Paste in the page you just built and see what it says. The Code Quality and Validation chapter later this semester covers this tool in full, but there's no reason to wait. Running a page through it the same day you build a form or a table, while the structure is still fresh in your mind, catches mistakes when they're a ten-second fix instead of an archaeology project weeks later.
+The [W3C Markup Validation Service](https://validator.w3.org/) checks your HTML against the official rules and reports every error with a line number. Paste in the page you just built and see what it says. [Code Quality and Validation](/modules/html/code-quality-validation.md) covers this tool in full, but there's no reason to wait. Running a page through it the same day you build a form or a table, while the structure is still fresh in your mind, catches mistakes when they're a ten-second fix instead of an archaeology project weeks later.
 
 ## The checklist
 
@@ -763,10 +766,10 @@ Run this over your form and table before you submit:
 
 ## Try it yourself (about 60 minutes)
 
-This isn't a take-home exercise this week. It's the graded in-class build itself: what you submit for Week 7 is what you build here, live, during class, before the period ends.
+This isn't a take-home exercise. It's the graded in-class build itself: what you submit is what you build here, live, during class, before the period ends.
 
 Build a contact form with a text input for a name, an email input, a `<select>` for a subject, and a `<textarea>` for a message, each with a proper `<label>`. Make the name and email `required`, and set the email field to `type="email"`. Choose `method="post"` for this form and be ready to explain why GET would be the wrong choice here. Add a set of radio buttons in a `<fieldset>` for a preferred contact method, and a submit button using `<button type="submit">`.
 
 Below the form, build a data table with a `<caption>`, a `<thead>` with column headers using `scope="col"`, a `<tbody>` with row headers using `scope="row"`, and a `<tfoot>` with a summary row. Use `colspan` at least once, where a single value genuinely applies across more than one column. Submit the empty form and read the validation messages the browser produces.
 
-That's the last new form or table element this course introduces, though a couple of specialized elements are still ahead in Week 13. After reading week, the focus shifts from what you write to how well it performs, starting with your images.
+That's the last new form or table element this course introduces, though a couple of specialized elements are still ahead in [Advanced HTML Patterns](/modules/html/advanced-html-patterns.md). [Optimizing Images and Media](/modules/html/image-optimization.md) shifts the focus from what you write to how well it performs.

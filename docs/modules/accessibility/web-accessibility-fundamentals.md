@@ -1,5 +1,7 @@
 ---
 title: Web Accessibility Fundamentals
+prerequisites:
+  - html/semantic-html
 ---
 
 # Web Accessibility Fundamentals
@@ -10,7 +12,7 @@ Accessibility means building pages that everyone can use, including people who n
 
 **The core path is everything down to the checklist near the end.** Read the sections in order, try the demos as you go, and do the exercise at the end, and you have what the assignment needs. Budget about 30 minutes for the reading, plus the 50 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add roughly 15 minutes altogether. They cover what "AA" actually means for your grade, an attribute you've typed into every skeleton since Week 1 without knowing why, what your testing tools can and can't see, and how a screen reader names a control that has no visible label. Skip them on a busy week and nothing breaks. They're written to still be worth reading once the deadline pressure is off.
+Sections headed **Going deeper** are optional and add roughly 15 minutes altogether. They cover what "AA" actually means for your grade, an attribute you've typed into every skeleton since [Introduction to the Web](/modules/welcome/introduction-to-the-web.md) without knowing why, what your testing tools can and can't see, and how a screen reader names a control that has no visible label. Skip them if you are short on time and nothing breaks. They're written to still be worth reading once the deadline pressure is off.
 
 ## What <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> is
 
@@ -35,7 +37,7 @@ In practice, AA is the level almost everyone means when they say a site "meets W
 
 That has one direct, practical effect on your assignments: a colour pair that passes at 3:1 but fails at 4.5:1 is not good enough for normal-sized text. Check against 4.5:1 unless the text meets the large-text definition already given in the Colour Contrast section.
 
-### Going deeper: the `lang` attribute you've been writing since Week 1
+### Going deeper: the `lang` attribute you've been writing since your first skeleton
 
 Every skeleton in this course starts the same way:
 
@@ -247,7 +249,7 @@ Forms are where accessibility most often breaks, so here's the core rule now, wi
 
 The `for` attribute matches the input's `id`. That link is what lets a screen reader announce "Email address, edit text" when the user reaches the field, and it makes the label clickable to focus the input. A placeholder is not a label, and never a substitute for one, since it disappears the moment someone starts typing.
 
-There's a second, related requirement worth naming here, since accessibility standards are this page's home turf. WCAG Success Criterion 1.3.5, Identify Input Purpose, is an AA-level criterion. It asks that a field's purpose, "this collects an email address," "this collects a postal code," be identifiable in code, not just implied by a visible label. The HTML-level way to meet it is the `autocomplete` attribute, using its fixed vocabulary of tokens like `name`, `email`, and `street-address`. The Forms and Data Structures chapter in Week 7 covers `autocomplete` in full; the connection to SC 1.3.5 belongs here.
+There's a second, related requirement worth naming here, since accessibility standards are this page's home turf. WCAG Success Criterion 1.3.5, Identify Input Purpose, is an AA-level criterion. It asks that a field's purpose, "this collects an email address," "this collects a postal code," be identifiable in code, not just implied by a visible label. The HTML-level way to meet it is the `autocomplete` attribute, using its fixed vocabulary of tokens like `name`, `email`, and `street-address`. [HTML Forms and Data Structures](/modules/html/html-forms.md) covers `autocomplete` in full; the connection to SC 1.3.5 belongs here.
 
 ## Common mistakes to avoid
 
@@ -314,4 +316,4 @@ Take the semantic page you built in the Semantic HTML chapter. Add a skip link a
 
 Then put the mouse aside and navigate the whole page with Tab and Enter only, confirming you can always see where focus is. Finally, run the Lighthouse accessibility audit and read every item it reports, fixing what you can.
 
-Your pages now work for everyone who reaches them. Next week adds forms, the one place your site collects something back.
+Your pages now work for everyone who reaches them. [HTML Forms and Data Structures](/modules/html/html-forms.md) adds forms, the one place your site collects something back.

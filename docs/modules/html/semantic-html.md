@@ -1,5 +1,8 @@
 ---
 title: Semantic HTML
+prerequisites:
+  - html/html-core-elements
+  - html/links-images-media
 ---
 
 # Semantic <abbr title="HyperText Markup Language">HTML</abbr>
@@ -10,7 +13,7 @@ You could build almost any page using nothing but `<div>` elements. It would loo
 
 **The core path is everything down to the checklist.** Landmarks, the section/article/aside decision, and the smaller semantic elements like `<figure>` and `<time>` are what the assignment grades. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add roughly 15 minutes combined. They explain what a browser is actually doing under the elements you just learned: the accessibility information it exposes automatically, a real element you'll meet in other people's code, and why a rule from Week 2 still holds once content is nested inside `<article>` and `<section>`. Skip them on a busy week and nothing breaks.
+Sections headed **Going deeper** are optional and add roughly 15 minutes combined. They explain what a browser is actually doing under the elements you just learned: the accessibility information it exposes automatically, a real element you'll meet in other people's code, and why the heading-level rule from [Core HTML Elements](/modules/html/html-core-elements.md) still holds once content is nested inside `<article>` and `<section>`. Skip them if you are short on time and nothing breaks.
 
 ## Structure versus presentation
 
@@ -234,7 +237,7 @@ An early draft of the HTML5 specification proposed something clever: every `<art
 
 No browser ever built it, and no screen reader ever calculated it from one. Authors who wrote nested `<h1>` elements expecting the algorithm to sort it out got a page that, to any real assistive technology, contained six headings that all claimed to be the top of the page. The specification eventually caught up to that reality: nesting multiple `<h1>` elements this way is now non-conforming, not a feature browsers simply haven't finished yet.
 
-The practical result is that the rule from Week 2 still applies, unchanged, no matter how many `<article>` and `<section>` elements a page nests: one `<h1>` per page, and never skip a level. Sectioning content organizes what's on the page. It does not renumber the headings inside it.
+The practical result is that the rule from [Core HTML Elements](/modules/html/html-core-elements.md) still applies, unchanged, no matter how many `<article>` and `<section>` elements a page nests: one `<h1>` per page, and never skip a level. Sectioning content organizes what's on the page. It does not renumber the headings inside it.
 
 ```html
 <!-- Wrong: written as if nesting resets the count. No browser reads it this way. -->
@@ -256,7 +259,7 @@ The practical result is that the rule from Week 2 still applies, unchanged, no m
 </main>
 ```
 
-This is exactly what the full worked example at the end of this chapter does. The page's `<h1>` is the blog's name. The article's title is an `<h2>`. Its subsections are `<h3>`. Wrapping content in `<article>` or `<section>` does not change what number comes next; you still choose it the way you did in Week 2, by what the outline should say, not by how many sectioning elements it happens to sit inside.
+This is exactly what the full worked example at the end of this chapter does. The page's `<h1>` is the blog's name. The article's title is an `<h2>`. Its subsections are `<h3>`. Wrapping content in `<article>` or `<section>` does not change what number comes next; you still choose it the way you did in Core HTML Elements, by what the outline should say, not by how many sectioning elements it happens to sit inside.
 
 ## More elements that carry meaning
 
@@ -327,7 +330,7 @@ For SEO, search engines read the same structure to understand your content. A he
 
 ## How this connects to your styling course
 
-Clean semantic structure is also what makes a page pleasant to style in MTM1544. Well-named landmarks and a logical outline give CSS clear, meaningful targets to work with. A tangle of unnamed `<div>` elements is painful to style and easy to break. The structural quality you build here directly determines how smoothly the styling goes, which is why HTML is taught first each week and CSS second.
+Clean semantic structure is also what makes a page pleasant to style in MTM1544. Well-named landmarks and a logical outline give CSS clear, meaningful targets to work with. A tangle of unnamed `<div>` elements is painful to style and easy to break. The structural quality you build here directly determines how smoothly the styling goes, which is why HTML comes before CSS.
 
 ## A full worked example
 
@@ -476,6 +479,6 @@ Work through these in order. They're practice, not graded work.
 4. Add an `<aside>` with related links, and confirm the page still makes sense if you imagine removing it.
 5. Open developer tools, and in the Elements or Accessibility panel, look at how the browser now recognizes the landmark regions you created. Find the role name it lists next to `<header>`, `<nav>`, `<main>`, and `<footer>`, and match each one against the Going Deeper section above. Compare that to the same page built only with `<div>` elements.
 
-You can now build a single page with real meaning. Next week zooms out to the whole site: which pages exist, and how they connect.
+You can now build a single page with real meaning. [Site Architecture and Planning](/modules/html/site-architecture-planning.md) zooms out to the whole site: which pages exist, and how they connect.
 
 If you can look at a design and name its regions out loud (that's a `<header>`, that's the `<main>`, those repeating blocks are `<article>` elements), you have the skill this chapter is teaching.

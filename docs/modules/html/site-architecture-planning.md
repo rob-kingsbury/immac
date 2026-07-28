@@ -1,5 +1,7 @@
 ---
 title: Site Architecture and Planning
+prerequisites:
+  - html/semantic-html
 ---
 
 # Site Architecture and Planning
@@ -10,9 +12,9 @@ Every chapter so far has been about building individual pages. A website is more
 
 **The core path is everything down to the checklist.** Read through site maps, content hierarchy, wireframes, and the translation into semantic HTML, then work through the exercise at the end. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add roughly 15 minutes altogether. They cover a lightweight technique for deciding what belongs on a site map before you draw it, a structural navigation pattern built entirely from elements you already know, and a habit for keeping a project's folders honest about the site map they came from. Skip them on a busy week and nothing breaks. The assignment only needs the core path.
+Sections headed **Going deeper** are optional and add roughly 15 minutes altogether. They cover a lightweight technique for deciding what belongs on a site map before you draw it, a structural navigation pattern built entirely from elements you already know, and a habit for keeping a project's folders honest about the site map they came from. Skip them if you are short on time and nothing breaks. The assignment only needs the core path.
 
-You don't need any new tool for this chapter. Paper, a whiteboard, or a slide deck all work for the planning artifacts below, the same as they did in earlier weeks.
+You don't need any new tool for this chapter. Paper, a whiteboard, or a slide deck all work for the planning artifacts below.
 
 ## Information architecture, briefly
 
@@ -301,4 +303,4 @@ Then, without adding any real content, write the HTML skeleton for that page usi
 
 If your site map has any page nested under a section rather than sitting directly off Home, add a breadcrumb to that page's skeleton too: a `<nav aria-label="Breadcrumb">` holding an `<ol>` that matches the branch you drew, with `aria-current="page"` marking the page you're on.
 
-Your plan is solid. Next week checks whether the page built from it actually works for every visitor, not just the ones who match your own assumptions.
+Your plan is solid. [Web Accessibility Fundamentals](/modules/accessibility/web-accessibility-fundamentals.md) checks whether the page built from it actually works for every visitor, not just the ones who match your own assumptions.
