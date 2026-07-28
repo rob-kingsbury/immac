@@ -6,6 +6,12 @@ title: Typography and Colour
 
 Last week gave every element on your page a size and a shape. This week fills those boxes in: most of a web page is text, and most of the impression a page makes comes from how that text is set and coloured. This chapter covers the properties that control both, including the units question Week 2 opened, and finishes with the one hard requirement that governs every colour choice you make: whether people can actually read it.
 
+## How to read this chapter
+
+**The core path is fonts and spacing, then "Colour values" through HSL, then "Accessible colour contrast."** Hex, RGB, and HSL are the three colour notations this course's CLR names directly, and they're what the assignment expects you to know cold. Budget about 30 minutes to read the core path, plus the 55 minutes the exercise takes.
+
+**"A newer colour space: oklch" and "Deriving colours with color-mix()," sitting between those two core sections, are extensions, not requirements.** They're real, Baseline-safe tools worth having, and the exercise gives you room to try both. But they sit outside what the CLR requires, so treat them as about 10 minutes of optional reading. Skip them on a busy week and you can still do the assignment.
+
 ## Font families and font stacks
 
 The `font-family` property sets the typeface. What makes it unusual is that you don't give it one name, you give it a **stack**: a list of options in order of preference, separated by commas. The browser uses the first one it can actually find.
@@ -269,10 +275,10 @@ p {
   margin: 0;
   color: #ffffff;
 }
-.l90 { background-color: hsl(220, 83%, 90%); color: #1e293b; }
-.l70 { background-color: hsl(220, 83%, 70%); color: #1e293b; }
-.l50 { background-color: hsl(220, 83%, 50%); }
-.l30 { background-color: hsl(220, 83%, 30%); }
+.l90 { background-color: hsl(220 83% 90%); color: #1e293b; }
+.l70 { background-color: hsl(220 83% 70%); color: #1e293b; }
+.l50 { background-color: hsl(220 83% 50%); }
+.l30 { background-color: hsl(220 83% 30%); }
 ```
 
 </CssDemo>
@@ -409,6 +415,19 @@ Two related habits matter as much as the ratio itself. **Never use colour as the
 - **Using `line-height` with a unit.** Unitless values scale correctly with nested font sizes. Fixed values don't.
 - **Trusting HSL lightness to look evenly spaced.** It isn't, and the gap is worse on some hues than others. Use `oklch()` when the steps genuinely need to look equal.
 - **Typing a second colour by hand for a hover or disabled state.** A `color-mix()` derived from your one source colour stays correct if the source ever changes; a hand-picked second colour doesn't.
+
+## The checklist
+
+Run this over your typography and colour choices before you submit work in this course:
+
+- Font stack ends in a generic family (`serif`, `sans-serif`, or `monospace`)
+- Font sizes set in `rem`, not `px`
+- `line-height` set as a unitless number
+- Comfortable writing hex, RGB, and HSL by hand, the three notations this course requires
+- Can explain why `oklch()` solves HSL's lightness-perception problem
+- Hover, focus, and other derived states built with `color-mix()`, not a second colour typed by hand
+- Every text and background pair checked against WCAG AA, 4.5:1 for normal text and 3:1 for large text
+- Colour is never the only way information is conveyed
 
 ## Keep learning
 
