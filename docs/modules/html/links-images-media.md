@@ -1,12 +1,12 @@
 ---
 title: Links, Images, and Media
 prerequisites:
-  - html/html-core-elements
+  - html/html-basics
 ---
 
 # Links, Images, and Media
 
-[Core HTML Elements](/modules/html/html-core-elements.md) gave you the elements for a page of text. A page of text is a document. Links, images, and media are what turn it into the web. This chapter covers how to connect pages together, how to place images correctly, and how to embed audio and video.
+[HTML Text](/modules/html/html-text/README.md) gave you the elements for a page of text. A page of text is a document. Links, images, and media are what turn it into the web. This chapter covers how to connect pages together, how to place images correctly, and how to embed audio and video.
 
 ## How to read this chapter
 

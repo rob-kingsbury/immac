@@ -117,7 +117,7 @@ Some elements carry extra information in **attributes**, written inside the open
 
 ### The shape of a document
 
-Every page you write in this course starts from the same skeleton. You'll build this properly in [Core HTML Elements](/modules/html/html-core-elements.md), so read it now for the shape rather than the detail:
+Every page you write in this course starts from the same skeleton. You'll build this properly in [HTML Document Structure](/modules/html/html-document-structure/README.md), so read it now for the shape rather than the detail:
 
 ```html
 <!DOCTYPE html>
@@ -445,4 +445,4 @@ Run this over your own understanding and your own machine before moving on:
 
 Confirm your setup works end to end, without following the steps above as a script: clone your practice repository (or a fresh one), make any small change, push it, and confirm the Pages URL loads in a browser. This is meant to be a genuine test, so work through a snag before reaching for help. But if you're stuck for more than a few minutes, that's not a sign you're behind, it's exactly what the course's help channel is for. Either way, note exactly which step gave you trouble, because that's worth raising with your instructor before you build on top of it.
 
-[Core HTML Elements](/modules/html/html-core-elements.md) is where you write your first real HTML, so make sure you have a working editor and a repository you can push to. Your Web Styles course uses the same setup, so anything broken here blocks both courses.
+[HTML Basics](/modules/html/html-basics/README.md) is where you write your first real HTML, so make sure you have a working editor and a repository you can push to. Your Web Styles course uses the same setup, so anything broken here blocks both courses.

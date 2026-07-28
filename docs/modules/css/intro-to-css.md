@@ -83,7 +83,7 @@ If any one of those fails, fix it now, before continuing. A broken step here blo
 
 ## The starter page
 
-You haven't covered enough HTML yet to build a page from scratch. That's covered in MTM1511's [Core HTML Elements](/modules/html/html-core-elements.md), so here you're given one to style. Create a file called `index.html` at the top level of your repository and paste this in:
+You haven't covered enough HTML yet to build a page from scratch. That's covered in MTM1511's [HTML Document Structure](/modules/html/html-document-structure/README.md), so here you're given one to style. Create a file called `index.html` at the top level of your repository and paste this in:
 
 ```html
 <!DOCTYPE html>

@@ -1,7 +1,7 @@
 ---
 title: HTML Forms and Data Structures
 prerequisites:
-  - html/html-core-elements
+  - html/html-basics
   - accessibility/web-accessibility-fundamentals
 ---
 

@@ -1,7 +1,8 @@
 ---
 title: Code Quality and Validation
 prerequisites:
-  - html/html-core-elements
+  - html/html-validation
+  - html/html-comments
   - welcome/introduction-to-the-web
 ---
 

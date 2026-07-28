@@ -1,7 +1,7 @@
 ---
 title: SEO Fundamentals
 prerequisites:
-  - html/html-core-elements
+  - html/html-document-structure
   - html/semantic-html
 ---
 

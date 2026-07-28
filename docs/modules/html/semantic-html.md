@@ -1,7 +1,7 @@
 ---
 title: Semantic HTML
 prerequisites:
-  - html/html-core-elements
+  - html/html-headings
   - html/links-images-media
 ---
 
@@ -13,7 +13,7 @@ You could build almost any page using nothing but `<div>` elements. It would loo
 
 **The core path is everything down to the checklist.** Landmarks, the section/article/aside decision, and the smaller semantic elements like `<figure>` and `<time>` are the core of this chapter. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add roughly 15 minutes combined. They explain what a browser is actually doing under the elements you just learned: the accessibility information it exposes automatically, a real element you'll meet in other people's code, and why the heading-level rule from [Core HTML Elements](/modules/html/html-core-elements.md) still holds once content is nested inside `<article>` and `<section>`. Skip them if you are short on time and nothing breaks.
+Sections headed **Going deeper** are optional and add roughly 15 minutes combined. They explain what a browser is actually doing under the elements you just learned: the accessibility information it exposes automatically, a real element you'll meet in other people's code, and why the heading-level rule from [HTML Headings](/modules/html/html-headings/README.md) still holds once content is nested inside `<article>` and `<section>`. Skip them if you are short on time and nothing breaks.
 
 ## Structure versus presentation
 
@@ -237,7 +237,7 @@ An early draft of the HTML5 specification proposed something clever: every `<art
 
 No browser ever built it, and no screen reader ever calculated it from one. Authors who wrote nested `<h1>` elements expecting the algorithm to sort it out got a page that, to any real assistive technology, contained six headings that all claimed to be the top of the page. The specification eventually caught up to that reality: nesting multiple `<h1>` elements this way is now non-conforming, not a feature browsers simply haven't finished yet.
 
-The practical result is that the rule from [Core HTML Elements](/modules/html/html-core-elements.md) still applies, unchanged, no matter how many `<article>` and `<section>` elements a page nests: one `<h1>` per page, and never skip a level. Sectioning content organizes what's on the page. It does not renumber the headings inside it.
+The practical result is that the rule from [HTML Headings](/modules/html/html-headings/README.md) still applies, unchanged, no matter how many `<article>` and `<section>` elements a page nests: one `<h1>` per page, and never skip a level. Sectioning content organizes what's on the page. It does not renumber the headings inside it.
 
 ```html
 <!-- Wrong: written as if nesting resets the count. No browser reads it this way. -->

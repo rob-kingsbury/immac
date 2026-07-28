@@ -16,7 +16,24 @@ const mtm1511Sidebar = [
     collapsible: false,
     children: [
       { text: 'Week 1: Introduction to the Web', link: '/modules/welcome/introduction-to-the-web.md' },
-      { text: 'Week 2: Core HTML Elements', link: '/modules/html/html-core-elements.md' },
+      {
+        // Week 2 is the first week split from one week-shaped page into
+        // topic-shaped modules. The week is a group; each child is a module
+        // folder that another course could pick up on its own.
+        text: 'Week 2: Core HTML Elements',
+        collapsible: true,
+        children: [
+          { text: 'HTML Basics', link: '/modules/html/html-basics/README.md' },
+          { text: 'HTML Document Structure', link: '/modules/html/html-document-structure/README.md' },
+          { text: 'HTML Headings', link: '/modules/html/html-headings/README.md' },
+          { text: 'HTML Text', link: '/modules/html/html-text/README.md' },
+          { text: 'Quotations', link: '/modules/html/html-text/quotations.md' },
+          { text: 'HTML Lists', link: '/modules/html/html-lists/README.md' },
+          { text: 'Inline and Block Elements', link: '/modules/html/html-inline-block/README.md' },
+          { text: 'HTML Comments', link: '/modules/html/html-comments/README.md' },
+          { text: 'HTML Validation', link: '/modules/html/html-validation/README.md' },
+        ],
+      },
       { text: 'Week 3: Links, Images, and Media', link: '/modules/html/links-images-media.md' },
       { text: 'Week 4: Semantic HTML', link: '/modules/html/semantic-html.md' },
       { text: 'Week 5: Site Architecture and Planning', link: '/modules/html/site-architecture-planning.md' },
