@@ -6,6 +6,14 @@ title: HTML Forms and Data Structures
 
 Forms are how the web listens. A search box, a login, a contact page, a checkout: all forms. This week covers how to build one that's well structured and accessible, plus how to present tabular data correctly. You won't process the submitted data here, since that needs a back end you'll meet in a later course. The focus is the markup, and getting it right.
 
+## How to read this chapter
+
+**This week works differently.** Week 7 is an in-class worklab. You take the Week 7 quiz in the first ten minutes of class as a readiness check, and once you score 9/10 or better, this week's assignment unlocks and you build it live, during that same period, submitting before class ends. No separate take-home window this time. Read this page before class if you can, it saves time once the quiz opens the assignment, but the real work happens live, against this exact content.
+
+**The core path is everything down to the checklist**: forms, labels, fieldsets, validation, tables, the same ground the assignment covers. Skim it in about 20 minutes before class, or read closely if you have more time. **"Going deeper" sections are optional**, more so this week given the time pressure. Skip them during class and come back later if you want the extra ground.
+
+**"Try it yourself" near the end is not extra practice this week.** It's the graded in-class build itself, the same steps as the assignment brief.
+
 ## The form element
 
 A `<form>` wraps a group of controls into one unit that submits together. Two attributes decide where the data goes and how it travels.
@@ -116,6 +124,22 @@ For longer text use `<textarea>`, and for a list of options use `<select>`:
 </select>
 ```
 
+### Going deeper: autocomplete
+
+Optional, not needed for the Week 7 build, but worth knowing the first time a form fills in your address before you've typed a letter.
+
+`autocomplete` tells the browser what kind of value a field expects, using a fixed set of keywords from the <abbr title="HyperText Markup Language">HTML</abbr> spec: `name`, `email`, `tel`, `street-address`, `postal-code`, `cc-number`, and dozens more. The browser and the operating system's password manager use that hint to fill the field from data already saved elsewhere.
+
+```html
+<label for="full-name">Full name</label>
+<input type="text" id="full-name" name="name" autocomplete="name">
+
+<label for="contact-email">Email</label>
+<input type="email" id="contact-email" name="email" autocomplete="email">
+```
+
+One attribute, and it's an accessibility win as much as a convenience one: some visitors rely on autofill because typing is slow or difficult for them. Reserve `autocomplete="off"` for a field that should never be autofilled, such as a one-time code.
+
 ## Buttons
 
 A form isn't complete without a way to submit it. Three distinct button behaviours exist, and confusing them is a common source of bugs.
@@ -187,6 +211,41 @@ Click either option above. Because both radios share the same `name`, choosing o
 
 The `<legend>` gives the whole group a name, so a screen reader announces "Preferred contact method, Email, radio button" rather than a bare "Email" with no context. Radio buttons in a group share the same `name`, which is what makes them mutually exclusive.
 
+### Going deeper: checkboxes for "select all that apply"
+
+Optional, and the natural next question once you've built the radio group above: what if more than one answer should be allowed?
+
+Radio buttons are "choose exactly one." Checkboxes are "choose any number, none or all included." The grouping pattern is identical, a `<fieldset>` with a `<legend>`. Only the input type changes.
+
+```html
+<fieldset>
+  <legend>Which days can you pick up an order?</legend>
+  <input type="checkbox" id="day-mon" name="pickup-days" value="monday">
+  <label for="day-mon">Monday</label>
+  <input type="checkbox" id="day-wed" name="pickup-days" value="wednesday">
+  <label for="day-wed">Wednesday</label>
+  <input type="checkbox" id="day-sat" name="pickup-days" value="saturday">
+  <label for="day-sat">Saturday</label>
+</fieldset>
+```
+
+<details class="demo" open>
+<summary>Result</summary>
+<div class="demo-render">
+<fieldset>
+  <legend>Which days can you pick up an order?</legend>
+  <input type="checkbox" id="day-mon" name="pickup-days" value="monday">
+  <label for="day-mon">Monday</label>
+  <input type="checkbox" id="day-wed" name="pickup-days" value="wednesday">
+  <label for="day-wed">Wednesday</label>
+  <input type="checkbox" id="day-sat" name="pickup-days" value="saturday">
+  <label for="day-sat">Saturday</label>
+</fieldset>
+</div>
+</details>
+
+Check all three above. Unlike the radios earlier, checking one doesn't clear the others, since each checkbox is independent. The `<legend>` still does the same job: it tells a screen reader what the group is asking, not just what one option says.
+
 ## Built-in validation
 
 HTML can enforce basic rules before anything is submitted, with no scripting. `required` makes a field mandatory, and attributes like `minlength`, `maxlength`, `min`, `max`, and `pattern` constrain the value.
@@ -200,6 +259,21 @@ HTML can enforce basic rules before anything is submitted, with no scripting. `r
 ```
 
 The browser shows its own error messages and blocks submission until the rules are met. This is a first line of defence and a usability aid. It is not security. A real application also validates on the server, because anything in the browser can be bypassed. You'll cover that side later; here, know that client-side validation is for helping honest users, not for trusting them.
+
+### Going deeper: pattern for a specific format
+
+Optional, a light touch only. `type="email"` and `min`/`max` cover most validation this course needs, but sometimes a field has a specific format none of the built-in types check, like a postal code. `pattern` takes a regular expression and blocks submission until the value matches. This course doesn't teach regular expressions, so treat the syntax below as a fact worth recognizing, not something to write from scratch yet:
+
+```html
+<label for="postal">Postal code</label>
+<input type="text" id="postal" name="postal"
+       pattern="[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d"
+       title="A Canadian postal code, like A1A 1A1">
+```
+
+That matches the letter-digit-letter, space, digit-letter-digit shape of a Canadian postal code, space optional. The `title` attribute matters here: most browsers show its text as the hint when a value doesn't match, so without it the visitor just sees a generic "please match the requested format" with no clue what the format actually is.
+
+`pattern` works on `text`, `search`, `url`, `tel`, `email`, and `password`. Types like `number` and `date` already carry their own constraints (`min`, `max`, `step`) and ignore `pattern` if you add it.
 
 ## Tables for data
 
@@ -479,6 +553,29 @@ Sometimes one value genuinely applies across more than one column. Sunday, this 
 
 `Name` spans both header rows down, because it labels the whole row below, not just one of the two sub-columns. `Scores` spans across, because it's the shared heading for the Maths and English columns beneath it.
 
+<div class="diagram">
+<svg viewBox="0 0 640 250" role="img" aria-label="Two grids of nine cells compared. On the left, a plain grid, three columns by three rows, all equal. On the right, the same grid after merging: the top-left two cells joined into one wide cell with colspan, and the two lower cells in the right column joined into one tall cell with rowspan.">
+  <text x="10" y="18" class="d-lbl">A plain grid</text>
+  <rect x="10" y="30" width="270" height="180" class="d-surface d-border" stroke-width="1.5"/>
+  <line x1="100" y1="30" x2="100" y2="210" class="d-muted-stroke" stroke-width="1.5"/>
+  <line x1="190" y1="30" x2="190" y2="210" class="d-muted-stroke" stroke-width="1.5"/>
+  <line x1="10" y1="90" x2="280" y2="90" class="d-muted-stroke" stroke-width="1.5"/>
+  <line x1="10" y1="150" x2="280" y2="150" class="d-muted-stroke" stroke-width="1.5"/>
+
+  <text x="350" y="18" class="d-lbl">Merged</text>
+  <rect x="350" y="30" width="180" height="60" rx="3" class="d-accent-soft d-accent-stroke" stroke-width="2"/>
+  <text x="440" y="64" text-anchor="middle" class="d-lbl-mono">colspan="2"</text>
+  <rect x="530" y="30" width="90" height="60" class="d-surface d-border" stroke-width="1.5"/>
+  <rect x="350" y="90" width="90" height="60" class="d-surface d-border" stroke-width="1.5"/>
+  <rect x="440" y="90" width="90" height="60" class="d-surface d-border" stroke-width="1.5"/>
+  <rect x="530" y="90" width="90" height="120" rx="3" class="d-accent-soft d-accent-stroke" stroke-width="2"/>
+  <text x="575" y="146" text-anchor="middle" class="d-lbl-mono">rowspan="2"</text>
+  <rect x="350" y="150" width="90" height="60" class="d-surface d-border" stroke-width="1.5"/>
+  <rect x="440" y="150" width="90" height="60" class="d-surface d-border" stroke-width="1.5"/>
+</svg>
+<figcaption>Nine equal cells on the left. On the right, colspan merges two cells sideways and rowspan merges two cells downward, same techniques used above for Sunday's hours and the Name heading.</figcaption>
+</div>
+
 ### Adding a summary row
 
 `<tfoot>` holds a row that summarizes the body, most often a total. Like `<tbody>`, it's a sibling of `<thead>`, not nested inside either of the others:
@@ -625,6 +722,19 @@ Forms and tables are two of the easiest structures to write invalid HTML in: an 
 
 The [W3C Markup Validation Service](https://validator.w3.org/) checks your HTML against the official rules and reports every error with a line number. Paste in the page you just built and see what it says. The Code Quality and Validation chapter later this semester covers this tool in full, but there's no reason to wait. Running a page through it the same day you build a form or a table, while the structure is still fresh in your mind, catches mistakes when they're a ten-second fix instead of an archaeology project weeks later.
 
+## The checklist
+
+Run this over your form and table before you submit:
+
+- `method` matches what the form does: `get` for retrieval, `post` for anything data-changing or sensitive
+- Every input has a real `type` and a connected `<label>` (`for` matching `id`)
+- Validation attributes (`required` and similar) sit only on fields that need them
+- Exactly one primary submit action; any reset button is visually secondary
+- Radio and checkbox groups sit inside a `<fieldset>` with a `<legend>`
+- Table has `<caption>`, `<thead>`, `<tbody>`, `<tfoot>`, with correct `scope`
+- `colspan`/`rowspan` used only where a value genuinely spans, never for alignment
+- Zero errors in the [W3C Markup Validation Service](https://validator.w3.org/)
+
 ## Keep learning
 
 - [W3Schools: HTML Forms](https://www.w3schools.com/html/html_forms.asp). A full reference for form elements, attributes, and the input types this chapter covers.
@@ -633,6 +743,8 @@ The [W3C Markup Validation Service](https://validator.w3.org/) checks your HTML 
 - [Video: HTTP GET vs. POST, by Hussein Nasser](https://www.youtube.com/watch?v=NEKImNnYB70). A clear explanation of the difference between the two methods and when each is appropriate.
 
 ## Try it yourself (about 60 minutes)
+
+This isn't a take-home exercise this week. It's the graded in-class build itself: what you submit for Week 7 is what you build here, live, during class, before the period ends.
 
 Build a contact form with a text input for a name, an email input, a `<select>` for a subject, and a `<textarea>` for a message, each with a proper `<label>`. Make the name and email `required`, and set the email field to `type="email"`. Choose `method="post"` for this form and be ready to explain why GET would be the wrong choice here. Add a set of radio buttons in a `<fieldset>` for a preferred contact method, and a submit button using `<button type="submit">`.
 
