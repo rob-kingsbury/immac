@@ -234,7 +234,7 @@ For a hover state on a handful of cards, none of this is likely to matter, becau
 
 ## A complete interactive component
 
-Everything together, on a card built from the same Flexbox layout you used in [Flexbox Layouts](/modules/css/flexbox-layouts.md), with the polish this chapter adds on top:
+Everything together, on a card built from the same Flexbox layout you used in [Flexbox Layouts](/modules/css/css-flexbox/README.md), with the polish this chapter adds on top:
 
 <CssDemo>
 

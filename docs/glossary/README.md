@@ -16,7 +16,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Attribute.** Extra information carried inside an opening tag, written as `name="value"`, such as `href` on an `<a>`. See [HTML Basics](/modules/html/html-basics/README.md).
 
-**Attribute selector.** A <abbr title="Cascading Style Sheets">CSS</abbr> selector that targets elements by an attribute's value, such as `[href^="https"]`. See [The <abbr title="Document Object Model">DOM</abbr> and CSS Targeting](/modules/css/dom-css-targeting.md).
+**Attribute selector.** A <abbr title="Cascading Style Sheets">CSS</abbr> selector that targets elements by an attribute's value, such as `[href^="https"]`. See [Descendant, Child, Sibling, and Attribute Selectors](/modules/css/css-selectors-adv/README.md).
 
 ## B
 
@@ -26,7 +26,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Branch.** A parallel copy of a Git repository's history you can commit to without touching `main`. See [Working Like a Team](/modules/git/github-collaboration/README.md).
 
-**Breakpoint.** A viewport width at which a responsive layout changes. Chosen from where your own content starts to look wrong, not from a list of devices. See [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md).
+**Breakpoint.** A viewport width at which a responsive layout changes. Chosen from where your own content starts to look wrong, not from a list of devices. See [Responsive Design and Media Queries](/modules/css/css-media-queries/README.md).
 
 ## C
 
@@ -38,13 +38,13 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **CLS (Cumulative Layout Shift).** A Core Web Vital measuring how much a page's content jumps around as it loads. Prevented by setting `width` and `height` on images. See [HTML Images](/modules/html/html-images/README.md).
 
-**Combinator.** A symbol that selects elements by their relationship to another element: descendant (a space), child (`>`), or adjacent sibling (`+`). See [The DOM and CSS Targeting](/modules/css/dom-css-targeting.md).
+**Combinator.** A symbol that selects elements by their relationship to another element: descendant (a space), child (`>`), or adjacent sibling (`+`). See [Descendant, Child, Sibling, and Attribute Selectors](/modules/css/css-selectors-adv/README.md).
 
 **Commit.** A permanent, named snapshot of staged changes, saved to your local Git repository. Distinct from pushing, which sends commits to GitHub. See [Staging, Committing, and Pushing](/modules/git/git-basics/staging-committing-pushing.md).
 
-**Container query.** A CSS rule that responds to the size of a component's own container, not the browser viewport. See [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md).
+**Container query.** A CSS rule that responds to the size of a component's own container, not the browser viewport. See [Container Queries](/modules/css/css-container-queries/README.md).
 
-**Containing block.** The ancestor element an absolutely positioned element measures its `top`/`right`/`bottom`/`left` values against: the nearest ancestor with a `position` other than `static`. See [CSS Grid Layouts](/modules/css/grid-layouts.md).
+**Containing block.** The ancestor element an absolutely positioned element measures its `top`/`right`/`bottom`/`left` values against: the nearest ancestor with a `position` other than `static`. See [The Third Layout Tool: position](/modules/css/css-position/README.md).
 
 **Custom property.** A named, reusable CSS value, declared with `--name: value` and read with `var(--name)`. See [CSS Custom Properties and Variables](/modules/css/custom-properties.md).
 
@@ -54,7 +54,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **<abbr title="Domain Name System">DNS</abbr> (Domain Name System).** The lookup service that turns a human-readable domain into the numeric address a browser connects to. See [How the Web Works](/modules/web-basics/how-the-web-works/README.md).
 
-**DOM (Document Object Model).** The live, in-memory tree structure a browser builds from your HTML, and what developer tools' Elements panel actually shows. See [The DOM and CSS Targeting](/modules/css/dom-css-targeting.md).
+**DOM (Document Object Model).** The live, in-memory tree structure a browser builds from your HTML, and what developer tools' Elements panel actually shows. See [The DOM](/modules/css/css-dom/README.md).
 
 ## E
 
@@ -64,11 +64,11 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## F
 
-**Fixed positioning.** `position: fixed`, which measures from the browser window and stays in place when the page scrolls. See [CSS Grid Layouts](/modules/css/grid-layouts.md).
+**Fixed positioning.** `position: fixed`, which measures from the browser window and stays in place when the page scrolls. See [The Third Layout Tool: position](/modules/css/css-position/README.md).
 
-**Flexbox.** A one-dimensional CSS layout system for arranging items in a row or a column. See [Flexbox Layouts](/modules/css/flexbox-layouts.md).
+**Flexbox.** A one-dimensional CSS layout system for arranging items in a row or a column. See [Flexbox Layouts](/modules/css/css-flexbox/README.md).
 
-**`fr` unit.** A Grid-specific unit meaning "a fraction of the leftover space" in a grid container. See [CSS Grid Layouts](/modules/css/grid-layouts.md).
+**`fr` unit.** A Grid-specific unit meaning "a fraction of the leftover space" in a grid container. See [CSS Grid Layouts](/modules/css/css-grid/README.md).
 
 ## G
 
@@ -94,7 +94,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **ID.** A label meant to identify one single, unique element on a page, targeted in CSS with a hash (`#lead`). See [CSS Selectors](/modules/css/css-selectors/README.md).
 
-**Implicit grid.** Grid rows or columns the browser creates automatically when there are more items than explicitly defined space. See [CSS Grid Layouts](/modules/css/grid-layouts.md).
+**Implicit grid.** Grid rows or columns the browser creates automatically when there are more items than explicitly defined space. See [CSS Grid Layouts](/modules/css/css-grid/README.md).
 
 **Inheritance.** The automatic passing of certain CSS properties, mostly text-related ones, from a parent element to its children. See [The Cascade](/modules/css/css-cascade/README.md).
 
@@ -110,9 +110,9 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## M
 
-**Media query.** A CSS rule wrapped in a condition based on the viewport, most often its width. See [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md).
+**Media query.** A CSS rule wrapped in a condition based on the viewport, most often its width. See [Responsive Design and Media Queries](/modules/css/css-media-queries/README.md).
 
-**Mobile-first.** Writing the narrow-screen layout as your CSS base, then adding complexity upward with `min-width` queries. See [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md).
+**Mobile-first.** Writing the narrow-screen layout as your CSS base, then adding complexity upward with `min-width` queries. See [Responsive Design and Media Queries](/modules/css/css-media-queries/README.md).
 
 ## N
 
@@ -146,7 +146,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Repository.** A project folder that Git is tracking, one per assignment in this course. See [Creating a GitHub Account and a Demo Repository](/modules/git/github-basics/README.md).
 
-**Responsive design.** The practice of building one page that works well across every screen size, rather than separate sites per device. See [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md).
+**Responsive design.** The practice of building one page that works well across every screen size, rather than separate sites per device. See [Responsive Design and Media Queries](/modules/css/css-media-queries/README.md).
 
 ## S
 
@@ -160,11 +160,11 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Specificity.** The calculated score (IDs, then classes, then elements) a browser uses to decide which of two conflicting, equally-recent CSS rules wins. See [Specificity, Calculated Properly](/modules/css/css-precedence/README.md).
 
-**Sticky positioning.** `position: sticky`, which acts like normal flow until a scroll threshold, then locks in place. See [CSS Grid Layouts](/modules/css/grid-layouts.md).
+**Sticky positioning.** `position: sticky`, which acts like normal flow until a scroll threshold, then locks in place. See [The Third Layout Tool: position](/modules/css/css-position/README.md).
 
 **Structured data.** Machine-readable facts about a page's content, written in a vocabulary search engines understand. See [Structured Data](/modules/seo/structured-data/README.md).
 
-**Subgrid.** A nested grid that reuses its parent grid's track sizing instead of inventing its own, used to align independent cards' internal content. See [CSS Grid Layouts](/modules/css/grid-layouts.md).
+**Subgrid.** A nested grid that reuses its parent grid's track sizing instead of inventing its own, used to align independent cards' internal content. See [CSS Grid Layouts](/modules/css/css-grid/README.md).
 
 ## T
 
@@ -176,9 +176,9 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## V
 
-**Viewport.** The visible area of a web page inside the browser window. See [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md).
+**Viewport.** The visible area of a web page inside the browser window. See [Responsive Design and Media Queries](/modules/css/css-media-queries/README.md).
 
-**Viewport units.** `vw`/`vh` and their dynamic variants `dvh`/`svh`/`lvh`, which size an element relative to the browser's viewport rather than a parent. See [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md).
+**Viewport units.** `vw`/`vh` and their dynamic variants `dvh`/`svh`/`lvh`, which size an element relative to the browser's viewport rather than a parent. See [CSS Units](/modules/css/css-units/README.md).
 
 ## W
 
@@ -188,4 +188,4 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## Z
 
-**z-index.** A CSS property that decides which element sits on top when two positioned elements overlap. Only works on an element with a `position` other than `static`. See [CSS Grid Layouts](/modules/css/grid-layouts.md).
+**z-index.** A CSS property that decides which element sits on top when two positioned elements overlap. Only works on an element with a `position` other than `static`. See [The Third Layout Tool: position](/modules/css/css-position/README.md).

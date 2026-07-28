@@ -2,7 +2,6 @@
 title: Flexbox Layouts
 prerequisites:
   - css/css-box-model
-  - css/css-pseudo-classes
 ---
 
 # Flexbox Layouts
@@ -10,12 +9,6 @@ prerequisites:
 Everything so far has styled individual elements. This chapter starts arranging them, and **Flexbox** is the tool for arranging things in a line.
 
 Flexbox handles a specific job extremely well: taking a set of items and distributing them along one direction, either a row or a column, with control over the spacing between them and how they line up across. A navigation bar, a row of cards, a header with a logo on the left and links on the right, a button with an icon beside its label. All of those are one-dimensional arrangements, and all of them are Flexbox.
-
-## How to read this chapter
-
-**The core path is everything down to the checklist.** Work through the container-and-items, direction-and-axes, distributing space, aligning, gap, wrapping, and item-control sections in order, build the navigation bar and the card row as you go, then do the exercise. Budget about 30 minutes to read, plus the 45 minutes the exercise takes.
-
-Sections headed **Going deeper** are optional and add about 15 minutes altogether. They cover `align-content`, the `order` property, and the `flex-flow` shorthand: real properties you'll run into in other people's code, but none of them are needed to finish this chapter's exercise. Skip them if you are short on time and nothing breaks.
 
 ## The container and its items
 
@@ -306,199 +299,11 @@ By default flex items refuse to wrap. They shrink to stay on one line, and if th
 
 </CssDemo>
 
-Narrow this page and those cards rearrange themselves onto more lines with no media query involved. That's worth noticing, because it's the beginning of responsive layout, which is the focus of [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md) and then some.
+Narrow this page and those cards rearrange themselves onto more lines with no media query involved. That's worth noticing, because it's the beginning of responsive layout, which is covered in full in [Layouts That Respond Without a Query](/modules/css/css-rwd-patterns/README.md) and [Responsive Design and Media Queries](/modules/css/css-media-queries/README.md).
 
-### Going deeper: align-content for wrapped rows
+Two more wrapping-related tools are worth knowing once you're using `flex-wrap`: [Going Deeper: Wrapped Rows and the flex-flow Shorthand](/modules/css/css-flexbox/wrapped-rows.md) covers `align-content` and the `flex-flow` shorthand.
 
-`align-items` and `align-content` sound like the same property, and they're easy to mix up because both work on the cross axis. They're not interchangeable.
-
-`align-items` positions items within a single line, the one you already used above to centre things vertically in a row. `align-content` is different: it distributes space *between multiple lines*, and it only does anything once `flex-wrap: wrap` is on, the items have actually wrapped onto more than one line, and there's leftover space in the cross axis for those lines to move around in. A single-line flex container ignores `align-content` completely, no matter what value you give it.
-
-Give a wrapped row of cards a fixed height taller than it needs, and `align-content` decides how the rows spread out inside that extra space:
-
-<CssDemo>
-
-```html
-<div class="wrap-demo between">
-  <div class="i">1</div><div class="i">2</div><div class="i">3</div>
-  <div class="i">4</div><div class="i">5</div>
-</div>
-<div class="wrap-demo center">
-  <div class="i">1</div><div class="i">2</div><div class="i">3</div>
-  <div class="i">4</div><div class="i">5</div>
-</div>
-```
-
-```css
-.wrap-demo {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  height: 220px;
-  max-width: 340px;
-  border: 2px dashed #94a3b8;
-  padding: 8px;
-  margin-bottom: 12px;
-}
-.between { align-content: space-between; }
-.center { align-content: center; }
-.i {
-  width: 110px;
-  background-color: #d1fae5;
-  border: 1px solid #34d399;
-  padding: 14px;
-  font-family: system-ui, sans-serif;
-  text-align: center;
-}
-```
-
-</CssDemo>
-
-`space-between` pushes the first row to the top of the box and the last row to the bottom, spreading any rows between them evenly, the same logic as `justify-content: space-between` but applied to whole lines instead of individual items. `center` pulls all the rows together into the middle of the box and leaves equal empty space above and below. The default, `stretch`, grows the lines themselves to fill the container, which is usually not what you want once you've deliberately given a container extra height.
-
-You'll reach for this less often than the properties above it, because most flex containers are exactly as tall as their content. It earns its keep the moment a container has a fixed or minimum height and its wrapped content doesn't quite fill it: a footer with a short list of links, a sidebar with room to spare.
-
-### Going deeper: the flex-flow shorthand
-
-`flex-direction` and `flex-wrap` are two separate properties, but they're both set on the container and get changed together often enough that CSS provides a shorthand: `flex-flow`.
-
-```css
-/* These two rules do exactly the same thing. */
-.row {
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.row {
-  flex-flow: row wrap;
-}
-```
-
-The order in `flex-flow` is always direction first, then wrap. Either value can be left out and it falls back to that property's own default, so `flex-flow: wrap;` on its own is valid and just leaves `flex-direction` at `row`.
-
-There's no behaviour difference between the shorthand and writing both properties separately. Some developers prefer `flex-flow` because it reads as one decision, "how does this container flow," rather than two. Every example in this chapter uses the longhand for clarity, and either is correct.
-
-## Controlling individual items
-
-Three properties go on the items rather than the container, and they're usually written together with the `flex` shorthand.
-
-`flex-grow` says how much of the leftover space an item should absorb, as a proportion. `flex-shrink` says how readily it gives up space when there isn't enough. `flex-basis` sets its starting size before growing or shrinking.
-
-<CssDemo>
-
-```html
-<div class="row">
-  <div class="i">grow: 1</div>
-  <div class="i wide">grow: 2</div>
-  <div class="i">grow: 1</div>
-</div>
-```
-
-```css
-.row {
-  display: flex;
-  gap: 10px;
-  border: 2px dashed #94a3b8;
-  padding: 8px;
-}
-.i {
-  flex: 1;
-  background-color: #ccfbf1;
-  border: 1px solid #2dd4bf;
-  padding: 12px;
-  font-family: system-ui, sans-serif;
-  text-align: center;
-}
-.wide {
-  flex: 2;
-}
-```
-
-</CssDemo>
-
-`flex: 1` on every item makes them share the space equally. Giving one `flex: 2` makes it take twice the share of the *leftover* space. This is how you build a layout with a sidebar and a main column that resize together.
-
-Two shorthand values are worth memorizing. `flex: 1` means grow to fill, shrink if needed, ignore my natural width. `flex: 0 0 auto` means never grow, never shrink, stay exactly my natural size, which is what you want for something like a logo that shouldn't stretch.
-
-`flex` also takes a full three-value form, `flex: <grow> <shrink> <basis>`, when you want a starting size before the growing and shrinking happen. `flex: 1 1 200px` means "start every item at 200px, then let them grow and shrink equally to fill the row." That starting number is the `flex-basis` from a moment ago, and it's what the exercise below means by giving a card "a sensible `flex-basis`": a realistic minimum width for that card's content, so the cards resize from something reasonable instead of from nothing.
-
-There's also `align-self`, which overrides the container's `align-items` for one item only.
-
-### Going deeper: the order property
-
-Every flex item has a default `order` value of `0`, and items with equal `order` values stay in the sequence they appear in the HTML. Give an item a different number and you move it, visually, without touching the markup. Lower numbers paint first.
-
-```html
-<div class="row">
-  <div class="i comments">Comments</div>
-  <div class="i article">Article</div>
-  <div class="i sidebar">Sidebar</div>
-</div>
-```
-
-```css
-.row {
-  display: flex;
-  gap: 12px;
-}
-.article  { order: 1; }
-.comments { order: 2; }
-.sidebar  { order: 3; }
-```
-
-In the HTML, Comments comes before Article, on purpose: a comment thread belongs after the thing it's commenting on, and that's the sequence a screen reader or a search engine meets. Giving `.article` an `order` of `1` and `.comments` an `order` of `2` reverses what's painted on screen, Article first, Comments second, Sidebar third, without moving a single line of markup.
-
-This is the real-world version of the caveat you already read about `row-reverse`, and it's the one you'll reach for far more often. A common pattern: write the parts of a card in the HTML in the order that makes sense read aloud, then use `order` to rearrange them visually, an image that should appear above its caption on a wide screen and below it on a narrow one, with the HTML never changing.
-
-That's exactly why `order` needs the same caution as `row-reverse`. It's a purely visual reorder. Tab through a page that uses it and the browser still moves focus in HTML order, not visual order, so a keyboard user can land on something that appears to be at the bottom of the screen right after something that appears at the top. Use `order` freely for genuine visual-only adjustments, and check with the keyboard afterward that the tab order still makes sense.
-
-## A real navigation bar
-
-Everything in this chapter comes together in the single most common Flexbox pattern on the web:
-
-<CssDemo>
-
-```html
-<header class="site-header">
-  <div class="logo">TrailGuide</div>
-  <nav class="nav">
-    <a href="#">Routes</a>
-    <a href="#">Conditions</a>
-    <a href="#">About</a>
-  </nav>
-</header>
-```
-
-```css
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  background-color: #0f172a;
-  font-family: system-ui, sans-serif;
-}
-.logo {
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-.nav {
-  display: flex;
-  gap: 22px;
-}
-.nav a {
-  color: #cbd5e1;
-  text-decoration: none;
-}
-.nav a:hover, .nav a:focus {
-  color: #ffffff;
-  text-decoration: underline;
-}
-```
-
-</CssDemo>
-
-Note that there are **two** flex containers here, nested. The header is a flex container pushing the logo and the nav to opposite ends. The nav is itself a flex container spacing the links evenly. Nesting flex containers like this is normal and is how most real layouts are built.
+Three more properties, `flex-grow`, `flex-shrink`, and `flex-basis`, go on the items rather than the container, alongside `align-self` and the `order` property for visual reordering. See [Controlling Individual Items](/modules/css/css-flexbox/item-sizing.md) and [Going Deeper: the order Property](/modules/css/css-flexbox/the-order-property.md).
 
 ## Common mistakes to avoid
 
@@ -527,15 +332,3 @@ Run this over your own layout before you move on:
 - [<abbr title="Cascading Style Sheets">CSS</abbr>-Tricks: A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). The reference chart everybody keeps open while writing Flexbox. Bookmark it.
 - [Flexbox Froggy](https://flexboxfroggy.com/). A short game that drills the alignment properties. Genuinely the fastest way to make them stick.
 - [Video: Learn Flexbox in 15 Minutes, by Web Dev Simplified](https://www.youtube.com/watch?v=fYq5PXgSsbE). A quick, practical run through the same properties.
-
-## Try it yourself (about 45 minutes)
-
-Build a navigation bar on your project page. Put a site name and a set of links inside a `<header>`, make it a flex container, and use `space-between` and `align-items: center` to pin the name left and the links right, vertically centred. Make the links themselves a nested flex container with a `gap`. Give them `:hover` and `:focus` styles.
-
-Then build a row of at least four cards. Give the container `display: flex`, `flex-wrap: wrap`, and a `gap`, and give each card `flex: 1` with a sensible `flex-basis` so they share the width. Narrow your browser window slowly and watch them wrap. Note the width at which the layout stops looking right, because that number is a breakpoint, and [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md) puts it to use.
-
-Finally, centre something both ways. Make a box with a fixed height, put a single element inside it, and centre it with `justify-content` and `align-items`. Then change the container's `flex-direction` to `column` and predict what happens to the centring before you save.
-
-If you have time left, try `order` on two of your cards so they display in a different sequence than they appear in your HTML. Then tab through the page with the keyboard and confirm focus still follows your HTML order, not the order the cards display in.
-
-Flexbox handles one direction at a time. [CSS Grid Layouts](/modules/css/grid-layouts.md) adds the second dimension, rows and columns together.

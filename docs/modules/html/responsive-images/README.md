@@ -6,9 +6,18 @@ prerequisites:
 
 # Responsive Images
 
-*This module is a partial deposit: it covers choosing between image sizes and formats with `srcset` and `<picture>`. A later pass adds responsive images in the context of media queries and layout breakpoints.*
+An image that's fine on a desktop can overflow a phone screen and force horizontal scrolling. One CSS rule prevents it, and it belongs in every stylesheet you write:
 
-[Image Optimization](/modules/html/image-optimization/README.md) Steps 1 to 5 assume one file. A phone and a desktop should not download the same one.
+```css
+img {
+  max-width: 100%;
+  height: auto;
+}
+```
+
+`max-width: 100%` stops the image ever being wider than its container. `height: auto` keeps the aspect ratio correct as the width changes, rather than squashing it.
+
+That handles layout. Handling *file size* is the other half, and [Image Optimization](/modules/html/image-optimization/README.md) Steps 1 to 5 assume one file, when a phone and a desktop should not download the same one. `srcset` and the `<picture>` element, covered below, let the browser download a smaller file on a small screen instead of shrinking a huge one. Those live in the HTML, and the CSS rule above works alongside them.
 
 ## Step 6: Offer several sizes with srcset
 
@@ -135,10 +144,15 @@ Both jobs combine, and `srcset` still works inside each source:
 
 That is the most complex image markup this course asks for, and most images do not need it. Reach for `<picture>` when you need a different crop or a format fallback. Use plain `srcset` for everything else. [Putting It Together](/modules/html/image-optimization/putting-it-together.md) shows a complete example combining every technique from both chapters.
 
+## Common mistakes to avoid
+
+- **Forgetting `img { max-width: 100%; height: auto; }`.** One oversized image causes horizontal scrolling across the whole page.
+
 ## The checklist
 
 Run this over every image before you move on:
 
+- `img { max-width: 100%; height: auto; }` in your base stylesheet
 - `srcset` and `sizes` where the image flexes with the layout
 - `<picture>` where you need a different crop or a format fallback
 

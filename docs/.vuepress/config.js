@@ -209,11 +209,48 @@ const mtm1544Sidebar = [
           { text: 'The Cascade', link: '/modules/css/css-cascade/README.md' },
         ],
       },
-      { text: 'Week 5: Flexbox Layouts', link: '/modules/css/flexbox-layouts.md' },
-      { text: 'Week 6: CSS Grid Layouts', link: '/modules/css/grid-layouts.md' },
-      { text: 'Week 7: Responsive Design and Media Queries', link: '/modules/css/responsive-media-queries.md' },
+      {
+        text: 'Week 5: Flexbox Layouts',
+        collapsible: true,
+        children: [
+          { text: 'Flexbox Layouts', link: '/modules/css/css-flexbox/README.md' },
+          { text: 'Wrapped Rows and the flex-flow Shorthand', link: '/modules/css/css-flexbox/wrapped-rows.md' },
+          { text: 'Controlling Individual Items', link: '/modules/css/css-flexbox/item-sizing.md' },
+          { text: 'The order Property', link: '/modules/css/css-flexbox/the-order-property.md' },
+          { text: 'Styling a Navigation Bar', link: '/modules/css/css-styling-navigation/README.md' },
+        ],
+      },
+      {
+        text: 'Week 6: CSS Grid Layouts',
+        collapsible: true,
+        children: [
+          { text: 'CSS Grid Layouts', link: '/modules/css/css-grid/README.md' },
+          { text: 'Subgrid', link: '/modules/css/css-grid/subgrid.md' },
+          { text: 'Grid and Flexbox Together', link: '/modules/css/css-grid/grid-and-flexbox-together.md' },
+          { text: 'The position Property', link: '/modules/css/css-position/README.md' },
+        ],
+      },
+      {
+        text: 'Week 7: Responsive Design and Media Queries',
+        collapsible: true,
+        children: [
+          { text: 'Responsive Design and Media Queries', link: '/modules/css/css-media-queries/README.md' },
+          { text: 'CSS Units', link: '/modules/css/css-units/README.md' },
+          { text: 'Fluid Sizing Without a Query', link: '/modules/css/css-fluid-sizing/README.md' },
+          { text: 'Layouts That Respond Without a Query', link: '/modules/css/css-rwd-patterns/README.md' },
+          { text: 'Container Queries', link: '/modules/css/css-container-queries/README.md' },
+        ],
+      },
       { text: 'Week 8: Reading Week', link: '/modules/css/reading-week.md' },
-      { text: 'Week 9: The DOM and CSS Targeting', link: '/modules/css/dom-css-targeting.md' },
+      {
+        text: 'Week 9: The DOM and CSS Targeting',
+        collapsible: true,
+        children: [
+          { text: 'The DOM', link: '/modules/css/css-dom/README.md' },
+          { text: 'Descendant, Child, Sibling, and Attribute Selectors', link: '/modules/css/css-selectors-adv/README.md' },
+          { text: 'Pseudo-Classes', link: '/modules/css/css-pseudo-classes/README.md' },
+        ],
+      },
       {
         text: 'Week 10: Accessible Styling',
         collapsible: true,
