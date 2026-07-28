@@ -23,7 +23,7 @@ This course is about structure and meaning, not appearance. You'll learn semanti
 
 This course covers the building blocks of a web page, links and media, semantic structure, how to plan a whole site, accessibility, forms, image optimization, search engine visibility, and code quality, bringing all of it together into a finished, multi-page project.
 
-Every piece of work you submit is a real, live website, hosted on GitHub Pages under your own account. Setting that up is the second half of today.
+Every project you build in this course becomes a real, live website, hosted on GitHub Pages under your own account. Setting that up is the second half of today.
 
 ## How the web works
 
@@ -272,7 +272,7 @@ If Git Bash still doesn't appear, close and reopen VS Code once more, this resta
 
 If you don't already have one, create a free account at [github.com](https://github.com/). Use an email address you'll still control after you graduate, not a college address that expires.
 
-Once you have an account, apply for the [GitHub Student Developer Pack](https://github.com/education/students). It's free for as long as you're enrolled, and it upgrades your account to GitHub Pro, which matters specifically for this course: a free account can only run GitHub Pages from a **public** repository, so your code and commit history would be visible to anyone, including classmates. Pro removes that requirement, so your assignment repositories can stay private while your GitHub Pages site is still reachable at its live link for submission. Verification can take a couple of days and may ask for proof of enrollment beyond your email, so apply now rather than the week an assignment is due. You can carry on with today's practice below while it processes.
+Once you have an account, apply for the [GitHub Student Developer Pack](https://github.com/education/students). It's free for as long as you're enrolled, and it upgrades your account to GitHub Pro, which matters specifically for this course: a free account can only run GitHub Pages from a **public** repository, so your code and commit history would be visible to anyone, including classmates. Pro removes that requirement, so your project repositories can stay private while your GitHub Pages site is still reachable at its live link. Verification can take a couple of days and may ask for proof of enrollment beyond your email, so apply now rather than waiting until you need it. You can carry on with today's practice below while it processes.
 
 Once signed in, create a new repository to practice with today:
 
@@ -288,7 +288,7 @@ github.com/your-username/git-practice, a new repository containing one file, REA
 </div>
 </details>
 
-This is now a real, live **repository**, a project folder that Git tracks and GitHub hosts. Everything you build in this course follows this same pattern: one repository per assignment.
+This is now a real, live **repository**, a project folder that Git tracks and GitHub hosts. Everything you build in this course follows this same pattern: one repository per project.
 
 ## <span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="15"/><polyline points="7 10 12 15 17 10"/><polyline points="4 19 4 21 20 21 20 19"/></svg></span> Cloning the repository in VS Code
 
@@ -364,7 +364,7 @@ Source Control panel: Changes (0), Staged Changes (0), nothing pending to sync.
 </div>
 </details>
 
-This is the distinction worth holding onto for the rest of the course: you can commit many times in a row, building up local history, without ever touching GitHub. Nothing your instructor or a classmate can see changes until you push. If you finish an assignment locally but forget to push, GitHub still shows your old version, and so does your submission link.
+This is the distinction worth holding onto for the rest of the course: you can commit many times in a row, building up local history, without ever touching GitHub. Nothing your instructor or a classmate can see changes until you push. If you finish your work locally but forget to push, GitHub still shows your old version, and so does the live link.
 
 ### The first time you push: signing in
 
@@ -380,7 +380,7 @@ Everything above, staging, committing, pushing, gets your work onto GitHub. None
 
 ### Why this is a per-repository setting
 
-GitHub Pages isn't something you turn on once for the whole course. It's tied to one specific repository, and every assignment in this course lives in its own repository. That means this short setup repeats once per assignment, not once ever. It's quick once you've done it the first time, but it's easy to forget on a new repository and then wonder why the submission link doesn't load.
+GitHub Pages isn't something you turn on once for the whole course. It's tied to one specific repository, and this course uses one repository per project. That means this short setup repeats once per project, not once ever. It's quick once you've done it the first time, but it's easy to forget on a new repository and then wonder why the live link doesn't load.
 
 ### Turning on Pages for this repository
 
@@ -398,7 +398,7 @@ GitHub Pages settings: Source: Deploy from a branch. Branch: main, folder: / (ro
 
 The branch and folder you pick tell GitHub which files to publish. **main** because that's the branch your finished work lives on, and **root** because your `index.html` sits at the top level of the repository rather than inside a subfolder. A project structured differently, say with everything inside a `/docs` folder, would need that setting changed to match.
 
-Saving triggers a short build on GitHub's side, usually well under ten minutes. Refresh the Pages settings page and a **Visit site** link appears once it's ready. That link is a real, public URL, and it's what you submit for every assignment from here on.
+Saving triggers a short build on GitHub's side, usually well under ten minutes. Refresh the Pages settings page and a **Visit site** link appears once it's ready. That link is a real, public URL that stays live for the rest of the course.
 
 You only need to repeat the toggle itself once per repository. After that, every push you make automatically republishes the live site within a minute or two, the same way pushing updated your commit history a moment ago.
 
@@ -408,11 +408,11 @@ You've now done the whole workflow once. Here's what each piece actually is, so 
 
 **Git** is version control software that runs on your computer. It tracks every change you commit, so you can see the full history of a project and, if needed, go back to any earlier point. Git works entirely on your machine and doesn't need the internet.
 
-**GitHub** is a website that hosts Git repositories online. It's where your code lives so it can be shared, backed up, and, in this course, graded from a link. Git and GitHub are related but distinct: Git is the tool, GitHub is one place among several that hosts what Git tracks.
+**GitHub** is a website that hosts Git repositories online. It's where your code lives so it can be shared, backed up, and viewed from a link. Git and GitHub are related but distinct: Git is the tool, GitHub is one place among several that hosts what Git tracks.
 
-**A repository**, or "repo," is a project folder that Git is tracking. Every assignment in this course is its own repository.
+**A repository**, or "repo," is a project folder that Git is tracking. Every project in this course is its own repository.
 
-**GitHub Pages** is a free feature of GitHub that takes the files in a repository and publishes them as a live website, at a URL like `your-username.github.io/repository-name`. It's how every project you submit in this course becomes something you can actually visit in a browser, rather than a folder of files.
+**GitHub Pages** is a free feature of GitHub that takes the files in a repository and publishes them as a live website, at a URL like `your-username.github.io/repository-name`. It's how every project in this course becomes something you can actually visit in a browser, rather than a folder of files.
 
 Worth being direct about why this chapter is so setup-heavy: this isn't a simplified classroom version of how the industry works, it's the actual daily workflow. Clone, edit, stage, commit, push, is what a working web developer does dozens of times a week, on real teams, from day one of a real job. Learning it for real now, however slow it feels today, is time you don't spend relearning it later.
 

@@ -13,7 +13,7 @@ This is also the chapter that shows up in a portfolio review. A rich, correctly-
 
 ## How to read this chapter
 
-**The core path is everything down to the checklist.** Read it in order and complete the Try it yourself exercise, and you have what the assignment needs. Budget about 25 minutes to read it, plus the 50 minutes the exercise takes.
+**The core path is everything down to the checklist.** Read it in order and complete the Try it yourself exercise. Budget about 25 minutes to read it, plus the 50 minutes the exercise takes.
 
 Three sections are headed **Going deeper**. They're optional, marked clearly every time, and add roughly 20 minutes total if you read all three: a second structured data example built around a product with a price, marking up the same breadcrumb trail you already know how to build in <abbr title="HyperText Markup Language">HTML</abbr>, and a short look at the `twitter:` tags mentioned in passing below. Skip them if you are short on time. Nothing in the core path or the exercise depends on them.
 
@@ -269,7 +269,7 @@ That last step matters more than it looks. Re-running is how you learn which cha
 
 ## The checklist
 
-Run this over a page before you submit work in this course:
+Run this over a page before you move on:
 
 - Every `og:` tag present, with an absolute-URL `og:image` around 1200 by 630 pixels
 - Structured data describes only what's actually on the page, nothing invented for the sake of a richer result

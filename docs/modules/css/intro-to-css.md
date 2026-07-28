@@ -1,18 +1,20 @@
 ---
 title: Introduction to CSS
+prerequisites:
+  - welcome/introduction-to-the-web
 ---
 
 # Introduction to <abbr title="Cascading Style Sheets">CSS</abbr>
 
-In MTM1511 earlier this week you set up your development environment and published a page to the web. This class finishes that setup from the styling side and gets a real stylesheet running.
+In MTM1511's [Introduction to the Web](/modules/welcome/introduction-to-the-web.md), you set up your development environment and published a page to the web. This chapter finishes that setup from the styling side and gets a real stylesheet running.
 
-By the end of today you'll have a `css` folder, a `styles.css` file linked to a page, a way to confirm the connection actually works, and enough CSS to write your first rules. Nothing here is throwaway. This is the file you'll add to every week for the rest of the term. Next week the real CSS work starts.
+By the end of this chapter you'll have a `css` folder, a `styles.css` file linked to a page, a way to confirm the connection actually works, and enough CSS to write your first rules. Nothing here is throwaway. This is the file you'll build on for the rest of this course. [The Box Model and Spacing](/modules/css/box-model-spacing.md) is where the real CSS work starts.
 
 ## How to read this chapter
 
-**The core path is everything except the two sections marked Going deeper.** Read those parts in order, work through the setup and stylesheet steps as you go, and finish with the exercise at the end, and you have what this week's assignment needs. Budget about 30 minutes for the reading and 60 minutes for the exercise.
+**The core path is everything except the two sections marked Going deeper.** Read those parts in order, work through the setup and stylesheet steps as you go, and finish with the exercise at the end. Budget about 30 minutes for the reading and 60 minutes for the exercise.
 
-The two **Going deeper** sections are optional and add about 10 minutes combined. They answer two questions almost everyone asks in the first weeks of a CSS course, even though neither one is required to finish this week's work. Skip them if the week is already full. Nothing later in the course depends on having read them now, they'll simply feel familiar when the same topics come back properly in later weeks.
+The two **Going deeper** sections are optional and add about 10 minutes combined. They answer two questions almost everyone asks early in a CSS course, even though neither is required to move on. Skip them if you are short on time. Nothing ahead in this course depends on having read them now, they'll simply feel familiar when the same topics come back in more depth.
 
 ## What CSS is
 
@@ -69,7 +71,7 @@ This matters for two reasons. First, "no styling" is never really true in a brow
 
 ## Confirming your setup
 
-Before writing any CSS, confirm the tools from Monday actually work. Run through this list now, because every remaining week of this course assumes all five are true.
+Before writing any CSS, confirm the tools set up in MTM1511's [Introduction to the Web](/modules/welcome/introduction-to-the-web.md) actually work. Run through this list now, because every later chapter in this course assumes all five are true.
 
 1. **VS Code opens** and the Extensions view lists Live Server as installed.
 2. **Git is recognized.** Open a terminal in VS Code and run `git --version`. You should get a version number, not an error.
@@ -77,11 +79,11 @@ Before writing any CSS, confirm the tools from Monday actually work. Run through
 4. **You can push.** Make a trivial change, stage it, commit it, and sync. The change appears on GitHub when you refresh.
 5. **Pages is on** for that repository, and the live <abbr title="Uniform Resource Locator">URL</abbr> loads in a browser.
 
-If any one of those fails, fix it now, before the rest of this class. A broken step here blocks every assignment in both courses. A stall or an error partway through one of these is often a connection blip or a one-off installer hiccup rather than something you did wrong, so try it once more before assuming the worst. If it's still not working, don't burn the whole class on it alone: flag it with your instructor or in the course's help channel right away.
+If any one of those fails, fix it now, before continuing. A broken step here blocks everything that follows in both courses. A stall or an error partway through one of these is often a connection blip or a one-off installer hiccup rather than something you did wrong, so try it once more before assuming the worst. If it's still not working, don't get stuck on it alone: flag it with your instructor or in the course's help channel right away.
 
 ## The starter page
 
-You haven't covered enough HTML yet to build a page from scratch, that starts next week in MTM1511, so this week you're given one to style. Create a file called `index.html` at the top level of your repository and paste this in:
+You haven't covered enough HTML yet to build a page from scratch. That's covered in MTM1511's [Core HTML Elements](/modules/html/html-core-elements.md), so here you're given one to style. Create a file called `index.html` at the top level of your repository and paste this in:
 
 ```html
 <!DOCTYPE html>
@@ -107,7 +109,7 @@ You haven't covered enough HTML yet to build a page from scratch, that starts ne
 </html>
 ```
 
-Right-click the file in VS Code and choose **Open with Live Server**. Your browser opens the page, unstyled, and will refresh automatically every time you save from now on. Leave that browser tab open beside VS Code for the rest of the class.
+Right-click the file in VS Code and choose **Open with Live Server**. Your browser opens the page, unstyled, and will refresh automatically every time you save from now on. Leave that browser tab open beside VS Code while you work through this chapter.
 
 Two details in that markup will matter shortly. One paragraph carries `class="intro"` and one heading carries `id="summit"`. You'll use both later in this chapter.
 
@@ -180,11 +182,11 @@ body {
 
 5. Save both files. Your Live Server tab should refresh on its own and the page background should go pale grey.
 
-**If nothing changed,** the connection is broken and this is worth fixing carefully now, because it's the single most common problem in the first weeks of this course. Check three things, in this order. Is the `<link>` inside the `<head>`, not the `<body>`? Is the path exactly `css/styles.css`, matching your real folder and file names including their capitalisation? And did you actually save both files, since Live Server only reloads on save?
+**If nothing changed,** the connection is broken and this is worth fixing carefully now, because it's the single most common problem early in this course. Check three things, in this order. Is the `<link>` inside the `<head>`, not the `<body>`? Is the path exactly `css/styles.css`, matching your real folder and file names including their capitalisation? And did you actually save both files, since Live Server only reloads on save?
 
 ## The anatomy of a rule
 
-Everything you write this term is made of one small pattern. CSS is a list of **rules**. Each rule picks out the elements it applies to and then lists the changes to make. Every rule has the same shape:
+Everything you write is made of one small pattern. CSS is a list of **rules**. Each rule picks out the elements it applies to and then lists the changes to make. Every rule has the same shape:
 
 ```css
 body {
@@ -332,7 +334,7 @@ IDs are still genuinely useful elsewhere. They're the target of a link that jump
 
 You now have three ways to select the same element, which raises an obvious question. What happens when two rules both apply and they disagree?
 
-That's what the "cascading" in Cascading Style Sheets means. The browser gathers every rule that matches an element and resolves the conflicts with a set of tie-breakers. Two of them are enough for this week.
+That's what the "cascading" in Cascading Style Sheets means. The browser gathers every rule that matches an element and resolves the conflicts with a set of tie-breakers. Two of them are enough for this chapter.
 
 **Later beats earlier.** When two rules are equally specific, the one further down the stylesheet wins:
 
@@ -377,7 +379,7 @@ p {
 
 </CssDemo>
 
-The ID wins even though it's written first, because it's the most specific of the three. That ordering, ID over class over element, is the practical version of a rule you'll learn to calculate exactly in the Selectors, Specificity, and Inheritance week later this term. For now, the useful takeaway is a debugging instinct: when a rule seems to be ignored, something more specific is probably beating it.
+The ID wins even though it's written first, because it's the most specific of the three. That ordering, ID over class over element, is the practical version of a rule you'll learn to calculate exactly in [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md). For now, the useful takeaway is a debugging instinct: when a rule seems to be ignored, something more specific is probably beating it.
 
 ### Going deeper: a third way to win, and why this course avoids it
 
@@ -391,39 +393,41 @@ p {
 
 A declaration marked `!important` beats an ordinary declaration regardless of specificity or source order. You'll see it in code you didn't write, and the first time one of your own rules refuses to apply, reaching for it can look like a quick fix.
 
-It isn't, and this course doesn't use it. `!important` doesn't resolve the conflict between two rules, it forces a winner and buries the reason underneath. The only way to override an `!important` declaration is another `!important` declaration, so once a stylesheet has one, it tends to collect more, until nobody can tell which rule actually controls anything. When a rule you wrote doesn't seem to apply, the fix is to find what's beating it in developer tools and adjust the selector, not to reach for `!important`. You'll cover exactly how source order, specificity, and `!important` fit together, as one complete system, in the Selectors, Specificity, and Inheritance week later this term.
+It isn't, and this course doesn't use it. `!important` doesn't resolve the conflict between two rules, it forces a winner and buries the reason underneath. The only way to override an `!important` declaration is another `!important` declaration, so once a stylesheet has one, it tends to collect more, until nobody can tell which rule actually controls anything. When a rule you wrote doesn't seem to apply, the fix is to find what's beating it in developer tools and adjust the selector, not to reach for `!important`. You'll cover exactly how source order, specificity, and `!important` fit together, as one complete system, in Selectors, Specificity, and Inheritance.
 
 ## Checking your work in developer tools
 
 Guessing why a style didn't apply wastes a lot of time when the browser will simply tell you. Right-click any element on your page and choose **Inspect**. Developer tools open with that element selected and a Styles panel showing every rule affecting it.
 
-Three things in that panel are worth knowing today. Rules are listed with the winning one at the top. Declarations that lost a conflict appear with a line struck through them, which shows you exactly what overrode what. And if your stylesheet doesn't appear in the list at all, the file isn't connected, which sends you back to the `<link>` and the file path rather than to your CSS.
+Several things in that panel are worth knowing. Rules are listed with the winning one at the top. Declarations that lost a cascade conflict appear with a line struck through them, which shows you exactly what overrode what. And if your stylesheet doesn't appear in the list at all, the file isn't connected, which sends you back to the `<link>` and the file path rather than to your CSS.
 
-Get in the habit of inspecting rather than guessing. It's the fastest debugging tool you have, and you'll use it every week of this course.
+There's a second reason a declaration can show up struck through, and it's the one worth checking for whenever your own CSS doesn't apply at all: the browser couldn't parse it, and rejected it outright. A misspelled property name, a missing colon or semicolon, or a value that isn't legal for that property all produce this, with no other rule in sight to explain the strikethrough. That's your self-check for hand-written CSS. If a declaration is struck through and nothing else in the panel is winning over it, the browser is telling you it's invalid, not that something beat it.
+
+Get in the habit of inspecting rather than guessing. It's the fastest debugging tool you have, and you'll use it throughout this course.
 
 ## Publishing what you built
 
-Finish by getting today's work onto the live site, using the workflow from MTM1511 earlier this week.
+Finish by getting this work onto the live site, using the workflow from MTM1511's [Introduction to the Web](/modules/welcome/introduction-to-the-web.md).
 
 Stage your changed files in the Source Control panel, write a commit message describing what you did, commit, then sync to push. Give GitHub a minute, then open your Pages URL in a browser. Your styled page should be there, publicly, at a real address.
 
-That round trip, edit locally, push, see it live, is how every assignment in this course is submitted. Doing it once today while the stakes are zero means it's routine by the time it counts.
+That round trip, edit locally, push, see it live, is the core publishing workflow for this course. Doing it once now while the stakes are zero means it's second nature later.
 
-## Before you move on
+## The checklist
 
-Run through this before you consider the week done:
+Run through this before you move on:
 
 - Your `index.html` links an external stylesheet correctly: `rel="stylesheet"` and a working `href`, sitting inside the `<head>`
 - You can name every part of a rule on sight, selector, declaration block, property, and value
 - You can choose between an element, class, or ID selector for a given job, and say why that one and not the other two
-- You can predict which of two conflicting rules wins, using the two cascade tie-breakers covered this week: source order and specificity
-- You're comfortable opening developer tools, inspecting an element, and reading which rule won and which lost
+- You can predict which of two conflicting rules wins, using the two cascade tie-breakers covered in this chapter: source order and specificity
+- You're comfortable opening developer tools, inspecting an element, and reading which rule won and which lost, and telling a cascade loss apart from a rejected, invalid declaration
 
-If any of those doesn't feel solid yet, that's what the exercise below is for. Work back through the relevant section above before next week's chapter, since everything from here builds on this one.
+If any of those doesn't feel solid yet, that's what the exercise below is for. Work back through the relevant section above before moving on, since everything from here builds on this one.
 
 ## Keep learning
 
-- [MDN: CSS first steps](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics). Mozilla's own beginner path through exactly the concepts in this chapter, and a reference you will come back to all term.
+- [MDN: CSS first steps](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics). Mozilla's own beginner path through exactly the concepts in this chapter, and a reference you will come back to throughout this course.
 - [MDN: CSS reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference). The full list of properties. Bookmark it now and look properties up as you meet them, rather than trying to memorize them.
 - [W3Schools: CSS Introduction](https://www.w3schools.com/css/css_intro.asp). A second, plain-language explanation of these same basics, with small editable examples if a concept has not clicked yet.
 - [Chrome DevTools: View and change CSS](https://developer.chrome.com/docs/devtools/css). A short guide to the Styles panel used above.

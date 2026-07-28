@@ -1,16 +1,19 @@
 ---
 title: Typography and Colour
+prerequisites:
+  - css/intro-to-css
+  - css/box-model-spacing
 ---
 
 # Typography and Colour
 
-Last week gave every element on your page a size and a shape. This week fills those boxes in: most of a web page is text, and most of the impression a page makes comes from how that text is set and coloured. This chapter covers the properties that control both, including the units question Week 2 opened, and finishes with the one hard requirement that governs every colour choice you make: whether people can actually read it.
+In [The Box Model and Spacing](/modules/css/box-model-spacing.md) you gave every element on your page a size and a shape. This chapter fills those boxes in: most of a web page is text, and most of the impression a page makes comes from how that text is set and coloured. This chapter covers the properties that control both, including the units question already raised there, and finishes with the one hard requirement that governs every colour choice you make: whether people can actually read it.
 
 ## How to read this chapter
 
-**The core path is fonts and spacing, then "Colour values" through HSL, then "Accessible colour contrast."** Hex, RGB, and HSL are the three colour notations this course's CLR names directly, and they're what the assignment expects you to know cold. Budget about 30 minutes to read the core path, plus the 55 minutes the exercise takes.
+**The core path is fonts and spacing, then "Colour values" through HSL, then "Accessible colour contrast."** Hex, RGB, and HSL are the three colour notations this course's CLR names directly, and they're worth knowing cold. Budget about 30 minutes to read the core path, plus the 55 minutes the exercise takes.
 
-**"A newer colour space: oklch" and "Deriving colours with color-mix()," sitting between those two core sections, are extensions, not requirements.** They're real, Baseline-safe tools worth having, and the exercise gives you room to try both. But they sit outside what the CLR requires, so treat them as about 10 minutes of optional reading. Skip them on a busy week and you can still do the assignment.
+**"A newer colour space: oklch" and "Deriving colours with color-mix()," sitting between those two core sections, are extensions, not requirements.** They're real, Baseline-safe tools worth having, and the exercise gives you room to try both. But they sit outside what the CLR requires, so treat them as about 10 minutes of optional reading.
 
 ## Font families and font stacks
 
@@ -112,7 +115,7 @@ The `font-size` property takes several units, and the choice matters more than i
 
 </CssDemo>
 
-**Use `rem` for font sizes.** The reason is accessibility, and it's covered properly in the Accessible Styling week, but the short version is that a visitor who has increased their browser's default text size gets the larger text they asked for with `rem`, and gets ignored with `px`. That's a real barrier for a real group of people, and avoiding it costs you nothing.
+**Use `rem` for font sizes.** The reason is accessibility, and it's covered properly in [Accessible Styling](/modules/css/accessible-styling.md), but the short version is that a visitor who has increased their browser's default text size gets the larger text they asked for with `rem`, and gets ignored with `px`. That's a real barrier for a real group of people, and avoiding it costs you nothing.
 
 ## Font weight
 
@@ -360,7 +363,7 @@ A related, smaller tool: `color-mix()` blends two colours together in whatever p
 }
 ```
 
-That reads as "85% of this blue, 15% black," which gives you a darkened hover state derived directly from the button's own colour, rather than a second colour you typed out and now have to keep in sync by hand. It works with any colour notation, though mixing `in oklch` gives the smoothest, most even-looking blend for the same reason `oklch()` beats HSL above. Once your project has a real design system, you'll do this by mixing a stored value instead of retyping the hex code, using the custom properties the CSS Custom Properties and Variables week teaches later in the term.
+That reads as "85% of this blue, 15% black," which gives you a darkened hover state derived directly from the button's own colour, rather than a second colour you typed out and now have to keep in sync by hand. It works with any colour notation, though mixing `in oklch` gives the smoothest, most even-looking blend for the same reason `oklch()` beats HSL above. Once your project has a real design system, you'll do this by mixing a stored value instead of retyping the hex code, using the custom properties taught in [CSS Custom Properties and Variables](/modules/css/custom-properties.md).
 
 ## Accessible colour contrast
 
@@ -419,7 +422,7 @@ Two related habits matter as much as the ratio itself. **Never use colour as the
 
 ## The checklist
 
-Run this over your typography and colour choices before you submit work in this course:
+Run this over your typography and colour choices before you move on:
 
 - Font stack ends in a generic family (`serif`, `sans-serif`, or `monospace`)
 - Font sizes set in `rem`, not `px`
@@ -452,4 +455,4 @@ Pick one interactive colour, a button or link, and give it a `:hover` state buil
 
 Finally, audit every text and background pair you used with the WebAIM Contrast Checker. Record the ratio for each. Anything below 4.5:1 for body text gets darkened or lightened until it passes, and you note in a comment what it was and what you changed it to.
 
-Your page now looks and reads the way you intend. Next week asks a harder question: when two of your rules disagree about how something should look, which one actually wins.
+Your page now looks and reads the way you intend. [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md) asks a harder question: when two of your rules disagree about how something should look, which one actually wins.

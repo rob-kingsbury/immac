@@ -1,20 +1,23 @@
 ---
 title: Visual Design Principles
+prerequisites:
+  - css/typography-colour
+  - css/custom-properties
 ---
 
 # Visual Design Principles
 
-You can now build almost any layout you can describe. This week is about deciding what to describe.
+You can now build almost any layout you can describe. This chapter is about deciding what to describe.
 
 The gap between a page that works and a page that looks designed is rarely more <abbr title="Cascading Style Sheets">CSS</abbr>. It's usually four principles applied consistently: **hierarchy, contrast, alignment, and proximity**. None of them is a matter of taste, all of them are teachable, and all of them are visible in a page's CSS once you know what to look for.
 
 ## How to read this chapter
 
-**This week is shaped differently from the others.** The four principles below are still explained in full and still worth reading closely, but the second half of the class isn't a set of steps you work through alone. It's a live peer critique workshop: you look at a classmate's project, and they look at yours. Read the whole page before class. The four-principles section is what you'll be applying to both projects, and the feedback section further down is the actual format the workshop runs on, not background reading you can skip.
+**This chapter is shaped differently from the others.** The four principles below are still explained in full and still worth reading closely, but the second half isn't a set of steps you work through alone. It's a live peer critique workshop: you look at a classmate's project, and they look at yours. Read the whole page before the workshop. The four-principles section is what you'll be applying to both projects, and the feedback section further down is the actual format the workshop runs on, not background reading you can skip.
 
-**The core path is everything on this page except the section marked Going deeper.** Budget about 25 minutes to read the principles and the critique format. Bring the audit from this week's Try it yourself exercise with you; the workshop uses it as the starting point for what gets critiqued.
+**The core path is everything on this page except the section marked Going deeper.** Budget about 25 minutes to read the principles and the critique format. Bring the audit from this chapter's Try it yourself exercise with you; the workshop uses it as the starting point for what gets critiqued.
 
-The Going deeper section, on building a type scale from a ratio instead of picking sizes by eye, adds about 10 minutes. It's optional this week. It's here because restraint, using fewer sizes that are actually related to each other rather than more sizes chosen independently, is one of this chapter's core ideas, and a ratio is the most reliable way to get sizes that are genuinely related.
+The Going deeper section, on building a type scale from a ratio instead of picking sizes by eye, adds about 10 minutes. It's optional. It's here because restraint, using fewer sizes that are actually related to each other rather than more sizes chosen independently, is one of this chapter's core ideas, and a ratio is the most reliable way to get sizes that are genuinely related.
 
 ## Hierarchy
 
@@ -101,7 +104,7 @@ p { font-family: system-ui, sans-serif; margin: 2px 0; }
 
 Contrast comes from more than size. Weight, colour, spacing, case, and font family are all available, and combining two or three of them is what makes a difference read clearly.
 
-Two constraints on contrast, both already covered and both non-negotiable. **Colour contrast ratios** from Week 3 are a floor, not a goal. And **colour cannot be your only signal**, because it isn't available to everyone.
+Two constraints on contrast, both already covered and both non-negotiable. **Colour contrast ratios** from [Typography and Colour](/modules/css/typography-colour.md) are a floor, not a goal. And **colour cannot be your only signal**, because it isn't available to everyone.
 
 ## Alignment
 
@@ -197,7 +200,7 @@ In the first block, everything is equally spaced and it reads as four unrelated 
 
 The rule to carry away: **the space inside a group must be smaller than the space around it.** When a layout feels muddled and you can't say why, this is the first thing to check.
 
-This is also where the spacing scale from last week's custom properties pays off. Consistent, related spacing values make grouping obvious. Twenty arbitrary numbers make everything feel equally distant.
+This is also where the spacing scale from [CSS Custom Properties and Variables](/modules/css/custom-properties.md) pays off. Consistent, related spacing values make grouping obvious. Twenty arbitrary numbers make everything feel equally distant.
 
 ## Putting the four together
 
@@ -215,7 +218,7 @@ That last one is worth dwelling on. Restraint reads as confidence. A page with t
 
 ## Going deeper: building a type scale from a ratio
 
-*Optional, about 10 minutes. The four principles above are the required reading for this week; this section is a technique for after you've got them, not a fifth principle.*
+*Optional, about 10 minutes. The four principles above are the required reading; this section is a technique for after you've got them, not a fifth principle.*
 
 The restraint pass above tells you how many font sizes to use on a page: about three. It doesn't tell you which three. Left to guess, most people pick a body size, then "a bit bigger" for one heading, then "bigger again" for another. That produces three sizes that happen to sit on the same page, not three sizes that were designed to sit on the same page.
 
@@ -246,7 +249,7 @@ Step 2:  1rem x 1.25^2 = 1.5625rem  (25px)    secondary heading
 Step 3:  1rem x 1.25^3 = 1.953rem   (~31px)   primary heading
 ```
 
-Store the four values as custom properties, the way the Custom Properties chapter set up a spacing scale, and every element on the page pulls from the same four numbers instead of repeating decimals in five places:
+Store the four values as custom properties, the way [CSS Custom Properties and Variables](/modules/css/custom-properties.md) set up a spacing scale, and every element on the page pulls from the same four numbers instead of repeating decimals in five places:
 
 <CssDemo>
 
@@ -299,7 +302,7 @@ A production type system usually makes each step **fluid**, so the text scales s
 
 ## The peer critique workshop
 
-The second half of this week is a critique session. Design work improves fastest when someone else looks at it, because you cannot see your own page fresh after staring at it for six weeks.
+The second half of this chapter is a critique session. Design work improves fastest when someone else looks at it, because you cannot see your own page fresh after staring at it for so long.
 
 ### Giving useful feedback
 
@@ -354,7 +357,7 @@ Confirm your own project against this before the critique session:
 
 ## Try it yourself (about 45 minutes, outside the critique session itself)
 
-Before class, audit your own project against the five-step review pass above and write down what you find, honestly. Bring that list to the critique session.
+Before the workshop, audit your own project against the five-step review pass above and write down what you find, honestly. Bring that list to the critique session.
 
 Then do a restraint pass. Count every distinct font size, colour, and spacing value currently in your stylesheet. Reduce each list until you have around three font sizes, five spacing values, and a palette of four or five colours, all declared as custom properties. If you'd rather not pick those three font sizes by eye, build them from a ratio instead: pick a base and a ratio from the Going deeper section above, and let the math generate the set for you. Rebuild the page from those. Most projects look substantially better after this step alone, and it's the cheapest improvement available.
 
@@ -362,4 +365,4 @@ Fix one hierarchy problem, one alignment problem, and one proximity problem that
 
 In the critique session, give feedback to at least two classmates using the format above: describe what you see, name the principle, locate it specifically, and hold the suggestion until after the observation. Write down every observation you receive without responding to it during the session, then decide afterwards which to act on and note why you rejected the rest.
 
-Your page now looks deliberate. Next week adds the one thing a still image can't show: how it responds when someone actually touches it.
+Your page now looks deliberate. [Transitions and Motion](/modules/css/transitions-animation.md) adds the one thing a still image can't show: how it responds when someone actually touches it.

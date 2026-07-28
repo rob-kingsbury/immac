@@ -1,5 +1,8 @@
 ---
 title: CSS Custom Properties and Variables
+prerequisites:
+  - css/typography-colour
+  - css/selectors-specificity-inheritance
 ---
 
 # <abbr title="Cascading Style Sheets">CSS</abbr> Custom Properties and Variables
@@ -10,11 +13,11 @@ By now your stylesheet has a few hundred lines in it, and the same brand blue is
 
 ## How to read this chapter
 
-This chapter covers two required topics, not one. Custom properties come first: declaring them, using `var()`, building a design system, scoping, and theming. Native CSS nesting comes second, flagged clearly when it starts, because it's a genuinely different feature that happens to land in the same week. Both are required reading and both show up in this week's assignment.
+This chapter covers two required topics, not one. Custom properties come first: declaring them, using `var()`, building a design system, scoping, and theming. Native CSS nesting comes second, flagged clearly when it starts, because it's a genuinely different feature that happens to land in the same chapter. Both are required reading.
 
 Budget about 20 minutes for the custom properties sections, another 10 for nesting, and the full 55 minutes for the exercise at the end.
 
-One section, marked **Going deeper**, is optional and adds about 5 minutes. It covers `@property`, a more advanced way to register a custom property that most of this course won't need. Skip it on a busy week and nothing in the exercise depends on it.
+One section, marked **Going deeper**, is optional and adds about 5 minutes. It covers `@property`, a more advanced way to register a custom property that most of this course won't need. Skip it if you are short on time and nothing in the exercise depends on it.
 
 ## Declaring and using a variable
 
@@ -130,7 +133,7 @@ That block is worth building carefully, because it becomes the vocabulary for th
 
 **Use a scale rather than arbitrary numbers.** Four or five spacing values used consistently produce a page that looks deliberate. Twenty ad-hoc pixel values produce one that looks approximate, and the difference is visible even to people who can't name it.
 
-**Pair custom properties with <abbr title="Hue, Saturation, Lightness">HSL</abbr>.** Week 3 showed how changing one lightness value generates a matched palette. Doing that inside variables means your whole colour system is a few numbers you can adjust together.
+**Pair custom properties with <abbr title="Hue, Saturation, Lightness">HSL</abbr>.** [Typography and Colour](/modules/css/typography-colour.md) showed how changing one lightness value generates a matched palette. Doing that inside variables means your whole colour system is a few numbers you can adjust together.
 
 ## Scoping and the cascade
 
@@ -223,7 +226,7 @@ Scoping leads directly to themes. Declare an alternative set of values under a s
 
 The styling rules are written once and shared. Only the values differ.
 
-The same approach handles a system dark mode preference, using a media query in the same family as `prefers-reduced-motion` from last week:
+The same approach handles a system dark mode preference, using a media query in the same family as `prefers-reduced-motion` from [Accessible Styling](/modules/css/accessible-styling.md):
 
 ```css
 :root {
@@ -241,7 +244,7 @@ The same approach handles a system dark mode preference, using a media query in 
 
 Every rule in your stylesheet stays exactly as it was. Only the variable block changes, and the whole page follows.
 
-One requirement carries over from Week 3: **check contrast in both themes.** A palette that passes on white frequently fails on dark, and vice versa. A dark theme is not an excuse to skip the contrast checker; it's a second set of pairs to run through it.
+One requirement carries over from [Typography and Colour](/modules/css/typography-colour.md): **check contrast in both themes.** A palette that passes on white frequently fails on dark, and vice versa. A dark theme is not an excuse to skip the contrast checker; it's a second set of pairs to run through it.
 
 A newer function, `light-dark()`, does the same job with less repetition, once you've told the page which schemes it supports:
 
@@ -289,7 +292,7 @@ This is a genuine extension past what this course requires. Everything above thi
 
 Worth flagging before you start: this is a second, genuinely distinct topic landing in the same week as custom properties, not an extension of what you just learned. Take it as its own thing, in its own sitting if that's what a clean read needs.
 
-Every rule you've written this term names its full selector on its own line, even when several rules are clearly about the same component. A card's border, its heading colour, and its hover state end up as three separate top-level rules, related only by the fact that their selectors all start with `.card`.
+Every rule you've written names its full selector on its own line, even when several rules are clearly about the same component. A card's border, its heading colour, and its hover state end up as three separate top-level rules, related only by the fact that their selectors all start with `.card`.
 
 **Native CSS nesting** lets you write a rule inside another rule, and have the inner selector understood as relative to the outer one, using `&` to stand for the parent selector.
 
@@ -318,6 +321,8 @@ Every rule you've written this term names its full selector on its own line, eve
   }
 }
 ```
+
+Browser support for this is solid. The W3C CSS Validator has not caught up yet and will report an error here. That is the tool lagging the specification, not a problem with your code.
 
 <CssDemo>
 
@@ -363,11 +368,11 @@ Media queries and container queries nest too, which keeps a component's responsi
 }
 ```
 
-**Nesting doesn't replace the specificity rules from Week 4.** A nested selector's specificity is calculated exactly the same way as if you'd written it out in full, `&` included. It's a way of organising related rules so their relationship is visible on the page, not a new cascade mechanism.
+**Nesting doesn't replace the specificity rules from [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md).** A nested selector's specificity is calculated exactly the same way as if you'd written it out in full, `&` included. It's a way of organising related rules so their relationship is visible on the page, not a new cascade mechanism.
 
 You may recognise this from Sass or Less, which have offered nesting for years through a build step. What's different here is that it's now **plain CSS**, understood natively by the browser, with nothing to compile.
 
-Use it where it genuinely groups related rules, a component and its own states and media queries. Reaching for it everywhere, nesting three or four levels deep "because you can," produces the same long, fragile selectors Week 4 already warned about, just written differently.
+Use it where it genuinely groups related rules, a component and its own states and media queries. Reaching for it everywhere, nesting three or four levels deep "because you can," produces the same long, fragile selectors already warned about, just written differently.
 
 ## Custom properties versus preprocessor variables
 
@@ -394,12 +399,12 @@ If a property seems to have no value at all, a misspelled variable name is the f
 - **Expecting `var()` to work in a media query condition.** Custom properties can't be used in `@media` feature tests, only in declarations.
 - **Building a dark theme without rechecking contrast.** Different pairs, different ratios.
 - **Twenty spacing variables.** A scale of four or five used consistently beats a long list used approximately.
-- **Nesting three or four levels deep because you can.** It produces the same fragile, over-specific selectors Week 4 warned about, just formatted differently.
+- **Nesting three or four levels deep because you can.** It produces the same fragile, over-specific selectors [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md) warned about, just formatted differently.
 - **Writing `:hover` instead of `&:hover` inside a nested rule.** Without the `&`, it's understood as a descendant selector, not the parent itself, and won't match what you meant.
 
-## Before you move on
+## The checklist
 
-Check your stylesheet against this list before you consider the week's work done.
+Check your stylesheet against this list before you move on.
 
 - Every variable name starts with `--`, and you've treated it as case sensitive
 - `var()` is used with a sensible fallback wherever a value might be missing
@@ -433,4 +438,4 @@ Add a dark theme with `prefers-color-scheme`, changing nothing but the variable 
 
 Finally, pick one component with at least three related rules, a card, a button, or your navigation, and rewrite them as one nested block using `&`. Confirm in developer tools that the computed specificity of each nested rule matches what you'd get by writing the selector out in full.
 
-Your stylesheet is now organised and themeable. The next two weeks step back from code entirely and put the whole project in front of other people's eyes.
+Your stylesheet is now organised and themeable. [Visual Design Principles](/modules/css/visual-design-principles.md) steps back from code entirely and puts the whole project in front of other people's eyes.

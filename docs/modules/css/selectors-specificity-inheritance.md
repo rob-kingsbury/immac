@@ -1,18 +1,20 @@
 ---
 title: Selectors, Specificity, and Inheritance
+prerequisites:
+  - css/intro-to-css
 ---
 
 # Selectors, Specificity, and Inheritance
 
-In Week 1 you met three selectors and a rough rule for what happens when they conflict: more specific beats less specific, and later beats earlier. That rough rule carries you a long way, and Week 3's colour and type work has already leaned on it without saying so. This week replaces it with the real mechanism, adds the selectors that respond to what a visitor is doing, and explains why some properties pass down to child elements while others don't.
+In [Introduction to CSS](/modules/css/intro-to-css.md) you met three selectors and a rough rule for what happens when they conflict: more specific beats less specific, and later beats earlier. That rough rule carries you a long way, and [Typography and Colour](/modules/css/typography-colour.md)'s colour and type work has already leaned on it without saying so. This chapter replaces it with the real mechanism, adds the selectors that respond to what a visitor is doing, and explains why some properties pass down to child elements while others don't.
 
 This is the chapter that turns "my <abbr title="Cascading Style Sheets">CSS</abbr> isn't working" from a mystery into a diagnosis.
 
 ## How to read this chapter
 
-**The core path is everything in this chapter except the "Grouping selectors without paying for it" subsection.** Pseudo-classes, pseudo-elements, combinators, specificity, the full cascade, and inheritance are what this week's CLR requires, and they're what the assignment expects you to use with confidence. Budget about 30 minutes to read the core path, plus the 55 minutes the exercise takes.
+**The core path is everything in this chapter except the "Grouping selectors without paying for it" subsection.** Pseudo-classes, pseudo-elements, combinators, specificity, the full cascade, and inheritance are what the CLR requires for this chapter, and worth being able to use with confidence. Budget about 30 minutes to read the core path, plus the 55 minutes the exercise takes.
 
-**"Grouping selectors without paying for it: :is() and :where()," sitting inside the specificity section, is an extension, not a requirement.** `:where()` is a real, well-supported tool worth having, and the exercise gives you a chance to try it once. But it sits outside what the CLR names for this week, so treat it as about 10 minutes of optional reading. Skip it on a busy week and you can still calculate specificity by hand and complete the assignment.
+**"Grouping selectors without paying for it: :is() and :where()," sitting inside the specificity section, is an extension, not a requirement.** `:where()` is a real, well-supported tool worth having, and the exercise gives you a chance to try it once. But it sits outside what the CLR names for this chapter, so treat it as about 10 minutes of optional reading. Skip it if you are short on time; you'll still be able to calculate specificity by hand without it.
 
 ## Pseudo-classes: selecting by state
 
@@ -45,7 +47,7 @@ A **pseudo-class** selects an element based on its state rather than its markup.
 
 </CssDemo>
 
-**Never style `:hover` without also styling `:focus`.** Hover only exists for people using a pointer. A keyboard user, or someone using assistive technology, navigates with Tab and sees focus states instead. Styling one and not the other builds a page that works for mouse users and quietly fails for everyone else. This comes back in depth in the Accessible Styling week, but the habit starts now.
+**Never style `:hover` without also styling `:focus`.** Hover only exists for people using a pointer. A keyboard user, or someone using assistive technology, navigates with Tab and sees focus states instead. Styling one and not the other builds a page that works for mouse users and quietly fails for everyone else. This comes back in depth in [Accessible Styling](/modules/css/accessible-styling.md), but the habit starts now.
 
 Two more pseudo-classes matter for links specifically. `:visited` matches a link the visitor has already been to, and `:link` matches one they haven't.
 
@@ -227,7 +229,7 @@ p {
 
 Specificity explains a piece of professional practice that otherwise looks like arbitrary taste. **Prefer classes; avoid IDs for styling.**
 
-An ID sets specificity at 1-0-0, and the only way to override it later is with another ID or something worse. Build a stylesheet on IDs and every override becomes an escalation, with selectors growing longer and more entangled as the term goes on. Build it on single classes, all at 0-1-0, and overriding is simply a matter of order, which you control easily.
+An ID sets specificity at 1-0-0, and the only way to override it later is with another ID or something worse. Build a stylesheet on IDs and every override becomes an escalation, with selectors growing longer and more entangled as the project grows. Build it on single classes, all at 0-1-0, and overriding is simply a matter of order, which you control easily.
 
 The same logic argues against long descendant chains. `.card .body p` at 0-2-1 is harder to override than `.card-text` at 0-1-0, and it's tied to a structure that might change.
 
@@ -394,13 +396,13 @@ Put it together into a routine. When a rule doesn't apply:
 
 ## The checklist
 
-Run this over your selectors and rules before you submit work in this course:
+Run this over your selectors and rules before you move on:
 
 - Every `:hover` style has a matching `:focus` style, so keyboard users see the same feedback mouse users do
 - Any selector's specificity can be read off as three numbers, A-B-C, and two selectors' specificity can be compared correctly
 - Classes are used for styling, not IDs or long descendant chains
 - `:where()` is used instead of `:is()` when the goal is a selector that adds nothing to specificity
-- `!important` does not appear anywhere in the stylesheet, with one narrow, deliberate exception you'll meet in the Accessible Styling week (the `prefers-reduced-motion` guard, which has to override anything else on the page)
+- `!important` does not appear anywhere in the stylesheet, with one narrow, deliberate exception you'll meet in [Accessible Styling](/modules/css/accessible-styling.md) (the `prefers-reduced-motion` guard, which has to override anything else on the page)
 - The cascade order, origin and importance, then specificity, then source order, can explain why any rule on the page won or lost
 - Text properties are set once on a parent and left to inherit, rather than repeated on every child
 - Box properties are set directly on the element that needs them, since they don't inherit
@@ -427,4 +429,4 @@ Then run a specificity experiment. Write three rules targeting the same element,
 
 Finally, take one repeated selector list from your own stylesheet, anywhere you wrote `h2, h3, h4` or similar, and rewrite it using `:where()`. Add one more selector afterward that should be able to override it with a single class, and confirm in developer tools that it does.
 
-You can now predict, with certainty, which of any two rules wins. Next week uses that certainty to build actual layouts, starting with Flexbox.
+You can now predict, with certainty, which of any two rules wins. [Flexbox Layouts](/modules/css/flexbox-layouts.md) uses that certainty to build actual layouts.

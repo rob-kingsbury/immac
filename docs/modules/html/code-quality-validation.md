@@ -13,7 +13,7 @@ Code that works and code that's good aren't the same thing. A page can render fi
 
 **The core path is everything up to the closing checklist**, in order: validating your HTML, naming files and folders sensibly, writing comments that pull their weight, using developer tools to see what actually rendered, and understanding how a real team moves code from a branch into `main`. Budget about 30 minutes to read it, plus the 40 minutes the closing exercise takes.
 
-Three sections headed **Going deeper** are optional, adding about 20 minutes combined. They cover a layer of editor and repository habits that go a step beyond what this course requires you to submit: catching problems before you even save, keeping repository clutter out of version control, and writing a README that actually tells a stranger what your project is. Skip them if you are short on time. Nothing about this chapter's assignment depends on them, but two years into a job, you'll likely be glad you read them once.
+Three sections headed **Going deeper** are optional, adding about 20 minutes combined. They cover a layer of editor and repository habits that go a step beyond the core workflow: catching problems before you even save, keeping repository clutter out of version control, and writing a README that actually tells a stranger what your project is. Skip them if you are short on time, but two years into a job, you'll likely be glad you read them once.
 
 ## Validating your HTML
 
@@ -33,7 +33,7 @@ Here's roughly what an error looks like when a closing tag is missing:
 </div>
 </details>
 
-That message is telling you, in validator language, that something inside `<body>` was never closed, so the parser reached the end of the file still waiting for a closing tag. Read validator output carefully, because one real mistake often triggers several cascading errors below it. Fix the first error, revalidate, and the rest frequently disappear. Aim for zero errors on every page you submit. It's a concrete, checkable bar, and clean validation is a habit that separates careful work from sloppy work.
+That message is telling you, in validator language, that something inside `<body>` was never closed, so the parser reached the end of the file still waiting for a closing tag. Read validator output carefully, because one real mistake often triggers several cascading errors below it. Fix the first error, revalidate, and the rest frequently disappear. Aim for zero errors on every page you build. It's a concrete, checkable bar, and clean validation is a habit that separates careful work from sloppy work.
 
 ### A second common error: tags closed out of order
 
@@ -151,11 +151,11 @@ Problems panel: 2 warnings. contact.html: attribute "class" already defined (lin
 </div>
 </details>
 
-This is narrower than what the W3C validator checks. It's built to catch obvious syntax slips as you make them, not to enforce the full specification the way the validator does, so a clean editor with no squiggly lines is not the same thing as a page that validates. Treat it as an early warning, not a substitute for running the validator before you submit.
+This is narrower than what the W3C validator checks. It's built to catch obvious syntax slips as you make them, not to enforce the full specification the way the validator does, so a clean editor with no squiggly lines is not the same thing as a page that validates. Treat it as an early warning, not a substitute for running the validator before you consider a page done.
 
 Every problem VS Code has flagged across your currently open files also collects in one place: the **Problems panel**, opened from the View menu or with `Ctrl+Shift+M` (`Cmd+Shift+M` on a Mac). Instead of hunting through a long file for a stray squiggly line, the panel lists every issue at once, each one a clickable link that jumps straight to the line it's on.
 
-The order this gives you across the whole chapter is worth holding onto: your editor catches a slip before you save, the validator catches what's left before you submit, and developer tools catch whatever only shows up once the browser actually renders the page. Three checkpoints, each looking for something the others can't see.
+The order this gives you across the whole chapter is worth holding onto: your editor catches a slip before you save, the validator catches what's left before you publish, and developer tools catch whatever only shows up once the browser actually renders the page. Three checkpoints, each looking for something the others can't see.
 
 ## The validator, your editor, and developer tools: three checkpoints for three different questions
 
@@ -167,11 +167,11 @@ The **validator** checks your source code against the HTML specification: is thi
 
 **Your editor**, if you worked through the optional section above, catches a narrower set of obvious slips while you're still typing, before either of the other two ever runs.
 
-None of the three replaces the others. A page can pass every check your editor offers, validate cleanly, and still misbehave once you look at it in developer tools, because rendering behaviour and specification compliance are not the same question. Running all three, in that order, before you submit anything, is what "professional standards" meant back in this chapter's first paragraph.
+None of the three replaces the others. A page can pass every check your editor offers, validate cleanly, and still misbehave once you look at it in developer tools, because rendering behaviour and specification compliance are not the same question. Running all three, in that order, before you call anything finished, is what "professional standards" meant back in this chapter's first paragraph.
 
 ## Working like a team: branches and pull requests
 
-Every push so far has gone straight to `main`, which is the right call for a solo assignment where you're the only person touching the repository. It's not how a real team works, and it's worth knowing the difference now rather than meeting it for the first time on the job.
+Every push so far has gone straight to `main`, which is the right call for a solo project where you're the only person touching the repository. It's not how a real team works, and it's worth knowing the difference now rather than meeting it for the first time on the job.
 
 A **branch** is a parallel copy of your repository's history that you can commit to without touching `main` at all. Every command in this section is typed into a terminal, unlike the staging/commit/push workflow from [Introduction to the Web](/modules/welcome/introduction-to-the-web.md), which you've done through VS Code's Source Control panel. Branching and pull requests are commands and a GitHub screen, not buttons in that same panel, so open a terminal (Git Bash, the one you set as your default back in Introduction to the Web) for this part. Create a branch before starting a risky change or a new feature:
 
@@ -218,11 +218,11 @@ A **pull request** (sometimes called a merge request) is how that pushed branch 
 <figcaption>The branch collects its own commits without touching main. A pull request brings the changes back through review, and a merge commit on main is the only trace left of where the branch rejoined it.</figcaption>
 </div>
 
-This course's one-repo-per-assignment structure doesn't need you to branch for every submission, and nothing here changes that. But the habit is worth building on your own initiative at least once before you graduate: branch, commit, push the branch, open a pull request against your own `main`, and merge it yourself if nobody else is reviewing. Doing it once when nothing is at stake is exactly how you want to first encounter it, rather than on a real team, under a real deadline.
+This course's one-repo-per-project structure doesn't need you to branch every time, and nothing here changes that. But the habit is worth building on your own initiative at least once before you graduate: branch, commit, push the branch, open a pull request against your own `main`, and merge it yourself if nobody else is reviewing. Doing it once when nothing is at stake is exactly how you want to first encounter it, rather than on a real team, under a real deadline.
 
 ## Going deeper: keeping clutter out of your repository with .gitignore
 
-*(Optional. Nothing about this section is required for any assignment in this course, but it's a genuine habit worth having before your repositories start collecting files nobody meant to commit.)*
+*(Optional. Nothing about this section is required for this course, but it's a genuine habit worth having before your repositories start collecting files nobody meant to commit.)*
 
 Your operating system writes small files into folders it doesn't own, silently, for its own bookkeeping. macOS drops a `.DS_Store` file into almost every folder you open in Finder. Windows writes `Thumbs.db` when it generates folder thumbnails, and sometimes a `desktop.ini`. Neither file has anything to do with your website. Both get swept up the moment you run `git add .`, because Git has no way to know the difference between a file you meant to commit and one your operating system left behind.
 
@@ -249,7 +249,7 @@ The list above is intentionally short. This course builds static HTML and CSS wi
 
 *(Optional, in the sense that GitHub already gave you a working `README.md` the moment you checked "Add a README file" back in Introduction to the Web. This section is about making that file worth reading.)*
 
-A README is the first thing anyone sees when they land on your repository, before a single line of your actual code. For an assignment, that "anyone" is your instructor, opening a submission link cold, with no memory of what you were asked to build. A strong README answers the first three questions a stranger has before they have to ask:
+A README is the first thing anyone sees when they land on your repository, before a single line of your actual code. That "anyone" is often a stranger opening the link cold, with no memory of what you were asked to build. A strong README answers the first three questions a stranger has before they have to ask:
 
 - What is this project.
 - Where is the live site.
@@ -271,11 +271,11 @@ and message fields above a submit button](screenshot.png)
 
 Three plain sentences and a link do more work than a longer README with no structure. If you want to add a screenshot, drop the image file into your repository and reference it with the same relative-path thinking you already use for images in your pages, no new syntax involved.
 
-A README this short takes two or three minutes once the rest of the assignment is done, and it's the difference between a repository that explains itself and one that makes the reader guess.
+A README this short takes two or three minutes once the rest of the project is done, and it's the difference between a repository that explains itself and one that makes the reader guess.
 
 ## The checklist
 
-Run this over your page and your repository before you submit anything in this course:
+Run this over your page and your repository before you consider it finished:
 
 - Zero errors and warnings from the W3C validator
 - File and folder names follow the lowercase, hyphenated, descriptive standard

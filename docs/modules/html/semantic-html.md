@@ -11,7 +11,7 @@ You could build almost any page using nothing but `<div>` elements. It would loo
 
 ## How to read this chapter
 
-**The core path is everything down to the checklist.** Landmarks, the section/article/aside decision, and the smaller semantic elements like `<figure>` and `<time>` are what the assignment grades. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
+**The core path is everything down to the checklist.** Landmarks, the section/article/aside decision, and the smaller semantic elements like `<figure>` and `<time>` are the core of this chapter. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
 
 Sections headed **Going deeper** are optional and add roughly 15 minutes combined. They explain what a browser is actually doing under the elements you just learned: the accessibility information it exposes automatically, a real element you'll meet in other people's code, and why the heading-level rule from [Core HTML Elements](/modules/html/html-core-elements.md) still holds once content is nested inside `<article>` and `<section>`. Skip them if you are short on time and nothing breaks.
 
@@ -443,7 +443,7 @@ Notice that the `<article>` has its own `<header>` and `<footer>`, separate from
 
 ## The checklist
 
-Run this over every page before you submit work in this course:
+Run this over every page before you move on:
 
 - Reached for a semantic element before falling back to `<div>`
 - Exactly one `<header>` describing the whole page, used for introductory content, not just "the top"
@@ -471,7 +471,7 @@ References to go deeper. The W3Schools pages are quick and example-first, good t
 
 ## Try it yourself (about 45 minutes)
 
-Work through these in order. They're practice, not graded work.
+Work through these in order.
 
 1. Take a page you built in an earlier chapter and rebuild its skeleton with `<header>`, `<nav>`, one `<main>`, and `<footer>`.
 2. Inside `<main>`, add at least one `<section>` with its own heading, and one `<article>` that could stand on its own.

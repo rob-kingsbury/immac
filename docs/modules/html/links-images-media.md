@@ -10,7 +10,7 @@ prerequisites:
 
 ## How to read this chapter
 
-**The core path is everything down to the checklist.** Read it in order, build the examples as you go, and you have what the assignment and the Try it yourself exercise need. Budget about 25 minutes for it, plus the 40 minutes the exercise takes.
+**The core path is everything down to the checklist.** Read it in order, build the examples as you go, and you have what the Try it yourself exercise needs. Budget about 25 minutes for it, plus the 40 minutes the exercise takes.
 
 Three sections are headed **Going deeper**. They're optional, marked clearly every time, and add roughly 20 minutes total if you read all three: sending email and phone calls directly from a link, opening a link safely in a new tab, and giving video or audio more than one file to try. Skip them if you are short on time. Nothing in the core path or the exercise depends on them.
 
@@ -277,7 +277,7 @@ One detail that's easy to get backwards: once you're using `<source>` children, 
 
 ## The checklist
 
-Run this over your page before you submit work in this course:
+Run this over your page before you move on:
 
 - Link text describes the destination on its own, never "click here"
 - Paths are relative for your own pages and absolute only for other sites, and match the real file name and case

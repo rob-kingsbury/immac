@@ -15,7 +15,7 @@ This chapter covers how a search engine actually sees a page, and the metadata i
 
 ## How to read this chapter
 
-**The core path is everything down to the checklist.** Read it in order and complete the Try it yourself exercise, and you have what the assignment needs. Budget about 20 minutes to read it, plus the 40 minutes the exercise takes.
+**The core path is everything down to the checklist.** Read it in order and complete the Try it yourself exercise. Budget about 20 minutes to read it, plus the 40 minutes the exercise takes.
 
 Three sections are headed **Going deeper**. They're optional, marked clearly every time, and add roughly 20 minutes total if you read all three: a page-level alternative to `robots.txt`, why a URL is a search signal too, and the real mechanism behind title truncation in search results. Skip them if you are short on time. Nothing in the core path or the exercise depends on them.
 
@@ -241,7 +241,7 @@ Nothing there renders on the page. Every line of it shapes how the page is under
 
 ## The checklist
 
-Run this over your document head and heading structure before you submit work in this course:
+Run this over your document head and heading structure before you move on:
 
 - `<title>` is specific to this page, under roughly 60 characters, and unique across your site
 - Meta description is written for a human reader, not a keyword list, and roughly 150 to 160 characters

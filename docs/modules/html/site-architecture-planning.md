@@ -12,7 +12,7 @@ Every chapter so far has been about building individual pages. A website is more
 
 **The core path is everything down to the checklist.** Read through site maps, content hierarchy, wireframes, and the translation into semantic HTML, then work through the exercise at the end. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add roughly 15 minutes altogether. They cover a lightweight technique for deciding what belongs on a site map before you draw it, a structural navigation pattern built entirely from elements you already know, and a habit for keeping a project's folders honest about the site map they came from. Skip them if you are short on time and nothing breaks. The assignment only needs the core path.
+Sections headed **Going deeper** are optional and add roughly 15 minutes altogether. They cover a lightweight technique for deciding what belongs on a site map before you draw it, a structural navigation pattern built entirely from elements you already know, and a habit for keeping a project's folders honest about the site map they came from. Skip them if you are short on time and nothing breaks.
 
 You don't need any new tool for this chapter. Paper, a whiteboard, or a slide deck all work for the planning artifacts below.
 
@@ -28,7 +28,7 @@ A site map answers "how is this organized." It doesn't answer "what actually bel
 
 **Card sorting** is the technique that turns that flat list into groups. Write each inventory item on an actual card, a sticky note, or a line in a spreadsheet, then sort the items into piles that feel like they belong together. Do this yourself for a small project, or better, hand the items to two or three people who don't already know the site and watch where they put things. Nielsen Norman Group, the same usability research group behind the site map finding later in this chapter, describes card sorting as a way to uncover how someone else's mental model of your content differs from your own, which is exactly the gap a site map drawn from assumption alone tends to miss.
 
-You don't need software or a formal study to get value from this. For a five-page site like the ones this course assigns, ten minutes with sticky notes on a table is enough. Write out every piece of content, group the notes by hand, and see what categories emerge before committing to a site map:
+You don't need software or a formal study to get value from this. For a five-page site like the kind this course builds, ten minutes with sticky notes on a table is enough. Write out every piece of content, group the notes by hand, and see what categories emerge before committing to a site map:
 
 ```text
 Loose inventory:

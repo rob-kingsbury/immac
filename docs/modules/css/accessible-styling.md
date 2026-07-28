@@ -1,20 +1,24 @@
 ---
 title: Accessible Styling
+prerequisites:
+  - css/selectors-specificity-inheritance
+  - css/typography-colour
+  - accessibility/web-accessibility-fundamentals
 ---
 
 # Accessible Styling
 
 In MTM1511 you learned that accessibility is mostly a structural problem: correct landmarks, a sane heading order, real alt text, labelled form controls. All of that is <abbr title="HyperText Markup Language">HTML</abbr>'s job, and doing it well gets you a long way.
 
-Then <abbr title="Cascading Style Sheets">CSS</abbr> arrives and can undo it. A stylesheet can hide the focus ring, shrink text below legibility, break at a visitor's chosen zoom level, or animate something that makes a person physically unwell. This week is about the styling decisions that determine whether the accessible structure underneath actually reaches people.
+Then <abbr title="Cascading Style Sheets">CSS</abbr> arrives and can undo it. A stylesheet can hide the focus ring, shrink text below legibility, break at a visitor's chosen zoom level, or animate something that makes a person physically unwell. This chapter is about the styling decisions that determine whether the accessible structure underneath actually reaches people.
 
-You've already done part of this work. Colour contrast was Week 3, and it stays a requirement rather than becoming a separate topic here.
+You've already done part of this work. Colour contrast is covered in [Typography and Colour](/modules/css/typography-colour.md), and it stays a requirement rather than becoming a separate topic here.
 
 ## How to read this chapter
 
-**The core path is everything down to the checklist.** Work through it in order and you have what the assignment needs: focus states, relative units, accessible hiding, reduced motion, touch targets, and the testing routine. Budget about 20 minutes to read it, plus the 50 minutes the exercise takes.
+**The core path is everything down to the checklist.** Work through it in order: focus states, relative units, accessible hiding, reduced motion, touch targets, and the testing routine. Budget about 20 minutes to read it, plus the 50 minutes the exercise takes.
 
-The section headed **Going deeper** is optional and adds roughly 8 minutes. It covers two settings that sit right next to `prefers-reduced-motion`, the media query you're about to meet, but that this course doesn't require you to build for yet. Skip it on a busy week and nothing breaks. Come back to it once you're styling something that has to hold up outside a classroom project.
+The section headed **Going deeper** is optional and adds roughly 8 minutes. It covers two settings that sit right next to `prefers-reduced-motion`, the media query you're about to meet, but that this course doesn't require you to build for yet. Skip it if you are short on time and nothing breaks. Come back to it once you're styling something that has to hold up outside a classroom project.
 
 ## Focus states
 
@@ -79,13 +83,13 @@ a:focus-visible {
 
 Use `:focus-visible` for the styled version, and never leave `:focus` with `outline: none` unless `:focus-visible` provides a replacement.
 
-The contrast rules from Week 3 apply to the focus indicator itself. It needs at least a 3:1 ratio against what's behind it, or it's a marker nobody can see.
+The contrast rules from [Typography and Colour](/modules/css/typography-colour.md) apply to the focus indicator itself. It needs at least a 3:1 ratio against what's behind it, or it's a marker nobody can see.
 
 ## Relative units and text scaling
 
 Some people run their browser with a larger default text size. It's a setting, it's common, and honouring it costs nothing if your units are right.
 
-This is why Week 3 said to use `rem` for font sizes. `rem` is relative to the browser's root font size, so when a visitor raises that from 16px to 24px, your whole page scales with it. A size in `px` ignores the setting entirely.
+This is why [Typography and Colour](/modules/css/typography-colour.md) said to use `rem` for font sizes. `rem` is relative to the browser's root font size, so when a visitor raises that from 16px to 24px, your whole page scales with it. A size in `px` ignores the setting entirely.
 
 The same reasoning extends past font size. Padding, margins, and `max-width` set in `rem` grow along with the text, so a box sized to hold two lines still holds two lines when the text gets bigger. Set in `px`, the box stays put and the enlarged text overflows or clips.
 
@@ -100,7 +104,7 @@ The same reasoning extends past font size. Padding, margins, and `max-width` set
 
 A useful rule of thumb: **`rem` for anything tied to text, `px` only for things that genuinely shouldn't scale**, such as a hairline border.
 
-There's a related requirement in WCAG worth knowing by name. A page must remain usable when text is scaled to **200%**. Test it: press `Ctrl` and `+` (or `Cmd` and `+`) several times and look for text that gets cut off, overlapping elements, or content that becomes unreachable. Fixed heights on text containers are the usual culprit, which is why Week 2 warned against them.
+There's a related requirement in WCAG worth knowing by name. A page must remain usable when text is scaled to **200%**. Test it: press `Ctrl` and `+` (or `Cmd` and `+`) several times and look for text that gets cut off, overlapping elements, or content that becomes unreachable. Fixed heights on text containers are the usual culprit, which is why [The Box Model and Spacing](/modules/css/box-model-spacing.md) warned against them.
 
 ## Accessible hiding
 
@@ -202,11 +206,11 @@ A more considered approach reverses the default: write no motion as the base, th
 }
 ```
 
-This comes up again in the Transitions and Motion week, where you'll be adding the animation this rule protects people from.
+This comes up again in [Transitions and Motion](/modules/css/transitions-animation.md), where you'll be adding the animation this rule protects people from.
 
 ## Going deeper: contrast preferences and forced colors
 
-Everything in this section is optional. It extends the reduced-motion pattern you just used to two related settings: a visitor asking for more contrast, and an operating system taking colour control away from you entirely. Nothing here is required for this week's exercise, but both are worth recognising the first time you meet them in a real project, rather than the first time a bug report mentions them.
+Everything in this section is optional. It extends the reduced-motion pattern you just used to two related settings: a visitor asking for more contrast, and an operating system taking colour control away from you entirely. Both are worth recognising the first time you meet them in a real project, rather than the first time a bug report mentions them.
 
 ### `prefers-contrast`
 
@@ -236,7 +240,7 @@ This one is different in kind, not just in what it detects. When a visitor turns
 }
 ```
 
-Most students in this course will never need to build specifically for forced colors mode this term. What's worth knowing is the one thing that commonly breaks, because it follows directly from techniques already in this chapter:
+Most students in this course will never need to build specifically for forced colors mode. What's worth knowing is the one thing that commonly breaks, because it follows directly from techniques already in this chapter:
 
 A focus indicator built with `box-shadow`, an older technique you'll see in other people's code, disappears completely, because forced colors mode sets `box-shadow` to `none` outright. The `outline`-based focus ring this chapter has been teaching survives, because `outline` keeps rendering. Its colour just gets replaced with whichever system colour the browser judges legible, which is the feature working as intended, not a bug in your CSS.
 
@@ -335,8 +339,8 @@ Convert your font sizes, padding, and any `max-width` values from `px` to `rem`.
 
 Add the `.visually-hidden` class to your stylesheet and use it at least once, for a label that's obvious visually but has nothing for a screen reader to announce. Add a skip link that's hidden until focused.
 
-Add the `prefers-reduced-motion` block to the bottom of your stylesheet now. You won't write real animation until the Transitions and Motion week, but the guard belongs in place well before then, so it's never a decision you make under deadline.
+Add the `prefers-reduced-motion` block to the bottom of your stylesheet now. You won't write real animation until [Transitions and Motion](/modules/css/transitions-animation.md), but the guard belongs in place well before then, so it's never a decision you make under deadline.
 
 Run both Lighthouse and axe on the page, fix what they flag, then repeat the keyboard test once more. Note anything the manual test found that neither tool did, because that gap is the reason the manual test exists.
 
-Next week turns to a different kind of consistency: naming a value once instead of retyping it everywhere your stylesheet uses it.
+[CSS Custom Properties and Variables](/modules/css/custom-properties.md) turns to a different kind of consistency: naming a value once instead of retyping it everywhere your stylesheet uses it.

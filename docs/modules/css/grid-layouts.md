@@ -1,10 +1,13 @@
 ---
 title: CSS Grid Layouts
+prerequisites:
+  - css/flexbox-layouts
+  - css/box-model-spacing
 ---
 
 # <abbr title="Cascading Style Sheets">CSS</abbr> Grid Layouts
 
-Last week's Flexbox arranges things in a line. **Grid** arranges things in rows *and* columns at the same time, which makes it the tool for page-level layout: a header across the top, a sidebar beside a main column, a footer along the bottom, a gallery in a tidy matrix.
+[Flexbox Layouts](/modules/css/flexbox-layouts.md) arranges things in a line. **Grid** arranges things in rows *and* columns at the same time, which makes it the tool for page-level layout: a header across the top, a sidebar beside a main column, a footer along the bottom, a gallery in a tidy matrix.
 
 The two are not rivals. Flexbox is one-dimensional, Grid is two-dimensional, and real sites use both, usually with Grid handling the overall page and Flexbox handling the contents of each region. This chapter covers Grid on its own, then shows them working together.
 
@@ -12,9 +15,9 @@ Everything here is hand-coded. This course deliberately does not use a layout fr
 
 ## How to read this chapter
 
-**The core path is everything from "Rows and columns" through "Grid and Flexbox together," then "The third layout tool: position" through the checklist.** That covers track sizing, `gap`, placing items by line or by name, aligning content, pairing Grid with Flexbox, and positioning an element outside normal flow, plus the mistakes worth checking before you submit. Budget about 25 minutes to read it, plus the 60 minutes the exercise takes.
+**The core path is everything from "Rows and columns" through "Grid and Flexbox together," then "The third layout tool: position" through the checklist.** That covers track sizing, `gap`, placing items by line or by name, aligning content, pairing Grid with Flexbox, and positioning an element outside normal flow, plus the mistakes worth checking before you move on. Budget about 25 minutes to read it, plus the 60 minutes the exercise takes.
 
-**"Nested grids, and when they won't line up," sitting between those two stretches, is the exception.** Subgrid is real, well-supported CSS, and the section explains it properly, but it solves one specific problem, a row of independent cards whose internal content needs to line up, and a plain nested grid is simpler and correct for everything else. That's the same extension role oklch and color-mix played in Typography and Colour. Budget about 8 minutes for it if you have the time; skip it on a busy week and the assignment still works.
+**"Nested grids, and when they won't line up," sitting between those two stretches, is the exception.** Subgrid is real, well-supported CSS, and the section explains it properly, but it solves one specific problem, a row of independent cards whose internal content needs to line up, and a plain nested grid is simpler and correct for everything else. That's the same extension role oklch and color-mix played in [Typography and Colour](/modules/css/typography-colour.md). Budget about 8 minutes for it if you have the time; skip it if you're short on time.
 
 ## Rows and columns
 
@@ -462,7 +465,7 @@ Two more values worth knowing by name. `position: fixed` behaves like `absolute`
 
 **`z-index` decides which element sits on top when two positioned elements overlap.** It only works on an element that already has a `position` other than `static`, and it takes a plain number: higher stacks above lower. You'll need it any time something you positioned ends up hidden behind something else, a header, a hero image, a modal background.
 
-You'll meet `position: absolute` again soon, in this course's own Accessible Styling week, for the `.visually-hidden` pattern and the skip link. Both will make a lot more sense once you're there, now that you know what `position: absolute` is actually doing and why it needs a positioned ancestor to behave.
+You'll meet `position: absolute` again soon, in this course's own [Accessible Styling](/modules/css/accessible-styling.md), for the `.visually-hidden` pattern and the skip link. Both will make a lot more sense once you're there, now that you know what `position: absolute` is actually doing and why it needs a positioned ancestor to behave.
 
 ## Inspecting a grid
 
@@ -483,7 +486,7 @@ Turn it on whenever a grid item lands somewhere unexpected. Seeing the actual li
 
 ## The checklist
 
-Run this over your layout choices before you submit work in this course:
+Run this over your layout choices before you move on:
 
 - Can explain the difference between Grid's two-dimensional layout and Flexbox's one-dimensional layout
 - Comfortable writing `grid-template-columns` and `grid-template-rows` with track sizing, including `fr` units and `repeat()`/`minmax()`
@@ -511,8 +514,8 @@ Inside the main area, build a card gallery using `repeat(auto-fit, minmax(200px,
 
 Make one card span two columns with `grid-column`, then turn on the grid overlay in developer tools and confirm the line numbers match what you wrote.
 
-Finally, keep Flexbox where it belongs. Your header's contents and your navigation links should still be Flexbox inside the Grid regions, not Grid within Grid. Write a comment at the top of each rule saying which system you chose and why, because being able to justify the choice is most of what this week is teaching.
+Finally, keep Flexbox where it belongs. Your header's contents and your navigation links should still be Flexbox inside the Grid regions, not Grid within Grid. Write a comment at the top of each rule saying which system you chose and why, because being able to justify the choice is most of what this chapter is teaching.
 
 If your project has a row of cards, give them `grid-template-rows: subgrid` and confirm their internal content lines up even when one card's text is longer than another's.
 
-You've now built layouts for one screen size. Next week asks what happens to all of this on a phone.
+You've now built layouts for one screen size. [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md) asks what happens to all of this on a phone.

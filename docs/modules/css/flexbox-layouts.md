@@ -1,10 +1,13 @@
 ---
 title: Flexbox Layouts
+prerequisites:
+  - css/box-model-spacing
+  - css/selectors-specificity-inheritance
 ---
 
 # Flexbox Layouts
 
-Everything so far has styled individual elements. This week you start arranging them, and **Flexbox** is the tool for arranging things in a line.
+Everything so far has styled individual elements. This chapter starts arranging them, and **Flexbox** is the tool for arranging things in a line.
 
 Flexbox handles a specific job extremely well: taking a set of items and distributing them along one direction, either a row or a column, with control over the spacing between them and how they line up across. A navigation bar, a row of cards, a header with a logo on the left and links on the right, a button with an icon beside its label. All of those are one-dimensional arrangements, and all of them are Flexbox.
 
@@ -12,7 +15,7 @@ Flexbox handles a specific job extremely well: taking a set of items and distrib
 
 **The core path is everything down to the checklist.** Work through the container-and-items, direction-and-axes, distributing space, aligning, gap, wrapping, and item-control sections in order, build the navigation bar and the card row as you go, then do the exercise. Budget about 30 minutes to read, plus the 45 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add about 15 minutes altogether. They cover `align-content`, the `order` property, and the `flex-flow` shorthand: real properties you'll run into in other people's code, but none of them are needed to finish this week's exercise. Skip them on a busy week and nothing breaks.
+Sections headed **Going deeper** are optional and add about 15 minutes altogether. They cover `align-content`, the `order` property, and the `flex-flow` shorthand: real properties you'll run into in other people's code, but none of them are needed to finish this chapter's exercise. Skip them if you are short on time and nothing breaks.
 
 ## The container and its items
 
@@ -44,7 +47,7 @@ Flexbox always involves two levels. You turn a **container** into a flex contain
 
 One declaration, `display: flex`, changed everything. Those three `<div>` elements are block elements, so without Flexbox each would claim its own row. As flex items they sit in a line, and each one shrank to fit its content rather than stretching full width.
 
-That's the pattern for the whole of this week: properties on the **container** control the arrangement, properties on the **items** control how individual pieces behave within it.
+That's the pattern for the whole of this chapter: properties on the **container** control the arrangement, properties on the **items** control how individual pieces behave within it.
 
 ## Direction and the two axes
 
@@ -303,7 +306,7 @@ By default flex items refuse to wrap. They shrink to stay on one line, and if th
 
 </CssDemo>
 
-Narrow this page and those cards rearrange themselves onto more lines with no media query involved. That's worth noticing, because it's the beginning of responsive layout, which is the whole of next week and then some.
+Narrow this page and those cards rearrange themselves onto more lines with no media query involved. That's worth noticing, because it's the beginning of responsive layout, which is the focus of [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md) and then some.
 
 ### Going deeper: align-content for wrapped rows
 
@@ -529,10 +532,10 @@ Run this over your own layout before you move on:
 
 Build a navigation bar on your project page. Put a site name and a set of links inside a `<header>`, make it a flex container, and use `space-between` and `align-items: center` to pin the name left and the links right, vertically centred. Make the links themselves a nested flex container with a `gap`. Give them `:hover` and `:focus` styles.
 
-Then build a row of at least four cards. Give the container `display: flex`, `flex-wrap: wrap`, and a `gap`, and give each card `flex: 1` with a sensible `flex-basis` so they share the width. Narrow your browser window slowly and watch them wrap. Note the width at which the layout stops looking right, because that number is a breakpoint, and the Responsive Design week puts it to use.
+Then build a row of at least four cards. Give the container `display: flex`, `flex-wrap: wrap`, and a `gap`, and give each card `flex: 1` with a sensible `flex-basis` so they share the width. Narrow your browser window slowly and watch them wrap. Note the width at which the layout stops looking right, because that number is a breakpoint, and [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md) puts it to use.
 
 Finally, centre something both ways. Make a box with a fixed height, put a single element inside it, and centre it with `justify-content` and `align-items`. Then change the container's `flex-direction` to `column` and predict what happens to the centring before you save.
 
 If you have time left, try `order` on two of your cards so they display in a different sequence than they appear in your HTML. Then tab through the page with the keyboard and confirm focus still follows your HTML order, not the order the cards display in.
 
-Flexbox handles one direction at a time. Next week adds the second dimension, rows and columns together, with Grid.
+Flexbox handles one direction at a time. [CSS Grid Layouts](/modules/css/grid-layouts.md) adds the second dimension, rows and columns together.

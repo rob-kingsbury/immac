@@ -1,10 +1,12 @@
 ---
 title: The Box Model and Spacing
+prerequisites:
+  - css/intro-to-css
 ---
 
 # The Box Model and Spacing
 
-Last week you connected a stylesheet and wrote your first rules. This week is the single most important structural idea in <abbr title="Cascading Style Sheets">CSS</abbr>, and the one that explains most of the layout confusion beginners run into: **every element on a page is a rectangular box**, and every box is built from the same four layers.
+In [Introduction to CSS](/modules/css/intro-to-css.md) you connected a stylesheet and wrote your first rules. This chapter covers the single most important structural idea in <abbr title="Cascading Style Sheets">CSS</abbr>, and the one that explains most of the layout confusion beginners run into: **every element on a page is a rectangular box**, and every box is built from the same four layers.
 
 Once you can see those layers, spacing stops being guesswork. Almost every "why is there a gap there" question in your first months of CSS is answered by knowing which of the four layers put it there.
 
@@ -12,7 +14,7 @@ Once you can see those layers, spacing stops being guesswork. Almost every "why 
 
 **The core path is everything down to the checklist.** Read the box model, padding, border, margin, shorthand, `box-sizing`, margin collapse, and `aspect-ratio` sections in order, then do the exercise. Budget about 25 minutes to read, plus the 45 minutes the exercise takes.
 
-The section headed **Going deeper** is optional and adds about 5 minutes. It covers two properties that don't come up until you start building boxes that need to bend without breaking, useful now and essential later. Skip it this week if you're short on time. Nothing in the exercise depends on it.
+The section headed **Going deeper** is optional and adds about 5 minutes. It covers two properties that don't come up until you start building boxes that need to bend without breaking, useful now and essential later. Skip it if you're short on time. Nothing in the exercise depends on it.
 
 Keep your browser's DevTools open while you read, if you can. Every property in this chapter has a visible effect on the box model diagram described near the end, and watching a number change as you type is faster than picturing it.
 
@@ -156,9 +158,9 @@ A **relative** unit is measured against something else: the size of the parent, 
 </svg>
 </div>
 
-`line-height` at `150%` is different again: it resolves against the element's **own font size**, not its parent. Three properties, three different bases, one symbol. That's the reason Week 3 will tell you to prefer `rem` over `%` for font-related sizing, and it's why `%` is worth understanding precisely rather than by feel.
+`line-height` at `150%` is different again: it resolves against the element's **own font size**, not its parent. Three properties, three different bases, one symbol. That's the reason [Typography and Colour](/modules/css/typography-colour.md) prefers `rem` over `%` for font-related sizing, and it's why `%` is worth understanding precisely rather than by feel.
 
-Two more relative units are common enough to name here, and you'll see both properly in later weeks. `rem` measures against the root font size. `vw` and `vh` measure against the viewport. Both are covered in depth when they matter, `rem` next week and viewport units in the Responsive Design week.
+Two more relative units are common enough to name here, and you'll see both properly elsewhere in this course. `rem` measures against the root font size. `vw` and `vh` measure against the viewport. Both are covered in depth when they matter: `rem` in Typography and Colour, viewport units in [Responsive Design and Media Queries](/modules/css/responsive-media-queries.md).
 
 ## Padding
 
@@ -393,7 +395,7 @@ The `aspect-ratio` property solves this properly. Give it a ratio, and the box c
 
 </CssDemo>
 
-Resize your browser and that box's height adjusts on its own, always in proportion. No JavaScript, no fixed number to get wrong. `1 / 1` gives a square, `4 / 3` an older photo shape, `21 / 9` an ultra-wide banner. This is the property to reach for whenever "fixed height" was your instinct, particularly for image and video placeholders later in the course.
+Resize your browser and that box's height adjusts on its own, always in proportion. No JavaScript, no fixed number to get wrong. `1 / 1` gives a square, `4 / 3` an older photo shape, `21 / 9` an ultra-wide banner. This is the property to reach for whenever "fixed height" was your instinct, particularly for image and video placeholders elsewhere in this course.
 
 ## Going deeper: min-width, max-width, min-height, and max-height
 
@@ -476,8 +478,8 @@ Then build a card. Take one section of your page and give it a background colour
 
 Centre that card horizontally using `margin-left: auto` and `margin-right: auto`.
 
-Now investigate spacing deliberately. Set a bottom margin on one paragraph and a top margin on the next, both different values, and use the developer tools diagram to confirm the gap equals the larger of the two rather than the sum. Then convert one of your paddings into a margin and watch where the background colour stops. Being able to predict that before you save is the goal of this week.
+Now investigate spacing deliberately. Set a bottom margin on one paragraph and a top margin on the next, both different values, and use the developer tools diagram to confirm the gap equals the larger of the two rather than the sum. Then convert one of your paddings into a margin and watch where the background colour stops. Being able to predict that before you save is the goal of this chapter.
 
 Finally, give one image or media placeholder on your page an `aspect-ratio` instead of a fixed height, and set its `width` to `100%` of its container. Resize your browser and confirm the box keeps its shape at every width.
 
-You now have every property that gives a box its shape, spacing, and proportions. Next week turns to what goes inside it: fonts, colour, and the units that make text scale properly for every reader.
+You now have every property that gives a box its shape, spacing, and proportions. [Typography and Colour](/modules/css/typography-colour.md) turns to what goes inside it: fonts, colour, and the units that make text scale properly for every reader.

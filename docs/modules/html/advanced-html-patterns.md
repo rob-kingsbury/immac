@@ -12,9 +12,9 @@ By now you can build a complete, valid, accessible page. This chapter rounds out
 
 ## How to read this chapter
 
-**The core path is everything down to the checklist.** Read the sections in order, try the embed pattern and the <abbr title="Frequently Asked Questions">FAQ</abbr> pattern as you go, and you have what the assignment needs. Budget about 30 minutes to read, plus the 45 minutes the exercise takes.
+**The core path is everything down to the checklist.** Read the sections in order, try the embed pattern and the <abbr title="Frequently Asked Questions">FAQ</abbr> pattern as you go. Budget about 30 minutes to read, plus the 45 minutes the exercise takes.
 
-One section headed **Going deeper** is optional and adds roughly 5 minutes: a newer accordion variant of `<details>`. Skip it if you're short on time; nothing in the assignment depends on it.
+One section headed **Going deeper** is optional and adds roughly 5 minutes: a newer accordion variant of `<details>`. Skip it if you're short on time; nothing in the core path depends on it.
 
 This chapter also spends real time on three elements you will not build with in this course: `<dialog>`, `<template>`, and `popover`. That's deliberate, not an oversight. Knowing what a tool is for, and knowing when it isn't yet the right tool for what you can actually build, are both part of being good at this. This chapter is where that judgment call gets made explicit instead of left for you to guess at.
 
@@ -156,11 +156,11 @@ As of September 2024, HTML added a `name` attribute for exactly that:
 </details>
 ```
 
-Give a set of `<details>` elements the same `name` and the browser makes them mutually exclusive, the same relationship a group of radio buttons already has in a form. It's newly available rather than widely available across browsers yet, so it isn't part of this course's assignments. Recognise it. If you're building an accordion where only one panel should ever be open at a time, `name` is the attribute that does it without a line of script, once it's had more time to settle.
+Give a set of `<details>` elements the same `name` and the browser makes them mutually exclusive, the same relationship a group of radio buttons already has in a form. It's newly available rather than widely available across browsers yet, so it isn't something this course builds with yet. Recognise it. If you're building an accordion where only one panel should ever be open at a time, `name` is the attribute that does it without a line of script, once it's had more time to settle.
 
 ## Elements this course names but doesn't build with
 
-Three elements come up constantly in any current list of "modern HTML": `<dialog>`, `<template>`, and `popover`. All three are worth knowing by name, and none of them get built into your assignments in this course. The reason is the same reason each time: this course has no JavaScript in it, and each of these three either does nothing without a script or was judged not yet settled enough across browsers to teach as the default answer. That's not a verdict that they're bad, or that you should avoid them forever. It's a statement about what's actually buildable with the tools this course gives you right now.
+Three elements come up constantly in any current list of "modern HTML": `<dialog>`, `<template>`, and `popover`. All three are worth knowing by name, and none of them get built into the projects in this course. The reason is the same reason each time: this course has no JavaScript in it, and each of these three either does nothing without a script or was judged not yet settled enough across browsers to teach as the default answer. That's not a verdict that they're bad, or that you should avoid them forever. It's a statement about what's actually buildable with the tools this course gives you right now.
 
 The habit worth taking from this section isn't memorising which element does what. It's the question underneath: before reaching for something you saw on a "modern HTML" list, ask whether it does its job with what you actually have available, or whether it's waiting on a tool you don't have yet.
 
@@ -179,7 +179,7 @@ The markup is simple enough to recognise on sight:
 </dialog>
 ```
 
-That markup alone does nothing. A `<dialog>` renders hidden by default, and the only way to display it as an actual modal is a script calling `dialog.showModal()`; closing it again is `dialog.close()`. There's no CSS-only or attribute-only way to open one. That's the whole reason it doesn't appear in this course's assignments: without JavaScript, you can write a perfectly valid `<dialog>` and it will never appear on the page, no matter how correct the markup is. Keep the name and the shape in mind. It's the right answer to "I need a modal" the day you start writing JavaScript, not before.
+That markup alone does nothing. A `<dialog>` renders hidden by default, and the only way to display it as an actual modal is a script calling `dialog.showModal()`; closing it again is `dialog.close()`. There's no CSS-only or attribute-only way to open one. That's the whole reason it doesn't appear in what this course builds: without JavaScript, you can write a perfectly valid `<dialog>` and it will never appear on the page, no matter how correct the markup is. Keep the name and the shape in mind. It's the right answer to "I need a modal" the day you start writing JavaScript, not before.
 
 Notice what didn't decide this call: browser support isn't the problem. `<dialog>` is well supported across current browsers, wider than several elements this course does teach. It's rejected here purely on the "does it do its job with the tools this course gives you" test from the top of this section, which is a different question from "will it work" and worth keeping separate in your own thinking.
 
@@ -256,12 +256,12 @@ Nothing inside a `<template>` renders and nothing inside it runs, not even an `<
 - **An `<iframe>` with no `title`.** Leaves assistive technology with nothing to announce about what the frame contains.
 - **Forgetting the `viewport` meta tag.** The single most common cause of a page that "looks broken" specifically on mobile, when it looked fine on a desktop screen.
 - **A `<details>` with no `<summary>`.** The browser supplies a default "Details" label, which tells a user nothing about what's inside.
-- **Reaching for `<dialog>`, `<template>`, or `popover` in a graded assignment and expecting it to work.** All three either need JavaScript to function at all or aren't the recommended pattern yet in this course. If a brief calls for an accordion or an expandable answer, `<details>` is the element that actually does the job with no script.
+- **Reaching for `<dialog>`, `<template>`, or `popover` in a project and expecting it to work.** All three either need JavaScript to function at all or aren't the recommended pattern yet in this course. If a brief calls for an accordion or an expandable answer, `<details>` is the element that actually does the job with no script.
 - **Leaving a third-party embed unsandboxed by default.** Not every embed needs the full run of permissions an `<iframe>` gets by default. `sandbox` lets you hand it only what it actually needs.
 
 ## The checklist
 
-Run this over your work before you submit:
+Run this over your work before you move on:
 
 - Every `<iframe>` embed has a `title`, `loading="lazy"`, and a `sandbox` attribute with only the permissions it needs
 - Each embed sits inside a container ready to hold a fixed aspect ratio in CSS
@@ -287,6 +287,6 @@ Audit the `<head>` of your pages against the checklist above and add anything mi
 
 Then build an <abbr title="Frequently Asked Questions">FAQ</abbr> section with at least four questions using `<details>` and `<summary>`. Nest at least one follow-up question inside its parent's `<details>`, the way the oven question nests inside the beginner question earlier in this chapter, and set one top-level `<details>` to start expanded with the `open` attribute. Confirm every one of them opens and closes with no scripting.
 
-Finally, write one or two sentences, in your project README or wherever your instructor asks for it, on why you didn't build with `<dialog>` or `popover` in this course, and what would need to be true for you to reach for one of them instead. That sentence is a better test of whether you understood this chapter than the markup is.
+Finally, write one or two sentences in your project README on why you didn't build with `<dialog>` or `popover` in this course, and what would need to be true for you to reach for one of them instead.
 
 You've now covered everything MTM1511 teaches about HTML. Your finished structure now moves into MTM1544, where it gets styled.

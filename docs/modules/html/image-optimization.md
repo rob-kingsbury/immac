@@ -12,7 +12,7 @@ The Links, Images, and Media chapter covered placing images. This chapter is abo
 
 ## How to read this chapter
 
-**The core path is everything down to the checklist.** Work through the seven steps in order, build the example at the end, and you have what the assignment needs. Budget about 35 minutes to read it, plus the 45 minutes the exercise takes.
+**The core path is everything down to the checklist.** Work through the seven steps in order, build the example at the end. Budget about 35 minutes to read it, plus the 45 minutes the exercise takes.
 
 Sections headed **Going deeper** are optional and add roughly 10 minutes. They explain why the browser behaves the way it does, and they are here because this page is meant to still be useful to you in a job two years from now. Skip them if you are short on time and nothing breaks.
 
@@ -194,7 +194,7 @@ Two related attributes exist and are worth recognising when you meet them.
 
 `decoding="async"` lets the browser decode the image off the main thread. Modern browsers already make good decisions here, and the measurable benefit on a small site is close to nothing. Recognise it, do not bother adding it.
 
-Neither belongs in this course's assignments. They are here so the attributes are not a mystery when you see them in real code.
+Neither is required for this course's projects. They are here so the attributes are not a mystery when you see them in real code.
 
 ## Step 6: Offer several sizes with srcset
 
@@ -375,7 +375,7 @@ For anything longer than a short clip, host it on a video platform and embed it.
 
 ## The checklist
 
-Run this over every image before you submit work in this course:
+Run this over every image before you move on:
 
 - Exported near its display size, at 2x for density, not straight off the camera
 - Format matched to content, SVG for shapes and WebP or AVIF for photographs

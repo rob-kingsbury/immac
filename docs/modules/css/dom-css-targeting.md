@@ -1,18 +1,20 @@
 ---
 title: The DOM and CSS Targeting
+prerequisites:
+  - css/selectors-specificity-inheritance
 ---
 
 # The <abbr title="Document Object Model">DOM</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> Targeting
 
-Welcome back from reading week. You've been writing selectors since Week 1 without a precise picture of what they're selecting *from*. This week supplies it. The browser doesn't apply your CSS to a text file. It applies it to a structure it built in memory called the **DOM**, and once you can see that structure, targeting stops being trial and error.
+You've been writing selectors since [Introduction to CSS](/modules/css/intro-to-css.md) without a precise picture of what they're selecting *from*. This chapter supplies it. The browser doesn't apply your CSS to a text file. It applies it to a structure it built in memory called the **DOM**, and once you can see that structure, targeting stops being trial and error.
 
-This is the diagnostic week. By the end of it you should be able to work out why any rule on your page is or isn't applying, without changing anything at random to find out.
+This is the diagnostic chapter. By the end of it you should be able to work out why any rule on your page is or isn't applying, without changing anything at random to find out.
 
 ## How to read this chapter
 
-**The core path runs from "What the DOM is" through the six-step diagnostic routine.** That's the sequence the CLR names for this week, and it's what the assignment expects you to use with confidence. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
+**The core path runs from "What the DOM is" through the six-step diagnostic routine.** That's the sequence the CLR names for this chapter, and it's worth being able to use with confidence. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
 
-**The two "Going deeper" sections, on `:not()` and on `:nth-child()`/`:nth-of-type()`, are optional.** They add two selectors that extend the structural targeting you're already doing, and together they're about 15 minutes of reading. Skip them on a busy week. Nothing in the core path depends on them, and nothing in the assignment requires them.
+**The two "Going deeper" sections, on `:not()` and on `:nth-child()`/`:nth-of-type()`, are optional.** They add two selectors that extend the structural targeting you're already doing, and together they're about 15 minutes of reading. Skip them if you are short on time. Nothing in the core path depends on them.
 
 ## What the DOM is
 
@@ -117,7 +119,7 @@ That last one deserves attention. **Computed style** is the answer to "what is t
 
 ## Descendant and child selectors, precisely
 
-You met combinators in Week 4. Now they have a structure to refer to.
+You met combinators in [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md). Now they have a structure to refer to.
 
 The **descendant combinator** is a space, and it matches at any depth beneath an ancestor:
 
@@ -241,15 +243,15 @@ a[href$=".pdf"]::after {
 
 The syntax is a set of matching operators inside square brackets. `[href^="https"]` matches when the value **starts with** that string. `[href$=".pdf"]` matches when it **ends with** it. `[href*="example"]` matches when it **contains** it. And plain `[type="email"]` matches an exact value.
 
-Marking external links and file downloads automatically, with no classes to maintain, is exactly what attribute selectors are for. Note that the marker above is decorative, so per Week 4's rule about generated content, the same information should also be conveyed in the link text itself for anything a visitor genuinely needs to know.
+Marking external links and file downloads automatically, with no classes to maintain, is exactly what attribute selectors are for. Note that the marker above is decorative, so per the rule about generated content in [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md), the same information should also be conveyed in the link text itself for anything a visitor genuinely needs to know.
 
-One caveat on `[href^="https"]` specifically: it doesn't actually mean "external," it means "starts with https." That happens to sort external from internal links correctly on a site like the one you're building this term, where every internal link is written as a relative path (`about.html`, not `https://yoursite.com/about.html`). Write even one internal link as a full `https://` <abbr title="Uniform Resource Locator">URL</abbr> instead of a relative one, and this selector marks it external too. On a real site large enough to have more than one author, that's a real, confusing bug, not a hypothetical one.
+One caveat on `[href^="https"]` specifically: it doesn't actually mean "external," it means "starts with https." That happens to sort external from internal links correctly on a site like the one you're building, where every internal link is written as a relative path (`about.html`, not `https://yoursite.com/about.html`). Write even one internal link as a full `https://` <abbr title="Uniform Resource Locator">URL</abbr> instead of a relative one, and this selector marks it external too. On a real site large enough to have more than one author, that's a real, confusing bug, not a hypothetical one.
 
 ## Going deeper: the `:not()` pseudo-class
 
 This section is optional. Skip it and the diagnostic routine below still works.
 
-`:not()` matches an element that would otherwise match the selector inside its parentheses, but doesn't. Read it as "everything except." It fits this week's theme directly, because it targets by structural relationship, the same way the combinators above do, just by exclusion instead of inclusion.
+`:not()` matches an element that would otherwise match the selector inside its parentheses, but doesn't. Read it as "everything except." It fits this chapter's theme directly, because it targets by structural relationship, the same way the combinators above do, just by exclusion instead of inclusion.
 
 A common case: style every item in a list except the last one, useful for adding a separator between items without leaving a dangling one after the final entry.
 
@@ -321,13 +323,13 @@ Every link except the last one gets a right-hand divider. Without `:not()` you'd
 
 `input:not([type="submit"])` reads naturally: every input, except the one whose type is submit. That's usually clearer than writing a rule for every input type you happen to be using and hoping you didn't miss one.
 
-One specificity note, since Week 4 covered the A-B-C method: `:not()` itself adds nothing to a selector's specificity. What counts is whatever is inside the parentheses. `a:not(:last-child)` scores the same as `a:last-child` would, one pseudo-class, not two.
+One specificity note, since [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md) covered the A-B-C method: `:not()` itself adds nothing to a selector's specificity. What counts is whatever is inside the parentheses. `a:not(:last-child)` scores the same as `a:last-child` would, one pseudo-class, not two.
 
 ## Going deeper: `:nth-child()` and `:nth-of-type()`
 
 This section is also optional. Skip it and the diagnostic routine below still works.
 
-Week 4 used `:nth-child(odd)` to stripe a list, without explaining what's actually happening behind that keyword. Here's the formula, and the sibling pseudo-class Week 4 didn't cover.
+[Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md) used `:nth-child(odd)` to stripe a list, without explaining what's actually happening behind that keyword. Here's the formula, and the sibling pseudo-class that chapter didn't cover.
 
 ### The `an+b` formula
 
@@ -456,7 +458,7 @@ Put the whole chapter into a routine. When something on your page looks wrong, w
 
 **2. Does your rule appear in the Styles panel at all?** If it doesn't, the selector never matched. Check for a missing dot or hash, a typo in a class name, a `>` that should be a space, or a capitalisation mismatch, since class names are case sensitive.
 
-**3. If it appears but is struck through, what beat it?** The panel shows the winning rule above. Compare specificity using the A-B-C method from Week 4, then fix the selector rather than reaching for `!important`.
+**3. If it appears but is struck through, what beat it?** The panel shows the winning rule above. Compare specificity using the A-B-C method from [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md), then fix the selector rather than reaching for `!important`.
 
 **4. Is the value inherited from somewhere you forgot?** Check the Computed tab, which names the source of an inherited value.
 
@@ -473,12 +475,12 @@ Working the list beats guessing, and it gets faster with practice until it's aut
 - **Expecting a sibling selector to look backwards.** They only match forward.
 - **Mismatched case in class names.** `.mainNav` and `.mainnav` are different selectors.
 - **Editing CSS at random to see what happens.** It sometimes works and teaches you nothing. Diagnose first.
-- **Putting essential information in an attribute selector's generated content.** Same rule as Week 4: decorative only.
+- **Putting essential information in an attribute selector's generated content.** Same rule as [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md): decorative only.
 - **Reaching for `:nth-child()` when siblings of mixed types are involved.** If a heading sits among the paragraphs you're counting, `:nth-of-type()` is almost always what you meant.
 
 ## The checklist
 
-Run this over your own diagnosis before you submit work in this course.
+Run this over your own diagnosis before you move on.
 
 - Understands that the DOM is the live tree the browser built, not the source file you wrote
 - Can read the Elements panel and the Styles panel, including what the Computed tab shows
@@ -512,4 +514,4 @@ If you read the `:not()` section, find one place on your page where you can styl
 
 Finally, break something on purpose. Introduce a deliberate typo in a class name so a rule stops applying, then use the six-step routine above to find it without looking at your own edit. Time yourself. Do it again with a specificity conflict instead of a typo. The point is to make the routine automatic before you need it under pressure in the project weeks.
 
-You can now diagnose anything that goes wrong. Next week turns to making sure your page works for everyone, not just the visitor who matches your own screen, browser, and abilities.
+You can now diagnose anything that goes wrong. [Accessible Styling](/modules/css/accessible-styling.md) turns to making sure your page works for everyone, not just the visitor who matches your own screen, browser, and abilities.

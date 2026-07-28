@@ -1,18 +1,21 @@
 ---
 title: Transitions and Motion
+prerequisites:
+  - css/selectors-specificity-inheritance
+  - css/accessible-styling
 ---
 
 # Transitions and Motion
 
 Motion is the last layer. Used well, it makes an interface feel responsive and explains what just changed. Used carelessly, it makes a page feel slow, and for some people it causes genuine physical symptoms.
 
-This week covers transitions and transforms, which handle nearly all the motion a site like yours needs, and it takes the accessibility constraint from Week 10 seriously rather than as an afterthought.
+This chapter covers transitions and transforms, which handle nearly all the motion a site like yours needs, and it takes the accessibility constraint from [Accessible Styling](/modules/css/accessible-styling.md) seriously rather than as an afterthought.
 
 ## How to read this chapter
 
-**The core path is everything down through motion and accessibility.** Read the sections on transitions, the four shorthand parts, duration, timing functions, transforms, and the complete interactive component, then work through the accessibility rules that follow. That covers what the assignment needs: about 20 minutes of reading, plus the 40-minute exercise at the end.
+**The core path is everything down through motion and accessibility.** Read the sections on transitions, the four shorthand parts, duration, timing functions, transforms, and the complete interactive component, then work through the accessibility rules that follow. That's about 20 minutes of reading, plus the 40-minute exercise at the end.
 
-Two sections after that are already marked as extension material, in the chapter's own words. "Keyframe animations, briefly" is exactly what it sounds like: worth knowing exist, but transitions on interaction cover almost everything this project needs. "Future of motion: scroll-driven animation" is explicitly not yet something to build a project around, which is why it's wrapped in `@supports` in the first place. A short **Going deeper** section on `will-change` sits between the transform explanation and the complete component. Skip any or all of these on a busy week. Nothing in the assignment depends on them.
+Two sections after that are already marked as extension material, in the chapter's own words. "Keyframe animations, briefly" is exactly what it sounds like: worth knowing exist, but transitions on interaction cover almost everything this project needs. "Future of motion: scroll-driven animation" is explicitly not yet something to build a project around, which is why it's wrapped in `@supports` in the first place. A short **Going deeper** section on `will-change` sits between the transform explanation and the complete component. Skip any or all of these if you are short on time. Nothing in the core path depends on them.
 
 ## What a transition does
 
@@ -211,7 +214,7 @@ transform: translateY(-8px) scale(1.03);
 
 ## Going deeper: will-change
 
-*Optional. Nothing in this week's assignment depends on it, and skipping it on a busy week costs you nothing.*
+*Optional, and skipping it costs you nothing.*
 
 The section above explained why `transform` and `opacity` are cheap to animate: the browser handles them late in rendering, separately from the rest of the page, so nothing else has to be recalculated. `will-change` is a property that tries to buy the browser even more lead time, by naming which properties on an element are about to change so it can prepare ahead of the change itself, rather than reacting to it.
 
@@ -231,7 +234,7 @@ For a hover state on a handful of cards, none of this is likely to matter, becau
 
 ## A complete interactive component
 
-Everything together, on a card built from the same Flexbox layout you used in Week 5, with the polish this chapter adds on top:
+Everything together, on a card built from the same Flexbox layout you used in [Flexbox Layouts](/modules/css/flexbox-layouts.md), with the polish this chapter adds on top:
 
 <CssDemo>
 
@@ -277,7 +280,7 @@ Everything together, on a card built from the same Flexbox layout you used in We
 
 Three properties transitioning together over 200ms with `ease-out`, a small lift, a deeper shadow, and a border colour change. It's restrained, and restraint is what makes it read as quality rather than as decoration.
 
-Note that `:focus-visible` gets the same treatment as `:hover`, plus a visible outline. That's the Week 10 rule holding.
+Note that `:focus-visible` gets the same treatment as `:hover`, plus a visible outline. That's the rule from [Accessible Styling](/modules/css/accessible-styling.md) holding.
 
 ## Motion and accessibility
 
@@ -285,7 +288,7 @@ This is the part that isn't optional.
 
 For people with vestibular disorders, motion on screen can cause nausea, dizziness, and headaches. Large movements, parallax, and anything that scales or slides across a lot of the viewport are the worst offenders. Operating systems expose a "reduce motion" setting, and honouring it is a <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> requirement.
 
-You added this block in Week 10. Now it's protecting something real:
+You added this block in [Accessible Styling](/modules/css/accessible-styling.md). Now it's protecting something real:
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -388,7 +391,7 @@ And this specific feature genuinely hasn't caught up everywhere yet. Chrome and 
 
 ## The checklist
 
-The rules above, as something you can run over a project in a couple of minutes. Check every transition or animation you wrote against this before you submit:
+The rules above, as something you can run over a project in a couple of minutes. Check every transition or animation you wrote against this before you move on:
 
 - The transition is declared on the base rule, not only on `:hover`
 - Properties are named explicitly, rather than using `transition: all`
@@ -412,7 +415,7 @@ The rules above, as something you can run over a project in a couple of minutes.
 
 ## Try it yourself (about 40 minutes)
 
-Confirm the `prefers-reduced-motion` block is already at the bottom of your stylesheet before you add anything. It should be there from Week 10.
+Confirm the `prefers-reduced-motion` block is already at the bottom of your stylesheet before you add anything. It should be there from [Accessible Styling](/modules/css/accessible-styling.md).
 
 Then add transitions to every interactive element on your project: links, buttons, and cards. Use 150 to 250ms and `ease-out`, name the properties explicitly rather than using `all`, and declare the transition on the base rule. Make sure every `:hover` treatment is matched by `:focus-visible`.
 
@@ -424,4 +427,4 @@ Finally, do a restraint pass. Look at every animation you added and remove any t
 
 Optional, and not required: wrap one `animation-timeline: scroll()` experiment in `@supports` on a single element, and check it in two different browsers to see the feature-detection actually working, the effect in one and a plain, unanimated element in the other.
 
-You've now covered everything this course teaches about styling a page. The final two weeks put the whole project, both courses' work together, in front of real eyes.
+You've now covered everything this course teaches about styling a page. The remaining project time puts the whole project, both courses' work together, in front of real eyes.

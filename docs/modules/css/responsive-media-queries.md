@@ -1,20 +1,22 @@
 ---
 title: Responsive Design and Media Queries
+prerequisites:
+  - css/flexbox-layouts
+  - css/grid-layouts
+  - css/typography-colour
 ---
 
 # Responsive Design and Media Queries
 
 You have no idea what your visitor is looking at. A phone held vertically, a tablet, a laptop, a wall-mounted display, a browser window dragged to a third of the screen. **Responsive design** is the practice of building one page that works on all of them, rather than building separate sites and guessing which to serve.
 
-This is the longest chapter in the course, because it covers everything that reacts to size: the viewport meta tag, media queries and a mobile-first way of writing them, the viewport units Week 2 promised were coming, fluid sizing that needs no breakpoint at all, and container queries, a newer tool that responds to a component's own space rather than the whole screen. You've already met one piece without calling it that, since Flexbox wrapping and Grid's `auto-fit` are responsive behaviour with no media query at all.
+This is the longest chapter in the course, because it covers everything that reacts to size: the viewport meta tag, media queries and a mobile-first way of writing them, the viewport units introduced in [The Box Model and Spacing](/modules/css/box-model-spacing.md), fluid sizing that needs no breakpoint at all, and container queries, a newer tool that responds to a component's own space rather than the whole screen. You've already met one piece without calling it that, since Flexbox wrapping and Grid's `auto-fit` are responsive behaviour with no media query at all.
 
 ![The same web page shown on a desktop monitor and a mobile phone, with the layout rearranged to suit each screen width.](/images/mobile-desktop.jpg)
 
 ## How to read this chapter
 
-**The core path is everything in this chapter except "Container queries: responding to a component's own space, not the screen" and "Media queries or container queries?"** That covers the viewport meta tag, media query syntax, mobile-first, breakpoints, viewport units and `dvh`, fluid sizing without a query, responsive images, and testing your work, plus the mistakes to avoid and the checklist. This is already the longest chapter in the course, so the core path takes longer too: budget about 35 minutes to read it, plus the 75 minutes the exercise takes.
-
-**The two container query sections are an extension, not a requirement.** Container queries are a newer, component-level tool, and this chapter treats them as a distinct skill from the media queries this week's CLR centers on. The chapter itself already marks this as a natural place to pause. Treat those two sections as about 15 minutes of optional reading. Skip them on a busy week and you can still write mobile-first, breakpoint-driven CSS and complete the assignment.
+**The core path is this entire chapter.** It covers the viewport meta tag, media query syntax, mobile-first, breakpoints, viewport units and `dvh`, fluid sizing without a query, container queries, responsive images, and testing your work, plus the mistakes to avoid and the checklist. This is the longest chapter in the course: budget about 50 minutes to read it, plus the 75 minutes the exercise takes.
 
 ## The viewport meta tag
 
@@ -24,7 +26,7 @@ Before any <abbr title="Cascading Style Sheets">CSS</abbr> matters, one line of 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
-That goes in the `<head>` of every page, and it's already in the starter page from Week 1.
+That goes in the `<head>` of every page, and it's already in the starter page from [Introduction to CSS](/modules/css/intro-to-css.md).
 
 Here's the problem it solves. Mobile browsers were built when almost no site was designed for phones, so they invented a defensive default: pretend the screen is about 980 pixels wide, render the desktop layout into that imaginary space, then shrink the whole thing down to fit the real screen. The result is a readable-shaped page at unreadably small text, which the user pinches and zooms around.
 
@@ -120,7 +122,7 @@ Use fewer than you think you need. Two well-chosen breakpoints usually beat five
 
 ## Viewport units, and the mobile browser bug they fix
 
-Back in Week 2 you met `%`, which measures against a parent. **Viewport units** measure against the browser's viewport instead. `1vw` is 1% of the viewport's width, `1vh` is 1% of its height. A box set to `width: 100vw; height: 100vh;` fills the screen, full stop, no matter what its parent is doing.
+Back in [The Box Model and Spacing](/modules/css/box-model-spacing.md) you met `%`, which measures against a parent. **Viewport units** measure against the browser's viewport instead. `1vw` is 1% of the viewport's width, `1vh` is 1% of its height. A box set to `width: 100vw; height: 100vh;` fills the screen, full stop, no matter what its parent is doing.
 
 That's exactly the tool for a full-screen hero section, and for years `100vh` was the standard way to build one. It has a real bug on phones, though, and it's common enough to be worth understanding precisely rather than working around by accident.
 
@@ -239,7 +241,7 @@ Resize this panel and the heading scales continuously between its floor and its 
 
 Some of the best responsive behaviour needs no media query at all, and reaching for one first is a habit worth resisting.
 
-You've already built two examples. Flexbox with `flex-wrap: wrap` reflows items onto new lines as space runs out. Grid with `repeat(auto-fit, minmax(200px, 1fr))` changes its column count on its own (see last week's Grid chapter for exactly why, including what changes if you swap in `auto-fill` instead).
+You've already built two examples. Flexbox with `flex-wrap: wrap` reflows items onto new lines as space runs out. Grid with `repeat(auto-fit, minmax(200px, 1fr))` changes its column count on its own (see [CSS Grid Layouts](/modules/css/grid-layouts.md) for exactly why, including what changes if you swap in `auto-fill` instead).
 
 <CssDemo>
 
@@ -335,6 +337,8 @@ Container queries need two steps: mark an element as a **container** for its des
 
 `container-type: inline-size` tells the browser to track this element's width and let descendants query it. `container-name` is optional, a label so a query can target a specific ancestor when more than one container might otherwise apply. The `@container` block reads almost exactly like `@media`, `min-width` and all, except the width it's measuring is the named container's, not the viewport's.
 
+Browser support for this is solid. The W3C CSS Validator has not caught up yet and will report an error here. That is the tool lagging the specification, not a problem with your code.
+
 <CssDemo>
 
 ```html
@@ -422,7 +426,7 @@ You now have two tools that look similar and answer different questions. The rul
 
 Container queries don't replace media queries, and there's a specific, permanent reason for that: **some questions are viewport questions and cannot be asked any other way.** A container has no idea what device it's on, whether the visitor prefers reduced motion, or whether the page is being printed. Those live only at the level of the whole browser and the user's system, so media queries stay essential for:
 
-- **User and system preferences.** `prefers-color-scheme` and `prefers-reduced-motion`, which you'll meet properly later in the course, only exist as media features.
+- **User and system preferences.** `prefers-color-scheme`, covered in [CSS Custom Properties and Variables](/modules/css/custom-properties.md), and `prefers-reduced-motion`, covered in [Accessible Styling](/modules/css/accessible-styling.md), only exist as media features.
 - **Orientation and device characteristics.** Portrait versus landscape, or a `print` stylesheet for a page heading to a printer, are viewport-level questions by definition.
 - **Global layout decisions.** The page's own header, primary navigation, and outermost grid respond to the screen the visitor actually has, not to a container, because at that level the container *is* the viewport.
 
@@ -451,7 +455,7 @@ Four ways to test, in increasing order of trustworthiness.
 
 **Use device emulation in developer tools.** The toggle looks like a phone and tablet icon. It simulates specific device widths and lets you rotate between portrait and landscape. Better than dragging, because you can test exact widths repeatedly.
 
-**Look at it on a real phone.** This is the one that catches what the others miss: actual touch target sizes, actual text legibility, actual rendering. Your project is published to GitHub Pages at a public <abbr title="Uniform Resource Locator">URL</abbr>, so you can open it on your own phone in seconds. Do this before you submit anything.
+**Look at it on a real phone.** This is the one that catches what the others miss: actual touch target sizes, actual text legibility, actual rendering. Your project is published to GitHub Pages at a public <abbr title="Uniform Resource Locator">URL</abbr>, so you can open it on your own phone in seconds. Do this before calling any layout finished.
 
 **Look at it in more than one browser.** Everything above tests screen size. It doesn't test whether Chrome, Firefox, and Safari agree on how to render your CSS, and they don't always. A property can be supported in one engine and not another, or supported with a slightly different default. Two habits cover most of what you need: check a feature's support at [caniuse.com](https://caniuse.com/) or [webstatus.dev](https://webstatus.dev/) before depending on it (the same standard this course itself used when deciding what to teach as safe to use), and open your finished page in at least two real browsers, not just two device-emulation profiles of the same one, before calling a layout done.
 
@@ -471,7 +475,7 @@ Four ways to test, in increasing order of trustworthiness.
 
 ## The checklist
 
-Run this over your layout before you submit work in this course:
+Run this over your layout before you move on:
 
 - Viewport meta tag present in the `<head>` of every page
 - Media queries written mobile-first, using `min-width`, not `max-width`
@@ -479,6 +483,7 @@ Run this over your layout before you submit work in this course:
 - Body text capped with `max-width: 65ch` or similar for a readable line length
 - `clamp()` used for fluid type where a hard breakpoint isn't needed
 - Can explain when a container query is the right tool and when a media query is
+- Used a container query on at least one reusable component, with `container-type` set on its wrapper
 
 ## Keep learning
 
@@ -508,4 +513,4 @@ Open your live Pages URL in a second browser you don't normally use, not just a 
 
 Finally, open your live Pages URL on an actual phone. Check that nothing scrolls sideways, that every link is big enough to tap without care, and that you can read the body text without zooming. Fix whatever fails, push, and check again.
 
-That's the toolkit for making a layout hold together at any size. Reading week follows, then Week 9 goes underneath the visual layer entirely: what the browser actually builds from your HTML, and how to target it precisely.
+That's the toolkit for making a layout hold together at any size. After Reading Week, [The DOM and CSS Targeting](/modules/css/dom-css-targeting.md) goes underneath the visual layer entirely: what the browser actually builds from your HTML, and how to target it precisely.

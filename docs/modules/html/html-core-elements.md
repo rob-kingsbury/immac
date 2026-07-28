@@ -10,9 +10,9 @@ Your tools are set up, your repository is cloned, and your first push already wo
 
 ## How to read this chapter
 
-**The core path is everything from "What an HTML element actually is" down to the checklist near the end.** Work through it in order, build the examples as you go, and you have what the assignment and the Try it yourself exercise need. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
+**The core path is everything from "What an HTML element actually is" down to the checklist near the end.** Work through it in order, build the examples as you go, and you have what the Try it yourself exercise needs. Budget about 30 minutes to read it, plus the 45 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add roughly 15 minutes total if you read all of them. They're marked clearly, every time, so you always know when you've stepped off the required path. They exist because this page is meant to still answer real questions for you a year or two from now, not just get you through this chapter's assignment. Skip them if you are short on time. Nothing here depends on them.
+Sections headed **Going deeper** are optional and add roughly 15 minutes total if you read all of them. They're marked clearly, every time, so you always know when you've stepped off the required path. They exist because this page is meant to still answer real questions for you a year or two from now, not just get you through this chapter. Skip them if you are short on time. Nothing here depends on them.
 
 ## What an HTML element actually is
 
@@ -471,7 +471,7 @@ Get in the habit of running your page through it before you consider it done. [C
 
 ## The checklist
 
-Run this over your page before you submit work in this course:
+Run this over your page before you move on:
 
 - Every element follows tag, content, closing tag, except the void elements (`<meta>`, `<br>`, and soon `<img>`) that take no closing tag at all
 - Attributes live inside the opening tag, written as `name="value"`

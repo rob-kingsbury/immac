@@ -11,11 +11,9 @@ Forms are how the web listens. A search box, a login, a contact page, a checkout
 
 ## How to read this chapter
 
-**This chapter works differently.** It's designed as an in-class worklab. You take a readiness quiz in the first ten minutes of class, and once you score 9/10 or better, the assignment unlocks and you build it live, during that same period, submitting before class ends. No separate take-home window this time. Read this page before class if you can, it saves time once the quiz opens the assignment, but the real work happens live, against this exact content.
+**The core path is everything down to the checklist**: forms, labels, fieldsets, validation, and tables. Budget about 20 minutes to read it, plus the 60 minutes the exercise takes.
 
-**The core path is everything down to the checklist**: forms, labels, fieldsets, validation, tables, the same ground the assignment covers. Skim it in about 20 minutes before class, or read closely if you have more time. **"Going deeper" sections are optional**, more so given the time pressure. Skip them during class and come back later if you want the extra ground.
-
-**"Try it yourself" near the end is not extra practice here.** It's the graded in-class build itself, the same steps as the assignment brief.
+**"Going deeper" sections are optional.** Skip them if you are short on time, and come back later if you want the extra ground.
 
 ## The form element
 
@@ -765,8 +763,6 @@ Run this over your form and table before you submit:
 - [Video: HTTP GET vs. POST, by Hussein Nasser](https://www.youtube.com/watch?v=NEKImNnYB70). A clear explanation of the difference between the two methods and when each is appropriate.
 
 ## Try it yourself (about 60 minutes)
-
-This isn't a take-home exercise. It's the graded in-class build itself: what you submit is what you build here, live, during class, before the period ends.
 
 Build a contact form with a text input for a name, an email input, a `<select>` for a subject, and a `<textarea>` for a message, each with a proper `<label>`. Make the name and email `required`, and set the email field to `type="email"`. Choose `method="post"` for this form and be ready to explain why GET would be the wrong choice here. Add a set of radio buttons in a `<fieldset>` for a preferred contact method, and a submit button using `<button type="submit">`.
 

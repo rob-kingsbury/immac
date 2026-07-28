@@ -10,9 +10,9 @@ Accessibility means building pages that everyone can use, including people who n
 
 ## How to read this chapter
 
-**The core path is everything down to the checklist near the end.** Read the sections in order, try the demos as you go, and do the exercise at the end, and you have what the assignment needs. Budget about 30 minutes for the reading, plus the 50 minutes the exercise takes.
+**The core path is everything down to the checklist near the end.** Read the sections in order, try the demos as you go, and do the exercise at the end. Budget about 30 minutes for the reading, plus the 50 minutes the exercise takes.
 
-Sections headed **Going deeper** are optional and add roughly 15 minutes altogether. They cover what "AA" actually means for your grade, an attribute you've typed into every skeleton since [Introduction to the Web](/modules/welcome/introduction-to-the-web.md) without knowing why, what your testing tools can and can't see, and how a screen reader names a control that has no visible label. Skip them if you are short on time and nothing breaks. They're written to still be worth reading once the deadline pressure is off.
+Sections headed **Going deeper** are optional and add roughly 15 minutes altogether. They cover what "AA" conformance actually means in practice, an attribute you've typed into every skeleton since [Introduction to the Web](/modules/welcome/introduction-to-the-web.md) without knowing why, what your testing tools can and can't see, and how a screen reader names a control that has no visible label. Skip them if you are short on time and nothing breaks. They're written to still be worth reading later, when there's no time pressure at all.
 
 ## What <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> is
 
@@ -27,15 +27,15 @@ WCAG is built on four principles, often shortened to <abbr title="Perceivable, O
 
 Most of what follows is a practical application of those four ideas.
 
-### Going deeper: what "AA" actually means for your grade
+### Going deeper: what "AA" conformance actually means
 
 WCAG doesn't ask for all-or-nothing compliance. It defines three conformance levels, A, AA, and AAA, each one a stricter tier built on top of the last.
 
 Level A is the floor. Skip it and a page has real, obvious barriers. Level AA adds the requirements that make a page usable for the large majority of people with disabilities, including the 4.5:1 and 3:1 contrast ratios from the Colour Contrast section below, both AA requirements. Level AAA is stricter again, for example a 7:1 contrast ratio for normal text instead of 4.5:1, but the W3C itself does not recommend requiring it across an entire site: "it is not recommended that Level AAA conformance be required as a general policy for entire sites because it is not possible to satisfy all Level AAA success criteria for some content."
 
-In practice, AA is the level almost everyone means when they say a site "meets WCAG." It's the level most accessibility laws and procurement standards reference, and it's the level this course's rubrics grade against. If a tool or a rubric item says something "passes" or "fails" without naming a level, assume AA.
+In practice, AA is the level almost everyone means when they say a site "meets WCAG." It's the level most accessibility laws and procurement standards reference. If a tool says something "passes" or "fails" without naming a level, assume AA.
 
-That has one direct, practical effect on your assignments: a colour pair that passes at 3:1 but fails at 4.5:1 is not good enough for normal-sized text. Check against 4.5:1 unless the text meets the large-text definition already given in the Colour Contrast section.
+That has one direct, practical effect: a colour pair that passes at 3:1 but fails at 4.5:1 is not good enough for normal-sized text. Check against 4.5:1 unless the text meets the large-text definition already given in the Colour Contrast section.
 
 ### Going deeper: the `lang` attribute you've been writing since your first skeleton
 
@@ -286,7 +286,7 @@ This is why the manual keyboard test earlier in this chapter isn't a lesser, opt
 
 ## The checklist
 
-Run this over every page before you submit work in this course:
+Run this over every page before you move on:
 
 - Landmark regions used for structure: `<header>`, `<nav>`, `<main>`, `<footer>`, not `<div>` boxes
 - Heading levels in logical order, one `<h1>`, no skipped levels
