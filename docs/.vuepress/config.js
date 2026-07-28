@@ -169,10 +169,46 @@ const mtm1544Sidebar = [
     text: 'Weekly Content',
     collapsible: false,
     children: [
-      { text: 'Week 1: Introduction to CSS', link: '/modules/css/intro-to-css.md' },
-      { text: 'Week 2: The Box Model and Spacing', link: '/modules/css/box-model-spacing.md' },
-      { text: 'Week 3: Typography and Colour', link: '/modules/css/typography-colour.md' },
-      { text: 'Week 4: Selectors, Specificity, and Inheritance', link: '/modules/css/selectors-specificity-inheritance.md' },
+      {
+        text: 'Week 1: Introduction to CSS',
+        collapsible: true,
+        children: [
+          { text: 'CSS Basics', link: '/modules/css/css-basics/README.md' },
+          { text: 'Linking a Stylesheet', link: '/modules/css/css-basics/linking-a-stylesheet.md' },
+          { text: 'CSS Selectors', link: '/modules/css/css-selectors/README.md' },
+          { text: 'The Cascade', link: '/modules/css/css-cascade/README.md' },
+        ],
+      },
+      {
+        text: 'Week 2: The Box Model and Spacing',
+        collapsible: true,
+        children: [
+          { text: 'The Box Model', link: '/modules/css/css-box-model/README.md' },
+          { text: 'CSS Units', link: '/modules/css/css-units/README.md' },
+          { text: 'Box Sizing', link: '/modules/css/css-box-sizing/README.md' },
+          { text: 'aspect-ratio', link: '/modules/css/css-aspect-ratio/README.md' },
+        ],
+      },
+      {
+        text: 'Week 3: Typography and Colour',
+        collapsible: true,
+        children: [
+          { text: 'Typography', link: '/modules/css/css-typography/README.md' },
+          { text: 'Web Fonts', link: '/modules/css/css-web-fonts/README.md' },
+          { text: 'Colour Values', link: '/modules/css/css-colors/README.md' },
+        ],
+      },
+      {
+        text: 'Week 4: Selectors, Specificity, and Inheritance',
+        collapsible: true,
+        children: [
+          { text: 'Pseudo-Classes', link: '/modules/css/css-pseudo-classes/README.md' },
+          { text: 'Pseudo-Elements', link: '/modules/css/css-pseudo-elements/README.md' },
+          { text: 'Combinators', link: '/modules/css/css-complex-selectors/README.md' },
+          { text: 'Specificity', link: '/modules/css/css-precedence/README.md' },
+          { text: 'The Cascade', link: '/modules/css/css-cascade/README.md' },
+        ],
+      },
       { text: 'Week 5: Flexbox Layouts', link: '/modules/css/flexbox-layouts.md' },
       { text: 'Week 6: CSS Grid Layouts', link: '/modules/css/grid-layouts.md' },
       { text: 'Week 7: Responsive Design and Media Queries', link: '/modules/css/responsive-media-queries.md' },

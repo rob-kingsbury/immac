@@ -3,14 +3,14 @@ title: Responsive Design and Media Queries
 prerequisites:
   - css/flexbox-layouts
   - css/grid-layouts
-  - css/typography-colour
+  - css/css-typography
 ---
 
 # Responsive Design and Media Queries
 
 You have no idea what your visitor is looking at. A phone held vertically, a tablet, a laptop, a wall-mounted display, a browser window dragged to a third of the screen. **Responsive design** is the practice of building one page that works on all of them, rather than building separate sites and guessing which to serve.
 
-This is the longest chapter in the course, because it covers everything that reacts to size: the viewport meta tag, media queries and a mobile-first way of writing them, the viewport units introduced in [The Box Model and Spacing](/modules/css/box-model-spacing.md), fluid sizing that needs no breakpoint at all, and container queries, a newer tool that responds to a component's own space rather than the whole screen. You've already met one piece without calling it that, since Flexbox wrapping and Grid's `auto-fit` are responsive behaviour with no media query at all.
+This is the longest chapter in the course, because it covers everything that reacts to size: the viewport meta tag, media queries and a mobile-first way of writing them, the viewport units introduced in [CSS Units](/modules/css/css-units/README.md), fluid sizing that needs no breakpoint at all, and container queries, a newer tool that responds to a component's own space rather than the whole screen. You've already met one piece without calling it that, since Flexbox wrapping and Grid's `auto-fit` are responsive behaviour with no media query at all.
 
 ![The same web page shown on a desktop monitor and a mobile phone, with the layout rearranged to suit each screen width.](/images/mobile-desktop.jpg)
 
@@ -26,7 +26,7 @@ Before any <abbr title="Cascading Style Sheets">CSS</abbr> matters, one line of 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
-That goes in the `<head>` of every page, and it's already in the starter page from [Introduction to CSS](/modules/css/intro-to-css.md).
+That goes in the `<head>` of every page, alongside the rest of the essentials covered in [Document Head Best Practices](/modules/html/html-document-structure/head-best-practices.md).
 
 Here's the problem it solves. Mobile browsers were built when almost no site was designed for phones, so they invented a defensive default: pretend the screen is about 980 pixels wide, render the desktop layout into that imaginary space, then shrink the whole thing down to fit the real screen. The result is a readable-shaped page at unreadably small text, which the user pinches and zooms around.
 
@@ -122,7 +122,7 @@ Use fewer than you think you need. Two well-chosen breakpoints usually beat five
 
 ## Viewport units, and the mobile browser bug they fix
 
-Back in [The Box Model and Spacing](/modules/css/box-model-spacing.md) you met `%`, which measures against a parent. **Viewport units** measure against the browser's viewport instead. `1vw` is 1% of the viewport's width, `1vh` is 1% of its height. A box set to `width: 100vw; height: 100vh;` fills the screen, full stop, no matter what its parent is doing.
+Back in [CSS Units](/modules/css/css-units/README.md) you met `%`, which measures against a parent. **Viewport units** measure against the browser's viewport instead. `1vw` is 1% of the viewport's width, `1vh` is 1% of its height. A box set to `width: 100vw; height: 100vh;` fills the screen, full stop, no matter what its parent is doing.
 
 That's exactly the tool for a full-screen hero section, and for years `100vh` was the standard way to build one. It has a real bug on phones, though, and it's common enough to be worth understanding precisely rather than working around by accident.
 

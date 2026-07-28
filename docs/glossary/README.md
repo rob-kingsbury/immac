@@ -22,7 +22,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Baseline.** A web-standards designation meaning a feature is well supported across current browsers and safe to rely on. Referenced throughout MTM1544 whenever a newer CSS feature is introduced.
 
-**Box model.** The four layers around any element's content: content, padding, border, and margin. See [The Box Model and Spacing](/modules/css/box-model-spacing.md).
+**Box model.** The four layers around any element's content: content, padding, border, and margin. See [The Box Model](/modules/css/css-box-model/README.md).
 
 **Branch.** A parallel copy of a Git repository's history you can commit to without touching `main`. See [Working Like a Team](/modules/git/github-collaboration/README.md).
 
@@ -30,9 +30,9 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## C
 
-**Cascade.** The set of tie-breakers, in order, a browser uses when more than one CSS rule could apply to the same element: origin and importance, then specificity, then source order. See [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md).
+**Cascade.** The set of tie-breakers, in order, a browser uses when more than one CSS rule could apply to the same element: origin and importance, then specificity, then source order. See [The Cascade](/modules/css/css-cascade/README.md).
 
-**Class.** A label you assign to any elements you choose, using the `class` attribute, then target in CSS with a dot in front of the name (`.intro`). See [Introduction to CSS](/modules/css/intro-to-css.md).
+**Class.** A label you assign to any elements you choose, using the `class` attribute, then target in CSS with a dot in front of the name (`.intro`). See [CSS Selectors](/modules/css/css-selectors/README.md).
 
 **Client.** The machine making a web request, in this course your browser. See [How the Web Works](/modules/web-basics/how-the-web-works/README.md).
 
@@ -50,7 +50,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## D
 
-**Declaration.** One property-and-value pair inside a CSS rule, such as `color: red;`. See [Introduction to CSS](/modules/css/intro-to-css.md).
+**Declaration.** One property-and-value pair inside a CSS rule, such as `color: red;`. See [CSS Basics](/modules/css/css-basics/README.md).
 
 **<abbr title="Domain Name System">DNS</abbr> (Domain Name System).** The lookup service that turns a human-readable domain into the numeric address a browser connects to. See [How the Web Works](/modules/web-basics/how-the-web-works/README.md).
 
@@ -60,7 +60,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Element.** The smallest unit of HTML, usually an opening tag, content, and a closing tag. See [HTML Basics](/modules/html/html-basics/README.md).
 
-**Element selector.** A CSS selector that targets every element of a given tag name, such as `p`. See [Introduction to CSS](/modules/css/intro-to-css.md).
+**Element selector.** A CSS selector that targets every element of a given tag name, such as `p`. See [CSS Selectors](/modules/css/css-selectors/README.md).
 
 ## F
 
@@ -84,7 +84,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Heading hierarchy.** The logical order of `<h1>` through `<h6>` elements on a page, with no skipped levels, which screen reader users navigate by. See [HTML Headings](/modules/html/html-headings/README.md).
 
-**<abbr title="Hue, Saturation, Lightness">HSL</abbr>.** A colour notation of hue, saturation, and lightness, useful for building a palette of related colours by hand. See [Typography and Colour](/modules/css/typography-colour.md).
+**<abbr title="Hue, Saturation, Lightness">HSL</abbr>.** A colour notation of hue, saturation, and lightness, useful for building a palette of related colours by hand. See [Colour Values](/modules/css/css-colors/README.md).
 
 **HTML.** HyperText Markup Language, which describes a page's structure and meaning, not its appearance. See [HTML Basics](/modules/html/html-basics/README.md).
 
@@ -92,11 +92,11 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## I
 
-**ID.** A label meant to identify one single, unique element on a page, targeted in CSS with a hash (`#lead`). See [Introduction to CSS](/modules/css/intro-to-css.md).
+**ID.** A label meant to identify one single, unique element on a page, targeted in CSS with a hash (`#lead`). See [CSS Selectors](/modules/css/css-selectors/README.md).
 
 **Implicit grid.** Grid rows or columns the browser creates automatically when there are more items than explicitly defined space. See [CSS Grid Layouts](/modules/css/grid-layouts.md).
 
-**Inheritance.** The automatic passing of certain CSS properties, mostly text-related ones, from a parent element to its children. See [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md).
+**Inheritance.** The automatic passing of certain CSS properties, mostly text-related ones, from a parent element to its children. See [The Cascade](/modules/css/css-cascade/README.md).
 
 ## J
 
@@ -120,7 +120,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## O
 
-**oklch().** A newer colour function where equal steps in lightness look like equal steps to the human eye, unlike HSL. See [Typography and Colour](/modules/css/typography-colour.md).
+**oklch().** A newer colour function where equal steps in lightness look like equal steps to the human eye, unlike HSL. See [Colour Values](/modules/css/css-colors/README.md).
 
 **Open Graph.** A vocabulary of `<meta>` tags controlling how a page appears as a preview card when shared on social platforms. See [Open Graph](/modules/seo/open-graph/README.md).
 
@@ -132,9 +132,9 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Protocol.** An agreed set of rules for how two machines communicate, such as HTTP. See [How the Web Works](/modules/web-basics/how-the-web-works/README.md).
 
-**Pseudo-class.** A CSS selector that targets an element by its state, such as `:hover` or `:focus`. See [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md).
+**Pseudo-class.** A CSS selector that targets an element by its state, such as `:hover` or `:focus`. See [Pseudo-Classes](/modules/css/css-pseudo-classes/README.md).
 
-**Pseudo-element.** A CSS selector that targets part of an element or inserts generated content, written with two colons, such as `::before`. See [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md).
+**Pseudo-element.** A CSS selector that targets part of an element or inserts generated content, written with two colons, such as `::before`. See [Pseudo-Elements](/modules/css/css-pseudo-elements/README.md).
 
 **Pull request.** A request on GitHub to merge one branch into another, giving a reviewer a dedicated screen to read the change before it lands. See [Working Like a Team](/modules/git/github-collaboration/README.md).
 
@@ -150,7 +150,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## S
 
-**Selector.** The part of a CSS rule that decides which elements the rule applies to. See [Introduction to CSS](/modules/css/intro-to-css.md).
+**Selector.** The part of a CSS rule that decides which elements the rule applies to. See [CSS Basics](/modules/css/css-basics/README.md).
 
 **Semantic HTML.** Using elements for what their content actually is, rather than a generic `<div>` for everything. See [Semantic HTML](/modules/html/html-semantics/README.md).
 
@@ -158,7 +158,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Skip link.** A hidden-until-focused link, first in the page, that jumps a keyboard user straight to the main content. See [Skip Navigation](/modules/accessibility/skip-navigation/README.md).
 
-**Specificity.** The calculated score (IDs, then classes, then elements) a browser uses to decide which of two conflicting, equally-recent CSS rules wins. See [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md).
+**Specificity.** The calculated score (IDs, then classes, then elements) a browser uses to decide which of two conflicting, equally-recent CSS rules wins. See [Specificity, Calculated Properly](/modules/css/css-precedence/README.md).
 
 **Sticky positioning.** `position: sticky`, which acts like normal flow until a scroll threshold, then locks in place. See [CSS Grid Layouts](/modules/css/grid-layouts.md).
 
@@ -184,7 +184,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **<abbr title="Web Content Accessibility Guidelines">WCAG</abbr>.** The Web Content Accessibility Guidelines, the international standard for accessible web content, built on the <abbr title="Perceivable, Operable, Understandable, Robust">POUR</abbr> principles (Perceivable, Operable, Understandable, Robust). See [WCAG](/modules/accessibility/wcag/README.md).
 
-**Web font.** A typeface downloaded along with the page, rather than relying on a font already installed on the visitor's machine. See [Typography and Colour](/modules/css/typography-colour.md).
+**Web font.** A typeface downloaded along with the page, rather than relying on a font already installed on the visitor's machine. See [Web Fonts](/modules/css/css-web-fonts/README.md).
 
 ## Z
 

@@ -1,8 +1,8 @@
 ---
 title: Flexbox Layouts
 prerequisites:
-  - css/box-model-spacing
-  - css/selectors-specificity-inheritance
+  - css/css-box-model
+  - css/css-pseudo-classes
 ---
 
 # Flexbox Layouts

@@ -2,7 +2,7 @@
 title: CSS Grid Layouts
 prerequisites:
   - css/flexbox-layouts
-  - css/box-model-spacing
+  - css/css-box-model
 ---
 
 # <abbr title="Cascading Style Sheets">CSS</abbr> Grid Layouts
@@ -17,7 +17,7 @@ Everything here is hand-coded. This course deliberately does not use a layout fr
 
 **The core path is everything from "Rows and columns" through "Grid and Flexbox together," then "The third layout tool: position" through the checklist.** That covers track sizing, `gap`, placing items by line or by name, aligning content, pairing Grid with Flexbox, and positioning an element outside normal flow, plus the mistakes worth checking before you move on. Budget about 25 minutes to read it, plus the 60 minutes the exercise takes.
 
-**"Nested grids, and when they won't line up," sitting between those two stretches, is the exception.** Subgrid is real, well-supported CSS, and the section explains it properly, but it solves one specific problem, a row of independent cards whose internal content needs to line up, and a plain nested grid is simpler and correct for everything else. That's the same extension role oklch and color-mix played in [Typography and Colour](/modules/css/typography-colour.md). Budget about 8 minutes for it if you have the time; skip it if you're short on time.
+**"Nested grids, and when they won't line up," sitting between those two stretches, is the exception.** Subgrid is real, well-supported CSS, and the section explains it properly, but it solves one specific problem, a row of independent cards whose internal content needs to line up, and a plain nested grid is simpler and correct for everything else. That's the same extension role oklch and color-mix played in [Colour Values](/modules/css/css-colors/README.md). Budget about 8 minutes for it if you have the time; skip it if you're short on time.
 
 ## Rows and columns
 

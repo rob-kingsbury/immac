@@ -1,7 +1,7 @@
 ---
 title: Visual Design Principles
 prerequisites:
-  - css/typography-colour
+  - accessibility/colour-contrast
   - css/custom-properties
 ---
 
@@ -104,7 +104,7 @@ p { font-family: system-ui, sans-serif; margin: 2px 0; }
 
 Contrast comes from more than size. Weight, colour, spacing, case, and font family are all available, and combining two or three of them is what makes a difference read clearly.
 
-Two constraints on contrast, both already covered and both non-negotiable. **Colour contrast ratios** from [Typography and Colour](/modules/css/typography-colour.md) are a floor, not a goal. And **colour cannot be your only signal**, because it isn't available to everyone.
+Two constraints on contrast, both already covered and both non-negotiable. **Colour contrast ratios** from [Colour Contrast](/modules/accessibility/colour-contrast/README.md) are a floor, not a goal. And **colour cannot be your only signal**, because it isn't available to everyone.
 
 ## Alignment
 

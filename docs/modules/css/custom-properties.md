@@ -1,8 +1,8 @@
 ---
 title: CSS Custom Properties and Variables
 prerequisites:
-  - css/typography-colour
-  - css/selectors-specificity-inheritance
+  - css/css-colors
+  - css/css-precedence
 ---
 
 # <abbr title="Cascading Style Sheets">CSS</abbr> Custom Properties and Variables
@@ -133,7 +133,7 @@ That block is worth building carefully, because it becomes the vocabulary for th
 
 **Use a scale rather than arbitrary numbers.** Four or five spacing values used consistently produce a page that looks deliberate. Twenty ad-hoc pixel values produce one that looks approximate, and the difference is visible even to people who can't name it.
 
-**Pair custom properties with <abbr title="Hue, Saturation, Lightness">HSL</abbr>.** [Typography and Colour](/modules/css/typography-colour.md) showed how changing one lightness value generates a matched palette. Doing that inside variables means your whole colour system is a few numbers you can adjust together.
+**Pair custom properties with <abbr title="Hue, Saturation, Lightness">HSL</abbr>.** [Colour Values](/modules/css/css-colors/README.md) showed how changing one lightness value generates a matched palette. Doing that inside variables means your whole colour system is a few numbers you can adjust together.
 
 ## Scoping and the cascade
 
@@ -244,7 +244,7 @@ The same approach handles a system dark mode preference, using a media query in 
 
 Every rule in your stylesheet stays exactly as it was. Only the variable block changes, and the whole page follows.
 
-One requirement carries over from [Typography and Colour](/modules/css/typography-colour.md): **check contrast in both themes.** A palette that passes on white frequently fails on dark, and vice versa. A dark theme is not an excuse to skip the contrast checker; it's a second set of pairs to run through it.
+One requirement carries over from [Colour Contrast](/modules/accessibility/colour-contrast/README.md): **check contrast in both themes.** A palette that passes on white frequently fails on dark, and vice versa. A dark theme is not an excuse to skip the contrast checker; it's a second set of pairs to run through it.
 
 A newer function, `light-dark()`, does the same job with less repetition, once you've told the page which schemes it supports:
 
@@ -368,7 +368,7 @@ Media queries and container queries nest too, which keeps a component's responsi
 }
 ```
 
-**Nesting doesn't replace the specificity rules from [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md).** A nested selector's specificity is calculated exactly the same way as if you'd written it out in full, `&` included. It's a way of organising related rules so their relationship is visible on the page, not a new cascade mechanism.
+**Nesting doesn't replace the specificity rules from [Specificity, Calculated Properly](/modules/css/css-precedence/README.md).** A nested selector's specificity is calculated exactly the same way as if you'd written it out in full, `&` included. It's a way of organising related rules so their relationship is visible on the page, not a new cascade mechanism.
 
 You may recognise this from Sass or Less, which have offered nesting for years through a build step. What's different here is that it's now **plain CSS**, understood natively by the browser, with nothing to compile.
 
@@ -399,7 +399,7 @@ If a property seems to have no value at all, a misspelled variable name is the f
 - **Expecting `var()` to work in a media query condition.** Custom properties can't be used in `@media` feature tests, only in declarations.
 - **Building a dark theme without rechecking contrast.** Different pairs, different ratios.
 - **Twenty spacing variables.** A scale of four or five used consistently beats a long list used approximately.
-- **Nesting three or four levels deep because you can.** It produces the same fragile, over-specific selectors [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md) warned about, just formatted differently.
+- **Nesting three or four levels deep because you can.** It produces the same fragile, over-specific selectors [Specificity, Calculated Properly](/modules/css/css-precedence/README.md) warned about, just formatted differently.
 - **Writing `:hover` instead of `&:hover` inside a nested rule.** Without the `&`, it's understood as a descendant selector, not the parent itself, and won't match what you meant.
 
 ## The checklist

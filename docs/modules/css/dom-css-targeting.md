@@ -1,12 +1,12 @@
 ---
 title: The DOM and CSS Targeting
 prerequisites:
-  - css/selectors-specificity-inheritance
+  - css/css-complex-selectors
 ---
 
 # The <abbr title="Document Object Model">DOM</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> Targeting
 
-You've been writing selectors since [Introduction to CSS](/modules/css/intro-to-css.md) without a precise picture of what they're selecting *from*. This chapter supplies it. The browser doesn't apply your CSS to a text file. It applies it to a structure it built in memory called the **DOM**, and once you can see that structure, targeting stops being trial and error.
+You've been writing selectors since [CSS Selectors](/modules/css/css-selectors/README.md) without a precise picture of what they're selecting *from*. This chapter supplies it. The browser doesn't apply your CSS to a text file. It applies it to a structure it built in memory called the **DOM**, and once you can see that structure, targeting stops being trial and error.
 
 This is the diagnostic chapter. By the end of it you should be able to work out why any rule on your page is or isn't applying, without changing anything at random to find out.
 
@@ -119,7 +119,7 @@ That last one deserves attention. **Computed style** is the answer to "what is t
 
 ## Descendant and child selectors, precisely
 
-You met combinators in [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md). Now they have a structure to refer to.
+You met combinators in [Combinators](/modules/css/css-complex-selectors/README.md). Now they have a structure to refer to.
 
 The **descendant combinator** is a space, and it matches at any depth beneath an ancestor:
 
@@ -243,7 +243,7 @@ a[href$=".pdf"]::after {
 
 The syntax is a set of matching operators inside square brackets. `[href^="https"]` matches when the value **starts with** that string. `[href$=".pdf"]` matches when it **ends with** it. `[href*="example"]` matches when it **contains** it. And plain `[type="email"]` matches an exact value.
 
-Marking external links and file downloads automatically, with no classes to maintain, is exactly what attribute selectors are for. Note that the marker above is decorative, so per the rule about generated content in [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md), the same information should also be conveyed in the link text itself for anything a visitor genuinely needs to know.
+Marking external links and file downloads automatically, with no classes to maintain, is exactly what attribute selectors are for. Note that the marker above is decorative, so per the rule about generated content in [Pseudo-Elements](/modules/css/css-pseudo-elements/README.md), the same information should also be conveyed in the link text itself for anything a visitor genuinely needs to know.
 
 One caveat on `[href^="https"]` specifically: it doesn't actually mean "external," it means "starts with https." That happens to sort external from internal links correctly on a site like the one you're building, where every internal link is written as a relative path (`about.html`, not `https://yoursite.com/about.html`). Write even one internal link as a full `https://` <abbr title="Uniform Resource Locator">URL</abbr> instead of a relative one, and this selector marks it external too. On a real site large enough to have more than one author, that's a real, confusing bug, not a hypothetical one.
 
@@ -323,13 +323,13 @@ Every link except the last one gets a right-hand divider. Without `:not()` you'd
 
 `input:not([type="submit"])` reads naturally: every input, except the one whose type is submit. That's usually clearer than writing a rule for every input type you happen to be using and hoping you didn't miss one.
 
-One specificity note, since [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md) covered the A-B-C method: `:not()` itself adds nothing to a selector's specificity. What counts is whatever is inside the parentheses. `a:not(:last-child)` scores the same as `a:last-child` would, one pseudo-class, not two.
+One specificity note, since [Specificity, Calculated Properly](/modules/css/css-precedence/README.md) covered the A-B-C method: `:not()` itself adds nothing to a selector's specificity. What counts is whatever is inside the parentheses. `a:not(:last-child)` scores the same as `a:last-child` would, one pseudo-class, not two.
 
 ## Going deeper: `:nth-child()` and `:nth-of-type()`
 
 This section is also optional. Skip it and the diagnostic routine below still works.
 
-[Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md) used `:nth-child(odd)` to stripe a list, without explaining what's actually happening behind that keyword. Here's the formula, and the sibling pseudo-class that chapter didn't cover.
+[Pseudo-Classes](/modules/css/css-pseudo-classes/README.md) used `:nth-child(odd)` to stripe a list, without explaining what's actually happening behind that keyword. Here's the formula, and the sibling pseudo-class that chapter didn't cover.
 
 ### The `an+b` formula
 
@@ -458,7 +458,7 @@ Put the whole chapter into a routine. When something on your page looks wrong, w
 
 **2. Does your rule appear in the Styles panel at all?** If it doesn't, the selector never matched. Check for a missing dot or hash, a typo in a class name, a `>` that should be a space, or a capitalisation mismatch, since class names are case sensitive.
 
-**3. If it appears but is struck through, what beat it?** The panel shows the winning rule above. Compare specificity using the A-B-C method from [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md), then fix the selector rather than reaching for `!important`.
+**3. If it appears but is struck through, what beat it?** The panel shows the winning rule above. Compare specificity using the A-B-C method from [Specificity, Calculated Properly](/modules/css/css-precedence/README.md), then fix the selector rather than reaching for `!important`.
 
 **4. Is the value inherited from somewhere you forgot?** Check the Computed tab, which names the source of an inherited value.
 
@@ -475,7 +475,7 @@ Working the list beats guessing, and it gets faster with practice until it's aut
 - **Expecting a sibling selector to look backwards.** They only match forward.
 - **Mismatched case in class names.** `.mainNav` and `.mainnav` are different selectors.
 - **Editing CSS at random to see what happens.** It sometimes works and teaches you nothing. Diagnose first.
-- **Putting essential information in an attribute selector's generated content.** Same rule as [Selectors, Specificity, and Inheritance](/modules/css/selectors-specificity-inheritance.md): decorative only.
+- **Putting essential information in an attribute selector's generated content.** Same rule as [Pseudo-Elements](/modules/css/css-pseudo-elements/README.md): decorative only.
 - **Reaching for `:nth-child()` when siblings of mixed types are involved.** If a heading sits among the paragraphs you're counting, `:nth-of-type()` is almost always what you meant.
 
 ## The checklist

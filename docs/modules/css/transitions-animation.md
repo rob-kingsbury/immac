@@ -1,7 +1,7 @@
 ---
 title: Transitions and Motion
 prerequisites:
-  - css/selectors-specificity-inheritance
+  - css/css-pseudo-classes
   - accessibility/reduced-motion
 ---
 
