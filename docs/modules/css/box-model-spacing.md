@@ -8,6 +8,14 @@ Last week you connected a stylesheet and wrote your first rules. This week is th
 
 Once you can see those layers, spacing stops being guesswork. Almost every "why is there a gap there" question in your first months of CSS is answered by knowing which of the four layers put it there.
 
+## How to read this chapter
+
+**The core path is everything down to the checklist.** Read the box model, padding, border, margin, shorthand, `box-sizing`, margin collapse, and `aspect-ratio` sections in order, then do the exercise. Budget about 25 minutes to read, plus the 45 minutes the exercise takes.
+
+The section headed **Going deeper** is optional and adds about 5 minutes. It covers two properties that don't come up until you start building boxes that need to bend without breaking, useful now and essential later. Skip it this week if you're short on time. Nothing in the exercise depends on it.
+
+Keep your browser's DevTools open while you read, if you can. Every property in this chapter has a visible effect on the box model diagram described near the end, and watching a number change as you type is faster than picturing it.
+
 ## Every element is a box
 
 Open any web page, inspect any element, and the browser will show you a rectangle. A heading is a box. A paragraph is a box. An image is a box. Even a single word wrapped in a `<span>` is a box, just a small one that sits in the flow of a line.
@@ -387,6 +395,38 @@ The `aspect-ratio` property solves this properly. Give it a ratio, and the box c
 
 Resize your browser and that box's height adjusts on its own, always in proportion. No JavaScript, no fixed number to get wrong. `1 / 1` gives a square, `4 / 3` an older photo shape, `21 / 9` an ultra-wide banner. This is the property to reach for whenever "fixed height" was your instinct, particularly for image and video placeholders later in the course.
 
+## Going deeper: min-width, max-width, min-height, and max-height
+
+*Optional, about 5 minutes.* The `aspect-ratio` example above already used one of these properties without stopping to explain it: `max-width: 320px` sat right next to `width: 100%`. That pairing is common enough to earn its own look.
+
+`width` sets one exact value. `min-width`, `max-width`, `min-height`, and `max-height` set boundaries instead, limits a flexible size isn't allowed to cross.
+
+`max-width` caps how large a box can grow. `width: 100%` alone means the box always fills its container exactly, on a phone and on a wide desktop monitor alike. Add `max-width: 320px` and the box still fills its container up to 320 pixels, but stops growing past that even if the container keeps getting wider. That's the reason the `aspect-ratio` demo used it: without a cap, that box would have stretched edge to edge on a wide screen, which looks wrong for a small preview frame.
+
+<CssDemo>
+
+```html
+<div class="capped">width: 100%, max-width: 280px. I stop growing past 280px no matter how wide the container gets.</div>
+```
+
+```css
+.capped {
+  width: 100%;
+  max-width: 280px;
+  padding: 14px;
+  background-color: #ecfccb;
+  border: 2px solid #65a30d;
+}
+```
+
+</CssDemo>
+
+`min-width` is the opposite guarantee, a floor instead of a ceiling. A box with `width: 30%` shrinks along with its container, which is usually fine, until the container gets narrow enough that 30% is only 60 pixels and the text inside stops fitting comfortably. `min-width: 150px` stops the shrinking at 150 pixels, even when 30% of the container would be less.
+
+`min-height` and `max-height` do the same job on the vertical axis, but you'll reach for them less often, because a box's height is normally decided by its content and its padding, not by a number you set. `min-height` is worth knowing for something like a card that should look consistent even when one has a short caption and another has three lines: set a `min-height` and the short card still occupies the same space, without forcing every card to that exact height the way a fixed `height` would.
+
+None of this changes what `box-sizing: border-box` already does. If padding and border are counted inside `width`, they're counted inside `max-width` and `min-width` the same way, because it's the same box-sizing rule for the whole element.
+
 ## Inspecting the box model
 
 You do not have to reason about any of this from memory. Right-click an element, choose **Inspect**, and look for the box model diagram in developer tools, usually under a Computed or Layout tab. It draws the four layers as nested rectangles with the real pixel value of each side filled in.
@@ -407,6 +447,17 @@ You can also edit values directly in that diagram and watch the page respond, wh
 - **Using margin to fake a gap inside a coloured box.** Margin is outside the background, so it can't put space between the edge of a card and its text. That's padding's job.
 - **Setting a fixed `height` on a box holding text.** Text length changes, and the content spills out. Let padding define the vertical space and the height follow the content, or use `aspect-ratio` when the box genuinely needs a fixed shape.
 - **Assuming `%` always means "of my own size."** It resolves against different bases depending on the property. Padding's percentage is always relative to the parent's width, even top and bottom.
+
+## The checklist
+
+Run this over your own page before you move on:
+
+- You can say, without checking, whether a gap between two elements is padding or margin
+- You know which base a `%` value resolves against for the property you're using, padding especially
+- `* { box-sizing: border-box; }` is the first rule in your stylesheet
+- You can explain margin collapse, and you default to setting margin in one direction to avoid it
+- You can open DevTools and read the box model diagram to check the padding, border, and margin on any element
+- You reach for `aspect-ratio` instead of a fixed `height` whenever a box needs to keep a shape
 
 ## Keep learning
 
