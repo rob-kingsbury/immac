@@ -6,6 +6,8 @@ title: SEO in Practice
 
 Last week covered how a search engine finds and understands a page, and the metadata that controls how it appears in a results list. This week is the applied half: how your page looks when somebody shares it, how to hand a search engine machine-readable facts about your content, how links between your own pages help both readers and crawlers, and how to audit a real page and fix what the tools flag.
 
+This is also the week that shows up in a portfolio review. A rich, correctly-formed preview card when you share your own project link, and a clean Lighthouse SEO score you can point to, are both concrete things a hiring manager can look at directly, not just take your word for.
+
 ## How to read this chapter
 
 **The core path is everything down to the checklist.** Read it in order and complete the Try it yourself exercise, and you have what the assignment needs. Budget about 25 minutes to read it, plus the 50 minutes the exercise takes.

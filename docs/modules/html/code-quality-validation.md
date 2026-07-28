@@ -170,7 +170,7 @@ None of the three replaces the others. A page can pass every check your editor o
 
 Every push so far has gone straight to `main`, which is the right call for a solo assignment where you're the only person touching the repository. It's not how a real team works, and it's worth knowing the difference now rather than meeting it for the first time on the job.
 
-A **branch** is a parallel copy of your repository's history that you can commit to without touching `main` at all. Create one before starting a risky change or a new feature:
+A **branch** is a parallel copy of your repository's history that you can commit to without touching `main` at all. Every command in this section is typed into a terminal, unlike the staging/commit/push workflow from Week 1, which you've done through VS Code's Source Control panel. Branching and pull requests are commands and a GitHub screen, not buttons in that same panel, so open a terminal (Git Bash, the one you set as your default back in Week 1) for this part. Create a branch before starting a risky change or a new feature:
 
 ```bash
 git checkout -b add-contact-page

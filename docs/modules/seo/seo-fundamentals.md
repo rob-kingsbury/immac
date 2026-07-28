@@ -6,6 +6,8 @@ title: SEO Fundamentals
 
 Search engine optimization sounds like marketing, but a large part of it is just well-built <abbr title="HyperText Markup Language">HTML</abbr>. A search engine is a program that reads your markup and tries to work out what your page is about. The clearer your structure, the better it understands, and the better it can match your page to what people search for.
 
+Here's the direct version of why this matters to your career: a client or an employer judges a web developer partly on whether their pages actually get found, not just whether they render correctly. "I built a site" and "I built a site that shows up when someone searches for it" are different claims, and this chapter is what turns the first into the second.
+
 This week covers how a search engine actually sees a page, and the metadata in your document head that controls how that page appears in a results list. Next week takes the same page further, into social sharing, structured data, and a hands-on audit.
 
 ## How to read this chapter
