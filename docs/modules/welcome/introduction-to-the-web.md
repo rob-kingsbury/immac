@@ -8,7 +8,7 @@ Welcome to Web Components. By the end of this course you'll have built a multi-p
 
 ## How to read this chapter
 
-Every other chapter in this course splits into a required core and an optional "Going deeper" you can skip if you're short on time. **This chapter doesn't split that way, and pretending it does would be dishonest about what's actually required.** The mental model below explains what you're doing every time you write HTML for the rest of the term. The setup that follows it gives you the tools to actually do that work. Skip either one and you're stuck by next class, so both halves are core reading, not just the setup.
+Every other chapter in this course splits into a required core and an optional "Going deeper" you can skip if you're short on time. **This chapter doesn't split that way, and pretending it does would be dishonest about what's actually required.** The mental model below explains what you're doing every time you write HTML for the rest of this course. The setup that follows it gives you the tools to actually do that work. Skip either one and you're stuck immediately, so both halves are core reading, not just the setup.
 
 Budget your time in two pieces:
 
@@ -134,7 +134,7 @@ Every page you write in this course starts from the same skeleton. You'll build 
 </html>
 ```
 
-The important split is `<head>` versus `<body>`. The **head** holds information *about* the page, its title, its character encoding, and later its stylesheet link, none of which appears on the page itself. The **body** holds everything a visitor actually sees. Almost all the markup you write this term goes in the body.
+The important split is `<head>` versus `<body>`. The **head** holds information *about* the page, its title, its character encoding, and later its stylesheet link, none of which appears on the page itself. The **body** holds everything a visitor actually sees. Almost all the markup you write goes in the body.
 
 Put content in the wrong one and the browser still runs, which is exactly what makes the mistake easy to miss:
 
@@ -174,7 +174,7 @@ By the end of class, five things need to be true. Check yourself against this li
 4. A practice repository is cloned onto your computer in VS Code.
 5. That repository's Pages site loads at a real URL in a browser.
 
-If a step stalls or throws an error partway through, that's often a connection blip or a one-off installer hiccup, not something you did wrong. Try it once more before you assume you've broken something. If it still won't go, don't sit with it alone: flag it with your instructor or in the course's help channel right away, ideally before you leave today's class, since your Web Styles course assumes this setup already works.
+If a step stalls or throws an error partway through, that's often a connection blip or a one-off installer hiccup, not something you did wrong. Try it once more before you assume you've broken something. If it still won't go, don't sit with it alone: flag it with your instructor or in the course's help channel right away, since your Web Styles course assumes this setup already works.
 
 ### Installing Visual Studio Code
 
@@ -418,7 +418,7 @@ Worth being direct about why this chapter is so setup-heavy: this isn't a simpli
 
 ## The checklist
 
-Run this over your own understanding and your own machine before next class:
+Run this over your own understanding and your own machine before moving on:
 
 - Can explain what a client and a server each do, and what a request and a response are
 - Can break a URL into its protocol, domain, and path
@@ -439,10 +439,10 @@ Run this over your own understanding and your own machine before next class:
 - [GitHub Docs: Hello World](https://docs.github.com/en/get-started/quickstart/hello-world). GitHub's walkthrough of creating a repository and making your first commit, worth revisiting if any step above felt rushed.
 - [VS Code Docs: Source Control Overview](https://code.visualstudio.com/docs/sourcecontrol/overview). The full reference for everything the Source Control panel can do, beyond the workflow covered here.
 - [pages.github.com](https://pages.github.com/). GitHub's short introduction to what Pages is and how it works.
-- [Video: Git and GitHub Tutorial for Beginners, by Kevin Stratvert](https://www.youtube.com/watch?v=tRZGeaHPoaw). A clear, beginner-paced walkthrough of the same core workflow from today's class.
+- [Video: Git and GitHub Tutorial for Beginners, by Kevin Stratvert](https://www.youtube.com/watch?v=tRZGeaHPoaw). A clear, beginner-paced walkthrough of the same core workflow covered here.
 
-## Try it yourself: before next class (about 15 minutes)
+## Try it yourself (about 15 minutes)
 
-Confirm your setup works end to end, without following the steps above as a script: clone your practice repository (or a fresh one), make any small change, push it, and confirm the Pages URL loads in a browser. This is meant to be a genuine test, so work through a snag before reaching for help. But if you're stuck for more than a few minutes, that's not a sign you're behind, it's exactly what the course's help channel is for. Either way, note exactly which step gave you trouble, because that's worth raising at the start of next class before we build on top of it.
+Confirm your setup works end to end, without following the steps above as a script: clone your practice repository (or a fresh one), make any small change, push it, and confirm the Pages URL loads in a browser. This is meant to be a genuine test, so work through a snag before reaching for help. But if you're stuck for more than a few minutes, that's not a sign you're behind, it's exactly what the course's help channel is for. Either way, note exactly which step gave you trouble, because that's worth raising with your instructor before you build on top of it.
 
-[Core HTML Elements](/modules/html/html-core-elements.md) is where you write your first real HTML, so come in with a working editor and a repository you can push to. Your Web Styles course uses the same setup, so anything broken today blocks both courses.
+[Core HTML Elements](/modules/html/html-core-elements.md) is where you write your first real HTML, so make sure you have a working editor and a repository you can push to. Your Web Styles course uses the same setup, so anything broken here blocks both courses.

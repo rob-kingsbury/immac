@@ -160,7 +160,7 @@ Give a set of `<details>` elements the same `name` and the browser makes them mu
 
 ## Elements this course names but doesn't build with
 
-Three elements come up constantly in any current list of "modern HTML": `<dialog>`, `<template>`, and `popover`. All three are worth knowing by name, and none of them get built into your assignments this term. The reason is the same reason each time: this course has no JavaScript in it, and each of these three either does nothing without a script or was judged not yet settled enough across browsers to teach as the default answer. That's not a verdict that they're bad, or that you should avoid them forever. It's a statement about what's actually buildable with the tools this course gives you right now.
+Three elements come up constantly in any current list of "modern HTML": `<dialog>`, `<template>`, and `popover`. All three are worth knowing by name, and none of them get built into your assignments in this course. The reason is the same reason each time: this course has no JavaScript in it, and each of these three either does nothing without a script or was judged not yet settled enough across browsers to teach as the default answer. That's not a verdict that they're bad, or that you should avoid them forever. It's a statement about what's actually buildable with the tools this course gives you right now.
 
 The habit worth taking from this section isn't memorising which element does what. It's the question underneath: before reaching for something you saw on a "modern HTML" list, ask whether it does its job with what you actually have available, or whether it's waiting on a tool you don't have yet.
 
@@ -287,6 +287,6 @@ Audit the `<head>` of your pages against the checklist above and add anything mi
 
 Then build an <abbr title="Frequently Asked Questions">FAQ</abbr> section with at least four questions using `<details>` and `<summary>`. Nest at least one follow-up question inside its parent's `<details>`, the way the oven question nests inside the beginner question earlier in this chapter, and set one top-level `<details>` to start expanded with the `open` attribute. Confirm every one of them opens and closes with no scripting.
 
-Finally, write one or two sentences, in your project README or wherever your instructor asks for it, on why you didn't build with `<dialog>` or `popover` this term, and what would need to be true for you to reach for one of them instead. That sentence is a better test of whether you understood this chapter than the markup is.
+Finally, write one or two sentences, in your project README or wherever your instructor asks for it, on why you didn't build with `<dialog>` or `popover` in this course, and what would need to be true for you to reach for one of them instead. That sentence is a better test of whether you understood this chapter than the markup is.
 
 You've now covered everything MTM1511 teaches about HTML. Your finished structure now moves into MTM1544, where it gets styled.
