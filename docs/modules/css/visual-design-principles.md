@@ -8,7 +8,13 @@ You can now build almost any layout you can describe. This week is about decidin
 
 The gap between a page that works and a page that looks designed is rarely more <abbr title="Cascading Style Sheets">CSS</abbr>. It's usually four principles applied consistently: **hierarchy, contrast, alignment, and proximity**. None of them is a matter of taste, all of them are teachable, and all of them are visible in a page's CSS once you know what to look for.
 
-This week also runs as a peer critique workshop, so the second half of the chapter is about giving and receiving feedback usefully.
+## How to read this chapter
+
+**This week is shaped differently from the others.** The four principles below are still explained in full and still worth reading closely, but the second half of the class isn't a set of steps you work through alone. It's a live peer critique workshop: you look at a classmate's project, and they look at yours. Read the whole page before class. The four-principles section is what you'll be applying to both projects, and the feedback section further down is the actual format the workshop runs on, not background reading you can skip.
+
+**The core path is everything on this page except the section marked Going deeper.** Budget about 25 minutes to read the principles and the critique format. Bring the audit from this week's Try it yourself exercise with you; the workshop uses it as the starting point for what gets critiqued.
+
+The Going deeper section, on building a type scale from a ratio instead of picking sizes by eye, adds about 10 minutes. It's optional this week. It's here because restraint, using fewer sizes that are actually related to each other rather than more sizes chosen independently, is one of this chapter's core ideas, and a ratio is the most reliable way to get sizes that are genuinely related.
 
 ## Hierarchy
 
@@ -207,6 +213,90 @@ A short review pass on any page:
 
 That last one is worth dwelling on. Restraint reads as confidence. A page with three font sizes, four spacing values, and two accent colours looks designed. A page with nine of each looks like a series of separate decisions, because it is.
 
+## Going deeper: building a type scale from a ratio
+
+*Optional, about 10 minutes. The four principles above are the required reading for this week; this section is a technique for after you've got them, not a fifth principle.*
+
+The restraint pass above tells you how many font sizes to use on a page: about three. It doesn't tell you which three. Left to guess, most people pick a body size, then "a bit bigger" for one heading, then "bigger again" for another. That produces three sizes that happen to sit on the same page, not three sizes that were designed to sit on the same page.
+
+A **modular type scale** fixes that by generating every size from one base size and one **ratio**, instead of picking each size on its own. Multiply the base by the ratio to get the next step up. Multiply again for the step after that. Every size in the resulting scale is mathematically related to every other size in it, which is the actual reason a ratio-based scale reads as more intentional than a set of sizes chosen by eye: nothing in it is arbitrary, and that shows even to someone who couldn't say why.
+
+### Picking a ratio
+
+The ratio is usually one of a small set of named values, borrowed from musical intervals, that show up across most type-scale tools and typography references:
+
+| Name | Ratio | Feel |
+|---|---|---|
+| Minor third | 1.2 | Subtle, close steps |
+| Major third | 1.25 | A moderate, versatile default |
+| Perfect fourth | 1.333 | Clearly stepped, still controlled |
+| Perfect fifth | 1.5 | Dramatic jumps between levels |
+| Golden ratio | 1.618 | The most dramatic common choice |
+
+A larger ratio means a bigger jump between each step, which produces the kind of obvious, un-timid contrast the Contrast section above asks for. A smaller ratio produces a denser set of closely related sizes, better suited to an information-heavy interface where you want many small gradations rather than a few loud ones. Neither is correct in general. The point of naming a ratio before you start is that every size decision after that first choice gets settled by arithmetic instead of by a fresh guess.
+
+### A worked example
+
+Pick a base size of `1rem` and a ratio of `1.25` (a major third), and generate four steps by raising the ratio to increasing powers:
+
+```text
+Step 0:  1rem x 1.25^0 = 1rem       (16px)    body text
+Step 1:  1rem x 1.25^1 = 1.25rem    (20px)    supporting heading
+Step 2:  1rem x 1.25^2 = 1.5625rem  (25px)    secondary heading
+Step 3:  1rem x 1.25^3 = 1.953rem   (~31px)   primary heading
+```
+
+Store the four values as custom properties, the way the Custom Properties chapter set up a spacing scale, and every element on the page pulls from the same four numbers instead of repeating decimals in five places:
+
+<CssDemo>
+
+```html
+<div class="scale">
+  <p class="step-0">Nine kilometres, steady climb, mostly shaded.</p>
+  <p class="step-1">Ridge Trail</p>
+  <p class="step-2">Featured this week</p>
+  <p class="step-3">TrailGuide</p>
+</div>
+```
+
+```css
+.scale {
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5625rem;
+  --step-3: 1.953rem;
+  font-family: system-ui, sans-serif;
+  color: #0f172a;
+}
+.scale p {
+  margin: 0 0 10px 0;
+}
+.step-0 {
+  font-size: var(--step-0);
+  color: #475569;
+}
+.step-1 {
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+.step-2 {
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+.step-3 {
+  font-size: var(--step-3);
+  font-weight: 800;
+}
+```
+
+</CssDemo>
+
+Compare this to the very first demo in this chapter, where the ranked heading used `1.6rem` for its title. That number was picked by eye, and it isn't a bad choice: it sits close to where this major-third scale lands, between step 2's `1.5625rem` and step 3's `1.953rem`. The difference isn't that a ratio-based size looks different from an eyeballed one. It's that once you've committed to a base and a ratio, the next size you need, a card title, a badge, a fourth heading level, already has an answer instead of requiring another guess. That's the same restraint principle from earlier in this chapter, applied one level deeper: fewer independent decisions, more consistency, less visible effort.
+
+### What this doesn't cover
+
+A production type system usually makes each step **fluid**, so the text scales smoothly between a phone and a wide monitor instead of jumping at a breakpoint, typically using `clamp()`. That's a tool for later in your CSS education, not this course. Treat the scale itself, fixed sizes related by a ratio, as the technique worth having now, and leave fluid sizing for when you meet `clamp()` properly.
+
 ## The peer critique workshop
 
 The second half of this week is a critique session. Design work improves fastest when someone else looks at it, because you cannot see your own page fresh after staring at it for six weeks.
@@ -238,10 +328,22 @@ The second half of this week is a critique session. Design work improves fastest
 - **Everything emphasized.** If four things are bold, none of them is.
 - **Timid contrast.** Differences too small to read as deliberate look like errors.
 - **Uniform spacing.** Equal gaps everywhere destroy grouping.
-- **Too many fonts, sizes, and colours.** Restraint reads as intention.
+- **Too many fonts, sizes, and colours.** Picking sizes one at a time instead of from a scale is how this happens; restraint reads as intention.
 - **Centring long text.** No consistent edge for the eye to return to.
 - **Decorating instead of ranking.** Shadows and gradients don't fix a hierarchy problem; they just make an unclear page more elaborate.
 - **Defending your work during critique** instead of collecting the observations.
+
+## The checklist
+
+Confirm your own project against this before the critique session:
+
+- Hierarchy is limited to about three levels: primary, secondary, and supporting
+- Contrast between different elements is obvious, not timid
+- Alignment commits to one consistent edge, with centring used sparingly
+- Spacing within a group is smaller than spacing between groups
+- Restraint applied: a small, consistent set of font sizes, colours, and spacing values, reused everywhere rather than invented per element
+- Font sizes come from a consistent ratio rather than picked one at a time (optional technique, see Going deeper)
+- You've completed the audit from Try it yourself and you're ready to give and receive feedback using the format above
 
 ## Keep learning
 
@@ -254,7 +356,7 @@ The second half of this week is a critique session. Design work improves fastest
 
 Before class, audit your own project against the five-step review pass above and write down what you find, honestly. Bring that list to the critique session.
 
-Then do a restraint pass. Count every distinct font size, colour, and spacing value currently in your stylesheet. Reduce each list until you have around three font sizes, five spacing values, and a palette of four or five colours, all declared as custom properties. Rebuild the page from those. Most projects look substantially better after this step alone, and it's the cheapest improvement available.
+Then do a restraint pass. Count every distinct font size, colour, and spacing value currently in your stylesheet. Reduce each list until you have around three font sizes, five spacing values, and a palette of four or five colours, all declared as custom properties. If you'd rather not pick those three font sizes by eye, build them from a ratio instead: pick a base and a ratio from the Going deeper section above, and let the math generate the set for you. Rebuild the page from those. Most projects look substantially better after this step alone, and it's the cheapest improvement available.
 
 Fix one hierarchy problem, one alignment problem, and one proximity problem that the audit found. Take a screenshot before and after each so you can see the change.
 
