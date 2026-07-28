@@ -144,6 +144,8 @@ Both jobs combine, and `srcset` still works inside each source:
 
 That is the most complex image markup this course asks for, and most images do not need it. Reach for `<picture>` when you need a different crop or a format fallback. Use plain `srcset` for everything else. [Putting It Together](/modules/html/image-optimization/putting-it-together.md) shows a complete example combining every technique from both chapters.
 
+Once your media loads fast, the next question is whether anyone finds the page at all. [SEO Basics](/modules/seo/seo-basics/README.md) picks that up.
+
 ## Common mistakes to avoid
 
 - **Forgetting `img { max-width: 100%; height: auto; }`.** One oversized image causes horizontal scrolling across the whole page.
@@ -161,19 +163,3 @@ Run this over every image before you move on:
 - [MDN: Responsive images](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images). The full guide to `srcset`, `sizes`, and `<picture>`, with more cases than this chapter covers.
 - [MDN: the picture element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/picture). Attribute-level reference.
 - [Video: HTML Responsive Images, srcset, sizes, and the picture Element, by CodeLucky](https://www.youtube.com/watch?v=96GcXfFp8dc). Walks through both techniques with more worked examples.
-
-## Try it yourself (about 45 minutes)
-
-Take one large photograph, ideally straight off a phone, and note its file size.
-
-Export it at three widths, roughly 400, 800, and 1600 pixels, saving each as WebP at about 80 percent quality. In Squoosh that is the Resize panel for the width, the format dropdown set to WebP, and the quality slider, then Download. Repeat three times. Write down the four file sizes together, because the comparison is the point of the exercise.
-
-Put the three files into an `<img>` with `srcset` and `sizes`, and add `alt` plus `width` and `height`. Use the dimensions of your **largest** file for those two attributes, since all three share the same shape and the browser only needs the ratio.
-
-Open your page and open developer tools with **F12**, or **Ctrl+Shift+I**, or **Cmd+Option+I** on a Mac. Switch to the **Network** tab, in the same row of tabs as Elements and Console. Reload the page, then use the **Img** filter button below that row to hide the CSS, font, and favicon requests so only images remain. Resize the browser window and reload at a narrow width and again at a wide one. Confirm that a different file is requested each time.
-
-Then add a second image lower down the page with `loading="lazy"`, reload at the top, and confirm in the Network panel that it does not appear in the list until you scroll toward it.
-
-Finally, remove the `width` and `height` from one image. In the Network panel toolbar, find the throttling dropdown, which reads **No throttling** by default and sits near the top of the panel, and set it to **Slow 4G**. Reload and watch the text below the image jump when it arrives. Put the attributes back, reload again, and watch the jump disappear.
-
-Your media loads fast. [SEO Basics](/modules/seo/seo-basics/README.md) is about making sure people can find your pages in the first place.

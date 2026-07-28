@@ -10,7 +10,8 @@
     "docs:build": "vuepress build docs",
     "check:prereqs": "node scripts/check-prerequisites.mjs",
     "check:links": "node scripts/check-links.mjs",
-    "verify": "npm run docs:build && npm run check:links && npm run check:prereqs"
+    "check:nav": "node scripts/check-nav.mjs",
+    "verify": "npm run docs:build && npm run check:links && npm run check:prereqs && npm run check:nav"
   },
   "dependencies": {
     "fuse.js": "^7.5.0"
