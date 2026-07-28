@@ -224,7 +224,7 @@ Some visitors set their operating system to increase contrast, for low vision or
 }
 ```
 
-The two values worth knowing are `more`, for someone who has asked for stronger contrast, and `less`, for someone who has asked for less, which is rarer but real for light sensitivity. A `custom` value also exists, for a visitor running the forced colors mode covered next. Support has been solid across major browsers since 2022, the same tier as `prefers-reduced-motion`.
+The two values worth knowing are `more`, for someone who has asked for stronger contrast, and `less`, for someone who has asked for less, which is rarer but real for light sensitivity. A `custom` value also exists, for a visitor running the forced colors mode covered next. Baseline status: widely available since May 2022, verified against MDN, a couple of months ahead of `prefers-reduced-motion`'s own widely-available date and the same safe tier to build on.
 
 ### `forced-colors` (Windows High Contrast Mode)
 

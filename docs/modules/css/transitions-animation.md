@@ -231,7 +231,7 @@ For a hover state on a handful of cards, none of this is likely to matter, becau
 
 ## A complete interactive component
 
-Everything together, on the card pattern you built in Week 5:
+Everything together, on a card built from the same Flexbox layout you used in Week 5, with the polish this chapter adds on top:
 
 <CssDemo>
 
