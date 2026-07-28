@@ -352,14 +352,15 @@ Build the same four-step palette in `oklch()` that you built in HSL, and every s
 A related, smaller tool: `color-mix()` blends two colours together in whatever proportion you give it, without you picking a third value by hand.
 
 ```css
---brand: #2563eb;
-
+.button {
+  background-color: #2563eb;
+}
 .button:hover {
-  background-color: color-mix(in oklch, var(--brand) 85%, black);
+  background-color: color-mix(in oklch, #2563eb 85%, black);
 }
 ```
 
-That reads as "85% brand colour, 15% black," which gives you a darkened hover state derived from a single source colour, rather than a second colour you typed out and now have to keep in sync by hand. It works with any colour notation, though mixing `in oklch` gives the smoothest, most even-looking blend for the same reason `oklch()` beats HSL above.
+That reads as "85% of this blue, 15% black," which gives you a darkened hover state derived directly from the button's own colour, rather than a second colour you typed out and now have to keep in sync by hand. It works with any colour notation, though mixing `in oklch` gives the smoothest, most even-looking blend for the same reason `oklch()` beats HSL above. Once your project has a real design system, you'll do this by mixing a stored value instead of retyping the hex code, using the custom properties the CSS Custom Properties and Variables week teaches later in the term.
 
 ## Accessible colour contrast
 

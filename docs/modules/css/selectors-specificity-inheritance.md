@@ -400,7 +400,7 @@ Run this over your selectors and rules before you submit work in this course:
 - Any selector's specificity can be read off as three numbers, A-B-C, and two selectors' specificity can be compared correctly
 - Classes are used for styling, not IDs or long descendant chains
 - `:where()` is used instead of `:is()` when the goal is a selector that adds nothing to specificity
-- `!important` does not appear anywhere in the stylesheet
+- `!important` does not appear anywhere in the stylesheet, with one narrow, deliberate exception you'll meet in the Accessible Styling week (the `prefers-reduced-motion` guard, which has to override anything else on the page)
 - The cascade order, origin and importance, then specificity, then source order, can explain why any rule on the page won or lost
 - Text properties are set once on a parent and left to inherit, rather than repeated on every child
 - Box properties are set directly on the element that needs them, since they don't inherit
