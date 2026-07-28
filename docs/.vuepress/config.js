@@ -264,9 +264,39 @@ const mtm1544Sidebar = [
           { text: 'Testing for Accessibility', link: '/modules/accessibility/testing/README.md' },
         ],
       },
-      { text: 'Week 11: CSS Custom Properties and Variables', link: '/modules/css/custom-properties.md' },
-      { text: 'Week 12: Visual Design Principles', link: '/modules/css/visual-design-principles.md' },
-      { text: 'Week 13: Transitions and Motion', link: '/modules/css/transitions-animation.md' },
+      {
+        text: 'Week 11: CSS Custom Properties and Variables',
+        collapsible: true,
+        children: [
+          { text: 'CSS Custom Properties and Variables', link: '/modules/css/css-custom-properties/README.md' },
+          { text: 'Giving a Variable a Type with @property', link: '/modules/css/css-custom-properties/property-rule.md' },
+          { text: 'Custom Properties versus Preprocessor Variables', link: '/modules/css/css-custom-properties/preprocessor-comparison.md' },
+          { text: 'CSS Design Tokens', link: '/modules/css/css-design-tokens/README.md' },
+          { text: 'Theming', link: '/modules/css/css-theming/README.md' },
+          { text: 'CSS Nesting', link: '/modules/css/css-nesting/README.md' },
+        ],
+      },
+      {
+        text: 'Week 12: Visual Design Principles',
+        collapsible: true,
+        children: [
+          { text: 'Visual Design Principles', link: '/modules/design/design-principles/README.md' },
+          { text: 'Putting the Four Together', link: '/modules/design/design-principles/putting-it-together.md' },
+          { text: 'Building a Type Scale from a Ratio', link: '/modules/css/css-typography/type-scale.md' },
+        ],
+      },
+      {
+        text: 'Week 13: Transitions and Motion',
+        collapsible: true,
+        children: [
+          { text: 'Transitions', link: '/modules/css/css-transitions/README.md' },
+          { text: 'will-change', link: '/modules/css/css-transitions/will-change.md' },
+          { text: 'A Complete Interactive Component', link: '/modules/css/css-transitions/complete-component.md' },
+          { text: 'Transforms', link: '/modules/css/css-transforms/README.md' },
+          { text: 'Keyframe Animations', link: '/modules/css/css-animations/README.md' },
+          { text: 'Scroll-Driven Animation', link: '/modules/css/css-animations/scroll-driven-animation.md' },
+        ],
+      },
       { text: 'Week 14: Project Development', link: '/modules/css/project-development.md' },
       { text: 'Week 15: Project Work Lab', link: '/modules/css/project-work-lab.md' },
     ],
@@ -307,6 +337,10 @@ export default defineUserConfig({
     sidebar: {
       // Order matters only for readability; VuePress resolves by longest
       // matching prefix, so '/modules/css/' wins over '/modules/' on CSS pages.
+      // '/modules/design/' is its own discipline (Batch 6), not nested under
+      // css/, but its one module so far is only taught in MTM1544 (Week 12),
+      // so it maps to the same sidebar until a course outside CSS pulls it.
+      '/modules/design/': mtm1544Sidebar,
       '/modules/css/': mtm1544Sidebar,
       '/mtm1544/': mtm1544Sidebar,
       '/mtm1511/': mtm1511Sidebar,

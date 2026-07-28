@@ -143,7 +143,7 @@ A related, smaller tool: `color-mix()` blends two colours together in whatever p
 }
 ```
 
-That reads as "85% of this blue, 15% black," which gives you a darkened hover state derived directly from the button's own colour, rather than a second colour you typed out and now have to keep in sync by hand. It works with any colour notation, though mixing `in oklch` gives the smoothest, most even-looking blend for the same reason `oklch()` beats HSL above. Once a project has a real design system, you'll do this by mixing a stored value instead of retyping the hex code, using the custom properties taught in [CSS Custom Properties and Variables](/modules/css/custom-properties.md).
+That reads as "85% of this blue, 15% black," which gives you a darkened hover state derived directly from the button's own colour, rather than a second colour you typed out and now have to keep in sync by hand. It works with any colour notation, though mixing `in oklch` gives the smoothest, most even-looking blend for the same reason `oklch()` beats HSL above. Once a project has a real design system, you'll do this by mixing a stored value instead of retyping the hex code, using the custom properties taught in [CSS Custom Properties and Variables](/modules/css/css-custom-properties/README.md).
 
 Choosing a palette isn't only a matter of taste. [Colour Contrast](/modules/accessibility/colour-contrast/README.md) covers the contrast ratio, the WCAG thresholds, and the tools that check a pair of colours for you. Check every text and background pair you pick against it before you settle on a final palette.
 

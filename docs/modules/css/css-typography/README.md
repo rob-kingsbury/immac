@@ -193,6 +193,8 @@ p {
 
 Note the unit on that letter spacing. Using `em` here is correct, because the spacing should grow with the text it applies to.
 
+Choosing which few sizes to actually use across a page is a design decision as much as a CSS one, covered in [Visual Design Principles](/modules/design/design-principles/README.md). For picking those sizes by a deliberate ratio instead of by eye, see [Going Deeper: Building a Type Scale from a Ratio](/modules/css/css-typography/type-scale.md).
+
 ## Common mistakes to avoid
 
 - **Setting font sizes in `px`.** It ignores a visitor's chosen text size. Use `rem`.

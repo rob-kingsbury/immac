@@ -7,7 +7,10 @@
     "predocs:dev": "node scripts/build-search-index.mjs",
     "docs:dev": "vuepress dev docs",
     "predocs:build": "node scripts/build-search-index.mjs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "check:prereqs": "node scripts/check-prerequisites.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "verify": "npm run docs:build && npm run check:links && npm run check:prereqs"
   },
   "dependencies": {
     "fuse.js": "^7.5.0"

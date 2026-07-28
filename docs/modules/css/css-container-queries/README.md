@@ -158,7 +158,7 @@ You now have two tools that look similar and answer different questions. The rul
 
 Container queries don't replace media queries, and there's a specific, permanent reason for that: **some questions are viewport questions and cannot be asked any other way.** A container has no idea what device it's on, whether the visitor prefers reduced motion, or whether the page is being printed. Those live only at the level of the whole browser and the user's system, so media queries stay essential for:
 
-- **User and system preferences.** `prefers-color-scheme`, covered in [CSS Custom Properties and Variables](/modules/css/custom-properties.md), and `prefers-reduced-motion`, covered in [Reduced Motion](/modules/accessibility/reduced-motion/README.md), only exist as media features.
+- **User and system preferences.** `prefers-color-scheme`, covered in [Theming](/modules/css/css-theming/README.md), and `prefers-reduced-motion`, covered in [Reduced Motion](/modules/accessibility/reduced-motion/README.md), only exist as media features.
 - **Orientation and device characteristics.** Portrait versus landscape, or a `print` stylesheet for a page heading to a printer, are viewport-level questions by definition.
 - **Global layout decisions.** The page's own header, primary navigation, and outermost grid respond to the screen the visitor actually has, not to a container, because at that level the container *is* the viewport.
 

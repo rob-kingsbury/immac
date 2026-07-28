@@ -46,7 +46,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 **Containing block.** The ancestor element an absolutely positioned element measures its `top`/`right`/`bottom`/`left` values against: the nearest ancestor with a `position` other than `static`. See [The Third Layout Tool: position](/modules/css/css-position/README.md).
 
-**Custom property.** A named, reusable CSS value, declared with `--name: value` and read with `var(--name)`. See [CSS Custom Properties and Variables](/modules/css/custom-properties.md).
+**Custom property.** A named, reusable CSS value, declared with `--name: value` and read with `var(--name)`. See [CSS Custom Properties and Variables](/modules/css/css-custom-properties/README.md).
 
 ## D
 
@@ -116,7 +116,7 @@ A quick-reference list of terms used across both MTM1511 and MTM1544, in plain l
 
 ## N
 
-**Nesting (CSS).** Writing one CSS rule inside another, using `&` to refer to the parent selector. See [CSS Custom Properties and Variables](/modules/css/custom-properties.md).
+**Nesting (CSS).** Writing one CSS rule inside another, using `&` to refer to the parent selector. See [CSS Nesting](/modules/css/css-nesting/README.md).
 
 ## O
 
