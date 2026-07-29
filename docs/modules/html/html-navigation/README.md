@@ -8,7 +8,7 @@ prerequisites:
 
 # <abbr title="HyperText Markup Language">HTML</abbr> Navigation
 
-The [three-click guideline](/modules/web-basics/site-maps/README.md) is a planning check: it tells you when a site map is getting too deep. Breadcrumb navigation is the structural pattern that helps once a site actually has some depth to it, showing a visitor the path from the home page down to where they are right now.
+The [three-click guideline](/modules/web-basics/site-maps/README.md#the-three-click-guideline) is a planning check: it tells you when a site map is getting too deep. Breadcrumb navigation is the structural pattern that helps once a site actually has some depth to it, showing a visitor the path from the home page down to where they are right now.
 
 For a bakery site's Menu > Drinks page, a breadcrumb reads: Home / Menu / Drinks. It's built from two elements you already know, `<nav>` and `<ol>`, used in a specific, recognized way:
 

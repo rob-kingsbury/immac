@@ -81,7 +81,7 @@ Open the page in your browser, then open developer tools and inspect your own el
 
 ### Exercise: plan a small site and write its skeleton (about 45 minutes)
 
-Pick a small site you'd realistically build, three to five pages. Draw its site map as an indented list, and check it against the [three-click guideline](/modules/web-basics/site-maps/README.md). Choose one of those pages and sketch a [wireframe](/modules/web-basics/wireframes/README.md) of it, boxes and labels only, no colour or real content.
+Pick a small site you'd realistically build, three to five pages. Draw its site map as an indented list, and check it against the [three-click guideline](/modules/web-basics/site-maps/README.md#the-three-click-guideline). Choose one of those pages and sketch a [wireframe](/modules/web-basics/wireframes/README.md) of it, boxes and labels only, no colour or real content.
 
 Then, without adding any real content, write the HTML skeleton for that page using semantic elements that match your wireframe regions. Name each region out loud before you type it: "this is the header, this is the main, these three repeated blocks are articles." You now have a plan and a structure ready to fill in.
 

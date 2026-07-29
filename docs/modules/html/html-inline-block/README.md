@@ -12,7 +12,7 @@ prerequisites:
 
 Every element you meet falls into one of two display behaviours by default.
 
-Block elements start on a new line and take up the full width available. [Headings](/modules/html/html-headings/README.md), [paragraphs](/modules/html/html-text/README.md), [lists](/modules/html/html-lists/README.md), and [blockquotes](/modules/html/html-text/quotations.md) are all block-level. They stack vertically down the page.
+Block elements start on a new line and take up the full width available. [Headings](/modules/html/html-headings/README.md), [paragraphs](/modules/html/html-text/README.md#paragraphs-and-line-breaks), [lists](/modules/html/html-lists/README.md), and [blockquotes](/modules/html/html-text/quotations.md) are all block-level. They stack vertically down the page.
 
 Inline elements sit inside a line of text and only take up as much width as their content. `<a>` (links), `<strong>`, `<em>`, and `<q>` are inline. They flow along with the words around them.
 

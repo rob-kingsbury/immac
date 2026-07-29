@@ -94,8 +94,11 @@ function sidebarLinks(name) {
 }
 
 const camel = (s) => s.replace(/-([a-z])/g, (_, c) => c.toUpperCase())
+// Strip a #fragment before resolving to a module id. Week-page prose can
+// point at a specific section (see #30), and the file it resolves to is the
+// same module whether or not the link names a heading on it.
 const linkToId = (link) =>
-  link.replace(/^\/modules\//, '').replace(/\/README\.md$/, '').replace(/\.md$/, '')
+  link.split('#')[0].replace(/^\/modules\//, '').replace(/\/README\.md$/, '').replace(/\.md$/, '')
 
 const seenInDiscipline = new Map() // id -> discipline
 
