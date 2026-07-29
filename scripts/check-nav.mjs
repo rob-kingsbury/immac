@@ -224,7 +224,16 @@ const structure = readCourseStructure('docs')
 
 for (const course of SEQ_COURSES) {
   const sidebar = courseSidebar(course, structure)
+  // CourseSidebarItems.vue finds this group by its text, because the theme's
+  // sidebar resolver rebuilds these objects and drops any custom flag. Rename
+  // it and every course page silently falls back to a flat list.
   const weekly = sidebar.find((s) => s.text === 'Weekly Content')
+  if (!weekly?.children?.length) {
+    problems.push(
+      `${course} sidebar has no "Weekly Content" group with children, which CourseSidebarItems.vue requires`
+    )
+    continue
+  }
 
   const listed = []
   for (const week of weekly.children) for (const child of week.children) listed.push(child.link)

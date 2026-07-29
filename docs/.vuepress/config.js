@@ -282,6 +282,13 @@ export default defineUserConfig({
   bundler: viteBundler(),
   clientConfigFile: path.resolve(__dirname, './client.js'),
 
+  // The theme registers an alias for every one of its own components, so
+  // pointing this one at ours replaces the sidebar list while leaving the
+  // <aside> around it, the mobile drawer, and the navbar items untouched.
+  alias: {
+    '@theme/VPSidebarItems.vue': path.resolve(__dirname, './components/CourseSidebarItems.vue'),
+  },
+
   // Prev and Next for every module a course week places, taken from that
   // course's reading order. Set here rather than written into each module's
   // frontmatter so the module files themselves still say nothing about weeks.

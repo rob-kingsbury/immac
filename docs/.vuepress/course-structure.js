@@ -43,9 +43,9 @@ function parseCourse(docsDir, course) {
 
   const weeks = []
   const blocks = src.matchAll(
-    /<summary id="week-(\d+)-[^"]*">Week \d+: ([^<]+)<\/summary>([\s\S]*?)<\/details>/g
+    /<summary id="(week-(\d+)-[^"]*)">Week \d+: ([^<]+)<\/summary>([\s\S]*?)<\/details>/g
   )
-  for (const [, number, title, body] of blocks) {
+  for (const [, anchor, number, title, body] of blocks) {
     // Bullet list items only. Links inside exercise prose mention a module
     // without placing it in the week's reading order.
     const modules = []
@@ -53,7 +53,7 @@ function parseCourse(docsDir, course) {
       const route = toRoute(link)
       if (!modules.some((m) => m.link === route)) modules.push({ text, link: route })
     }
-    weeks.push({ number: Number(number), title: title.trim(), modules })
+    weeks.push({ number: Number(number), title: title.trim(), anchor, modules })
   }
 
   if (weeks.length !== 15) {
@@ -126,6 +126,9 @@ export function courseSidebar(course, structure) {
     .filter((w) => w.modules.length > 0)
     .map((w) => ({
       text: `Week ${w.number}: ${w.title}`,
+      // The week's section on the course content page, which carries the
+      // exercises and the framing the module list alone does not.
+      link: `/${course}/content/#${w.anchor}`,
       collapsible: true,
       children: w.modules
         .filter((m) => structure.owner.get(m.link).course === course)
