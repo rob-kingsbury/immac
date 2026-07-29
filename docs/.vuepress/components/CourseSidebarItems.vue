@@ -310,6 +310,64 @@ const weekTitle = (text) => text.replace(/^Week \d+:\s*/, '')
   font-weight: 600;
 }
 
+// ------------------------------------------- sub-sub level: a page's headings
+// The theme marks an active heading exactly the way it marks an active module,
+// a 2px accent border on the left, so two different levels were claiming the
+// same treatment and the hierarchy read flat. The module keeps the border. A
+// heading gets a pointer sitting on the rail instead:
+//
+//   |  HTML Basics
+//   |    What HTML is
+//   >    What an HTML element actually is
+//   |    The checklist
+//
+.course-sidebar .module-list .vp-sidebar-children {
+  margin-inline-start: 0.4rem;
+  padding-inline-start: 0;
+  border-inline-start: 1px solid var(--vp-c-divider, #e2e2e3);
+}
+
+.course-sidebar .module-list .vp-sidebar-children .vp-sidebar-item {
+  position: relative;
+  margin-inline-start: 0;
+  padding-inline-start: 0.9rem;
+  border-inline-start: 0;
+  font-size: 0.9rem;
+}
+
+.course-sidebar .module-list .vp-sidebar-children .vp-sidebar-item.active {
+  border-inline-start: 0;
+  background: none;
+  font-weight: 600;
+}
+
+// Masks the rail behind the pointer, so the row reads as ">" rather than "|>".
+.course-sidebar .module-list .vp-sidebar-children .vp-sidebar-item.active::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: -0.3rem;
+  top: 50%;
+  width: 0.55rem;
+  height: 0.9rem;
+  transform: translateY(-50%);
+  background-color: var(--vp-sidebar-c-bg, #fff);
+}
+
+// The pointer. Physical border sides rather than logical ones: the rotation
+// that turns a corner into a chevron is direction-specific, so a logical pair
+// would aim it the wrong way under RTL rather than mirroring correctly.
+.course-sidebar .module-list .vp-sidebar-children .vp-sidebar-item.active::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: -0.18rem;
+  top: 50%;
+  width: 0.32rem;
+  height: 0.32rem;
+  border-top: 2px solid var(--vp-c-accent, #3eaf7c);
+  border-right: 2px solid var(--vp-c-accent, #3eaf7c);
+  transform: translateY(-50%) rotate(45deg);
+}
+
 .course-sidebar .see-all {
   display: inline-block;
   margin: 0.9rem 0 0;
