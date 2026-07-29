@@ -6,6 +6,8 @@ title: Glossary
 
 A quick-reference list of terms used across both MTM1511 and MTM1544, in plain language. Each entry links back to the week that actually teaches it, so use this page to jog your memory, not to learn a term for the first time. Anything not fully explained here has a fuller treatment at the linked chapter.
 
+<GlossaryFilter />
+
 ## A
 
 **Absolute path.** A full web address, starting with the protocol, `https://`. Used to link to another website. See [File Paths](/modules/web-basics/file-paths/README.md).
