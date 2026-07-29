@@ -16,16 +16,19 @@
 // module in no week) renders as the flat list it always was. The panels only
 // appear where there is a term to walk.
 
-import { computed, ref, watch, nextTick, useTemplateRef } from 'vue'
-import { useRoute } from 'vuepress/client'
+import { computed, ref, watch, nextTick, onMounted, onBeforeUnmount, useTemplateRef } from 'vue'
+import { useRoute, useRouter } from 'vuepress/client'
 
 import { useSidebarItems } from '@theme/useSidebarItems'
 import VPSidebarItem from '@theme/VPSidebarItem.vue'
 
 const route = useRoute()
+const router = useRouter()
 const sidebarItems = useSidebarItems()
 const backButton = useTemplateRef('backButton')
 const weekList = useTemplateRef('weekList')
+const moduleList = useTemplateRef('moduleList')
+const sidebarRoot = useTemplateRef('sidebarRoot')
 
 // The group config.js builds for a course. Identified by text because the
 // sidebar resolver rebuilds these objects and drops anything it does not know
@@ -39,23 +42,46 @@ const coursePages = computed(() => sidebarItems.value.filter((item) => item !== 
 
 const samePage = (link) => typeof link === 'string' && link.split('#')[0] === route.path
 
-// A week is current when the open page is one of its modules, or one of that
-// module's own headings.
-const activeWeek = computed(() =>
-  weeks.value.findIndex((week) =>
+// The 'Weekly Content' group's own link is the course content page itself
+// (course-structure.js sets it to /<course>/content/), which is where a
+// shared "Week 3" link, in the Brightspace sense, actually points: the week's
+// own section, not any one module.
+const contentPagePath = computed(() => weekly.value?.link ?? null)
+
+// A week is current in either of two ways. The reader may be on one of its
+// modules (or one of that module's own headings) -- the original case. Or
+// they may have landed on the course content page with a hash naming a week
+// directly, which is what happens the moment a week becomes linkable on its
+// own rather than only reachable by drilling in. Both have to open the same
+// panel, or a shared link and a sidebar click would disagree about what
+// "viewing Week 3" means.
+function weekIndexForHash(hash) {
+  if (!hash) return -1
+  return weeks.value.findIndex((week) => week.link?.endsWith(hash))
+}
+
+const activeWeek = computed(() => {
+  if (contentPagePath.value && route.path === contentPagePath.value) {
+    const byHash = weekIndexForHash(route.hash)
+    if (byHash >= 0) return byHash
+  }
+  return weeks.value.findIndex((week) =>
     (week.children ?? []).some(
       (mod) => samePage(mod.link) || (mod.children ?? []).some((h) => samePage(h.link))
     )
   )
-)
+})
 
 const open = ref(null)
 const direction = ref('forward')
 
-// Follow the reader: landing on a module opens its week. Only path changes
-// count, so backing out to the term list is not undone by an in-page jump.
+// Follow the reader: landing on a module, or on a week's own link, opens that
+// week. Watches fullPath rather than path, because choosing a different week
+// from the sidebar now navigates by hash alone (see drillInto) -- the course
+// content page's path never changes, only which week's anchor is current --
+// and a path-only watch would miss that entirely.
 watch(
-  () => route.path,
+  () => route.fullPath,
   () => {
     open.value = activeWeek.value >= 0 ? activeWeek.value : null
   },
@@ -67,9 +93,19 @@ const openedWeek = computed(() => (open.value === null ? null : weeks.value[open
 // Focus follows a deliberate press so a keyboard user is not left on a control
 // that no longer exists. Route-driven changes leave focus alone, since the
 // reader is already reading.
+//
+// Choosing a week navigates, not just flips a sidebar panel. Before this, the
+// sidebar could show Week 3's panel while the main pane sat wherever it
+// already was -- nothing had told it Week 3 existed. Every week already has
+// a real, linkable page (week.link, the course content page's own anchor for
+// that week), so opening the panel and visiting it are the same action, the
+// way choosing a chapter takes you to that chapter rather than just
+// highlighting its name in a menu.
 async function drillInto(index) {
   direction.value = 'forward'
   open.value = index
+  const week = weeks.value[index]
+  if (week?.link) await router.push(week.link)
   await nextTick()
   backButton.value?.focus()
 }
@@ -84,10 +120,115 @@ async function backToWeeks() {
 
 const weekNumber = (text) => text.match(/^Week (\d+)/)?.[1] ?? ''
 const weekTitle = (text) => text.replace(/^Week \d+:\s*/, '')
+
+// The module list's rail was a straight CSS border, and a page's own headings
+// got a second, separate rail nested inside it with a small arrow standing in
+// for "you are here." Two parallel lines is why the arrow read as a mark
+// sitting beside the rail rather than part of it. This draws one line for the
+// whole week: straight past every module, except the one whose headings are
+// showing, where it steps in, runs a node past each heading, and steps back
+// out. Built from the real laid-out rows via getBoundingClientRect, the same
+// way the demo this was prototyped from was, because the run of each diagonal
+// depends on the gap it crosses and a wrapped heading changes every row below
+// it -- no fixed number survives that.
+//
+// This only runs in the browser. onMounted never fires during VuePress's
+// static-site render, so the DOM measurement here never executes on a server
+// that has no DOM to measure.
+function drawWeekRail() {
+  const list = moduleList.value
+  if (!list) return
+
+  // On a cold load of a week deep link, the server renders panel 1 and the
+  // client immediately swaps to panel 2. Vue reuses the server's <ul> through
+  // that hydration patch and keeps its attributes, so this list arrives
+  // without its own class, and every rule below that depends on it, including
+  // the positioning this SVG is placed against, silently does not apply.
+  // Clicking a week never hits it, because no hydration is involved by then.
+  // Asserting the class here costs nothing and does not care why it is absent.
+  list.classList.add('module-list')
+
+  list.querySelector(':scope > svg.week-rail')?.remove()
+
+  const box = list.getBoundingClientRect()
+  if (box.height === 0) return
+
+  const X = 0.5 // main rail x
+  const IN = 21 // how far the branch steps in
+  const R = 3.4 // node radius
+
+  const rel = (y) => y - box.top
+  const items = [...list.children]
+  let d = `M${X} 0`
+  const circles = []
+
+  items.forEach((li, i) => {
+    const modLink = li.querySelector(':scope > a, :scope > p')
+    const childList = li.querySelector(':scope > ul.vp-sidebar-children')
+    const headings = childList && childList.offsetParent !== null ? [...childList.children] : []
+    if (!modLink || headings.length === 0) return
+
+    const inTop = rel(modLink.getBoundingClientRect().bottom)
+    const inBottom = rel(headings[0].firstElementChild.getBoundingClientRect().top)
+    const outTop = rel(headings.at(-1).firstElementChild.getBoundingClientRect().bottom)
+    const nextLink = items[i + 1]?.querySelector(':scope > a, :scope > p')
+    const outBottom = nextLink ? rel(nextLink.getBoundingClientRect().top) : box.height
+
+    d += ` L${X} ${inTop} L${X + IN} ${inBottom} L${X + IN} ${outTop} L${X} ${outBottom}`
+
+    for (const h of headings) {
+      const a = h.firstElementChild
+      const r = a.getBoundingClientRect()
+      const y = rel(r.top) + r.height / 2
+      circles.push(
+        a.classList.contains('active')
+          ? `<circle cx="${X + IN}" cy="${y}" r="${R + 0.6}" fill="var(--vp-c-accent, #3eaf7c)"/>`
+          : `<circle cx="${X + IN}" cy="${y}" r="${R}" fill="var(--vp-sidebar-c-bg, #fff)" stroke="var(--week-node-ring)" stroke-width="1.25"/>`
+      )
+    }
+  })
+
+  d += ` L${X} ${box.height}`
+
+  list.insertAdjacentHTML(
+    'afterbegin',
+    `<svg class="week-rail" width="${box.width}" height="${box.height}" viewBox="0 0 ${box.width} ${box.height}" aria-hidden="true">
+       <path d="${d}" fill="none" stroke="var(--vp-c-divider, #e2e2e3)" stroke-width="1" stroke-linejoin="round"/>
+       ${circles.join('')}
+     </svg>`
+  )
+}
+
+onMounted(() => {
+  let frame = null
+  const redraw = () => {
+    cancelAnimationFrame(frame)
+    frame = requestAnimationFrame(drawWeekRail)
+  }
+  redraw()
+
+  // fullPath, so drillInto's hash-only navigation between weeks and any
+  // in-page module change both trigger a redraw, not just a path change.
+  const stopRoute = watch(() => route.fullPath, () => nextTick(redraw))
+  const stopOpen = watch(open, () => nextTick(redraw))
+
+  // Catches what the route watchers can't: a reader manually toggling a
+  // heading list open or closed via its own collapse arrow, with no
+  // navigation involved at all.
+  const resize = new ResizeObserver(redraw)
+  if (sidebarRoot.value) resize.observe(sidebarRoot.value)
+
+  onBeforeUnmount(() => {
+    cancelAnimationFrame(frame)
+    stopRoute()
+    stopOpen()
+    resize.disconnect()
+  })
+})
 </script>
 
 <template>
-  <div v-if="weekly" class="course-sidebar" :class="`is-${direction}`">
+  <div v-if="weekly" ref="sidebarRoot" class="course-sidebar" :class="`is-${direction}`">
     <!-- Panel 1: the term -->
     <div v-if="open === null" key="weeks" class="panel">
       <p class="panel-label">Course</p>
@@ -123,7 +264,14 @@ const weekTitle = (text) => text.replace(/^Week \d+:\s*/, '')
       <p class="panel-label">Week {{ weekNumber(openedWeek.text) }}</p>
       <h2 class="week-heading">{{ weekTitle(openedWeek.text) }}</h2>
 
-      <ul class="plain module-list">
+      <!-- :key forces a fresh element per week rather than letting Vue reuse
+           one. On a cold load of a deep link the server renders panel 1 and
+           the client immediately wants panel 2, and in that hydration patch
+           Vue reused the server's <ul> and kept its attributes, so this list
+           silently rendered without its own module-list class -- and the
+           rail's absolute positioning depends on that class. Clicking a week
+           never hit it, because there is no hydration involved by then. -->
+      <ul ref="moduleList" class="plain module-list">
         <!-- depth 1, not 0: the theme styles depth 0 as a section heading, so
              leaving it default rendered every module bold and flattened the
              week into another list of headings. -->
@@ -291,17 +439,39 @@ const weekTitle = (text) => text.replace(/^Week \d+:\s*/, '')
   line-height: 1.3;
 }
 
-// The rail is what makes the week's modules read as one group rather than a
-// second flat list.
+// The rail used to be a static CSS border the whole way down, with a second,
+// separate border nested inside it for whichever module's headings were
+// showing, plus a small arrow standing in for "you are here." Two parallel
+// lines is why the arrow read as a mark beside the rail instead of part of
+// it. drawWeekRail() replaces both with one SVG line for the whole list: it
+// runs straight past every module and steps in and back out only around the
+// one whose headings are open, a hollow node against each heading, filled for
+// the active one -- a branching timeline rather than a second rail.
+//
+//   |  How the Web Works
+//   |  HTML Basics
+//    \
+//     o  What HTML is
+//     ●  What an HTML element actually is
+//     o  The checklist
+//    /
+//   |  Setting Up Your Development Environment
+//
 .course-sidebar .module-list {
+  position: relative;
   margin-inline-start: 1.5rem;
-  border-inline-start: 1px solid var(--vp-c-divider, #e2e2e3);
+}
+
+.course-sidebar .week-rail {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
 }
 
 .course-sidebar .module-list .vp-sidebar-item {
   padding-inline-start: 0.85rem;
-  border-inline-start: 2px solid transparent;
-  margin-inline-start: -1px;
 }
 
 .course-sidebar .module-list > li > .vp-sidebar-item.active {
@@ -310,76 +480,35 @@ const weekTitle = (text) => text.replace(/^Week \d+:\s*/, '')
   font-weight: 600;
 }
 
-// ------------------------------------------- sub-sub level: a page's headings
-// The theme marks an active heading exactly the way it marks an active module,
-// a 2px accent border on the left, so two different levels were claiming the
-// same treatment and the hierarchy read flat. The module keeps the border. A
-// heading gets a pointer sitting on the rail instead:
-//
-//   |  HTML Basics
-//   |    What HTML is
-//   >    What an HTML element actually is
-//   |    The checklist
-//
+// A page's own headings. The theme's own default gives every active sidebar
+// item a coloured left border, headings included -- fine at the module level,
+// where nothing else is competing for that spot, but wrong here, where the
+// node on the rail already marks the active heading. Only the border is
+// unset; colour and weight stay the theme's own active styling.
+// The gap the diagonals actually run in. Without it the module row's bottom
+// and the first heading's top are the same y, so the branch steps sideways
+// with no vertical run at all and reads as a flat jog rather than an angle.
+// drawWeekRail measures this at runtime rather than assuming a number, so the
+// line fills whatever gap is set here.
 .course-sidebar .module-list .vp-sidebar-children {
-  margin-inline-start: 0.4rem;
-  padding-inline-start: 0;
-  border-inline-start: 1px solid var(--vp-c-divider, #e2e2e3);
+  margin-block: 7px 9px;
 }
 
 .course-sidebar .module-list .vp-sidebar-children .vp-sidebar-item {
-  position: relative;
-  margin-inline-start: 0;
-  padding-inline-start: 0.9rem;
-  border-inline-start: 0;
+  padding-inline-start: 2.5rem;
   font-size: 0.9rem;
 }
 
 .course-sidebar .module-list .vp-sidebar-children .vp-sidebar-item.active {
-  border-inline-start: 0;
-  background: none;
-  font-weight: 600;
-}
-
-// Takes the rail out for exactly the height of the arrow, so the line stops
-// where the bend starts and picks up again below it. Without this the rail
-// runs straight through and the arrow reads as a mark sitting beside a line
-// rather than the line itself deviating.
-.course-sidebar .module-list .vp-sidebar-children .vp-sidebar-item.active::before {
-  content: '';
-  position: absolute;
-  inset-inline-start: -2px;
-  top: 50%;
-  width: 3px;
-  height: 12px;
-  transform: translateY(-50%);
-  background-color: var(--vp-sidebar-c-bg, #fff);
-}
-
-// The bend itself, drawn as an explicit path rather than a rotated border
-// corner. The rotated-square trick is the usual way to make a chevron, but its
-// arms land wherever the rotation puts them, which is what left the arrow
-// floating clear of the rail. This path starts at x=1, goes out to x=5, and
-// returns to x=1, so with a 2px stroke both ends reach x=0 exactly, and the
-// element is offset to put x=0 on the rail's own line.
-//
-// A mask rather than a background image, so the arrow takes its colour from
-// the accent variable and stays correct in both light and dark.
-.course-sidebar .module-list .vp-sidebar-children .vp-sidebar-item.active::after {
-  content: '';
-  position: absolute;
-  inset-inline-start: -1px;
-  top: 50%;
-  width: 6px;
-  height: 12px;
-  transform: translateY(-50%);
-  background-color: var(--vp-c-accent, #3eaf7c);
-  -webkit-mask: var(--week-arrow) no-repeat center / contain;
-  mask: var(--week-arrow) no-repeat center / contain;
+  border-inline-start-color: transparent;
 }
 
 .course-sidebar {
-  --week-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 12'%3E%3Cpath d='M1 1L5 6L1 11' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  // One step darker than --vp-c-divider: a hairline rail reads fine at 1px,
+  // but a hollow node that faint disappears at real sidebar size. Mixed from
+  // the theme's own variables, not a fixed hex, so it self-adjusts in dark
+  // mode instead of staying a light-mode grey against a dark background.
+  --week-node-ring: color-mix(in srgb, var(--vp-c-divider, #e2e2e3) 60%, var(--vp-c-text, #213547) 40%);
 }
 
 .course-sidebar .see-all {
