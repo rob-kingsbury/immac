@@ -161,9 +161,24 @@ function drawWeekRail() {
   const items = [...list.children]
   let d = `M${X} 0`
   const circles = []
+  const current = []
 
   items.forEach((li, i) => {
     const modLink = li.querySelector(':scope > a, :scope > p')
+
+    // The current module is marked by turning its own stretch of rail green,
+    // rather than by a border on the row. A border would sit beside the rail
+    // as a second, thicker bar, and the rail is an absolutely positioned SVG
+    // so it paints over static content and would hide a 1px one anyway.
+    // Drawn here, at the rail's own x and width, that length of line simply
+    // is green.
+    if (modLink?.classList.contains('active')) {
+      const r = modLink.getBoundingClientRect()
+      current.push(
+        `<path d="M${X} ${rel(r.top)} L${X} ${rel(r.bottom)}" fill="none" stroke="var(--vp-c-accent, #3eaf7c)" stroke-width="1"/>`
+      )
+    }
+
     const childList = li.querySelector(':scope > ul.vp-sidebar-children')
     const headings = childList && childList.offsetParent !== null ? [...childList.children] : []
     if (!modLink || headings.length === 0) return
@@ -194,6 +209,7 @@ function drawWeekRail() {
     'afterbegin',
     `<svg class="week-rail" width="${box.width}" height="${box.height}" viewBox="0 0 ${box.width} ${box.height}" aria-hidden="true">
        <path d="${d}" fill="none" stroke="var(--vp-c-divider, #e2e2e3)" stroke-width="1" stroke-linejoin="round"/>
+       ${current.join('')}
        ${circles.join('')}
      </svg>`
   )
@@ -474,9 +490,13 @@ onMounted(() => {
   padding-inline-start: 0.85rem;
 }
 
+// The current module. No background, and no border: the rail carries the mark
+// now, drawn green over exactly this row's height in drawWeekRail, so that
+// stretch of line reads as green rather than a separate bar sitting beside it.
+// The theme's accent text colour still applies.
 .course-sidebar .module-list > li > .vp-sidebar-item.active {
-  border-inline-start-color: var(--vp-c-accent, #3eaf7c);
-  background-color: var(--vp-c-bg-alt, #f6f6f7);
+  border-inline-start-color: transparent;
+  background: none;
   font-weight: 600;
 }
 
