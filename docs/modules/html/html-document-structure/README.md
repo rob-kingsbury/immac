@@ -70,20 +70,12 @@ Notice the Result box above only shows what's inside `<body>`. That's not a simp
 
 Save this as `index.html` and open it directly in a browser. No server, no build tools, no installation beyond a text editor. That's the whole point of starting here: HTML runs anywhere, immediately.
 
+A page built from this skeleton is a single block of text and lists. [HTML Anchors](/modules/html/html-anchors/README.md) connects it to the rest of the web.
+
+The skeleton above is also enough to publish a page as it stands. [Document Head Best Practices](/modules/html/html-document-structure/head-best-practices.md) revisits the `<head>` once you have more to put in it: a description search engines can show, a canonical URL, a favicon.
+
 ## The checklist
 
 Run this over your page before you move on:
 
 - The skeleton is in place: `<!DOCTYPE html>`, `<html lang="en">`, a `<head>` with `charset` and `viewport` meta tags plus a `<title>`, and a `<body>` holding everything visible
-
-## Try it yourself (about 45 minutes)
-
-This exercise pulls together the whole group of elements that live inside the skeleton you just built: [HTML Headings](/modules/html/html-headings/README.md), [HTML Text](/modules/html/html-text/README.md), [Quotations](/modules/html/html-text/quotations.md), [HTML Lists](/modules/html/html-lists/README.md), [Inline and Block Elements](/modules/html/html-inline-block/README.md), and [HTML Comments](/modules/html/html-comments/README.md). Read those first, then work through this once.
-
-Create a new folder in your cloned repository, add an `index.html` file, and build out the document skeleton, `<!DOCTYPE>` through `<body>`, from memory rather than copying it. Include the charset and viewport meta tags, both belong in every page you'll ever build from here on. Inside `<body>`, add one `<h1>`, at least two `<h2>` sections, a paragraph or two under each, one ordered and one unordered list, and a `<blockquote>`. Mark one or two words with `<strong>` or `<em>` where the meaning calls for it. Somewhere in your text, work in an ampersand or a copyright line and write it with the matching entity, `&amp;` or `&copy;`, instead of typing the character directly. Add a comment above each major section.
-
-Open the page in your browser, then open developer tools and inspect your own elements. Watch how the block elements each claim a full row while the inline ones share a line. Then commit and push your change using the workflow from [Staging, Committing, and Pushing](/modules/git/git-basics/staging-committing-pushing.md), stage, commit, sync, and confirm it shows up on GitHub.
-
-Your page is a single block of text and lists right now. [HTML Anchors](/modules/html/html-anchors/README.md) connects it to the rest of the web.
-
-The skeleton above is enough to publish a page. [Document Head Best Practices](/modules/html/html-document-structure/head-best-practices.md) revisits the `<head>` once you have more to put in it: a description search engines can show, a canonical URL, a favicon.

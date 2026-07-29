@@ -99,11 +99,3 @@ Run this over your page before you move on:
 ## Keep learning
 
 - [W3Schools: HTML Layout Elements and Techniques](https://www.w3schools.com/html/html_layout.asp). A refresher on the semantic layout elements this chapter's plans translate into.
-
-## Try it yourself (about 45 minutes)
-
-Pick a small site you'd realistically build, three to five pages. Draw its site map as an indented list, and check it against the [three-click guideline](/modules/web-basics/site-maps/README.md). Choose one of those pages and sketch a [wireframe](/modules/web-basics/wireframes/README.md) of it, boxes and labels only, no colour or real content.
-
-Then, without adding any real content, write the HTML skeleton for that page using semantic elements that match your wireframe regions. Name each region out loud before you type it: "this is the header, this is the main, these three repeated blocks are articles." You now have a plan and a structure ready to fill in.
-
-If your site map has any page nested under a section rather than sitting directly off Home, add a [breadcrumb](/modules/html/html-navigation/README.md) to that page's skeleton too: a `<nav aria-label="Breadcrumb">` holding an `<ol>` that matches the branch you drew, with `aria-current="page"` marking the page you're on.

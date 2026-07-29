@@ -39,13 +39,29 @@ const files = []
 
 /** moduleId -> array of prerequisite moduleIds */
 const graph = {}
+const problems = []
 
 for (const file of files) {
-  const src = fs.readFileSync(file, 'utf8')
-  const frontmatter = src.match(/^---\n([\s\S]*?)\n---/)
-  if (!frontmatter) continue
+  const rel = path.relative(ROOT, file).split(path.sep).join('/')
 
-  let id = path.relative(ROOT, file).split(path.sep).join('/')
+  // A discipline index (docs/modules/<discipline>/README.md) is navigation, not
+  // a module: it declares no prerequisites and nothing can depend on it.
+  // Counting it would quietly inflate the module total.
+  if (rel.split('/').length === 2 && rel.endsWith('/README.md')) continue
+
+  // Normalise line endings before matching. git is configured with
+  // core.autocrlf=true on Windows, so a fresh checkout hands this script CRLF
+  // files, `^---\n` never matches, and the whole graph comes back all but
+  // empty while still exiting zero. That is worse than a failure: it reports
+  // "0 unresolved, 0 cycles" over almost no modules and reads as a pass.
+  const src = fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n')
+  const frontmatter = src.match(/^---\n([\s\S]*?)\n---/)
+  if (!frontmatter) {
+    problems.push(`${rel} has no frontmatter`)
+    continue
+  }
+
+  let id = rel
   id = id.replace(/\/README\.md$/, '').replace(/\.md$/, '')
 
   const block = frontmatter[1].match(/prerequisites:\n((?:[ \t]+-[ \t].*\n?)+)/)
@@ -58,7 +74,6 @@ for (const file of files) {
 }
 
 const ids = Object.keys(graph)
-const problems = []
 
 // 1. Unresolved references
 const unresolved = []

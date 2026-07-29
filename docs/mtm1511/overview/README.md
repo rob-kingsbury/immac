@@ -24,6 +24,6 @@ Understand <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> guidel
 
 ## How the course is organized
 
-The semester runs in a 7/1/7 pattern (seven teaching weeks, a reading week, then seven more teaching weeks), with weeks 14 and 15 set aside for guided project development and open lab time on your multi-page website. See the Weekly Content list in the sidebar for the week-by-week breakdown.
+The semester runs in a 7/1/7 pattern (seven teaching weeks, a reading week, then seven more teaching weeks), with weeks 14 and 15 set aside for guided project development and open lab time on your multi-page website. See [Weekly Content](/mtm1511/content/README.md) for the week-by-week breakdown.
 
 Week 1 is setup. You'll install and configure every tool used in both of your web courses, create a GitHub account, and publish a live page before you leave. Coding starts in week 2. Nothing in either course works until that setup is done, so if any part of it fails, raise it immediately rather than at the end of the week.
