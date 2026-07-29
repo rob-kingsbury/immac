@@ -339,3 +339,74 @@ details.demo[open] > summary {
 .css-demo-nosource details.demo {
   border-radius: 8px;
 }
+
+// Weeks on the two course content pages are <details> rather than headings, so
+// a student can collapse the weeks they are not working on and still scan the
+// whole term. The summary has to carry the visual weight the <h2> used to,
+// otherwise the page reads as one undifferentiated list.
+.week {
+  margin: 0 0 1.5rem;
+  border-bottom: 1px solid var(--vp-c-divider, #e2e2e3);
+}
+
+.week > summary {
+  cursor: pointer;
+  padding: 0.4rem 0 0.4rem 1.6rem;
+  position: relative;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--vp-c-text, #213547);
+  // The default triangle sits too small next to text this size, and its
+  // position differs per browser. Suppressed in favour of a drawn chevron.
+  list-style: none;
+}
+
+.week > summary::-webkit-details-marker {
+  display: none;
+}
+
+// Chevron, rotated by the open state. Built from borders so it needs no asset
+// and inherits the text colour in both themes.
+.week > summary::before {
+  content: '';
+  position: absolute;
+  left: 0.35rem;
+  top: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-70%) rotate(-45deg);
+  transition: transform 150ms ease;
+}
+
+.week[open] > summary::before {
+  transform: translateY(-30%) rotate(45deg);
+}
+
+.week > summary:hover {
+  color: var(--vp-c-accent, #3eaf7c);
+}
+
+// The theme sets no focus ring on summary, and this is the primary control on
+// the page for a keyboard user moving between weeks.
+.week > summary:focus-visible {
+  outline: 2px solid var(--vp-c-accent, #3eaf7c);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.week > summary + * {
+  margin-top: 0.75rem;
+}
+
+.week > :last-child {
+  margin-bottom: 1.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .week > summary::before {
+    transition: none;
+  }
+}

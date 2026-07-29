@@ -155,10 +155,23 @@ for (const course of COURSES) {
     continue
   }
   const src = read(f)
-  const weeks = [...src.matchAll(/^## Week (\d+):/gm)].map((m) => Number(m[1]))
+  // Weeks are <details> blocks, not headings, so a week can be collapsed. The
+  // id on the summary is written by hand rather than generated from the
+  // heading text, so it is checked against the visible number: an id saying
+  // week-4 above text saying Week 5 would silently send every assessment link
+  // pointing at that anchor to the wrong week.
+  const summaries = [...src.matchAll(/^<summary id="week-(\d+)-[^"]*">Week (\d+): /gm)]
+  const weeks = summaries.map((m) => Number(m[2]))
   const expected = Array.from({ length: 15 }, (_, i) => i + 1)
   if (weeks.join(',') !== expected.join(',')) {
     problems.push(`${f} has weeks [${weeks.join(', ')}], expected 1 through 15 in order`)
+  }
+  for (const m of summaries) {
+    if (m[1] !== m[2]) problems.push(`${f} summary id says week ${m[1]} but the text says Week ${m[2]}`)
+  }
+  const wrappers = (src.match(/^<details class="week" open>$/gm) ?? []).length
+  if (wrappers !== weeks.length) {
+    problems.push(`${f} has ${weeks.length} week summaries but ${wrappers} details wrappers`)
   }
   for (const m of src.matchAll(/\]\((\/modules\/[^)]+)\)/g)) {
     const id = linkToId(m[1])
