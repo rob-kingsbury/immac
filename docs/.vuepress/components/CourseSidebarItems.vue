@@ -341,25 +341,33 @@ const weekTitle = (text) => text.replace(/^Week \d+:\s*/, '')
   font-weight: 600;
 }
 
-// Masks the rail behind the pointer, so the row reads as ">" rather than "|>".
+// Takes the rail out for exactly the height of the arrow, so the line stops
+// where the bend starts and picks up again below it. Without this the rail
+// runs straight through and the arrow reads as a mark sitting beside a line
+// rather than the line itself deviating.
 .course-sidebar .module-list .vp-sidebar-children .vp-sidebar-item.active::before {
   content: '';
   position: absolute;
-  inset-inline-start: -0.3rem;
+  inset-inline-start: -2px;
   top: 50%;
-  width: 0.55rem;
-  height: 0.9rem;
+  width: 3px;
+  height: 0.62rem;
   transform: translateY(-50%);
   background-color: var(--vp-sidebar-c-bg, #fff);
 }
 
-// The pointer. Physical border sides rather than logical ones: the rotation
-// that turns a corner into a chevron is direction-specific, so a logical pair
-// would aim it the wrong way under RTL rather than mirroring correctly.
+// The bend. A square with two adjacent borders, rotated 45 degrees, puts the
+// corner on the right and both free ends at the same x on the left. Sized and
+// offset so those two ends land on the rail's own line, which is what makes
+// the arrow read as part of it: the line goes in, kinks out, and comes back.
+//
+// Physical border sides rather than logical ones. The rotation that turns a
+// corner into an arrowhead is direction-specific, so a logical pair would aim
+// it the wrong way under RTL instead of mirroring.
 .course-sidebar .module-list .vp-sidebar-children .vp-sidebar-item.active::after {
   content: '';
   position: absolute;
-  inset-inline-start: -0.18rem;
+  inset-inline-start: 0;
   top: 50%;
   width: 0.32rem;
   height: 0.32rem;
