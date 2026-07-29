@@ -288,6 +288,15 @@ export default defineUserConfig({
   alias: {
     '@theme/VPSidebarItems.vue': path.resolve(__dirname, './components/CourseSidebarItems.vue'),
     '@theme/VPNavbarItems.vue': path.resolve(__dirname, './components/CourseNavbarItems.vue'),
+    // Fixes issue #32 (the branching rail in CourseSidebarItems.vue's
+    // drawWeekRail() flashing as a plain line with no circles for however
+    // long it takes the reader to scroll). See ReactiveSidebarItem.vue for
+    // the full mechanism: the theme's own VPSidebarItem.vue only resyncs its
+    // `isOpen` state through router.afterEach, which a freshly-created
+    // instance registers too late to catch the very navigation that made it
+    // active. This replacement makes `isOpen` a live computed instead, so
+    // there is no resync race to lose.
+    '@theme/VPSidebarItem.vue': path.resolve(__dirname, './components/ReactiveSidebarItem.vue'),
   },
 
   // Prev and Next for every module a course week places, taken from that
