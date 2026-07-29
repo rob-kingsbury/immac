@@ -228,33 +228,56 @@ onMounted(() => {
   const stopRoute = watch(() => route.fullPath, () => nextTick(redraw))
   const stopOpen = watch(open, () => nextTick(redraw))
 
-  // Catches what the route watchers can't: a reader manually toggling a
-  // heading list open or closed via its own collapse arrow, with no
-  // navigation involved at all.
-  const resize = new ResizeObserver(redraw)
-  if (sidebarRoot.value) resize.observe(sidebarRoot.value)
+  // The one that actually matters on navigation. A module's heading children
+  // are not in the sidebar data at route-commit time: the theme scrapes them
+  // out of the MAIN pane's DOM (useHeaders -> getHeadersFromDom over
+  // '[vp-content] h1..h6'), clearing them when the old page unmounts and
+  // repopulating them when the new page's content mounts. That mount is a
+  // page transition later (Layout.vue wraps the content in
+  // VPFadeSlideYTransition with mode="out-in"), so both watchers above fire
+  // while the active module still has zero headings, and the rail gets drawn
+  // straight with no nodes. Nothing else told it to look again, so it stayed
+  // that way until the next route change happened along -- which is why it
+  // looked scroll-triggered: the theme's active-header-links plugin does a
+  // debounced router.replace 300ms after scrolling settles, and THAT was
+  // what finally repaired it. Watching the resolved items redraws when the
+  // headings actually arrive instead.
+  const stopItems = watch(sidebarItems, () => nextTick(redraw))
 
-  // A module's own heading list expands via a real CSS height transition
-  // (VPDropdownTransition, 0.3s), not an instant toggle -- and that
-  // transition is started by a separate reactive chain (VPSidebarItem's own
-  // router.afterEach + nextTick) that this component has no direct handle
-  // on. The route/open watchers above both redraw as soon as navigation
-  // resolves, which can land before that transition has even started, so
-  // the rail gets measured against a still-collapsed heading list and
-  // freezes there -- nothing afterward tells it to look again unless the
-  // reader happens to trigger a resize. Listening for the transition's own
-  // completion removes the guesswork: whatever raced ahead of what, this
-  // fires once the heading list has actually finished animating to its
-  // real height, and redraws against that.
+  // Catches what the route watchers can't: a font swap or any other reflow
+  // that moves the rows the rail is measured against.
+  const resize = new ResizeObserver(redraw)
   const onTransitionEnd = (event) => {
     if (event.propertyName === 'height') redraw()
   }
-  sidebarRoot.value?.addEventListener('transitionend', onTransitionEnd)
+
+  // This component mounts once per session, not once per page -- it lives in
+  // VPSidebar, outside the page transition. sidebarRoot only exists on a
+  // course page, so attaching to it once at mount silently attached to
+  // nothing whenever the session started anywhere else (the site root, the
+  // glossary, a discipline index), permanently, for that whole session.
+  // Following the element instead means these attach whenever it appears.
+  const stopRoot = watch(
+    sidebarRoot,
+    (el, prev) => {
+      if (prev) {
+        resize.unobserve(prev)
+        prev.removeEventListener('transitionend', onTransitionEnd)
+      }
+      if (el) {
+        resize.observe(el)
+        el.addEventListener('transitionend', onTransitionEnd)
+      }
+    },
+    { immediate: true }
+  )
 
   onBeforeUnmount(() => {
     cancelAnimationFrame(frame)
     stopRoute()
     stopOpen()
+    stopItems()
+    stopRoot()
     resize.disconnect()
     sidebarRoot.value?.removeEventListener('transitionend', onTransitionEnd)
   })
