@@ -204,6 +204,39 @@ That reordering problem, changing what a sighted user sees without changing what
 
 The default is `stretch`, which is why the short item in the first row grew to match the tall one. That default is often exactly what you want for cards of unequal content, and occasionally a surprise when you wanted items to keep their natural height.
 
+One more value earns its place once your items hold text at different sizes. `flex-start` lines up the tops of the boxes; `baseline` lines up the text sitting inside them, which is usually what the eye expects:
+
+<CssDemo>
+
+```html
+<div class="row start"><span class="i big">24px</span><span class="i">14px</span></div>
+<div class="row base"><span class="i big">24px</span><span class="i">14px</span></div>
+```
+
+```css
+.row {
+  display: flex;
+  border: 2px dashed #94a3b8;
+  margin-bottom: 10px;
+  padding: 6px;
+  gap: 10px;
+}
+.start { align-items: flex-start; }
+.base { align-items: baseline; }
+.i {
+  background-color: #fef3c7;
+  border: 1px solid #fbbf24;
+  padding: 8px 18px;
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+}
+.big { font-size: 24px; }
+```
+
+</CssDemo>
+
+Reach for `baseline` whenever mixed type sits in a row: a price beside its currency symbol, a heading beside a small "new" label, a form label beside its input.
+
 Between `justify-content: center` and `align-items: center` you get the answer to a question that was genuinely hard for years:
 
 <CssDemo>
