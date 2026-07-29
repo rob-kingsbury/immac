@@ -301,6 +301,10 @@ onBeforeUnmount(() => {
   max-width: min(22rem, 90vw);
   max-height: 26rem;
   overflow-y: auto;
+  /* Backstop. Nothing inside should be wider than the dropdown now, but a
+     result is arbitrary content and this keeps a long unbroken string from
+     pushing the panel sideways. */
+  overflow-x: hidden;
   background: var(--vp-c-bg, #fff);
   border: 1px solid var(--vp-c-border, #d4d4d4);
   border-radius: 8px;
@@ -354,11 +358,29 @@ onBeforeUnmount(() => {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.15rem;
+  /* A flex child defaults to min-width: auto, which refuses to shrink below
+     its content. The excerpt is one unbroken line, so the row grew wider than
+     the dropdown and the text ran out the right edge. The line-clamp below
+     could not help: it clips lines, and an unconstrained box only ever has
+     one. Both of these have to be here for the clamp to do anything at all. */
+  min-width: 0;
 }
+
+.sr-title,
+.sr-excerpt {
+  max-width: 100%;
+  min-width: 0;
+}
+
 .sr-title {
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
 .sr-excerpt {
+  width: 100%;
   font-size: 0.74rem;
   color: var(--vp-c-text-mute, #5f5f5f);
   display: -webkit-box;
