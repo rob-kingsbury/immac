@@ -75,3 +75,4 @@ Run this over your page before you move on:
 ## Keep learning
 
 - [MDN: File paths](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/File_paths). A fuller reference on absolute and relative paths, including query strings and fragments.
+- [Video: Understanding Paths in Terminals and Websites, by Steve Griffith](https://www.youtube.com/watch?v=zFZvEaYA3W8). Covers the same relative and absolute path rules in both a terminal and a browser.

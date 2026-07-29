@@ -53,3 +53,4 @@ Run this over any keyframe animation before you move on:
 ## Keep learning
 
 - [MDN: Using CSS transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions). Contrasts transitions with the fuller animation API keyframes belong to.
+- [Video: Intro to CSS Animations, by Steve Griffith](https://www.youtube.com/watch?v=mSUiUst60dY). A practical walkthrough of writing a keyframe sequence.

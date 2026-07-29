@@ -67,3 +67,4 @@ Run this over your transforms before you move on:
 ## Keep learning
 
 - [MDN: Using CSS transforms](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms/Using_CSS_transforms). Every transform function, including the 3D ones.
+- [Video: CSS 2D Transforms, by Steve Griffith](https://www.youtube.com/watch?v=IeWtxwjBXKQ). A practical run through translate, scale, and rotate.

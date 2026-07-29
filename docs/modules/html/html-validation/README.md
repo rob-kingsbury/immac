@@ -73,4 +73,4 @@ Run this over your page before you move on:
 
 - [W3C Markup Validation Service](https://validator.w3.org/). The tool itself, use it on every page before you consider it finished.
 - [W3Schools: HTML5 Syntax](https://www.w3schools.com/html/html5_syntax.asp). A reference for the syntax rules the validator checks against.
-- [Video: How to Validate HTML Code Online, W3C Validator Tutorial](https://www.youtube.com/watch?v=LXfwn-9dvcE). A step-by-step walkthrough of using the validator and reading its output.
+- [Video: Validating HTML5, by Steve Griffith](https://www.youtube.com/watch?v=dqZMG75OsTc). A step-by-step walkthrough of using the validator and reading its output.

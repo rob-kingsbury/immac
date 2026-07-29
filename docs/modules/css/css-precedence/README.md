@@ -134,4 +134,4 @@ Run this over your selectors before you move on:
 - [MDN: Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity). The full rules, with the A-B-C model explained in more detail.
 - [MDN: :is() and :where()](https://developer.mozilla.org/en-US/docs/Web/CSS/:is). The full reference, including how each calculates specificity.
 - [Specificity Calculator](https://specificity.keegan.st/). Paste in a selector and see its score, useful for checking your own arithmetic.
-- [Video: CSS Specificity Explained, by Kevin Powell](https://www.youtube.com/watch?v=CHyPGSpIhSs). A clear walkthrough with worked examples.
+- [Video: CSS Specificity, by Steve Griffith](https://www.youtube.com/watch?v=Kz_S4Nk4qyI). A clear walkthrough with worked examples.

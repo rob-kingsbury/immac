@@ -36,3 +36,4 @@ Run this over your own account before you move on:
 ## Keep learning
 
 - [GitHub Docs: Hello World](https://docs.github.com/en/get-started/quickstart/hello-world). GitHub's walkthrough of creating a repository and making your first commit, worth revisiting if any step here felt rushed.
+- [Video: Learning GitHub - Introduction, by Steve Griffith](https://www.youtube.com/watch?v=M9uTajSRytE). A fellow Algonquin professor's introduction to what GitHub is and why it matters.

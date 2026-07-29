@@ -113,3 +113,4 @@ Run through this before you move on:
 
 - [MDN: CSS selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors). The complete list, including what comes after these three.
 - [W3Schools: CSS Selectors](https://www.w3schools.com/css/css_selectors.asp). A reference with more worked examples of each kind.
+- [Video: When to Use CSS Classes vs Ids, by Steve Griffith](https://www.youtube.com/watch?v=69m_rC4UxYY). A practical look at choosing between the two.

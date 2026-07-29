@@ -48,3 +48,4 @@ Run this over your layout before you move on:
 ## Keep learning
 
 - [MDN: aspect-ratio](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio). The property reference, with the shorthand forms.
+- [Video: The NEW CSS aspect ratio property, by Steve Griffith](https://www.youtube.com/watch?v=ypxZAfArxyU). A practical look at the property and what it replaced.

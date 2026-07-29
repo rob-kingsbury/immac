@@ -65,3 +65,4 @@ Run this over your workflow before you consider it finished:
 ## Keep learning
 
 - [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests). The official reference for the review workflow this module introduces.
+- [Video: Learning GitHub - Branches and Merges, by Steve Griffith](https://www.youtube.com/watch?v=s0qk9qutycg). A practical walkthrough of branching and merging on GitHub.

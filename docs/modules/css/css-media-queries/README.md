@@ -134,4 +134,4 @@ Run this over your layout before you move on:
 
 - [MDN: Responsive design](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design). The full walkthrough, including the history of why the viewport tag exists.
 - [MDN: Using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries). Complete syntax reference, including features beyond width.
-- [Video: Responsive Design Tutorial, by Kevin Powell](https://www.youtube.com/watch?v=srvUrASNj0s). A practical mobile-first build from scratch.
+- [Video: Introduction to Media Queries, by Steve Griffith](https://www.youtube.com/watch?v=B6l6Wzmj4pA). A practical walkthrough of writing breakpoints from scratch.

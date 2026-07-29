@@ -183,4 +183,4 @@ Run this over every transition you wrote before you move on:
 
 - [MDN: Using CSS transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions). The full property reference.
 - [cubic-bezier.com](https://cubic-bezier.com/). Draw a custom timing curve and preview it.
-- [Video: Learn CSS Transitions, by Kevin Powell](https://www.youtube.com/watch?v=Nloq6uzF8RQ). A practical walkthrough with good taste about restraint.
+- [Video: All About CSS Transitions, by Steve Griffith](https://www.youtube.com/watch?v=alxljWzQoY4). A practical walkthrough with good taste about restraint.

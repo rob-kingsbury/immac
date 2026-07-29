@@ -250,4 +250,4 @@ Run this over your own page before you move on:
 
 - [MDN: The box model](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model). Mozilla's full walkthrough, with interactive examples of every property in this module.
 - [MDN: Mastering margin collapsing](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing). The complete rules, for when a collapse surprises you.
-- [Video: The CSS Box Model, by Kevin Powell](https://www.youtube.com/watch?v=rIO5326FgPE). A clear visual explanation from a CSS teacher worth following generally.
+- [Video: CSS Box Model, by Steve Griffith](https://www.youtube.com/watch?v=RubwqbzQUcg). A clear visual explanation from a fellow Algonquin professor worth following generally.

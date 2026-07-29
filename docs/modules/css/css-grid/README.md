@@ -332,4 +332,4 @@ Run this over your layout choices before you move on:
 - [MDN: CSS grid layout](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids). The full beginner walkthrough.
 - [CSS-Tricks: A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/). The reference chart to keep open while writing Grid.
 - [Grid Garden](https://cssgridgarden.com/). A short game that drills placement and track sizing.
-- [Video: Learn CSS Grid in 20 Minutes, by Web Dev Simplified](https://www.youtube.com/watch?v=9zBsdzdE4sM). A practical run through the same ground.
+- [Video: Intro to CSS Grid, by Steve Griffith](https://www.youtube.com/watch?v=yHLGbnOOtfQ). A practical run through the same ground.

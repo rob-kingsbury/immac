@@ -166,3 +166,4 @@ Run this over your colour choices before you move on:
 - [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/). Paste two colours, get the ratio and the pass or fail. Bookmark this one.
 - [MDN: oklch()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch). The function reference, with the lightness-uniformity explanation in more depth.
 - [MDN: color-mix()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix). The function reference, including how the mixing colour space affects the result.
+- [Video: CSS Color Property Values, by Steve Griffith](https://www.youtube.com/watch?v=LYDQ_L7ovyg). A practical run through the notations covered in this chapter.

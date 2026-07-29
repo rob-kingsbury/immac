@@ -153,4 +153,4 @@ Check your stylesheet against this list before you move on.
 
 - [MDN: Using CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties). The complete guide, including inheritance and fallback behaviour.
 - [MDN: var()](https://developer.mozilla.org/en-US/docs/Web/CSS/var). The function reference, with fallback syntax.
-- [Video: CSS Custom Properties, by Kevin Powell](https://www.youtube.com/watch?v=PHO6TBq_auI). A practical walkthrough including scoping and theming.
+- [Video: CSS Variables, by Steve Griffith](https://www.youtube.com/watch?v=xeMMAx7hWYQ). A practical walkthrough including scoping and fallback values.

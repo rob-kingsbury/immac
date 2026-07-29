@@ -124,3 +124,4 @@ Run this over your page before you move on:
 
 - [W3Schools: HTML Lists](https://www.w3schools.com/html/html_lists.asp). A reference page for the three list types.
 - [MDN: the Cascade, user-agent stylesheets](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade#user-agent_stylesheets). Where the browser's default styling fits among the other kinds of CSS.
+- [Video: HTML Lists, by Steve Griffith](https://www.youtube.com/watch?v=eWpRm5fZGEU). A direct walkthrough of the three list types.

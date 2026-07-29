@@ -42,3 +42,4 @@ Run this over your project before you move on:
 
 - [Google Fonts](https://fonts.google.com/). Free, hosted web fonts, with the `<link>` code generated for you.
 - [MDN: Web fonts](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Text_styling/Web_fonts). The full reference, including self-hosting a font file instead of using a hosted service.
+- [Video: Custom Web Fonts with @font-face, by Steve Griffith](https://www.youtube.com/watch?v=A8lk-4l-SWU). A practical walkthrough of self-hosting a font instead of linking to Google Fonts.

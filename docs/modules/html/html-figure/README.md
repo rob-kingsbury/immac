@@ -41,3 +41,4 @@ Run this over your page before you move on:
 ## Keep learning
 
 - [W3Schools: HTML figure and figcaption](https://www.w3schools.com/tags/tag_figcaption.asp). Syntax and more worked examples.
+- [Video: Images, Figures, and Pictures in HTML, by Steve Griffith](https://www.youtube.com/watch?v=mwu2U_Sm6LY). Covers `<figure>` and `<figcaption>` alongside the wider set of image elements.

@@ -121,4 +121,4 @@ Run through this before you move on:
 - [MDN: CSS first steps](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics). Mozilla's own beginner path through exactly the concepts in this module.
 - [MDN: CSS reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference). The full list of properties. Bookmark it now and look properties up as you meet them, rather than trying to memorize them.
 - [W3Schools: CSS Introduction](https://www.w3schools.com/css/css_intro.asp). A second, plain-language explanation of these same basics, with small editable examples if a concept has not clicked yet.
-- [Video: CSS in 100 Seconds, by Fireship](https://www.youtube.com/watch?v=OEV8gMkCHXQ). A fast, high-level overview of what CSS is and where it fits, useful before the detail.
+- [Video: Introduction to CSS, by Steve Griffith](https://www.youtube.com/watch?v=KFKScNHa-8M). A fellow Algonquin professor's overview of what CSS is and where it fits, useful before the detail.

@@ -60,3 +60,4 @@ Run this over your stylesheet before you move on:
 
 - [MDN: The box model](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model). Covers `box-sizing` alongside the rest of the box model.
 - [Chrome DevTools: Inspect the box model](https://developer.chrome.com/docs/devtools/css/reference). Reference for reading computed width, padding, and border in developer tools.
+- [Video: CSS3 box-sizing Property, by Steve Griffith](https://www.youtube.com/watch?v=EfCE-a31OiM). A direct walkthrough of the property and the width problem it fixes.

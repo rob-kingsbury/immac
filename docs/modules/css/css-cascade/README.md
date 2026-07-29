@@ -176,3 +176,4 @@ Run this over your stylesheet before you move on:
 - [MDN: Cascade, specificity, and inheritance](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Cascade). The full mechanism, straight from the reference.
 - [MDN: Handling conflicts](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts). Cascade, specificity, and inheritance together, from the beginner path.
 - [Chrome DevTools: View and change CSS](https://developer.chrome.com/docs/devtools/css). How to read the winning and losing rules in the Styles panel.
+- [Video: The C in CSS Means Cascading, by Steve Griffith](https://www.youtube.com/watch?v=PigxOyVDIQg). A short, direct walkthrough of why later or more specific rules win.

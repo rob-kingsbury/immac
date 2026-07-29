@@ -114,4 +114,4 @@ Run this over your page before you move on:
 
 - [W3Schools: HTML5 Video](https://www.w3schools.com/html/html5_video.asp) and [HTML5 Audio](https://www.w3schools.com/html/html5_audio.asp). Full attribute references for the media elements in this chapter.
 - [MDN: the video element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video). Covers multiple `<source>` elements and format fallback in full.
-- [Video: How to Embed Video in HTML, by PixemWeb](https://www.youtube.com/watch?v=9NTrwrfI-X4). Covers the `<video>` element and its attributes in more depth than this chapter.
+- [Video: HTML5 Video, by Steve Griffith](https://www.youtube.com/watch?v=Sq4NFODUjGg). Covers the `<video>` element and its attributes in more depth than this chapter.

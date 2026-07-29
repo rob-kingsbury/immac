@@ -62,3 +62,4 @@ Run this over your generated content before you move on:
 ## Keep learning
 
 - [MDN: Pseudo-elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements). The complete list, including everything this module didn't cover.
+- [Video: CSS ::before and ::after Pseudo-Elements, by Steve Griffith](https://www.youtube.com/watch?v=9chejj2-x8s). A direct walkthrough of the two pseudo-elements this module covers.

@@ -112,3 +112,4 @@ Run this over your own diagnosis before you move on:
 ## Keep learning
 
 - [MDN: Introduction to the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction). What the tree is and how the browser builds it.
+- [Video: Introduction to the DOM, by Steve Griffith](https://www.youtube.com/watch?v=O6BNfJz3rgs). A practical look at the tree a selector actually matches against.

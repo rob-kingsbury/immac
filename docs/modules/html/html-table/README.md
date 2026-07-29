@@ -457,3 +457,4 @@ Run this over your table before you submit:
 
 - [W3Schools: HTML Tables](https://www.w3schools.com/html/html_tables.asp). Covers the same table structure with more worked examples.
 - [W3Schools: Table colspan and rowspan](https://www.w3schools.com/html/html_table_colspan_rowspan.asp). Focused practice on spanning cells across columns and rows.
+- [Video: Building and Styling HTML Tables, by Steve Griffith](https://www.youtube.com/watch?v=8Tx0rv2nZuA). A practical walkthrough of the same table structure covered here.

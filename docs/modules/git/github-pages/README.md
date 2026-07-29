@@ -44,3 +44,4 @@ Run this over your repository before you move on:
 ## Keep learning
 
 - [pages.github.com](https://pages.github.com/). GitHub's short introduction to what Pages is and how it works.
+- [Video: Learning GitHub - Github Pages, by Steve Griffith](https://www.youtube.com/watch?v=EvWAkfEnXxY). A practical walkthrough of turning a repository into a live site.

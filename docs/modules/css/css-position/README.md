@@ -70,3 +70,4 @@ Run this over your layout before you move on:
 ## Keep learning
 
 - [MDN: position](https://developer.mozilla.org/en-US/docs/Web/CSS/position). The full property reference, including every value covered here.
+- [Video: Understanding CSS Position, by Steve Griffith](https://www.youtube.com/watch?v=fmlvXZztXuw). A practical walkthrough of the values and what they lift an element out of.

@@ -86,4 +86,4 @@ Run this over your work before you move on:
 ## Keep learning
 
 - [MDN: The details element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details) and [its name attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details#name). Full reference, including the exclusive-accordion behaviour above.
-- [Video: 2 HTML Elements I Never Used!? (Details & Summary), by DesignCourse](https://www.youtube.com/watch?v=PQtpZZQU0u0). A practical look at where these elements fit in a real project.
+- [Video: HTML5 Details and Summary Elements, by Steve Griffith](https://www.youtube.com/watch?v=gPeYRBBaok0). A practical look at where these elements fit in a real project.
