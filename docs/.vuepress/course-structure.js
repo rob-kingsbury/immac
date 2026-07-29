@@ -130,14 +130,15 @@ export function courseSidebar(course, structure) {
       // exercises and the framing the module list alone does not.
       link: `/${course}/content/#${w.anchor}`,
       collapsible: true,
-      children: w.modules
-        .filter((m) => structure.owner.get(m.link).course === course)
-        .filter(
-          (m, i, arr) =>
-            arr.findIndex((x) => x.link === m.link) === i &&
-            structure.owner.get(m.link).week === w.number
-        )
-        .map((m) => ({ text: m.text, link: m.link })),
+      // Every module this week's content page actually lists, including a
+      // deliberate revisit of a module owned (for prev/next purposes) by an
+      // earlier week -- the reader came to Week 12 to see "HTML Validation"
+      // again, and a sidebar that silently drops it because Week 2 "owns" it
+      // is wrong, not tidy. `structure.owner` is for the prev/next chain
+      // only (see readCourseStructure); it has no say over what a week's own
+      // sidebar shows. w.modules is already deduplicated within this single
+      // week during parsing, so no further filtering belongs here.
+      children: w.modules.map((m) => ({ text: m.text, link: m.link })),
     }))
     .filter((w) => w.children.length > 0)
 

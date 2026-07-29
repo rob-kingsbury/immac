@@ -259,12 +259,17 @@ for (const course of SEQ_COURSES) {
     }
   }
 
-  // Every module in the sidebar must be somewhere in the chain, and the chain
-  // must be continuous: exactly one page with no prev and one with no next.
+  // Every module in the reading chain must appear in the sidebar at least
+  // once. The reverse isn't true: a week may deliberately revisit a module
+  // owned (for prev/next purposes) by an earlier week, so the sidebar can
+  // legitimately list a module more times than the chain does -- that's not
+  // a duplicate, it's the same module surfaced again on purpose.
   const order = structure.order[course]
-  if (order.length !== listed.length) {
+  const listedSet = new Set(listed)
+  const missingFromSidebar = order.filter((m) => !listedSet.has(m.link))
+  if (missingFromSidebar.length > 0) {
     problems.push(
-      `${course} has ${order.length} modules in its reading order but ${listed.length} in its sidebar`
+      `${course} has ${missingFromSidebar.length} module(s) in its reading order missing from its sidebar: ${missingFromSidebar.map((m) => m.link).join(', ')}`
     )
   }
   const noPrev = order.filter((m) => !structure.chain.get(m.link)?.prev)
