@@ -97,6 +97,8 @@ If your site map has any page nested under a section rather than sitting directl
 - [Skip Navigation](/modules/accessibility/skip-navigation/README.md). The link that lets a keyboard user jump past the navigation straight to the content.
 - [Keyboard Access](/modules/accessibility/keyboard-access/README.md). Tabbing through a page, and why a link and a button answer to different keys.
 - [Colour Contrast](/modules/accessibility/colour-contrast/README.md). Measuring text against its background, and the ratios that count as readable.
+- [Accessible Forms, in Brief](/modules/html/html-form/accessible-forms.md). Grouping related controls, and the mistakes that make a form unusable with a screen reader.
+- [Visually Hidden](/modules/accessibility/visually-hidden/README.md). Content a screen reader announces but the page does not show, done the one right way.
 - [Testing for Accessibility](/modules/accessibility/testing/README.md). The checks you can run on your own page before anyone else sees it.
 
 </details>
@@ -105,7 +107,7 @@ If your site map has any page nested under a section rather than sitting directl
 <summary id="week-7-html-forms-and-data-structures">Week 7: HTML Forms and Data Structures</summary>
 
 - [HTML Form](/modules/html/html-form/README.md). Building a form that is well structured and properly labelled.
-- [Accessible Forms, in Brief](/modules/html/html-form/accessible-forms.md). Grouping related controls, and the mistakes that make a form unusable with a screen reader.
+- [Accessible Forms, in Brief](/modules/html/html-form/accessible-forms.md). Grouping related controls, and the mistakes that make a form unusable with a screen reader. Revisited from Week 6.
 - [HTML Input](/modules/html/html-input/README.md). The input element, and a type attribute that changes both behaviour and the phone keyboard.
 - [Built-in Form Validation](/modules/html/html-form-validation/README.md). Rules the browser enforces before anything is submitted, with no scripting.
 - [HTML Table](/modules/html/html-table/README.md). Tabular data with real headers, and why a table is never a layout tool.
@@ -176,7 +178,10 @@ Finally, remove the `width` and `height` from one image. In the Network panel to
 <summary id="week-13-advanced-html-patterns">Week 13: Advanced HTML Patterns</summary>
 
 - [HTML Iframes](/modules/html/html-iframes/README.md). Embedding something you did not build, without handing it your page.
+- [Responsive Media Containers](/modules/html/html-iframes/responsive-containers.md). A wrapper that holds an iframe to a fixed aspect ratio while its size flexes.
+- [Document Head Best Practices](/modules/html/html-document-structure/head-best-practices.md). Every piece the head should carry, pulled into one checklist to run against your own pages.
 - [HTML Details and Summary](/modules/html/html-details/README.md). An expand-and-collapse disclosure widget, built into HTML, needing no JavaScript.
+- [Elements This Course Names But Doesn't Build With](/modules/html/html-details/elements-not-built-with.md). dialog, template, and popover: worth knowing by name, and why none of them get built into this course's projects.
 
 </details>
 

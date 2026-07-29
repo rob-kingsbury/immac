@@ -33,6 +33,7 @@ Every week below lists the modules to work through, in the order they are taught
 - [Typography](/modules/css/css-typography/README.md). Font stacks, size, line height, and the properties that decide whether text is comfortable to read.
 - [Web Fonts](/modules/css/css-web-fonts/README.md). Shipping a typeface with the page instead of hoping the visitor already has it.
 - [Colour Values](/modules/css/css-colors/README.md). Hex, RGB, and HSL, plus the newer notations you will meet in other people's stylesheets.
+- [Colour Contrast](/modules/accessibility/colour-contrast/README.md). Measuring text against its background, and the ratios that count as readable.
 
 </details>
 
@@ -76,6 +77,8 @@ Every week below lists the modules to work through, in the order they are taught
 - [Fluid Sizing Without a Query](/modules/css/css-fluid-sizing/README.md). Sizing that scales on its own, before you reach for a breakpoint.
 - [Layouts That Respond Without a Query](/modules/css/css-rwd-patterns/README.md). Patterns that reflow on their own, with no breakpoint involved.
 - [Container Queries](/modules/css/css-container-queries/README.md). Asking about the size of a component's container instead of the whole window.
+- [Responsive Images](/modules/html/responsive-images/README.md). srcset, sizes, and picture, so the browser can choose the right file for the screen.
+- [Testing Responsive Work](/modules/tools/browsers/testing-responsive-work.md). Four ways to test a layout, in increasing order of trustworthiness, ending with a real phone in hand.
 
 </details>
 
@@ -92,6 +95,8 @@ Every week below lists the modules to work through, in the order they are taught
 - [The DOM](/modules/css/css-dom/README.md). The tree the browser builds from your markup, which is what a selector actually matches against.
 - [Descendant, Child, Sibling, and Attribute Selectors](/modules/css/css-selectors-adv/README.md). Descendant, child, sibling, and attribute selectors, read against that tree.
 - [Pseudo-Classes](/modules/css/css-pseudo-classes/README.md). Selecting an element by its state: hovered, focused, checked, first of its kind. Revisited from Week 4.
+- [Inspecting CSS Rules](/modules/tools/browsers/inspecting-css-rules.md). Reading the Styles panel to see which rule won, which lost, and which one the browser rejected outright.
+- [Diagnosing Rendering Problems](/modules/tools/browsers/diagnosing-rendering-problems.md). A six-step routine for when something looks wrong, worked through in order instead of edited hopefully.
 
 </details>
 

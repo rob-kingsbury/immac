@@ -18,6 +18,32 @@ A short review pass on any page:
 
 That last one is worth dwelling on. Restraint reads as confidence. A page with three font sizes, four spacing values, and two accent colours looks designed. A page with nine of each looks like a series of separate decisions, because it is.
 
+## Giving and receiving critique
+
+A critique session is the natural next step. Design work improves fastest when someone else looks at it, because you cannot see your own page fresh after staring at it for weeks.
+
+### Giving useful feedback
+
+**Describe before you judge.** Start with what you actually see: "my eye goes to the photo first, then the button, then the heading." That's information the author can use even if they disagree about whether it's a problem.
+
+**Name the principle.** "The heading and body are too close together" is vague. "The gap between the heading and its paragraph is the same as the gap between sections, so they don't read as grouped" tells the author exactly what to change, and it points at proximity.
+
+**Separate the observation from the prescription.** Say what isn't working before you say how to fix it. The author often finds a better fix than your suggestion once they understand the problem.
+
+**Be specific about location.** "The cards feel off" helps nobody. "The third card's text sits four pixels left of the other two" is a bug report.
+
+**Say what's working, and why.** Not as politeness. If someone doesn't know which parts are succeeding, they'll change them by accident in the next revision.
+
+### Receiving feedback
+
+**Don't explain while they're talking.** The urge to justify a decision is strong and it stops you hearing the observation. Write it down, then respond after.
+
+**Distinguish observations from suggestions.** If three people say their eye goes to the wrong place first, that's data and it's almost certainly true. If three people suggest three different fixes, that's opinion, and the decision stays yours.
+
+**Look for the pattern.** One person's dislike is taste. Three people tripping on the same element is a problem.
+
+**Take notes, not offence.** Critique is about a page you made, and the page is not you.
+
 ## Common mistakes to avoid
 
 - **Everything emphasized.** If four things are bold, none of them is.
