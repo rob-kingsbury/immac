@@ -234,11 +234,29 @@ onMounted(() => {
   const resize = new ResizeObserver(redraw)
   if (sidebarRoot.value) resize.observe(sidebarRoot.value)
 
+  // A module's own heading list expands via a real CSS height transition
+  // (VPDropdownTransition, 0.3s), not an instant toggle -- and that
+  // transition is started by a separate reactive chain (VPSidebarItem's own
+  // router.afterEach + nextTick) that this component has no direct handle
+  // on. The route/open watchers above both redraw as soon as navigation
+  // resolves, which can land before that transition has even started, so
+  // the rail gets measured against a still-collapsed heading list and
+  // freezes there -- nothing afterward tells it to look again unless the
+  // reader happens to trigger a resize. Listening for the transition's own
+  // completion removes the guesswork: whatever raced ahead of what, this
+  // fires once the heading list has actually finished animating to its
+  // real height, and redraws against that.
+  const onTransitionEnd = (event) => {
+    if (event.propertyName === 'height') redraw()
+  }
+  sidebarRoot.value?.addEventListener('transitionend', onTransitionEnd)
+
   onBeforeUnmount(() => {
     cancelAnimationFrame(frame)
     stopRoute()
     stopOpen()
     resize.disconnect()
+    sidebarRoot.value?.removeEventListener('transitionend', onTransitionEnd)
   })
 })
 </script>
