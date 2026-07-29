@@ -353,7 +353,10 @@ details.demo[open] > summary {
   cursor: pointer;
   padding: 0.4rem 0 0.4rem 1.6rem;
   position: relative;
-  font-size: 1.4rem;
+  // 1.65rem is the theme's h2 size, which is what these lines were before they
+  // became summaries. At 1.4rem a week read as a peer of the h3 exercise
+  // heading nested inside it (22.4px against 21.6px), flattening the hierarchy.
+  font-size: 1.65rem;
   font-weight: 600;
   line-height: 1.3;
   color: var(--vp-c-text, #213547);
