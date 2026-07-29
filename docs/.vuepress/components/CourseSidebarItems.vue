@@ -124,10 +124,14 @@ const weekTitle = (text) => text.replace(/^Week \d+:\s*/, '')
       <h2 class="week-heading">{{ weekTitle(openedWeek.text) }}</h2>
 
       <ul class="plain module-list">
+        <!-- depth 1, not 0: the theme styles depth 0 as a section heading, so
+             leaving it default rendered every module bold and flattened the
+             week into another list of headings. -->
         <VPSidebarItem
           v-for="mod in openedWeek.children ?? []"
           :key="`${mod.text}${mod.link}`"
           :item="mod"
+          :depth="1"
         />
       </ul>
 
