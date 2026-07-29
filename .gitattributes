@@ -1,0 +1,10 @@
+# Every text file in this repo is stored with LF endings, whatever the
+# checkout platform does locally. Tooling that parses file content is
+# otherwise CRLF-sensitive, and a checker that mis-parses fails open:
+# check-prerequisites.mjs once read 9 of 125 modules on a Windows clone,
+# found nothing wrong, and exited zero. See issue #26.
+* text=auto eol=lf
+
+# Binary assets, left alone.
+*.png binary
+*.jpg binary
