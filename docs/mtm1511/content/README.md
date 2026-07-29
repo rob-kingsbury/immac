@@ -90,7 +90,7 @@ If your site map has any page nested under a section rather than sitting directl
 
 ## Week 8: Reading Week
 
-- [Reading Week](/modules/reading-week.md). No scheduled classes. Use the time to catch up on anything unfinished and to shore up whatever still feels shaky, because everything after this builds on the seven weeks behind it.
+- **Reading Week**. No scheduled classes. Use the time to catch up on anything unfinished and to shore up whatever still feels shaky, because everything after this builds on the seven weeks behind it.
 
 ## Week 9: Optimizing Images and Media
 
@@ -140,9 +140,9 @@ Finally, remove the `width` and `height` from one image. In the Network panel to
 
 ## Week 14: Project Development
 
-- [Project Development](/modules/project/project-development.md). No new material. Class time goes to your project, with guided troubleshooting and structured peer review.
+- **Project Development**. No new material. Class time goes to your project, with guided troubleshooting and structured peer review.
 
 ## Week 15: Project Work Lab
 
-- [Project Work Lab](/modules/project/project-work-lab.md). No new material. Open lab time on your project, with your instructor on hand.
+- **Project Work Lab**. No new material. Open lab time on your project, with your instructor on hand.
 

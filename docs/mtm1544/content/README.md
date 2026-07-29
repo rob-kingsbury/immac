@@ -12,6 +12,7 @@ Every week below lists the modules to work through, in the order they are taught
 - [Linking a Stylesheet](/modules/css/css-basics/linking-a-stylesheet.md). Three ways to attach CSS to HTML, and the one real projects use.
 - [CSS Selectors](/modules/css/css-selectors/README.md). Element, class, and ID selectors, and how specific each one is.
 - [The Cascade](/modules/css/css-cascade/README.md). What the browser does when two rules both apply and disagree.
+- [Browser Developer Tools](/modules/tools/browsers/README.md). How to ask the browser what it actually did, instead of guessing. Introduced here because every week after this one assumes you can inspect an element and read which rule won. The sub-pages on inspecting the box model, grids, and variables become useful as you meet each of those.
 
 ## Week 2: The Box Model and Spacing
 
@@ -59,7 +60,7 @@ Every week below lists the modules to work through, in the order they are taught
 
 ## Week 8: Reading Week
 
-- [Reading Week](/modules/css/reading-week.md). No scheduled classes. Use the time to catch up on anything unfinished and to shore up whatever still feels shaky, because everything after this builds on the seven weeks behind it.
+- **Reading Week**. No scheduled classes. Use the time to catch up on anything unfinished and to shore up whatever still feels shaky, because everything after this builds on the seven weeks behind it.
 
 ## Week 9: The DOM and CSS Targeting
 
@@ -103,9 +104,9 @@ Every week below lists the modules to work through, in the order they are taught
 
 ## Week 14: Project Development
 
-- [Project Development](/modules/css/project-development.md). No new material. Class time goes to your project, with guided troubleshooting and structured peer review.
+- **Project Development**. No new material. Class time goes to your project, with guided troubleshooting and structured peer review.
 
 ## Week 15: Project Work Lab
 
-- [Project Work Lab](/modules/css/project-work-lab.md). No new material. Open lab time on your project, with your instructor on hand.
+- **Project Work Lab**. No new material. Open lab time on your project, with your instructor on hand.
 
