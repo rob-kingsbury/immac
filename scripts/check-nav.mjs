@@ -212,6 +212,74 @@ for (const id of moduleIds) {
   }
 }
 
+// -------------------------------------------------- course order and prev/next
+// The course sidebars and the prev/next chain are generated from the two
+// content pages by docs/.vuepress/course-structure.js. Running the same parser
+// here checks the properties the generator is supposed to guarantee, rather
+// than trusting that it did.
+const { readCourseStructure, courseSidebar, COURSES: SEQ_COURSES } = await import(
+  '../docs/.vuepress/course-structure.js'
+)
+const structure = readCourseStructure('docs')
+
+for (const course of SEQ_COURSES) {
+  const sidebar = courseSidebar(course, structure)
+  const weekly = sidebar.find((s) => s.text === 'Weekly Content')
+
+  const listed = []
+  for (const week of weekly.children) for (const child of week.children) listed.push(child.link)
+
+  // Duplicates have to be read off the SOURCE, not off the generated sidebar.
+  // The generator drops a repeat while building, so asking the sidebar whether
+  // it contains one can only ever answer no: a check that cannot fail. This
+  // reads the bullets on the content page itself.
+  const src = read(`docs/${course}/content/README.md`)
+  for (const [, weekNo, , body] of src.matchAll(
+    /<summary id="week-(\d+)-[^"]*">Week \d+: ([^<]+)<\/summary>([\s\S]*?)<\/details>/g
+  )) {
+    const bullets = [...body.matchAll(/^- \[[^\]]+\]\((\/modules\/[^)]+)\)/gm)].map((m) => m[1])
+    const seen = new Set()
+    for (const link of bullets) {
+      if (seen.has(link)) {
+        problems.push(`${course} Week ${weekNo} lists ${link} twice`)
+      }
+      seen.add(link)
+    }
+  }
+
+  // Every module in the sidebar must be somewhere in the chain, and the chain
+  // must be continuous: exactly one page with no prev and one with no next.
+  const order = structure.order[course]
+  if (order.length !== listed.length) {
+    problems.push(
+      `${course} has ${order.length} modules in its reading order but ${listed.length} in its sidebar`
+    )
+  }
+  const noPrev = order.filter((m) => !structure.chain.get(m.link)?.prev)
+  const noNext = order.filter((m) => !structure.chain.get(m.link)?.next)
+  if (noPrev.length !== 1) problems.push(`${course} chain has ${noPrev.length} pages with no Prev, expected 1`)
+  if (noNext.length !== 1) problems.push(`${course} chain has ${noNext.length} pages with no Next, expected 1`)
+
+  for (const mod of order) {
+    const link = structure.chain.get(mod.link)
+    for (const dir of ['prev', 'next']) {
+      const target = link?.[dir]
+      if (target && !structure.chain.has(target.link)) {
+        problems.push(`${course}: ${mod.link} points ${dir} at ${target.link}, which is not in the order`)
+      }
+    }
+  }
+}
+
+// A module a week places must resolve to a course sidebar, not fall through to
+// its discipline list, or a student following a week loses the course frame.
+for (const [route] of structure.owner) {
+  const dir = route.endsWith('/') ? route : route.replace(/[^/]+$/, '')
+  if (!structure.dirToCourse.has(dir)) {
+    problems.push(`${route} is placed in a week but has no course sidebar key`)
+  }
+}
+
 // ---------------------------------------------------------------- report
 console.log(`modules:            ${moduleIds.length - PLACEHOLDERS.size}`)
 console.log(`disciplines:        ${disciplines.length}`)

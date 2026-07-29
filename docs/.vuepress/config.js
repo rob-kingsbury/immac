@@ -2,38 +2,42 @@ import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defaultTheme } from '@vuepress/theme-default'
 import { getDirname, path } from 'vuepress/utils'
+import { COURSES, readCourseStructure, courseSidebar } from './course-structure.js'
 
 const __dirname = getDirname(import.meta.url)
 
-// Navigation is split in two, matching how the content itself is split.
+const structure = readCourseStructure(path.resolve(__dirname, '..'))
+
+// Navigation follows the course, not the discipline.
 //
-// A COURSE sidebar is small and carries no module list at all. Week structure
-// lives on /<course>/content/, which is a real page a student can read, link
-// to, and search, rather than a nested array in this file.
+// A student reads a week, and a week is a set of modules in a set order. So the
+// sidebar on a module page shows that student's course: the weeks, each holding
+// the modules it lists, with the current week expanded. Prev and Next walk the
+// same order, from the first module of Week 1 to the last of Week 15, the way
+// chapters run.
 //
-// A DISCIPLINE sidebar lists one discipline's modules and nothing else. It is
-// course-neutral on purpose: a module built from MTM1544 material but reused by
-// MTM1511 shows the same navigation either way. The previous arrangement keyed
-// sidebars by path (/modules/css/ got MTM1544's, everything else under
-// /modules/ got MTM1511's), which meant every shared module rendered one
-// course's week list to students of both, and each new discipline needed
-// another patch. Discipline scoping removes the category of bug rather than
-// the instances of it.
+// All of it is derived from /<course>/content/ at build time by
+// course-structure.js. That page stays the single source of truth: a module
+// added to a week there appears in the sidebar and in the chain on the next
+// build, and nothing in this file has to be edited to match.
 //
-// Two rules hold these lists together, and both are enforced by
-// scripts/check-nav.mjs:
+// Three things this has to get right, all enforced by scripts/check-nav.mjs:
 //
-//   1. A module appears in exactly one discipline sidebar, exactly once. The
-//      theme derives prev/next by looking for the current page among its
-//      siblings, so a page listed twice resolves against whichever copy it
-//      finds first. Ten modules were listed under two weeks each in the old
-//      config, and every one of them rendered the same page as both Prev and
-//      Next. A module genuinely taught twice is still listed under both weeks
-//      on the course content page, which is prose and carries no prev/next.
+//   1. A module appears in exactly one sidebar, exactly once. The theme
+//      resolves prev/next by finding the current page among its siblings, so a
+//      page listed twice resolves against whichever copy it finds first. Both
+//      courses teach two accessibility modules, and nineteen modules are taught
+//      twice within one course; each is owned by the first week that lists it.
+//      The course content page is prose and still lists it under both.
 //
-//   2. Each list is flat. Nesting a sub-page under its parent module would
-//      make the parent's Next skip its own sub-pages, and the last sub-page's
-//      Next dead-end, because sibling lookup does not cross levels.
+//   2. Prev/next comes from frontmatter, set by extendsPage below, not from the
+//      sidebar. Sibling lookup does not cross nesting levels, so with weeks as
+//      groups the last module of a week would have no Next at all. Frontmatter
+//      is checked first and bridges the boundary.
+//
+//   3. A module in no week still needs navigation. Those fall back to their
+//      discipline list further down, which is also what the /modules/ index
+//      pages use.
 
 const htmlSidebar = [
   {
@@ -237,21 +241,17 @@ const designSidebar = [
   },
 ]
 
-const mtm1511Sidebar = [
-  { text: 'Course Home', link: '/mtm1511/' },
-  { text: 'Overview', link: '/mtm1511/overview/' },
-  { text: 'Weekly Content', link: '/mtm1511/content/' },
-  { text: 'Resources', link: '/mtm1511/resources/' },
-  { text: 'Glossary', link: '/glossary/' },
-]
+const courseSidebars = Object.fromEntries(
+  COURSES.map((course) => [course, courseSidebar(course, structure)])
+)
 
-const mtm1544Sidebar = [
-  { text: 'Course Home', link: '/mtm1544/' },
-  { text: 'Overview', link: '/mtm1544/overview/' },
-  { text: 'Weekly Content', link: '/mtm1544/content/' },
-  { text: 'Resources', link: '/mtm1544/resources/' },
-  { text: 'Glossary', link: '/glossary/' },
-]
+// Every module directory that a course week lists, pointed at that course's
+// sidebar. Keys are longer than the '/modules/<discipline>/' keys below, and
+// VuePress resolves by longest matching prefix, so these win for a placed
+// module and the discipline list catches everything else.
+const placedModuleSidebars = Object.fromEntries(
+  [...structure.dirToCourse].map(([dir, course]) => [dir, courseSidebars[course]])
+)
 
 // Anything under /modules/ that is not inside a discipline folder, which is the
 // six course-layer placeholder pages left in the pool. They are linked from the
@@ -282,6 +282,17 @@ export default defineUserConfig({
   bundler: viteBundler(),
   clientConfigFile: path.resolve(__dirname, './client.js'),
 
+  // Prev and Next for every module a course week places, taken from that
+  // course's reading order. Set here rather than written into each module's
+  // frontmatter so the module files themselves still say nothing about weeks.
+  // Pages outside any week are left alone and fall back to sidebar order.
+  extendsPage(page) {
+    const links = structure.chain.get(page.path)
+    if (!links) return
+    page.frontmatter.prev = links.prev ? { text: links.prev.text, link: links.prev.link } : false
+    page.frontmatter.next = links.next ? { text: links.next.text, link: links.next.link } : false
+  },
+
   theme: defaultTheme({
     // No logo image is configured, so the navbar brand renders as a plain
     // text link ("IMM Web Courses"). VPNavbarBrand.vue only hides that text
@@ -303,8 +314,10 @@ export default defineUserConfig({
     ],
 
     sidebar: {
-      // VuePress resolves by longest matching prefix, so a discipline key wins
-      // over the '/modules/' fallback. Order here is for reading only.
+      // Longest matching prefix wins. A module placed in a course week is
+      // keyed by its own directory and gets that course's sidebar; anything
+      // left over falls back to its discipline, then to the pool index.
+      ...placedModuleSidebars,
       '/modules/accessibility/': accessibilitySidebar,
       '/modules/web-basics/': webBasicsSidebar,
       '/modules/design/': designSidebar,
@@ -314,8 +327,8 @@ export default defineUserConfig({
       '/modules/seo/': seoSidebar,
       '/modules/git/': gitSidebar,
       '/modules/': modulePoolSidebar,
-      '/mtm1511/': mtm1511Sidebar,
-      '/mtm1544/': mtm1544Sidebar,
+      '/mtm1511/': courseSidebars.mtm1511,
+      '/mtm1544/': courseSidebars.mtm1544,
     },
 
     // Show the active page's H2 sections nested under it (one level of
