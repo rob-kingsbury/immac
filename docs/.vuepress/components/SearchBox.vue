@@ -383,10 +383,15 @@ onBeforeUnmount(() => {
   width: 100%;
   font-size: 0.74rem;
   color: var(--vp-c-text-mute, #5f5f5f);
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  /* Was display: -webkit-box with -webkit-line-clamp: 1. Measured on the
+     built site, display computed to flow-root, so the clamp never engaged
+     and a constrained excerpt was hard-cut mid-word with no ellipsis. For a
+     single line the ordinary truncation below does the same job without
+     depending on a display mode surviving the build, and it matches how
+     .sr-title already truncates. */
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .search-empty {
