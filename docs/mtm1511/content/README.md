@@ -51,6 +51,9 @@ Open the page in your browser, then open developer tools and inspect your own el
 ## Week 4: Semantic HTML
 
 - [Semantic HTML](/modules/html/html-semantics/README.md). Elements that say what content is rather than how it should look.
+- [Document Landmarks](/modules/html/html-semantics/document-landmarks.md). The five elements that mark a page's major regions, and the roles they carry for free.
+- [Grouping Content](/modules/html/html-semantics/grouping-content.md). Article, section, and aside, with a test for choosing between them and a plain div.
+- [Smaller Semantic Elements](/modules/html/html-semantics/smaller-semantic-elements.md). Time, address, mark, and hgroup, for meaning inside the content itself.
 - [A Full Worked Example](/modules/html/html-semantics/worked-example.md). A realistic article page marked up semantically from top to bottom.
 - [HTML Figure](/modules/html/html-figure/README.md). Tying an image, diagram, or code sample to its caption as one unit.
 
