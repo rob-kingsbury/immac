@@ -351,29 +351,35 @@ const weekTitle = (text) => text.replace(/^Week \d+:\s*/, '')
   inset-inline-start: -2px;
   top: 50%;
   width: 3px;
-  height: 0.62rem;
+  height: 12px;
   transform: translateY(-50%);
   background-color: var(--vp-sidebar-c-bg, #fff);
 }
 
-// The bend. A square with two adjacent borders, rotated 45 degrees, puts the
-// corner on the right and both free ends at the same x on the left. Sized and
-// offset so those two ends land on the rail's own line, which is what makes
-// the arrow read as part of it: the line goes in, kinks out, and comes back.
+// The bend itself, drawn as an explicit path rather than a rotated border
+// corner. The rotated-square trick is the usual way to make a chevron, but its
+// arms land wherever the rotation puts them, which is what left the arrow
+// floating clear of the rail. This path starts at x=1, goes out to x=5, and
+// returns to x=1, so with a 2px stroke both ends reach x=0 exactly, and the
+// element is offset to put x=0 on the rail's own line.
 //
-// Physical border sides rather than logical ones. The rotation that turns a
-// corner into an arrowhead is direction-specific, so a logical pair would aim
-// it the wrong way under RTL instead of mirroring.
+// A mask rather than a background image, so the arrow takes its colour from
+// the accent variable and stays correct in both light and dark.
 .course-sidebar .module-list .vp-sidebar-children .vp-sidebar-item.active::after {
   content: '';
   position: absolute;
-  inset-inline-start: 0;
+  inset-inline-start: -1px;
   top: 50%;
-  width: 0.32rem;
-  height: 0.32rem;
-  border-top: 2px solid var(--vp-c-accent, #3eaf7c);
-  border-right: 2px solid var(--vp-c-accent, #3eaf7c);
-  transform: translateY(-50%) rotate(45deg);
+  width: 6px;
+  height: 12px;
+  transform: translateY(-50%);
+  background-color: var(--vp-c-accent, #3eaf7c);
+  -webkit-mask: var(--week-arrow) no-repeat center / contain;
+  mask: var(--week-arrow) no-repeat center / contain;
+}
+
+.course-sidebar {
+  --week-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 12'%3E%3Cpath d='M1 1L5 6L1 11' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 .course-sidebar .see-all {
