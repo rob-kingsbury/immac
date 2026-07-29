@@ -287,6 +287,7 @@ export default defineUserConfig({
   // <aside> around it, the mobile drawer, and the navbar items untouched.
   alias: {
     '@theme/VPSidebarItems.vue': path.resolve(__dirname, './components/CourseSidebarItems.vue'),
+    '@theme/VPNavbarItems.vue': path.resolve(__dirname, './components/CourseNavbarItems.vue'),
   },
 
   // Prev and Next for every module a course week places, taken from that
@@ -313,12 +314,14 @@ export default defineUserConfig({
     // visible to assistive tech, which is correct here since there's no
     // logo image to fall back on.
     logoAlt: '',
-    navbar: [
-      { text: 'Home', link: '/' },
-      { text: 'MTM1511', link: '/mtm1511/' },
-      { text: 'MTM1544', link: '/mtm1544/' },
-      { text: 'Glossary', link: '/glossary/' },
-    ],
+    // "Home" is not listed here: a student is in one course, and offering
+    // both course links at the top of every page invites wandering into the
+    // wrong one, while the sidebar already establishes which one a reader is
+    // in. Home itself is prepended by CourseNavbarItems.vue (aliased above),
+    // computed per route rather than fixed, so it reads "Course Home" and
+    // points at the reader's own course everywhere that course owns the
+    // page, falling back to the real site root everywhere else.
+    navbar: [{ text: 'Glossary', link: '/glossary/' }],
 
     sidebar: {
       // Longest matching prefix wins. A module placed in a course week is
