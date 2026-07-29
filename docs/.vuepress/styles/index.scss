@@ -5,6 +5,22 @@
   scroll-behavior: auto;
 }
 
+// The theme already offsets its own h1-h6 anchors for the fixed navbar with
+// a padding/margin-top trick (see normalize.scss): a heading's box is pulled
+// up by a negative margin-top and given matching padding-top, so both a
+// native browser fragment jump and Vue Router's own plain
+// getBoundingClientRect-based scroll already land a heading correctly, with
+// no scroll-margin-top involved. Deliberately NOT applied here too --
+// verified live that stacking scroll-margin-top on top of that existing
+// trick double-compensates and overshoots badly. A week's anchor id lives on
+// its <summary>, which is not a heading and gets none of that, so a week
+// link lands with the fixed navbar covering the week's own title.
+// scroll-margin-top is the standard fix for exactly that gap, scoped to just
+// the one element that actually has it.
+.week > summary {
+  scroll-margin-top: var(--navbar-height, 3.6rem);
+}
+
 // Skip-to-content link. The theme ships no skip link at all, so this is
 // injected as the first element in <body> by docs/.vuepress/client.js.
 // Standard visually-hidden-until-focused pattern: off-screen normally, snaps
