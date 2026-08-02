@@ -1,47 +1,30 @@
 <script setup>
-// Replaces the theme's own VPSidebarItem.vue (aliased over @theme/VPSidebarItem.vue
-// in config.js). Identical markup and styling; the only change is how `isOpen`
-// (whether a collapsible group's children are shown) gets kept correct.
+// Replaces the theme's own VPSidebarItem.vue (aliased over
+// @theme/VPSidebarItem.vue in config.js). Identical markup and styling. The
+// one behavioural change that earns this file is `isFirstHeadingAtPageTop`
+// below: marking a page's first heading active while route.hash is empty,
+// which is the state the reader is in every time they open a module.
 //
-// The stock component (node_modules/@vuepress/theme-default/dist/client/components/
-// VPSidebarItem.vue) seeds `isOpen` ONCE from `isOpenDefault` via
-// `useToggle(isOpenDefault.value)` at setup time, then only ever corrects it
-// later through `router.afterEach(() => nextTick().then(() => isOpen.value =
-// isOpenDefault.value))`. That resync depends on this component's OWN
-// afterEach callback already being registered before the navigation that is
-// supposed to trigger it.
+// HISTORY, because this file previously argued for itself on grounds that
+// turned out to be false. It was written to fix #32 (the week rail drawing as
+// a bare line with no heading nodes) on the theory that the stock component
+// seeds `isOpen` once via `useToggle(isOpenDefault.value)` and only resyncs
+// through its own `router.afterEach`, so an item created BY the navigation
+// meant to activate it registers its hook too late to catch that same
+// navigation. The race is real and the reasoning was sound, but it cannot
+// fire here: every item that reaches this component is `collapsible: false`
+// (config.js's discipline sidebars and course-structure.js's module children
+// all set it so, and the one `collapsible: true` group -- a week -- is
+// rendered by CourseSidebarItems.vue's own panel markup, never through this
+// component). With collapsible false, `isOpenDefault` is unconditionally
+// true and none of the isOpen machinery below does anything. #32's actual
+// cause was elsewhere: module headings are scraped from the main pane's DOM
+// a page-transition after the route commits, so the rail's watchers ran
+// before the data existed. Fixed in 363c4b7.
 //
-// Whenever a VPSidebarItem is freshly created as a direct reactive
-// consequence of the very navigation that is meant to make it active --
-// landing on a module in a week whose panel was not already open, or a cold
-// page load -- its afterEach hook is registered too late to catch that same
-// navigation's own afterEach dispatch (Vue Router updates `currentRoute` and
-// runs afterEach guards before this component's setup(), which creates the
-// hook, ever runs). `isOpen` is then stuck at whatever it snapshotted at
-// creation until some LATER, unrelated navigation happens to fire afterEach
-// again. On this site that later navigation is the theme's own scroll-spy
-// (@vuepress/plugin-active-header-links, on by default, see node_modules/
-// @vuepress/theme-default/dist/node/index.js -- `_.activeHeaderLinks??!0`),
-// which replaces route.hash 300ms after the reader stops scrolling. That is
-// the mechanism behind issue #32: CourseSidebarItems.vue's drawWeekRail()
-// measures the active module's own heading list to draw the branched rail,
-// and finds it collapsed (isOpen still false) until whatever navigation
-// happens to come along next resyncs it -- which is why the rail flashes as
-// a plain line with no circles for however long it takes the reader to
-// scroll, not a fixed delay.
-//
-// Making `isOpen` a plain reactive computed over `isOpenDefault` removes the
-// afterEach/nextTick race entirely: there is no separate event to miss,
-// because Vue's own reactivity keeps it current in the same flush that
-// updates the route. A manual toggle still has to win over the route-driven
-// default -- a reader who closes an open group should not have it spring
-// back open on the next unrelated scroll-hash update -- so an explicit
-// override is kept, but it only resets when `isOpenDefault` itself changes
-// (this item's own active state actually changed), not on every navigation
-// regardless of relevance. That is a deliberate, minor difference from the
-// stock component: a manually-opened INACTIVE group can now survive an
-// unrelated navigation elsewhere instead of auto-collapsing on it, which is
-// the trade-off for no longer depending on router.afterEach at all.
+// The collapsible/isOpen handling is kept rather than stripped because it is
+// the theme's own contract for this component and would be needed the moment
+// any module group is made collapsible. It is dormant, not wrong.
 
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
@@ -53,16 +36,46 @@ import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 const props = defineProps({
   item: { type: Object, required: true },
   depth: { type: Number, default: 0 },
+  // Position among siblings. Only ever consulted for heading children, to
+  // identify the first one -- see isFirstHeadingAtPageTop.
+  index: { type: Number, default: 0 },
 })
 
 const route = useRoute()
 
 const collapsible = computed(() => props.item.collapsible)
 const isActive = computed(() => isActiveSidebarItem(props.item, route))
+
+// A page's own headings appear in the sidebar as children whose `link` is a
+// bare hash ('#the-checklist'), and the theme's isActiveSidebarItem marks one
+// active on `route.hash === item.link` alone. Nothing else can match a bare
+// hash, so when route.hash is empty NO heading is active.
+//
+// It is empty far more often than it looks. @vuepress/plugin-active-header-
+// links (on by default, see the theme's `_.activeHeaderLinks??!0`) owns
+// route.hash on this site, and its scroll handler does not merely fail to set
+// a hash near the top of a page -- it actively CLEARS one, replacing the route
+// with an empty hash whenever scrollY is within 5px of the top. So a reader
+// who opens a module, or scrolls back up to re-read the opening, gets a
+// sub-nav with nothing marked at all, even though they are demonstrably
+// looking at the first section.
+//
+// Treating the first heading as active in that state says the true thing
+// (you are at the top, which is where the first section is) and costs
+// nothing: it is scoped to the one case where the theme's own answer is
+// "none", so it can never override a real hash match.
+const isFirstHeadingAtPageTop = computed(
+  () =>
+    props.index === 0 &&
+    !route.hash &&
+    typeof props.item.link === 'string' &&
+    props.item.link.startsWith('#'),
+)
+
 const itemClass = computed(() => ({
   'vp-sidebar-item': true,
   'vp-sidebar-heading': props.depth === 0,
-  'active': isActive.value,
+  'active': isActive.value || isFirstHeadingAtPageTop.value,
   'collapsible': collapsible.value,
 }))
 
@@ -113,10 +126,11 @@ const onClick = (event) => {
     <VPDropdownTransition v-if="'children' in item && item.children.length">
       <ul v-show="isOpen" class="vp-sidebar-children">
         <ReactiveSidebarItem
-          v-for="child in item.children"
+          v-for="(child, i) in item.children"
           :key="`${depth}${child.text}${child.link}`"
           :item="child"
           :depth="depth + 1"
+          :index="i"
         />
       </ul>
     </VPDropdownTransition>

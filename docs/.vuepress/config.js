@@ -288,14 +288,12 @@ export default defineUserConfig({
   alias: {
     '@theme/VPSidebarItems.vue': path.resolve(__dirname, './components/CourseSidebarItems.vue'),
     '@theme/VPNavbarItems.vue': path.resolve(__dirname, './components/CourseNavbarItems.vue'),
-    // Fixes issue #32 (the branching rail in CourseSidebarItems.vue's
-    // drawWeekRail() flashing as a plain line with no circles for however
-    // long it takes the reader to scroll). See ReactiveSidebarItem.vue for
-    // the full mechanism: the theme's own VPSidebarItem.vue only resyncs its
-    // `isOpen` state through router.afterEach, which a freshly-created
-    // instance registers too late to catch the very navigation that made it
-    // active. This replacement makes `isOpen` a live computed instead, so
-    // there is no resync race to lose.
+    // Marks a page's first heading active while route.hash is empty, which
+    // the theme cannot do on its own: it matches a heading child on
+    // `route.hash === item.link`, and the active-header-links plugin clears
+    // route.hash outright whenever the reader is within 5px of the top of a
+    // page. See ReactiveSidebarItem.vue, which also records why this file's
+    // original justification (an isOpen resync race, issue #32) was wrong.
     '@theme/VPSidebarItem.vue': path.resolve(__dirname, './components/ReactiveSidebarItem.vue'),
   },
 

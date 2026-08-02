@@ -17,8 +17,16 @@
 // link lands with the fixed navbar covering the week's own title.
 // scroll-margin-top is the standard fix for exactly that gap, scoped to just
 // the one element that actually has it.
+// The navbar height ALONE is not enough here, which is the bug this value
+// originally shipped with: it lands the summary's box top exactly at the
+// navbar's bottom edge, zero clearance, and the focus outline (2px wide at
+// 2px offset, so 4px above the box) then sits underneath the navbar. The
+// theme's headings do not have this problem because their padding is
+// `1rem + var(--header-offset)`, so they clear the navbar by a full 1rem.
+// Matching that here keeps a week anchor and a heading anchor landing at the
+// same visual distance from the navbar instead of two different ones.
 .week > summary {
-  scroll-margin-top: var(--navbar-height, 3.6rem);
+  scroll-margin-top: calc(var(--navbar-height, 3.6rem) + 1rem);
 }
 
 // Skip-to-content link. The theme ships no skip link at all, so this is
