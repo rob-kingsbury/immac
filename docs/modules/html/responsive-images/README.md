@@ -6,18 +6,9 @@ prerequisites:
 
 # Responsive Images
 
-An image that's fine on a desktop can overflow a phone screen and force horizontal scrolling. One CSS rule prevents it, and it belongs in every stylesheet you write:
+Stopping an image from overflowing its container is a CSS job, done with `img { max-width: 100%; height: auto; }` and covered in [Layouts That Respond Without a Query](/modules/css/css-rwd-patterns/README.md).
 
-```css
-img {
-  max-width: 100%;
-  height: auto;
-}
-```
-
-`max-width: 100%` stops the image ever being wider than its container. `height: auto` keeps the aspect ratio correct as the width changes, rather than squashing it.
-
-That handles layout. Handling *file size* is the other half, and [Image Optimization](/modules/html/image-optimization/README.md) Steps 1 to 5 assume one file, when a phone and a desktop should not download the same one. `srcset` and the `<picture>` element, covered below, let the browser download a smaller file on a small screen instead of shrinking a huge one. Those live in the HTML, and the CSS rule above works alongside them.
+This module is the other half: *file size*. [Image Optimization](/modules/html/image-optimization/README.md) Steps 1 to 5 assume one file, when a phone and a desktop should not download the same one. `srcset` and the `<picture>` element, covered below, let the browser download a smaller file on a small screen instead of shrinking a huge one. Those live in the HTML, and the CSS rule works alongside them.
 
 ## Step 6: Offer several sizes with srcset
 

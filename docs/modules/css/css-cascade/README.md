@@ -1,7 +1,5 @@
 ---
 title: The Cascade
-prerequisites:
-  - css/css-precedence
 ---
 
 # How the Browser Decides: The Cascade

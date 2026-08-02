@@ -14,6 +14,7 @@ Every week below lists the modules to work through, in the order they are taught
 - [CSS Selectors](/modules/css/css-selectors/README.md). Element, class, and ID selectors, and how specific each one is.
 - [The Cascade](/modules/css/css-cascade/README.md). What the browser does when two rules both apply and disagree.
 - [Browser Developer Tools](/modules/tools/browsers/README.md). How to ask the browser what it actually did, instead of guessing. Introduced here because every week after this one assumes you can inspect an element and read which rule won. The sub-pages on inspecting the box model, grids, and variables become useful as you meet each of those.
+- [Developer Tools for Debugging](/modules/tools/browsers/devtools.md). Opening the tools, the Elements and Console panels, and reading an error down to the file and line that caused it.
 
 </details>
 
@@ -79,7 +80,6 @@ Every week below lists the modules to work through, in the order they are taught
 - [Fluid Sizing Without a Query](/modules/css/css-fluid-sizing/README.md). Sizing that scales on its own, before you reach for a breakpoint.
 - [Layouts That Respond Without a Query](/modules/css/css-rwd-patterns/README.md). Patterns that reflow on their own, with no breakpoint involved.
 - [Container Queries](/modules/css/css-container-queries/README.md). Asking about the size of a component's container instead of the whole window.
-- [Responsive Images](/modules/html/responsive-images/README.md). srcset, sizes, and picture, so the browser can choose the right file for the screen.
 - [Testing Responsive Work](/modules/tools/browsers/testing-responsive-work.md). Four ways to test a layout, in increasing order of trustworthiness, ending with a real phone in hand.
 
 </details>

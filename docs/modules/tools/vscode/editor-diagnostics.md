@@ -21,7 +21,7 @@ Problems panel: 2 warnings. contact.html: attribute "class" already defined (lin
 
 This is narrower than what the W3C validator checks. It's built to catch obvious syntax slips as you make them, not to enforce the full specification the way the validator does, so a clean editor with no squiggly lines is not the same thing as a page that validates. Treat it as an early warning, not a substitute for running the validator before you consider a page done.
 
-Every problem VS Code has flagged across your currently open files also collects in one place: the **Problems panel**, opened from the View menu or with `Ctrl+Shift+M` (`Cmd+Shift+M` on a Mac). Instead of hunting through a long file for a stray squiggly line, the panel lists every issue at once, each one a clickable link that jumps straight to the line it's on.
+Every problem VS Code has flagged across your currently open files also collects in one place: the **Problems panel**, opened from the View menu or with `Ctrl/Cmd+Shift+M`. Instead of hunting through a long file for a stray squiggly line, the panel lists every issue at once, each one a clickable link that jumps straight to the line it's on.
 
 The order this gives you is worth holding onto: your editor catches a slip before you save, the [validator](/modules/html/html-validation/README.md) catches what's left before you publish, and [developer tools](/modules/tools/browsers/devtools.md) catch whatever only shows up once the browser actually renders the page. Three checkpoints, each looking for something the others can't see.
 
@@ -29,4 +29,4 @@ The order this gives you is worth holding onto: your editor catches a slip befor
 
 Run this over your workflow before you move on:
 
-- Comfortable opening the Problems panel (`Ctrl+Shift+M` / `Cmd+Shift+M`) and jumping to a flagged line
+- Comfortable opening the Problems panel (`Ctrl/Cmd+Shift+M`) and jumping to a flagged line

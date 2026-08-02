@@ -26,9 +26,9 @@ Some visitors set their operating system to increase contrast, for low vision or
 
 The two values worth knowing are `more`, for someone who has asked for stronger contrast, and `less`, for someone who has asked for less, which is rarer but real for light sensitivity. A `custom` value also exists, for a visitor running the forced colors mode covered next. Baseline status: widely available since May 2022, verified against MDN, a couple of months ahead of `prefers-reduced-motion`'s own widely-available date and the same safe tier to build on.
 
-## `forced-colors` (Windows High Contrast Mode)
+## `forced-colors` (forced colour modes)
 
-This one is different in kind, not just in what it detects. When a visitor turns on Windows High Contrast Mode, or an equivalent forced colour scheme elsewhere, the browser stops using most of your author colours and repaints the page with a small palette the visitor chose: one background, one text colour, one link colour, and so on. `color`, `background-color`, and `border-color` are among the properties the browser overrides at paint time, no matter what your stylesheet says.
+This one is different in kind, not just in what it detects. When a visitor turns on a forced colour mode, the high contrast setting their operating system offers, the browser stops using most of your author colours and repaints the page with a small palette the visitor chose: one background, one text colour, one link colour, and so on. `color`, `background-color`, and `border-color` are among the properties the browser overrides at paint time, no matter what your stylesheet says.
 
 ```css
 @media (forced-colors: active) {

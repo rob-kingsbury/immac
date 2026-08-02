@@ -39,6 +39,21 @@ You've already built two examples. Flexbox with `flex-wrap: wrap` reflows items 
 
 Resize this page and that grid rearranges itself. No breakpoint was chosen and no query was written.
 
+## Images that fit their container
+
+An image that's fine on a desktop can overflow a phone screen and force horizontal scrolling. One rule prevents it, and it belongs in every stylesheet you write:
+
+```css
+img {
+  max-width: 100%;
+  height: auto;
+}
+```
+
+`max-width: 100%` stops the image ever being wider than its container. `height: auto` keeps the aspect ratio correct as the width changes, rather than squashing it.
+
+That is the layout half. Getting the browser to download a file the right size for the screen in the first place is a separate job, done in the markup rather than the stylesheet, and [Responsive Images](/modules/html/responsive-images/README.md) covers it.
+
 ## Common mistakes to avoid
 
 - **Reaching for a media query before checking whether `flex-wrap` or `repeat(auto-fit, minmax())` already solves it.** Both patterns above adapt to available space with no query written at all, and they need less code to keep in sync than an equivalent set of breakpoints.

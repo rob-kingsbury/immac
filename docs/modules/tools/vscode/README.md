@@ -8,13 +8,13 @@ By the end of this setup, three things need to be true. Check yourself against t
 
 1. VS Code is installed and opens.
 2. `git --version` returns a real version number in a terminal.
-3. Git Bash is the default terminal in VS Code.
+3. A bash-style terminal is the default in VS Code.
 
 If a step stalls or throws an error partway through, that's often a connection blip or a one-off installer hiccup, not something you did wrong. Try it once more before you assume you've broken something. If it still won't go, don't sit with it alone: flag it right away, since the rest of this setup sequence, [GitHub Basics](/modules/git/github-basics/README.md), [Git Basics](/modules/git/git-basics/README.md), and [GitHub Pages](/modules/git/github-pages/README.md), all assume this part already works.
 
 ## Installing Visual Studio Code
 
-VS Code is the editor you'll write every line of code in this course. Download it from [code.visualstudio.com](https://code.visualstudio.com/) and run the installer with the default options. It's free, and it runs on Windows, macOS, and Linux.
+VS Code is the editor you'll write every line of code in this course. Download it from [code.visualstudio.com](https://code.visualstudio.com/) and run the installer with the default options. It's free, and it runs on every major desktop platform.
 
 ## Installing Git
 
@@ -54,7 +54,9 @@ Click **Install**, then agree to the license. The download typically finishes in
 
 ### Confirming it worked
 
-Whichever operating system you're on, open a terminal and check the version:
+Use VS Code's built-in terminal rather than a separate terminal app. Open it with `` Ctrl+` ``, or from the View menu. Whichever shell it opens with for now is fine for this check, and you'll set it to Git Bash further down this page.
+
+Check the version:
 
 ```bash
 git --version
@@ -87,22 +89,22 @@ Open the Extensions view in VS Code (the icon in the Activity Bar on the left, o
 - **[Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)**. Right-click any HTML file and choose "Open with Live Server" to preview it in a browser, and the page automatically refreshes every time you save. You'll use this every time you build a page from here on.
 - **[Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare)**. Lets you share your live coding session with an instructor or classmate for real-time help, without either of you leaving VS Code.
 
-## Setting the default terminal to Git Bash
+## Setting the default terminal
 
-VS Code has a built-in terminal panel, and on Windows it defaults to PowerShell. This course standardizes on **Git Bash**, since it's the terminal Git itself ships with, and its commands work identically on Windows, macOS, and Linux.
+VS Code has a built-in terminal panel, and the shell it opens by default depends on the machine. This course standardizes on a **bash-style** terminal, so that every command in every module works the same way for everyone whatever they're running.
 
-**Restart VS Code now, if you haven't already since installing Git.** VS Code only detects Git Bash as an option if Git was already installed the last time it started up, so if it's been open through the Git install above, it won't show up yet.
+**Restart VS Code now, if you haven't already since installing Git.** VS Code only offers terminals it detected when it started, so if it's been open through the Git install above, a newly installed one won't appear yet.
 
-Open the Command Palette (`Ctrl+Shift+P`, or `Cmd+Shift+P` on macOS), type "Terminal: Select Default Profile," and choose **Git Bash** from the list. The next terminal you open (`` Ctrl+` ``) will use it.
+Open the Command Palette from the View menu, or with `Ctrl/Cmd+Shift+P`, type "Terminal: Select Default Profile," and choose the bash option from the list. On some systems that's a profile Git installed alongside itself, on others bash or zsh is already there. The next terminal you open (`` Ctrl+` ``) will use it.
 
 <details class="demo" open>
 <summary>Result</summary>
 <div class="demo-render">
-Command Palette shows: PowerShell, Command Prompt, <strong>Git Bash</strong>, Azure Cloud Shell
+Command Palette lists the terminal profiles it found, with a <strong>bash</strong> option among them
 </div>
 </details>
 
-If Git Bash still doesn't appear, close and reopen VS Code once more, this restart is the fix for almost every case.
+If no bash option appears, close and reopen VS Code once more, this restart is the fix for almost every case.
 
 Editor installed and Git working, [GitHub Basics](/modules/git/github-basics/README.md) is next: creating the account everything else in this sequence connects to.
 
@@ -113,7 +115,7 @@ Run this over your own machine before you move on:
 - VS Code is installed and opens
 - `git --version` returns a real version number in a terminal
 - Git knows your name and email (`git config --global user.name` and `user.email` are set)
-- Git Bash is the default terminal in VS Code
+- A bash-style terminal is the default in VS Code
 
 ## Keep learning
 

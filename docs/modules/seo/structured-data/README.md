@@ -11,6 +11,8 @@ Structured data is machine-readable information about your content, written in a
 
 The current recommended format is **<abbr title="JSON for Linking Data">JSON-LD</abbr>**, a block of data placed in the page head. It's written in <abbr title="JavaScript Object Notation">JSON</abbr>, so the punctuation is strict.
 
+If you haven't met JSON before, the rules are short. Braces `{ }` wrap an object, and square brackets `[ ]` hold a list. Every key sits in double quotes, followed by a colon and then its value. A comma separates one key-and-value pair from the next, and the final pair in a block never takes one. That trailing comma is the most common way a block breaks.
+
 ```html
 <script type="application/ld+json">
 {

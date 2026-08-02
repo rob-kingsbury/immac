@@ -106,7 +106,7 @@ h1 {
 }
 ```
 
-Comments are also useful for temporarily switching a rule off without deleting it. Wrap it in `/* */` and the browser skips it, then remove the comment markers to bring it back. In VS Code you can comment or uncomment the selected lines with `Ctrl` and `/` on Windows, or `Cmd` and `/` on a Mac, rather than typing the markers by hand.
+Comments are also useful for temporarily switching a rule off without deleting it. Wrap it in `/* */` and the browser skips it, then remove the comment markers to bring it back. In VS Code you can comment or uncomment the selected lines with `Ctrl/Cmd` and `/`, rather than typing the markers by hand.
 
 ## The checklist
 

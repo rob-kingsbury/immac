@@ -20,7 +20,7 @@ Every week below lists the modules to work through, in the order they are taught
 
 ### Exercise: publish a page end to end (about 15 minutes)
 
-Confirm your setup works end to end, without following [Publishing to GitHub Pages](/modules/git/github-pages/README.md) as a script: clone your practice repository (or a fresh one), make any small change, push it, and confirm the Pages URL loads in a browser. This is meant to be a genuine test, so work through a snag before reaching for help. But if you're stuck for more than a few minutes, that's not a sign you're behind. Either way, note exactly which step gave you trouble, because that's worth raising before you build on top of it.
+Confirm your setup works end to end, without following [Publishing to GitHub Pages](/modules/git/github-pages/README.md) as a script: clone your practice repository (or a fresh one), open `index.html` and type in an `<h1>` holding your own name, push it, and confirm the Pages URL loads in a browser with your heading on it. This is meant to be a genuine test, so work through a snag before reaching for help. But if you're stuck for more than a few minutes, that's not a sign you're behind. Either way, note exactly which step gave you trouble, because that's worth raising before you build on top of it.
 
 </details>
 
@@ -99,7 +99,6 @@ If your site map has any page nested under a section rather than sitting directl
 - [Skip Navigation](/modules/accessibility/skip-navigation/README.md). The link that lets a keyboard user jump past the navigation straight to the content.
 - [Keyboard Access](/modules/accessibility/keyboard-access/README.md). Tabbing through a page, and why a link and a button answer to different keys.
 - [Colour Contrast](/modules/accessibility/colour-contrast/README.md). Measuring text against its background, and the ratios that count as readable.
-- [Accessible Forms, in Brief](/modules/html/html-form/accessible-forms.md). Grouping related controls, and the mistakes that make a form unusable with a screen reader.
 - [Visually Hidden](/modules/accessibility/visually-hidden/README.md). Content a screen reader announces but the page does not show, done the one right way.
 - [Testing for Accessibility](/modules/accessibility/testing/README.md). The checks you can run on your own page before anyone else sees it.
 
@@ -109,7 +108,7 @@ If your site map has any page nested under a section rather than sitting directl
 <summary id="week-7-html-forms-and-data-structures">Week 7: HTML Forms and Data Structures</summary>
 
 - [HTML Form](/modules/html/html-form/README.md). Building a form that is well structured and properly labelled.
-- [Accessible Forms, in Brief](/modules/html/html-form/accessible-forms.md). Grouping related controls, and the mistakes that make a form unusable with a screen reader. Revisited from Week 6.
+- [Accessible Forms, in Brief](/modules/html/html-form/accessible-forms.md). Grouping related controls, and the mistakes that make a form unusable with a screen reader.
 - [HTML Input](/modules/html/html-input/README.md). The input element, and a type attribute that changes both behaviour and the phone keyboard.
 - [Built-in Form Validation](/modules/html/html-form-validation/README.md). Rules the browser enforces before anything is submitted, with no scripting.
 - [HTML Table](/modules/html/html-table/README.md). Tabular data with real headers, and why a table is never a layout tool.
@@ -139,7 +138,7 @@ Export it at three widths, roughly 400, 800, and 1600 pixels, saving each as Web
 
 Put the three files into an `<img>` with `srcset` and `sizes`, and add `alt` plus `width` and `height`. Use the dimensions of your **largest** file for those two attributes, since all three share the same shape and the browser only needs the ratio.
 
-Open your page and open developer tools with **F12**, or **Ctrl+Shift+I**, or **Cmd+Option+I** on a Mac. Switch to the **Network** tab, in the same row of tabs as Elements and Console. Reload the page, then use the **Img** filter button below that row to hide the CSS, font, and favicon requests so only images remain. Resize the browser window and reload at a narrow width and again at a wide one. Confirm that a different file is requested each time.
+Open your page and open developer tools with **F12**, or `Ctrl/Cmd+Shift+I`. Switch to the **Network** tab, in the same row of tabs as Elements and Console. Reload the page, then use the **Img** filter button below that row to hide the CSS, font, and favicon requests so only images remain. Resize the browser window and reload at a narrow width and again at a wide one. Confirm that a different file is requested each time.
 
 Then add a second image lower down the page with `loading="lazy"`, reload at the top, and confirm in the Network panel that it does not appear in the list until you scroll toward it.
 
@@ -173,7 +172,7 @@ Finally, remove the `width` and `height` from one image. In the Network panel to
 - [HTML Comments](/modules/html/html-comments/README.md). Notes the browser ignores entirely, written for whoever reads the source next. Revisited from Week 2.
 - [File and Folder Names](/modules/web-basics/file-folder-names/README.md). Naming conventions that feel optional at three files and are not at thirty. Revisited from Week 5.
 - [Working Like a Team, Branches and Pull Requests](/modules/git/github-collaboration/README.md). Branches and pull requests, which is how a team actually works.
-- [Developer Tools for Debugging](/modules/tools/browsers/devtools.md). The Elements and Console panels, and reading an error down to the file and line that caused it.
+- [Developer Tools for Debugging](/modules/tools/browsers/devtools.md). The Elements and Console panels, and reading an error down to the file and line that caused it. Revisited from MTM1544 Week 1.
 
 </details>
 

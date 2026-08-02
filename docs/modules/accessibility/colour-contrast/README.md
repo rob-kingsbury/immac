@@ -1,13 +1,12 @@
 ---
 title: Colour Contrast
 prerequisites:
-  - accessibility/wcag
   - css/css-colors
 ---
 
 # Colour Contrast
 
-Perceivable content, one of the four WCAG principles, includes making sure text is actually readable. This is the part of accessible colour work that isn't a matter of taste.
+Making sure text is actually readable against whatever sits behind it is the part of accessible colour work that isn't a matter of taste. It's a measurable requirement, and [WCAG](/modules/accessibility/wcag/README.md) is where the standard behind it is set out in full.
 
 Text has to be readable by people with low vision, colour vision deficiencies, or simply a cheap screen in bright sunlight. The measure is **contrast ratio**, the difference in relative luminance between the text colour and the colour behind it. It runs from 1:1, identical and invisible, to 21:1, pure black on pure white.
 

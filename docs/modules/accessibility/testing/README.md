@@ -11,7 +11,7 @@ You can catch a large share of issues yourself, before anyone else sees the page
 
 **Try to use your page with the keyboard alone.** Can you reach and activate every link and control with Tab and Enter, and can you always see where focus is? This is the single most revealing test available, because it's the one automated tools can't fully do for you.
 
-**Run an automated audit.** Lighthouse, built into Chrome and Edge's developer tools, flags missing alt text, poor contrast, and unlabelled fields in seconds. The [axe DevTools extension](https://www.deque.com/axe/devtools/) is more thorough again. Both are worth running every time.
+**Run an automated audit.** Lighthouse, built into Chrome and Edge's developer tools, flags missing alt text, poor contrast, and unlabelled fields in seconds. Open developer tools, choose the Lighthouse panel, tick the Accessibility category, and run it against your page. Then work the itemized list, since every flagged item comes with a link explaining what it wants and why. The [axe DevTools extension](https://www.deque.com/axe/devtools/) is more thorough again. Both are worth running every time.
 
 **Zoom text to 200%** and look for clipping, overlap, or horizontal scrolling.
 
