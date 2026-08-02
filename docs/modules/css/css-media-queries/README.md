@@ -14,7 +14,7 @@ Responsive design covers everything that reacts to size: the viewport meta tag, 
 
 ## The viewport meta tag
 
-Before any <abbr title="Cascading Style Sheets">CSS</abbr> matters, one line of <abbr title="HyperText Markup Language">HTML</abbr> has to be right. Without it, everything else in this chapter silently fails.
+Before any <abbr title="Cascading Style Sheets">CSS</abbr> matters, one line of <abbr title="HyperText Markup Language">HTML</abbr> has to be right. Without it, everything else in this module silently fails.
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1">

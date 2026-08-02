@@ -9,7 +9,7 @@ prerequisites:
 
 [Flexbox Layouts](/modules/css/css-flexbox/README.md) arranges things in a line. **Grid** arranges things in rows *and* columns at the same time, which makes it the tool for page-level layout: a header across the top, a sidebar beside a main column, a footer along the bottom, a gallery in a tidy matrix.
 
-The two are not rivals. Flexbox is one-dimensional, Grid is two-dimensional, and real sites use both, usually with Grid handling the overall page and Flexbox handling the contents of each region. This chapter covers Grid on its own, then shows them working together.
+The two are not rivals. Flexbox is one-dimensional, Grid is two-dimensional, and real sites use both, usually with Grid handling the overall page and Flexbox handling the contents of each region. This module covers Grid on its own, then shows them working together.
 
 Everything here is hand-coded. This course deliberately does not use a layout framework, because a framework hides exactly the mechanics you're here to learn.
 

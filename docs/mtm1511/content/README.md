@@ -79,6 +79,8 @@ Open the page in your browser, then open developer tools and inspect your own el
 - [Wireframes](/modules/web-basics/wireframes/README.md). Low-detail sketches that settle arrangement before anything gets built.
 - [HTML Navigation](/modules/html/html-navigation/README.md). Navigation landmarks and breadcrumbs, for a site with any depth to it.
 
+In your UX Design course (MTM1537) you produce the design side of this planning: user flows, wireframes, and mockups of how a site should look and behave. This week is where those plans become working HTML. Bring one of them with you if you have it, and use it instead of inventing a new site for the exercise below.
+
 ### Exercise: plan a small site and write its skeleton (about 45 minutes)
 
 Pick a small site you'd realistically build, three to five pages. Draw its site map as an indented list, and check it against the [three-click guideline](/modules/web-basics/site-maps/README.md#the-three-click-guideline). Choose one of those pages and sketch a [wireframe](/modules/web-basics/wireframes/README.md) of it, boxes and labels only, no colour or real content.
@@ -171,6 +173,7 @@ Finally, remove the `width` and `height` from one image. In the Network panel to
 - [HTML Comments](/modules/html/html-comments/README.md). Notes the browser ignores entirely, written for whoever reads the source next. Revisited from Week 2.
 - [File and Folder Names](/modules/web-basics/file-folder-names/README.md). Naming conventions that feel optional at three files and are not at thirty. Revisited from Week 5.
 - [Working Like a Team, Branches and Pull Requests](/modules/git/github-collaboration/README.md). Branches and pull requests, which is how a team actually works.
+- [Developer Tools for Debugging](/modules/tools/browsers/devtools.md). The Elements and Console panels, and reading an error down to the file and line that caused it.
 
 </details>
 

@@ -21,6 +21,8 @@ You now have a local, working copy of the repository, connected to GitHub. This 
 
 With a repository cloned, [Staging, Committing, and Pushing](/modules/git/git-basics/staging-committing-pushing.md) covers the workflow you'll repeat constantly from here on.
 
+Two more pages sit alongside this one, for when you need them rather than now. [Ignoring Files with .gitignore](/modules/git/git-basics/gitignore.md) is how you keep files you never want published out of a repository. [Git, GitHub, and Pages in Plain Terms](/modules/git/git-basics/git-github-pages-in-plain-terms.md) separates the three names, which are easy to hear as one thing.
+
 ## The checklist
 
 Run this over your own machine before you move on:

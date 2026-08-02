@@ -53,4 +53,4 @@ Run this over your plan before you open a code editor:
 ## Keep learning
 
 - [Nielsen Norman Group: Site Map Usability](https://www.nngroup.com/reports/site-map-usability/). The actual research behind the "simple, single-view site map" finding cited above.
-- [Video: How to Plan a Website Sitemap, by Brainstorm Force](https://www.youtube.com/watch?v=O3BXKqlfHGs). Covers the same site-mapping process as this chapter, with more worked examples.
+- [Video: How to Plan a Website Sitemap, by Brainstorm Force](https://www.youtube.com/watch?v=O3BXKqlfHGs). Covers the same site-mapping process as this module, with more worked examples.

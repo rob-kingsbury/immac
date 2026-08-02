@@ -26,6 +26,8 @@ This is now a real, live **repository**, a project folder that Git tracks and Gi
 
 Account and practice repository ready, [Git Basics](/modules/git/git-basics/README.md) is next: getting that repository onto your own computer.
 
+One page sits alongside this one, for when you need it. [Writing a README](/modules/git/github-basics/writing-a-readme.md) covers what belongs in that file, since it is the first thing anyone sees when they open your repository.
+
 ## The checklist
 
 Run this over your own account before you move on:

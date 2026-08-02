@@ -8,9 +8,9 @@ prerequisites:
 
 Images are usually the heaviest thing on a page. A single unoptimized photo can outweigh all your <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> combined, and on a phone connection that is the difference between a page that loads instantly and one people give up on.
 
-[HTML Images](/modules/html/html-images/README.md) covered placing images. This chapter is about making them fast, and about the small set of attributes that decide whether a page feels quick or feels broken.
+[HTML Images](/modules/html/html-images/README.md) covered placing images. This module is about making them fast, and about the small set of attributes that decide whether a page feels quick or feels broken.
 
-**One tool, for everything below.** [Squoosh](https://squoosh.app/) is free, runs in the browser, and does the whole job on its own: resize to an exact pixel width, set a quality level, convert to WebP or AVIF, and export. If you already work in Photoshop, Affinity, or GIMP, use those instead. If you own no image editor at all, Squoosh is the only one you need for this chapter.
+**One tool, for everything below.** [Squoosh](https://squoosh.app/) is free, runs in the browser, and does the whole job on its own: resize to an exact pixel width, set a quality level, convert to WebP or AVIF, and export. If you already work in Photoshop, Affinity, or GIMP, use those instead. If you own no image editor at all, Squoosh is the only one you need for this module.
 
 ## The problem, in numbers
 
@@ -20,7 +20,7 @@ On a good office connection that page arrives in about a second. On a weak mobil
 
 The frustrating part is that almost none of those pixels were needed. If each photo displays in a 600 pixel wide box, you sent nearly seven times the width required, which is close to fifty times the pixel data, for an image that looks identical to the visitor.
 
-Seven steps fix it, and none of them are difficult. This chapter covers the first five; [Responsive Images](/modules/html/responsive-images/README.md) covers the last two.
+Seven steps fix it, and none of them are difficult. This module covers the first five; [Responsive Images](/modules/html/responsive-images/README.md) covers the last two.
 
 If you already make these calls professionally, for photography, video, or client design work, Steps 1 to 3 will be familiar ground. Skim them and start reading closely at Step 4, where the markup begins.
 
@@ -92,9 +92,9 @@ photo-75.jpg   quality 75      210 KB    <- bottom of the useful range
 photo-50.jpg   quality 50      120 KB    <- artifacts now visible, do not ship
 ```
 
-The exact figures depend on the photo. The pattern does not. Dropping from 100 to 85 typically removes most of the file for none of the visible quality, and that is the single largest saving available in this chapter.
+The exact figures depend on the photo. The pattern does not. Dropping from 100 to 85 typically removes most of the file for none of the visible quality, and that is the single largest saving available in this module.
 
-Squoosh does this comparison and the export in the same screen. It shows the original and the compressed version side by side with a draggable divider, reports the resulting file size as you move the quality slider, and exports the result. Set the format to WebP on the right, set quality, set the width in the Resize panel, and download. That is the entire workflow for this chapter in one tool.
+Squoosh does this comparison and the export in the same screen. It shows the original and the compressed version side by side with a draggable divider, reports the resulting file size as you move the quality slider, and exports the result. Set the format to WebP on the right, set quality, set the width in the Resize panel, and download. That is the entire workflow for this module in one tool.
 
 ## Step 4: Reserve the space
 

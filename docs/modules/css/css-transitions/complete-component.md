@@ -8,7 +8,7 @@ prerequisites:
 
 # A Complete Interactive Component
 
-Everything together, on a card built from the same Flexbox layout you used in [Flexbox Layouts](/modules/css/css-flexbox/README.md), with the transition and transform work from the last two chapters layered on top.
+Everything together, on a card built from the same Flexbox layout you used in [Flexbox Layouts](/modules/css/css-flexbox/README.md), with the transition and transform work from the last two modules layered on top.
 
 <CssDemo>
 
@@ -56,4 +56,4 @@ Three properties transitioning together over 200ms with `ease-out`, a small lift
 
 Note that `:focus-visible` gets the same treatment as `:hover`, plus a visible outline. That's the rule from [Keyboard Access](/modules/accessibility/keyboard-access/README.md) holding.
 
-This is also the point to confirm the `prefers-reduced-motion` guard from [Reduced Motion](/modules/accessibility/reduced-motion/README.md) is still protecting every transition and transform on the page. If it isn't in your stylesheet yet, add it before you add anything else here: every rule in that chapter, never the only signal, nothing flashing more than three times a second, nothing that animates without the visitor starting it, applies to a component like this one just as much as it did the first time you met it.
+This is also the point to confirm the `prefers-reduced-motion` guard from [Reduced Motion](/modules/accessibility/reduced-motion/README.md) is still protecting every transition and transform on the page. If it isn't in your stylesheet yet, add it before you add anything else here: every rule in that module, never the only signal, nothing flashing more than three times a second, nothing that animates without the visitor starting it, applies to a component like this one just as much as it did the first time you met it.

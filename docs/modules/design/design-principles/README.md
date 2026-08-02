@@ -6,7 +6,7 @@ prerequisites:
 
 # Visual Design Principles
 
-You can build a layout that works. This chapter is about what makes one look designed rather than merely assembled.
+You can build a layout that works. This module is about what makes one look designed rather than merely assembled.
 
 The gap between a page that works and a page that looks designed is rarely more code. It's usually four principles applied consistently: **hierarchy, contrast, alignment, and proximity**. None of them is a matter of taste, all of them are teachable, and all of them are visible in a finished page once you know what to look for. They apply whether the page is built by hand, assembled in a design tool, or printed.
 
@@ -202,4 +202,4 @@ The four principles reinforce each other. Hierarchy tells the eye what to read f
 - [Refactoring <abbr title="User Interface">UI</abbr>](https://www.refactoringui.com/). Practical visual design advice aimed specifically at developers. The free articles cover hierarchy and spacing well.
 - [MDN: Beginner's guide to design](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Design_and_accessibility). Design fundamentals in a web context.
 - [Laws of <abbr title="User Experience">UX</abbr>](https://lawsofux.com/). Short, well-illustrated explanations of the perceptual principles behind proximity and hierarchy.
-- [Video: Design Tips for Developers, by Kevin Powell](https://www.youtube.com/watch?v=YIkFvIRcvSc). Concrete, CSS-focused suggestions in the same spirit as this chapter.
+- [Video: Design Tips for Developers, by Kevin Powell](https://www.youtube.com/watch?v=YIkFvIRcvSc). Concrete, CSS-focused suggestions in the same spirit as this module.

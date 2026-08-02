@@ -86,4 +86,4 @@ Run this over every page before you move on. Each of the three pages above ends 
 - [Video: HTML5 Semantics, by Net Ninja](https://www.youtube.com/watch?v=kGW8Al_cga4). A short, beginner-friendly walkthrough of the semantic elements.
 - [Video: Semantic HTML Tags, by Dave Gray](https://www.youtube.com/watch?v=kX3TfdUqpuU). A fuller tutorial with live coding.
 
-If you can look at a design and name its regions out loud (that's a `<header>`, that's the `<main>`, those repeating blocks are `<article>` elements), you have the skill this chapter is teaching. The [full worked example](/modules/html/html-semantics/worked-example.md) puts every element above into one realistic page.
+If you can look at a design and name its regions out loud (that's a `<header>`, that's the `<main>`, those repeating blocks are `<article>` elements), you have the skill this module is teaching. The [full worked example](/modules/html/html-semantics/worked-example.md) puts every element above into one realistic page.

@@ -98,4 +98,4 @@ Run this over your page before you move on:
 
 ## Keep learning
 
-- [W3Schools: HTML Layout Elements and Techniques](https://www.w3schools.com/html/html_layout.asp). A refresher on the semantic layout elements this chapter's plans translate into.
+- [W3Schools: HTML Layout Elements and Techniques](https://www.w3schools.com/html/html_layout.asp). A refresher on the semantic layout elements this module's plans translate into.

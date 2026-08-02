@@ -114,4 +114,4 @@ Run this over your page before you move on:
 - [W3Schools: HTML Links](https://www.w3schools.com/html/html_links.asp). A reference page with more worked examples.
 - [MDN: Creating hyperlinks](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks). Covers `mailto:` links in more depth, including `cc`, `bcc`, and the URL-encoding rules above.
 - [MDN: rel="noopener"](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/noopener). The security detail behind opening a link with `target="_blank"`.
-- [Video: Lesser Known Features of Anchor Tags, by Steve Griffith](https://www.youtube.com/watch?v=ZSEvm4f-RtM). Covers the same going-deeper territory as this chapter's `mailto:` and safe-new-tab sections.
+- [Video: Lesser Known Features of Anchor Tags, by Steve Griffith](https://www.youtube.com/watch?v=ZSEvm4f-RtM). Covers the same going-deeper territory as this module's `mailto:` and safe-new-tab sections.

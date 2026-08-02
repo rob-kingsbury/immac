@@ -142,7 +142,7 @@ Both jobs combine, and `srcset` still works inside each source:
 </picture>
 ```
 
-That is the most complex image markup this course asks for, and most images do not need it. Reach for `<picture>` when you need a different crop or a format fallback. Use plain `srcset` for everything else. [Putting It Together](/modules/html/image-optimization/putting-it-together.md) shows a complete example combining every technique from both chapters.
+That is the most complex image markup this course asks for, and most images do not need it. Reach for `<picture>` when you need a different crop or a format fallback. Use plain `srcset` for everything else. [Putting It Together](/modules/html/image-optimization/putting-it-together.md) shows a complete example combining every technique from both modules.
 
 Once your media loads fast, the next question is whether anyone finds the page at all. [SEO Basics](/modules/seo/seo-basics/README.md) picks that up.
 
@@ -160,6 +160,6 @@ Run this over every image before you move on:
 
 ## Keep learning
 
-- [MDN: Responsive images](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images). The full guide to `srcset`, `sizes`, and `<picture>`, with more cases than this chapter covers.
+- [MDN: Responsive images](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images). The full guide to `srcset`, `sizes`, and `<picture>`, with more cases than this module covers.
 - [MDN: the picture element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/picture). Attribute-level reference.
 - [Video: HTML Responsive Images, srcset, sizes, and the picture Element, by CodeLucky](https://www.youtube.com/watch?v=96GcXfFp8dc). Walks through both techniques with more worked examples.

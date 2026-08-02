@@ -6,7 +6,7 @@ prerequisites:
 
 # Flexbox Layouts
 
-Everything so far has styled individual elements. This chapter starts arranging them, and **Flexbox** is the tool for arranging things in a line.
+Everything so far has styled individual elements. This module starts arranging them, and **Flexbox** is the tool for arranging things in a line.
 
 Flexbox handles a specific job extremely well: taking a set of items and distributing them along one direction, either a row or a column, with control over the spacing between them and how they line up across. A navigation bar, a row of cards, a header with a logo on the left and links on the right, a button with an icon beside its label. All of those are one-dimensional arrangements, and all of them are Flexbox.
 
@@ -40,7 +40,7 @@ Flexbox always involves two levels. You turn a **container** into a flex contain
 
 One declaration, `display: flex`, changed everything. Those three `<div>` elements are block elements, so without Flexbox each would claim its own row. As flex items they sit in a line, and each one shrank to fit its content rather than stretching full width.
 
-That's the pattern for the whole of this chapter: properties on the **container** control the arrangement, properties on the **items** control how individual pieces behave within it.
+That's the pattern for the whole of this module: properties on the **container** control the arrangement, properties on the **items** control how individual pieces behave within it.
 
 ## Direction and the two axes
 
@@ -129,7 +129,7 @@ Here's the same idea drawn out: the same three items, the same container, only `
 <figcaption>The solid arrow is always the main axis, the dashed line is always the cross axis. Switch <code>flex-direction</code> from row to column and the two swap. The items don't move to a different axis, the axis itself rotates.</figcaption>
 </div>
 
-That reordering problem, changing what a sighted user sees without changing what a screen reader or keyboard user encounters, comes back later in this chapter in the optional section on the `order` property. Worth flagging now, because `order` gets reached for constantly and carries the exact same caveat as `row-reverse`.
+That reordering problem, changing what a sighted user sees without changing what a screen reader or keyboard user encounters, comes back later in this module in the optional section on the `order` property. Worth flagging now, because `order` gets reached for constantly and carries the exact same caveat as `row-reverse`.
 
 ## Distributing space along the main axis
 

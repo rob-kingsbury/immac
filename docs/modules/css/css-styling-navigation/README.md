@@ -65,4 +65,4 @@ Run this over your own navigation bar before you move on:
 ## Keep learning
 
 - [MDN: Flexbox](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox). Covers this pattern alongside the rest of Flexbox.
-- [Video: Replacing Float with Flexbox in Nav Menus, by Steve Griffith](https://www.youtube.com/watch?v=9bGuiBw4sTE). Builds the same pattern this chapter does, starting from the older float approach.
+- [Video: Replacing Float with Flexbox in Nav Menus, by Steve Griffith](https://www.youtube.com/watch?v=9bGuiBw4sTE). Builds the same pattern this module does, starting from the older float approach.

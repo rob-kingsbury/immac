@@ -24,6 +24,7 @@ Every week below lists the modules to work through, in the order they are taught
 - [CSS Units](/modules/css/css-units/README.md). Pixels, ems, rems, percentages, and viewport units, and what each one is measured against.
 - [Box Sizing](/modules/css/css-box-sizing/README.md). Why a box comes out wider than the width you set, and the one line that fixes it.
 - [aspect-ratio](/modules/css/css-aspect-ratio/README.md). Holding a box to a fixed shape while its size flexes.
+- [Inspecting the Box Model](/modules/tools/browsers/inspecting-the-box-model.md). Reading the real padding, border, and margin values off the page instead of working them out from memory.
 
 </details>
 
@@ -66,6 +67,7 @@ Every week below lists the modules to work through, in the order they are taught
 - [Subgrid](/modules/css/css-grid/subgrid.md). Lining content up across sibling cards by borrowing the parent grid's tracks.
 - [Grid and Flexbox Together](/modules/css/css-grid/grid-and-flexbox-together.md). Grid for the page skeleton, Flexbox for what sits inside each region.
 - [The position Property](/modules/css/css-position/README.md). Lifting one element out of normal flow and placing it deliberately.
+- [Inspecting a Grid](/modules/tools/browsers/inspecting-a-grid.md). Overlaying a grid on the page with every track drawn and every line numbered.
 
 </details>
 
@@ -122,6 +124,7 @@ Every week below lists the modules to work through, in the order they are taught
 - [CSS Design Tokens](/modules/css/css-design-tokens/README.md). Opening a stylesheet with its design decisions instead of burying them.
 - [Theming](/modules/css/css-theming/README.md). Switching an entire interface by redeclaring one set of values.
 - [CSS Nesting](/modules/css/css-nesting/README.md). Writing a component's rules inside the component, now that browsers support it natively.
+- [Inspecting Variables](/modules/tools/browsers/inspecting-variables.md). Checking whether a custom property actually resolved, since a misspelled name fails silently.
 
 </details>
 

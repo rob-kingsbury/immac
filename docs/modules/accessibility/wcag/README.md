@@ -67,4 +67,4 @@ Run this over your understanding before you move on:
 - [MDN: the lang global attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/lang). Full reference for `lang` and `xml:lang`, with more examples of language tags.
 - [W3Schools: Accessibility](https://www.w3schools.com/accessibility/index.php). A structured overview covering the same POUR principles with more examples.
 - [WebAIM: Introduction to Web Accessibility](https://webaim.org/intro/). One of the most widely used accessibility education resources on the web, written for beginners.
-- [Video: WCAG for Beginners, by Silktide](https://www.youtube.com/watch?v=5H1JGdqLrWo). A clear introduction to the guidelines this chapter is built on.
+- [Video: WCAG for Beginners, by Silktide](https://www.youtube.com/watch?v=5H1JGdqLrWo). A clear introduction to the guidelines this module is built on.
