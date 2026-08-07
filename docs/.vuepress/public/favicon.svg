@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="IMM Web Courses">
+  <!-- Solid fill rather than a transparent glyph so the mark stays legible on
+       both a light and a dark browser chrome. #145f49 is the same accent the
+       site uses for primary buttons. -->
+  <rect width="32" height="32" rx="7" fill="#145f49"/>
+  <!-- Angle brackets, the plainest mark that reads as "web code" at 16px.
+       Stroked rather than filled so the weight holds when downscaled. -->
+  <path d="M12 11 L7 16 L12 21 M20 11 L25 16 L20 21"
+        fill="none" stroke="#ffffff" stroke-width="2.6"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

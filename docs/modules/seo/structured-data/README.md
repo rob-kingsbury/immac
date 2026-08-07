@@ -35,7 +35,7 @@ The vocabulary comes from [schema.org](https://schema.org/), which defines types
 
 Two rules keep structured data useful. It must **describe what's actually on the page**, since marking up an event that isn't there is a policy violation, not a clever trick. And it must be **valid JSON**, which is exactly why you should make running every new block through a validator a habit before considering it done, the same instinct as the W3C validator for <abbr title="HyperText Markup Language">HTML</abbr>. That habit matters more here than almost anywhere else in this course: a single missing comma or brace invalidates the entire block, and unlike a browser rendering slightly-wrong HTML, there's no visible sign anything went wrong. The search engine just quietly ignores the whole thing rather than using the part that parsed. Run it through the validator and you catch that in seconds; skip it and you might not find out for weeks that a block did nothing at all.
 
-### Going deeper: a Product example
+## Going deeper: a Product example
 
 *Optional, about 6 minutes.*
 
@@ -62,7 +62,7 @@ The pattern is the same shape as the Event example, a flat set of properties plu
 
 This is the same shape you'd reach for if a page calls for `Product` instead of `Event`: swap in the item's real name, a real image path, and its real price, and validate it the same way.
 
-### Going deeper: structured data for your breadcrumb trail
+## Going deeper: structured data for your breadcrumb trail
 
 *Optional, about 6 minutes.*
 

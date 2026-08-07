@@ -282,6 +282,14 @@ export default defineUserConfig({
   bundler: viteBundler(),
   clientConfigFile: path.resolve(__dirname, './client.js'),
 
+  // Without this the site declares no icon at all, so every browser falls back
+  // to requesting /favicon.ico and every page load takes a 404. It also leaves
+  // a blank tab, which matters more here than usual: the tab is what a student
+  // uses to find this site among the other tabs they keep open beside it.
+  // SVG only, deliberately. Every browser this course targets supports it, and
+  // an .ico would be a binary asset in a repo that currently has none.
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: `${'/immac/'}favicon.svg` }]],
+
   // The theme registers an alias for every one of its own components, so
   // pointing this one at ours replaces the sidebar list while leaving the
   // <aside> around it, the mobile drawer, and the navbar items untouched.
@@ -302,6 +310,13 @@ export default defineUserConfig({
   // frontmatter so the module files themselves still say nothing about weeks.
   // Pages outside any week are left alone and fall back to sidebar order.
   extendsPage(page) {
+    // Where this module is placed, for ModuleWeekContext.vue. Set for every
+    // placed module, including the ones in a single week: a reader who followed
+    // a link out of a week needs to know which week they are reading for, not
+    // only on the thirteen pages where the answer is ambiguous.
+    const used = structure.whereUsed.get(page.path)
+    if (used) page.frontmatter.whereUsed = used
+
     const links = structure.chain.get(page.path)
     if (!links) return
     page.frontmatter.prev = links.prev ? { text: links.prev.text, link: links.prev.link } : false
@@ -346,6 +361,12 @@ export default defineUserConfig({
       '/modules/': modulePoolSidebar,
       '/mtm1511/': courseSidebars.mtm1511,
       '/mtm1544/': courseSidebars.mtm1544,
+      // The glossary belongs to no course, so no course sidebar is correct for
+      // it. Declaring that explicitly rather than leaving it unmatched: an
+      // unmatched path makes the theme log "/glossary/ is missing sidebar
+      // config" on every build and again in the browser console, which trains
+      // everyone to ignore build output. The rendered result is the same.
+      '/glossary/': false,
     },
 
     // Show the active page's H2 sections nested under it (one level of

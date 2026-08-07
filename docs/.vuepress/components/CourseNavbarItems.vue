@@ -44,9 +44,22 @@ const navbarLabel = computed(
   () => themeLocale.value.navbarLabel ?? 'site navigation',
 )
 
+// The course code, not the word "Course". Nothing else on a module page names
+// which course the reader is in: the brand says "IMM Web Courses", the sidebar
+// says "Course", and the sidebar's own label is replaced by "Week N" as soon as
+// a week is opened. That left the browser tab as the only indicator, which a
+// reviewer reported missing on a first pass through the site.
+//
+// The code is read off the Course Home link ('/mtm1511/' -> 'MTM1511') rather
+// than imported from course-structure.js: that module reads the course content
+// pages with node:fs at build time and cannot be pulled into a client bundle.
+// Deriving it from the route keeps this to one source of truth and adds no
+// second place for a course list to drift out of sync.
 const homeItem = computed(() => {
   const courseHome = sidebarItems.value.find((item) => item.text === 'Course Home')
-  return courseHome ? { text: 'Course Home', link: courseHome.link } : { text: 'Home', link: '/' }
+  if (!courseHome) return { text: 'Home', link: '/' }
+  const code = courseHome.link.match(/^\/([^/]+)\//)?.[1]?.toUpperCase()
+  return { text: code ? `${code} Home` : 'Course Home', link: courseHome.link }
 })
 
 const navbarLinks = computed(() => [

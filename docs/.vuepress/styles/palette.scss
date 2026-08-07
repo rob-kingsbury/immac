@@ -15,26 +15,38 @@
 // properties it defines in vars.scss / vars-dark.scss, so those are
 // overridden directly here instead, for light and dark mode both.
 :root {
+  // Link/text use, against the white page background. 5.26:1, clears AA.
   --vp-c-accent: #1a7a5e;
-  --vp-c-accent-bg: #1a7a5e;
-  --vp-c-accent-hover: #145f49;
+
+  // Button-background use, paired with --vp-c-accent-text (white here).
+  // #1a7a5e would be 5.26:1, which passes AA but not AAA; this course
+  // teaches colour contrast and gets checked by its own students, so the
+  // buttons are held to AAA. #145f49 with white text is 7.6:1.
+  --vp-c-accent-bg: #145f49;
+  --vp-c-accent-hover: #0f4a3a;
   --vp-c-accent-soft: rgb(26 122 94 / 14%);
 }
 
-// --vp-c-accent-text (the text/icon colour paired with --vp-c-accent-bg,
-// e.g. white text on a primary button) stays var(--vp-c-white) in both
-// modes, unchanged from the theme default -- it's already white and that's
-// the correct choice once the background itself is dark enough.
 [data-theme='dark'] {
-  // Text/link use (against the dark page background) wants a *brighter*
-  // teal so it still reads clearly -- the theme's own stock dark accent
-  // already clears 4.5:1 here, so it's kept rather than replaced.
+  // Text/link use, against the dark page background. #3dd68c on #1b1b1f is
+  // 9.15:1. The theme's own stock dark accent already cleared AA here, so
+  // this is kept rather than replaced.
   --vp-c-accent: #3dd68c;
 
-  // Button-background use (paired with white text) needs to stay dark
-  // regardless of theme, the same way it does in light mode -- the theme's
-  // own dark default (#3aa675) does not (~3:1, fails AA for normal text),
-  // so this is darkened rather than just carried over.
+  // --vp-c-accent-text MUST be set explicitly in this block. The theme
+  // defines it as var(--vp-c-white), and vars-dark.scss *swaps* the meaning
+  // of --vp-c-white and --vp-c-black in dark mode, so --vp-c-white computes
+  // to #000 here. Measured in a browser, not inferred: with this line absent
+  // the primary hero button renders black text on --vp-c-accent-bg.
+  //
+  // That is also why the previous value of this block was a regression. It
+  // darkened --vp-c-accent-bg to #145f49 on the stated grounds that the
+  // paired text was white. It was black, so the change took the button from
+  // the theme default's 6.89:1 (black on #3aa675, passing AA) down to
+  // 2.76:1, failing AA. Pinning the text to white makes the dark background
+  // correct for the reason originally given: white on #145f49 is 7.6:1.
+  --vp-c-accent-text: #fff;
+
   --vp-c-accent-bg: #145f49;
   --vp-c-accent-hover: #0f4a3a;
   --vp-c-accent-soft: rgb(61 214 140 / 16%);
