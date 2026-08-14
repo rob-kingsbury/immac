@@ -190,7 +190,25 @@ Finally, remove the `width` and `height` from one image. In the Network panel to
 <details class="week" open>
 <summary id="week-14-project-development">Week 14: Project Development</summary>
 
-- **Project Development**. No new material. Class time goes to your project, with guided troubleshooting and structured peer review.
+- [Running a Structured Peer Review](/modules/design/peer-review/README.md). How to run a review session that produces a list instead of "looks good", and the structural review list to work through.
+- [Testing for Accessibility](/modules/accessibility/testing/README.md). The checks you can run on your own page before anyone else sees it. Revisited from Week 6.
+- [Document Head Best Practices](/modules/html/html-document-structure/head-best-practices.md). Every piece the head should carry, pulled into one checklist to run against your own pages. Revisited from Week 13.
+
+No new material this week. Class time goes to your project, with guided troubleshooting and a structured peer review session. The three pages above are the ones you work from, not new topics to learn.
+
+This is the joint week with MTM1544. Both courses run their review session on the same project in the same week: the structure you are reviewing here is the structure that course is styling. Bring the same site to both.
+
+### Exercise: run a structural review, both directions (about 45 minutes)
+
+Pair up and run the session exactly as [Running a Structured Peer Review](/modules/design/peer-review/README.md) sets it out. Use the structure and semantics list, not the visual one, because that is what this course marks. The other list is the one you will use in MTM1544 later in the week, on the same page.
+
+Open your partner's site cold. Say nothing to them about your own page first, and let them say nothing about theirs. Narrate your first thirty seconds out loud before you touch the list, because that impression is the one thing they cannot get any other way.
+
+Work the seven structural checks in order: heading outline, landmarks, alt text, element choice, validation, link integrity, keyboard order. Say what passes as well as what fails. Name a location and a reason every time, so "the heading order is wrong" becomes "the About section jumps from h2 to h4, so the outline reads as though something is missing between them."
+
+While you are being reviewed, write and do not talk. Not to agree, not to explain the thing you already know is broken.
+
+Then swap, and afterwards write your record: what was raised, what you are changing, and what you are deliberately leaving. That third column is the one you will draw on for the reflection in your final submission, and it is much easier to write now than to reconstruct in Week 15.
 
 </details>
 

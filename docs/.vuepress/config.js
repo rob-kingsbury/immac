@@ -237,6 +237,7 @@ const designSidebar = [
       { text: 'All Design Modules', link: '/modules/design/README.md' },
       { text: 'Visual Design Principles', link: '/modules/design/design-principles/README.md' },
       { text: 'Putting the Four Together', link: '/modules/design/design-principles/putting-it-together.md' },
+      { text: 'Running a Structured Peer Review', link: '/modules/design/peer-review/README.md' },
     ],
   },
 ]

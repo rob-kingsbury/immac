@@ -16,6 +16,16 @@ Every week below lists the modules to work through, in the order they are taught
 - [Browser Developer Tools](/modules/tools/browsers/README.md). How to ask the browser what it actually did, instead of guessing. Introduced here because every week after this one assumes you can inspect an element and read which rule won. The sub-pages on inspecting the box model, grids, and variables become useful as you meet each of those.
 - [Developer Tools for Debugging](/modules/tools/browsers/devtools.md). Opening the tools, the Elements and Console panels, and reading an error down to the file and line that caused it.
 
+### Exercise: prove your stylesheet is actually attached (about 15 minutes)
+
+Take the page you published in MTM1511 earlier this week and attach a stylesheet to it, without following [Linking a Stylesheet](/modules/css/css-basics/linking-a-stylesheet.md) as a script. Create `styles.css` next to your `index.html`, write one rule you cannot miss, `body { background: rebeccapurple; }` will do, link it from the `<head>`, and push.
+
+Load the live Pages URL and confirm the colour changed. If it did not, that is the exercise. Open developer tools, check the Console for a 404 on `styles.css`, and check that the `href` in your `<link>` matches the filename exactly, including its case. GitHub Pages runs on Linux and cares about case even when your own machine does not.
+
+Then replace that rule with something you actually want and push again.
+
+A stylesheet that failed to load looks identical to a stylesheet with no rules in it. Being able to tell those two apart in under a minute is worth more this week than any property you learn.
+
 </details>
 
 <details class="week" open>
@@ -26,6 +36,20 @@ Every week below lists the modules to work through, in the order they are taught
 - [Box Sizing](/modules/css/css-box-sizing/README.md). Why a box comes out wider than the width you set, and the one line that fixes it.
 - [aspect-ratio](/modules/css/css-aspect-ratio/README.md). Holding a box to a fixed shape while its size flexes.
 - [Inspecting the Box Model](/modules/tools/browsers/inspecting-the-box-model.md). Reading the real padding, border, and margin values off the page instead of working them out from memory.
+
+### Exercise: predict the box, then check it (about 45 minutes)
+
+This exercise pulls together [The Box Model](/modules/css/css-box-model/README.md), [CSS Units](/modules/css/css-units/README.md), [Box Sizing](/modules/css/css-box-sizing/README.md), and [Inspecting the Box Model](/modules/tools/browsers/inspecting-the-box-model.md). Read those first, then work through this once.
+
+Before adding `box-sizing` anywhere, write a rule giving one element `width: 300px`, `padding: 20px`, and `border: 5px solid`. On paper, work out how wide the browser will actually paint it. Then inspect the element and read the box model diagram. If your number was not 350, find which layers you left out before going on.
+
+Now add `* { box-sizing: border-box; }` at the top of your stylesheet and reload. Same three declarations, different result. Read the diagram again and notice where the 300 pixels went: padding and border now sit inside it, and the content box shrank to make room.
+
+Next, margin collapse. Give one paragraph `margin-bottom: 40px` and the paragraph after it `margin-top: 20px`. Predict the gap, then measure it in the diagram. The answer is 40 and not 60, and the diagram shows you why.
+
+Finally, change one padding value from `20px` to `1.5rem` and reload. Confirm in the diagram that the computed value is now 24 pixels, then change the root font size and watch it move again. That is the whole difference between a unit and a number.
+
+Commit and push. What you keep from this is not the card, it is the habit of predicting first and measuring second, which is the only thing that makes box model bugs quick to solve.
 
 </details>
 
@@ -58,6 +82,18 @@ Every week below lists the modules to work through, in the order they are taught
 - [Controlling Individual Items](/modules/css/css-flexbox/item-sizing.md). The three properties that belong on the items rather than the container.
 - [The order Property](/modules/css/css-flexbox/the-order-property.md). Moving an item visually without touching the markup, and what that costs a keyboard user.
 - [Styling a Navigation Bar](/modules/css/css-styling-navigation/README.md). The most common Flexbox pattern on the web, built from the properties you just met.
+
+### Exercise: build a navigation bar without copying one (about 45 minutes)
+
+Read [Flexbox Layouts](/modules/css/css-flexbox/README.md) and [Styling a Navigation Bar](/modules/css/css-styling-navigation/README.md) first, then close them both and build this from the properties rather than from the finished example.
+
+Start with a `<nav>` holding a `<ul>` of four or five links, the markup you already wrote in MTM1511. Strip the list styling, then make the `<ul>` a flex container. Before you type each of the next four declarations, say out loud what you expect it to do: `flex-direction`, `gap`, `justify-content`, `align-items`. Type it, then check whether the page agreed with you.
+
+Add a site name before the `<ul>` and push the links to the opposite end. There is more than one way to do that. Try `justify-content: space-between` on the container, then try `margin-left: auto` on the list instead, and keep whichever one you can explain to someone else.
+
+Now break it on purpose. Add links until the row runs out of room, and watch the items squash instead of wrapping, because `nowrap` is the default and this is what it means. Add `flex-wrap: wrap` and watch that change.
+
+Last, tab through the bar with the keyboard rather than the mouse. Every link needs a visible focus ring, and the tab order has to follow the order you read them in. If you moved anything visually with `order`, this is where you find out what it cost, and [The order Property](/modules/css/css-flexbox/the-order-property.md) explains why.
 
 </details>
 
@@ -99,6 +135,20 @@ Every week below lists the modules to work through, in the order they are taught
 - [Pseudo-Classes](/modules/css/css-pseudo-classes/README.md). Selecting an element by its state: hovered, focused, checked, first of its kind. Revisited from Week 4.
 - [Inspecting CSS Rules](/modules/tools/browsers/inspecting-css-rules.md). Reading the Styles panel to see which rule won, which lost, and which one the browser rejected outright.
 - [Diagnosing Rendering Problems](/modules/tools/browsers/diagnosing-rendering-problems.md). A six-step routine for when something looks wrong, worked through in order instead of edited hopefully.
+
+### Exercise: read the cascade instead of guessing at it (about 45 minutes)
+
+Open a page whose stylesheet has some history to it, ideally your midterm, and inspect it.
+
+Pick one element that several rules are fighting over. A nav link is usually the busiest thing on a page. Open the Styles panel and read the list from the top as a ranking: the rule at the top won, everything under it applied and was beaten, and anything with a line struck through it lost that one declaration. Find a struck-through declaration and work out which rule beat it and why, using [Specificity](/modules/css/css-precedence/README.md) if it is not obvious.
+
+Now write three selectors that reach the same element by different routes: one descendant, one child, one attribute selector. [Descendant, Child, Sibling, and Attribute Selectors](/modules/css/css-selectors-adv/README.md) covers all three. Give each a different colour, then predict which colour wins before you reload.
+
+Next, use the Elements tree as a tree. Collapse it to the top level and expand only the branch holding your element. That path from `<html>` down is exactly what a descendant selector walks, and seeing it drawn is usually the moment the DOM stops feeling abstract.
+
+Then break something quietly. Misspell a property name in one of your rules and reload. Find it in the Styles panel, where it simply will not appear. Nothing reports this anywhere else: no console error, no warning, no clue. Do the same with a misspelled value and notice the two failures look different in the panel.
+
+Finally, find the `:hov` toggle in the Styles panel and force `:hover` and `:focus` on without using the mouse or the keyboard. Confirm both states are actually styled. A hover style you can only test by hovering is a hover style you will forget to check.
 
 </details>
 
@@ -152,7 +202,25 @@ Every week below lists the modules to work through, in the order they are taught
 <details class="week" open>
 <summary id="week-14-project-development">Week 14: Project Development</summary>
 
-- **Project Development**. No new material. Class time goes to your project, with guided troubleshooting and structured peer review.
+- [Running a Structured Peer Review](/modules/design/peer-review/README.md). How to run a review session that produces a list instead of "looks good", and the visual review list to work through.
+- [Putting the Four Together](/modules/design/design-principles/putting-it-together.md). The four principles working on the same page at the same time. Revisited from Week 12.
+- [Testing Responsive Work](/modules/tools/browsers/testing-responsive-work.md). Four ways to test a layout, in increasing order of trustworthiness, ending with a real phone in hand. Revisited from Week 7.
+
+No new material this week. Class time goes to your project, with guided troubleshooting and a structured peer review session. The three pages above are the ones you work from, not new topics to learn.
+
+This is the joint week with MTM1511. Both courses run their review session on the same project in the same week: the page whose structure was reviewed there is the page whose presentation you review here. Bring the same site to both.
+
+### Exercise: run a visual review, both directions (about 45 minutes)
+
+Pair up and run the session exactly as [Running a Structured Peer Review](/modules/design/peer-review/README.md) sets it out. Use the layout and visual design list. Your partner already reviewed this page's structure earlier in the week, so resist re-reviewing the markup: a heading that is semantically correct and visually indistinguishable from body text is this course's problem, not that one's.
+
+Open your partner's site cold, at whatever window size your browser happens to be. Squint at it before you read anything, and say what stands out. If the thing that stands out is not the thing that matters most, you have found the most valuable item of the session and you found it in four seconds.
+
+Work the seven visual checks in order: squint test, near-misses, alignment edges, grouping, count of distinct decisions, narrow and wide widths, focus visibility. Name a location and a reason every time, so "the spacing feels off" becomes "the gap above each heading is the same as the gap below it, so the headings float between sections instead of belonging to the one underneath."
+
+Check the two things people forget because they need deliberate effort: resize to a narrow width and confirm nothing scrolls sideways, and tab through with the keyboard and confirm the focus ring is visible on every control, including any you restyled.
+
+While you are being reviewed, write and do not talk. Then swap, and afterwards write your record: what was raised, what you are changing, and what you are deliberately leaving, with the reason. That record is what the reflection in your final submission is built from.
 
 </details>
 
