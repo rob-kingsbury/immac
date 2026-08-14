@@ -33,7 +33,7 @@ Two different passes, because structure and presentation fail in different ways 
 Read the markup, not just the rendered page. Open the element inspector.
 
 - Does the heading outline make sense read on its own, top to bottom, with nothing skipped?
-- Is every region of the page inside a landmark, and is there exactly one main?
+- Is every region of the page inside a landmark, with a single visible `<main>`?
 - Does every image have alt text that says what the image conveys, and do decorative images carry empty alt rather than a filename?
 - Is each element chosen for what the content is, or for how it happened to look?
 - Does the page validate, and if not, is the reviewer looking at a real error or a warning the author already understood?
