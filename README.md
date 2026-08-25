@@ -10,6 +10,9 @@ resources.
 This site is a reference resource only. Assignments and submissions are
 handled through Brightspace and student GitHub repos, not here.
 
+Taking these courses over? Start with [HANDOVER.md](HANDOVER.md): what lives where, how a
+change reaches students, and the traps that have already cost time.
+
 ## Starter repositories
 
 Some assignments hand students a starting point rather than a blank folder. Each one is a
