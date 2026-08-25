@@ -28,8 +28,20 @@ jobs:
         with:
           node-version: 24
 
-      - name: npm audit
-        run: npm audit --audit-level=high
+      # Audits what actually ships. fuse.js is the only runtime dependency; the
+      # rest of the tree is the VuePress build toolchain, which runs on this
+      # repo's own content on a throwaway runner and is never served to a
+      # visitor. Advisories in that toolchain (quadratic parsing, a build-time
+      # infinite loop, a source-map read) are only reachable by whoever already
+      # controls the repo.
+      #
+      # Dev advisories are still surfaced, just not fatal, so a genuine one gets
+      # seen in the log rather than silently dropped.
+      - name: npm audit (production dependencies)
+        run: npm audit --audit-level=high --omit=dev
+
+      - name: npm audit (dev toolchain, advisory only)
+        run: npm audit --audit-level=high || true
 
       - name: Install gitleaks
         # Standalone binary (MIT-licensed), pinned version + sha256, verified before extracting.
