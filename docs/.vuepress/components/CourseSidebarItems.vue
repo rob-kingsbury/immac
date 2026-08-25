@@ -40,6 +40,17 @@ const weekly = computed(() =>
 const weeks = computed(() => weekly.value?.children ?? [])
 const coursePages = computed(() => sidebarItems.value.filter((item) => item !== weekly.value))
 
+// The course code, for the panel labels. CourseNavbarItems.vue puts the same
+// code in the navbar, but that nav carries vp-hide-mobile and disappears below
+// the theme's mobile breakpoint, so on a phone the sidebar drawer is the only
+// place a reader can be told which course they are in. Read off the Course Home
+// link for the same reason it is there: course-structure.js reads the content
+// pages with node:fs and cannot be imported into a client bundle.
+const courseCode = computed(() => {
+  const home = sidebarItems.value.find((item) => item.text === 'Course Home')
+  return home?.link?.match(/^\/([^/]+)\//)?.[1]?.toUpperCase() ?? null
+})
+
 const samePage = (link) => typeof link === 'string' && link.split('#')[0] === route.path
 
 // The 'Weekly Content' group's own link is the course content page itself
@@ -288,7 +299,7 @@ onMounted(() => {
   <div v-if="weekly" ref="sidebarRoot" class="course-sidebar" :class="`is-${direction}`">
     <!-- Panel 1: the term -->
     <div v-if="open === null" key="weeks" class="panel">
-      <p class="panel-label">Course</p>
+      <p class="panel-label">{{ courseCode ?? 'Course' }}</p>
       <ul class="plain">
         <VPSidebarItem v-for="item in coursePages" :key="item.text" :item="item" />
       </ul>
@@ -318,7 +329,9 @@ onMounted(() => {
         <span>All weeks</span>
       </button>
 
-      <p class="panel-label">Week {{ weekNumber(openedWeek.text) }}</p>
+      <p class="panel-label">
+        <template v-if="courseCode">{{ courseCode }} &middot; </template>Week {{ weekNumber(openedWeek.text) }}
+      </p>
       <h2 class="week-heading">{{ weekTitle(openedWeek.text) }}</h2>
 
       <!-- :key forces a fresh element per week rather than letting Vue reuse
@@ -383,7 +396,13 @@ onMounted(() => {
 .course-sidebar .panel-label {
   margin: 1rem 0 0.4rem;
   padding-inline: 1.5rem;
-  color: var(--vp-c-text-quote, #6a7683);
+  // --vp-c-text-quote is not a token this theme defines, so every one of these
+  // was silently taking the #6a7683 fallback, which fails AA as small text in
+  // both modes (4.29:1 on the week-count chip in light, 3.71:1 on the page in
+  // dark). --vp-c-text-mute is the theme's real muted token and is alpha-based,
+  // so it composites correctly over both backgrounds: 5.37:1 and 5.63:1 light,
+  // 6.13:1 and 5.98:1 dark. Measured in a browser, not read off the palette.
+  color: var(--vp-c-text-mute);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -426,7 +445,13 @@ onMounted(() => {
 .course-sidebar .week-num {
   flex: none;
   width: 1.5rem;
-  color: var(--vp-c-text-quote, #6a7683);
+  // --vp-c-text-quote is not a token this theme defines, so every one of these
+  // was silently taking the #6a7683 fallback, which fails AA as small text in
+  // both modes (4.29:1 on the week-count chip in light, 3.71:1 on the page in
+  // dark). --vp-c-text-mute is the theme's real muted token and is alpha-based,
+  // so it composites correctly over both backgrounds: 5.37:1 and 5.63:1 light,
+  // 6.13:1 and 5.98:1 dark. Measured in a browser, not read off the palette.
+  color: var(--vp-c-text-mute);
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
   font-weight: 700;
@@ -443,7 +468,13 @@ onMounted(() => {
   padding: 0.05rem 0.3rem;
   border-radius: 999px;
   background-color: var(--vp-c-bg-alt, #f1f2f3);
-  color: var(--vp-c-text-quote, #6a7683);
+  // --vp-c-text-quote is not a token this theme defines, so every one of these
+  // was silently taking the #6a7683 fallback, which fails AA as small text in
+  // both modes (4.29:1 on the week-count chip in light, 3.71:1 on the page in
+  // dark). --vp-c-text-mute is the theme's real muted token and is alpha-based,
+  // so it composites correctly over both backgrounds: 5.37:1 and 5.63:1 light,
+  // 6.13:1 and 5.98:1 dark. Measured in a browser, not read off the palette.
+  color: var(--vp-c-text-mute);
   font-size: 0.7rem;
   font-variant-numeric: tabular-nums;
   text-align: center;
@@ -465,7 +496,13 @@ onMounted(() => {
   padding: 0.35rem 1.5rem;
   border: 0;
   background: none;
-  color: var(--vp-c-text-quote, #6a7683);
+  // --vp-c-text-quote is not a token this theme defines, so every one of these
+  // was silently taking the #6a7683 fallback, which fails AA as small text in
+  // both modes (4.29:1 on the week-count chip in light, 3.71:1 on the page in
+  // dark). --vp-c-text-mute is the theme's real muted token and is alpha-based,
+  // so it composites correctly over both backgrounds: 5.37:1 and 5.63:1 light,
+  // 6.13:1 and 5.98:1 dark. Measured in a browser, not read off the palette.
+  color: var(--vp-c-text-mute);
   font-family: inherit;
   font-size: 0.85rem;
   font-weight: 600;
@@ -574,7 +611,12 @@ onMounted(() => {
 
 .course-sidebar .see-all {
   display: inline-block;
-  margin: 0.9rem 0 0;
+  // padding-block gets this to the 24px minimum tap target the course's own
+  // Touch Targets module teaches. At 0.85rem it was an 18px-tall link, which
+  // is the smallest control in the mobile drawer. The top margin is reduced by
+  // the padding added, so the spacing above it does not change.
+  margin: 0.7rem 0 0;
+  padding-block: 0.2rem;
   padding-inline: 1.5rem;
   color: var(--vp-c-accent, #3eaf7c);
   font-size: 0.85rem;

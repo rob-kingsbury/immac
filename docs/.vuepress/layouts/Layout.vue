@@ -11,7 +11,13 @@
 // keyboard user has to tab past the navbar/sidebar), and VuePress
 // pre-renders each route to static HTML, so anything added only in
 // onMounted never appears in that static markup at all.
+// The same wrapper also carries ModuleWeekContext into the theme's
+// #page-content-top slot, which renders inside the page body directly above the
+// markdown content. Filling a slot on the theme's own Layout is what keeps this
+// out of all 117 module files: no module has to opt in, and none of them gains
+// a reference to a week.
 import Layout from '@vuepress/theme-default/layouts/Layout.vue'
+import ModuleWeekContext from '../components/ModuleWeekContext.vue'
 
 function focusMain() {
   // Let the native href="#main-content" fragment jump happen, then also
@@ -28,5 +34,9 @@ function focusMain() {
   <a id="skip-to-content" href="#main-content" class="skip-link" @click="focusMain">
     Skip to main content
   </a>
-  <Layout />
+  <Layout>
+    <template #page-content-top>
+      <ModuleWeekContext />
+    </template>
+  </Layout>
 </template>

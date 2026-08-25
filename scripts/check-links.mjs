@@ -48,7 +48,26 @@ const pages = []
 
 const dead = new Map()
 const missingBase = new Map()
+const badFragment = new Map()
 let checked = 0
+let fragmentsChecked = 0
+
+// id -> set, per built page, built once per target and reused. Fragments were
+// previously thrown away with href.split('#')[0], so a link could name a
+// heading that does not exist on the page it points at and still pass: the page
+// resolved, and nothing looked further. That is how
+// html-semantics/worked-example.md came to link at a "going deeper" section on
+// the module README when the section lives on document-landmarks.md. The page
+// existed, so the check was happy and the reader got a silent no-op jump.
+const idCache = new Map()
+const idsOf = (file) => {
+  if (!idCache.has(file)) {
+    const ids = new Set()
+    for (const m of fs.readFileSync(file, 'utf8').matchAll(/\sid="([^"]+)"/g)) ids.add(m[1])
+    idCache.set(file, ids)
+  }
+  return idCache.get(file)
+}
 
 for (const page of pages) {
   const html = fs.readFileSync(page, 'utf8')
@@ -59,6 +78,7 @@ for (const page of pages) {
     if (/^(https?:|mailto:|tel:|#|data:|javascript:)/i.test(href)) continue
     if (!href.startsWith('/')) continue // relative links resolved by the bundler
 
+    const fragment = href.includes('#') ? href.slice(href.indexOf('#') + 1) : null
     const clean = href.split('#')[0].split('?')[0]
     if (!clean || ASSET.test(clean)) continue
     checked++
@@ -73,6 +93,17 @@ for (const page of pages) {
     if (!resolves) {
       if (!dead.has(href)) dead.set(href, [])
       dead.get(href).push(from)
+    } else if (fragment) {
+      const file = fs.existsSync(target) ? target : `${target}.html`
+      fragmentsChecked++
+      if (!idsOf(file).has(fragment)) {
+        if (!badFragment.has(href)) badFragment.set(href, [])
+        badFragment.get(href).push(from)
+      }
+      if (!hasBase) {
+        if (!missingBase.has(href)) missingBase.set(href, [])
+        missingBase.get(href).push(from)
+      }
     } else if (!hasBase) {
       // Resolves locally but omits the base prefix, so it breaks once deployed.
       if (!missingBase.has(href)) missingBase.set(href, [])
@@ -106,6 +137,13 @@ if (missingBase.size) {
   failed = true
 } else {
   console.log('base:    all internal links carry the site base')
+}
+
+if (badFragment.size) {
+  report('DEAD FRAGMENT (page exists, the #anchor on it does not)', badFragment)
+  failed = true
+} else {
+  console.log(`anchors: ${fragmentsChecked} fragment links, all resolve`)
 }
 
 if (failed) {

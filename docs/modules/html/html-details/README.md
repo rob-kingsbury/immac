@@ -55,7 +55,7 @@ A real FAQ section is usually more than one question, and `<details>` elements n
 
 Click through the Result box above. Both widgets are genuinely interactive, the same native element powering the collapsible Result boxes throughout this textbook. The nested question only appears once its parent is open, and the cancellation panel starts open because of the `open` attribute on it specifically, not because it's related to the other two. Nesting and `open` are both independent, per-element choices.
 
-### Going deeper: grouping details into an exclusive accordion
+## Going deeper: grouping details into an exclusive accordion
 
 Stack several `<details>` elements and by default they're fully independent: open three and all three stay open. Sometimes you want the opposite, an accordion where opening one question closes whichever one was already open.
 

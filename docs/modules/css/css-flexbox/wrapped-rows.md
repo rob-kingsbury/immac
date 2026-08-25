@@ -12,7 +12,9 @@ Two more tools become useful once a flex container is wrapping onto more than on
 
 `align-items` and `align-content` sound like the same property, and they're easy to mix up because both work on the cross axis. They're not interchangeable.
 
-`align-items` positions items within a single line, the one you already used to centre things vertically in a row. `align-content` is different: it distributes space *between multiple lines*, and it only does anything once `flex-wrap: wrap` is on, the items have actually wrapped onto more than one line, and there's leftover space in the cross axis for those lines to move around in. A single-line flex container ignores `align-content` completely, no matter what value you give it.
+`align-items` positions items within a single line, the one you already used to centre things vertically in a row. `align-content` is different: it distributes space *between lines*, and it needs two things to have any effect. The container must be wrapping, meaning `flex-wrap: wrap` or `wrap-reverse`, and there must be leftover space in the cross axis for the lines to move around in.
+
+Note what is not on that list. The items do not have to have actually wrapped. A wrapping container holding a single line of items still honours `align-content`, and that one line will sit at the top, the middle, or the bottom depending on the value you give it. What switches the property off entirely is `flex-wrap: nowrap`, which is the default, and which is what the spec means when it calls a container "single-line". A container that is set to wrap but happens to fit everything on one line is not single-line in that sense.
 
 Give a wrapped row of cards a fixed height taller than it needs, and `align-content` decides how the rows spread out inside that extra space:
 
@@ -73,15 +75,17 @@ You'll reach for this less often than the properties in [Flexbox Layouts](/modul
 }
 ```
 
-The order in `flex-flow` is always direction first, then wrap. Either value can be left out and it falls back to that property's own default, so `flex-flow: wrap;` on its own is valid and just leaves `flex-direction` at `row`.
+Either order parses. `flex-flow: wrap row` is as valid as `flex-flow: row wrap`, because the two values are distinguishable and the grammar lets them appear in either sequence. Direction first is the conventional way to write it and the order the browser reports it back in, so write it that way for readability, but the browser is not enforcing it.
 
-There's no behaviour difference between the shorthand and writing both properties separately. Some developers prefer `flex-flow` because it reads as one decision, "how does this container flow," rather than two. Either is correct.
+Either value can also be left out, and this is the one real difference between the shorthand and the two longhands. An omitted value is not preserved, it is reset to that property's initial value. So `flex-flow: wrap` on a container that was already `flex-direction: column` sets the wrap *and* silently puts the direction back to `row`. Writing `flex-wrap: wrap` on its own would have left the column alone. The two rules in the example above are equivalent only because both of them set both values.
+
+Some developers prefer `flex-flow` because it reads as one decision, "how does this container flow," rather than two. That is fine, as long as you remember it always makes both decisions, including the one you left blank.
 
 ## The checklist
 
 Run this over your wrapped layouts before you move on:
 
-- Knows that `align-content` only does anything once `flex-wrap: wrap` is on and content has actually wrapped onto more than one line
+- Knows that `align-content` needs `flex-wrap: wrap` and spare cross-axis space, and that the items do not have to have actually wrapped for it to work
 - Comfortable using `flex-flow` as a shorthand for `flex-direction` and `flex-wrap` together
 
 ## Keep learning

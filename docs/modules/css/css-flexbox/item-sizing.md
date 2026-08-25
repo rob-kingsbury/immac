@@ -14,9 +14,9 @@ Three properties go on the items rather than the container, and they're usually 
 
 ```html
 <div class="row">
-  <div class="i">grow: 1</div>
-  <div class="i wide">grow: 2</div>
-  <div class="i">grow: 1</div>
+  <div class="i">flex: 1</div>
+  <div class="i wide">flex: 2</div>
+  <div class="i">flex: 1</div>
 </div>
 ```
 
@@ -42,11 +42,15 @@ Three properties go on the items rather than the container, and they're usually 
 
 </CssDemo>
 
-`flex: 1` on every item makes them share the space equally. Giving one `flex: 2` makes it take twice the share of the *leftover* space. This is how you build a layout with a sidebar and a main column that resize together.
+`flex: 1` on every item makes them share the space equally, and giving one `flex: 2` makes it twice as wide as its neighbours. This is how you build a layout with a sidebar and a main column that resize together.
+
+The labels above say `flex`, not `flex-grow`, and the difference is not cosmetic. `flex: 1` is shorthand for `1 1 0%`, and that zero basis is what makes the ratio come out clean: every item starts at nothing, so the entire row is leftover space to divide. Write `flex-grow: 1` and `flex-grow: 2` instead and the basis stays `auto`, so each item starts at its own content width and only the *remaining* space gets split in a 2:1 ratio. The middle item ends up wider than the others but nowhere near twice their width.
 
 Two shorthand values are worth memorizing. `flex: 1` means grow to fill, shrink if needed, ignore my natural width. `flex: 0 0 auto` means never grow, never shrink, stay exactly my natural size, which is what you want for something like a logo that shouldn't stretch.
 
-`flex` also takes a full three-value form, `flex: <grow> <shrink> <basis>`, when you want a starting size before the growing and shrinking happen. `flex: 1 1 200px` means "start every item at 200px, then let them grow and shrink equally to fill the row." That starting number is the `flex-basis` from a moment ago, and it's a realistic minimum width for that card's content, so the cards resize from something reasonable instead of from nothing.
+`flex` also takes a full three-value form, `flex: <grow> <shrink> <basis>`, when you want a starting size before the growing and shrinking happen. `flex: 1 1 200px` means "start every item at 200px, then let them grow and shrink equally to fill the row."
+
+Read that as a starting size and nothing more. It is tempting to treat the 200px as a minimum width, and it is not one: the shrink factor is still `1`, so three of those items in a 300px row will happily come out at 100px each. What actually stops an item shrinking is its automatic minimum size, which holds it at roughly the width of its own content. If you want a real floor, set `min-width` and say so.
 
 There's also `align-self`, which overrides the container's `align-items` for one item only.
 

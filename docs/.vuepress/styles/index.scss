@@ -5,6 +5,41 @@
   scroll-behavior: auto;
 }
 
+// The theme ships its colour-mode button at 32x22, two pixels under the 24px
+// minimum tap target this course teaches in its Touch Targets module. It is the
+// only control in the navbar on mobile, so it is worth the two pixels.
+.vp-toggle-color-mode-button {
+  min-height: 24px;
+}
+
+// Navbar crowding on phones.
+//
+// .vp-navbar is display:block and .vp-navbar-items-wrapper is position:absolute,
+// so the wrapper does not push the brand aside, it renders ON TOP of it. The
+// wrapper's width is driven by SearchBox.vue's fixed 12rem input, which at a
+// 390px viewport made the wrapper 262px and put the colour-mode toggle directly
+// over the words "IMM Web Courses", with the search box covering the tail.
+// Measured, not guessed: brand box 64-278, toggle 144-176, search 188-366.
+//
+// Both levers are pulled at the same breakpoint the theme uses for
+// vp-hide-mobile. The site name is truncated rather than hidden: config.js sets
+// logoAlt specifically to keep that text in the accessibility tree, because it
+// is the navbar link's only accessible name, and display:none would recreate the
+// axe link-name violation that setting was added to fix.
+@media (max-width: 719px) {
+  .vp-site-name {
+    max-width: min(8rem, calc(100vw - 17rem));
+    overflow: hidden;
+    font-size: 1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .search-box .search-field input {
+    width: 5rem;
+  }
+}
+
 // The theme already offsets its own h1-h6 anchors for the fixed navbar with
 // a padding/margin-top trick (see normalize.scss): a heading's box is pulled
 // up by a negative margin-top and given matching padding-top, so both a

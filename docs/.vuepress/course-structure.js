@@ -115,7 +115,43 @@ export function readCourseStructure(docsDir) {
     if (!dirToCourse.has(dir)) dirToCourse.set(dir, info.course)
   }
 
-  return { byCourse, owner, order, chain, dirToCourse }
+  // route -> every (course, week) that lists it, in course then week order.
+  //
+  // This is the same week->modules data the sidebar is built from, inverted. It
+  // exists because a module page cannot say where it sits on its own: module
+  // source is deliberately week-unaware (see the header of this file), and the
+  // sidebar can only ever show ONE course, because VuePress resolves a single
+  // sidebar per URL path. Five modules are listed by both courses and all five
+  // resolve to mtm1511, so a mtm1544 reader following a link from their own
+  // week lands on a page wearing the other course's sidebar. Eight more are
+  // revisited in a later week of the same course and land the reader on a week
+  // group they did not click from.
+  //
+  // Inverting here rather than in the page means nothing is written into any
+  // module file, and a module added to a week in /<course>/content/ picks this
+  // up on the next build with no further edit.
+  const whereUsed = new Map()
+  for (const course of COURSES) {
+    for (const week of byCourse[course]) {
+      for (const mod of week.modules) {
+        if (!whereUsed.has(mod.link)) whereUsed.set(mod.link, [])
+        const list = whereUsed.get(mod.link)
+        // A week may name the same module twice in prose; parsing already
+        // deduplicates within a week, so a duplicate here would be a bug.
+        if (!list.some((u) => u.course === course && u.week === week.number)) {
+          list.push({
+            course,
+            courseTitle: COURSE_TITLES[course],
+            week: week.number,
+            weekTitle: week.title,
+            link: `/${course}/content/#${week.anchor}`,
+          })
+        }
+      }
+    }
+  }
+
+  return { byCourse, owner, order, chain, dirToCourse, whereUsed }
 }
 
 // Course sidebar: the course's own pages, with Weekly Content holding one group

@@ -8,3 +8,4 @@ Visual design judgement, kept separate from CSS on purpose. A program that never
 
 - [Visual Design Principles](/modules/design/design-principles/README.md). Hierarchy, contrast, alignment, and proximity: what separates designed from merely assembled.
 - [Putting the Four Together](/modules/design/design-principles/putting-it-together.md). The four principles working on the same page at the same time.
+- [Running a Structured Peer Review](/modules/design/peer-review/README.md). How to run a review session that produces a list instead of "looks good".

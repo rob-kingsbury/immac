@@ -84,7 +84,9 @@ article :is(h2, h3, h4) {
 <CssDemo>
 
 ```html
-<h2 class="section-title">Which colour wins?</h2>
+<div class="article">
+  <h2 class="section-title">Which colour wins?</h2>
+</div>
 ```
 
 ```css
@@ -98,7 +100,9 @@ article :is(h2, h3, h4) {
 
 </CssDemo>
 
-The crimson wins, because `:where(.sidebar, .article) h2` scores as 0-0-1, the class inside `:where()` doesn't count at all, only the plain `h2` outside it does. Swap that same selector to `:is()` instead and the class *would* count, pushing the specificity to 0-1-1, and it would beat `.section-title`'s 0-1-0.
+The `<h2>` genuinely sits inside `.article`, so both rules match it and this is a real contest. The crimson wins, because `:where(.sidebar, .article) h2` scores as 0-0-1, the class inside `:where()` doesn't count at all, only the plain `h2` outside it does. Swap that same selector to `:is()` instead and the class *would* count, pushing the specificity to 0-1-1, and it would beat `.section-title`'s 0-1-0.
+
+The wrapper matters more than it looks. Without an `.article` or `.sidebar` ancestor the teal rule matches nothing, and the crimson would win by default rather than on specificity. A demo that appears to prove a point while actually proving nothing is worse than no demo, so if you edit this one, keep the ancestor.
 
 That makes `:where()` the practical answer to the advice above: it lets you write a broad, reach-anywhere selector for a default style, while guaranteeing that a single class anywhere else in your stylesheet can override it without a fight. It's a technique for the "prefer classes, avoid escalation" habit, not just a shortcut for typing less.
 
