@@ -1,0 +1,345 @@
+{
+  "course": "MTM1511",
+  "week": 1,
+  "title": "Introduction to the Web",
+  "voice": "am_michael",
+  "beats": [
+    {
+      "crumb": "MTM1511  Week 1  Introduction to the Web",
+      "file": {
+        "name": "week-01-notes.txt",
+        "plain": true,
+        "text": [
+          "MTM1511, Week 1",
+          "How the web works",
+          ""
+        ]
+      },
+      "say": "This is the first session of Web Components, and we're starting with what happens when somebody visits a web page. You need it before you write a single tag, because everything you build this term sits on top of it. Three things today. What a browser and a server actually say to each other. What an HTML element is made of. And what Git, GitHub and Pages each are, now that you've used all three of them."
+    },
+    {
+      "say": "Here is the smallest true statement about the web. Every website involves two computers. One of them is called the client. That is the machine making the request, which in this course means the browser on your laptop. The other is the server. That is a machine somewhere else that stores the website's files and hands them out when somebody asks for them. That is the whole relationship, and everything else this term is detail sitting on top of it.",
+      "type": [
+        "",
+        "client    the machine asking for the page. your browser.",
+        "server    the machine holding the files, sending them back."
+      ],
+      "focus": [
+        4,
+        5
+      ]
+    },
+    {
+      "say": "The conversation between those two follows a set of rules called HTTP, the hypertext transfer protocol. A protocol is nothing more than an agreed way for two machines to talk, in the same way a phone call has conventions about who speaks first. Nobody wrote HTTP to make your life harder. It exists so that any browser can talk to any server without the two of them having met before.",
+      "type": [
+        "",
+        "HTTP      the agreed rules those two talk by."
+      ],
+      "focus": [
+        7,
+        7
+      ]
+    },
+    {
+      "say": "So you type an address into your browser and press enter. Four things happen. Your browser sends a request to the server that owns that address, which amounts to asking, please send me this page. The server finds the file and sends back a response containing the HTML. Your browser reads that HTML and draws the page you see. And if the HTML mentions other files, a stylesheet, some images, a font, the browser goes back and asks for each of those separately, assembling the finished page as they arrive.",
+      "type": [
+        "",
+        "",
+        "1  browser asks the server for a file",
+        "2  server sends back the HTML",
+        "3  browser draws the page",
+        "4  browser asks separately for every other file the HTML mentions"
+      ],
+      "focus": [
+        10,
+        13
+      ]
+    },
+    {
+      "say": "Stay on that fourth step a moment, because it catches people out. One page isn't one file. A page with a stylesheet and six images is eight separate requests, and the browser makes them itself without being told to. You'll see this later in the term when a page loads with its text in place and its images filling in a moment afterwards. That isn't a bug. That is step four happening in front of you.",
+      "focus": [
+        13,
+        13
+      ]
+    },
+    {
+      "say": "Written out, the first two steps look roughly like this.",
+      "type": [
+        "",
+        "",
+        "  request   GET /about/team.html",
+        "            Host: example.com",
+        "",
+        "  response  200 OK",
+        "            Content-Type: text/html",
+        "            ...the page's HTML follows"
+      ],
+      "focus": [
+        16,
+        22
+      ]
+    },
+    {
+      "say": "GET is the request naming one specific file. Two hundred, OK, is the server saying it found that file, and here it is. You'll meet other status codes soon enough. Four oh four is the one everybody has heard of, and it means the server looked and there's nothing by that name. When you publish your own pages and a link comes back four oh four, that's not the server being broken. That is the server telling you, accurately, that you asked for something that's not there.",
+      "focus": [
+        16,
+        17
+      ]
+    },
+    {
+      "say": "The other piece of vocabulary is the URL, the uniform resource locator. It is the full address of a thing, and its parts have names.",
+      "type": [
+        "",
+        "",
+        "  https://example.com/about/team.html",
+        "     |          |            |",
+        "  protocol   domain        path"
+      ],
+      "focus": [
+        25,
+        27
+      ]
+    },
+    {
+      "say": "Protocol, domain, path. Here is a second one with completely different values, so that you read it as a pattern rather than memorising the one example.",
+      "type": [
+        "",
+        "  https://algonquincollege.com/programs/imm.html",
+        "     |             |               |",
+        "  protocol      domain           path"
+      ],
+      "focus": [
+        29,
+        31
+      ]
+    },
+    {
+      "say": "Same three parts, different address. The protocol and the domain barely change once a site is live. The path is the part that grows as you add pages, and when you start publishing to GitHub Pages the path is going to be made of folder and file names you chose yourself. Getting into the habit of naming those sensibly is a favour to your future self."
+    },
+    {
+      "say": "DNS, the domain name system, is the lookup service that turns a readable domain like example dot com into the numeric address your browser actually connects to. You'll never configure it in this course. Know that it exists, though, because it turns a whole category of baffling error message into something you can reason about.",
+      "type": [
+        "",
+        "",
+        "DNS       turns a domain name into the number behind it."
+      ],
+      "focus": [
+        34,
+        34
+      ]
+    },
+    {
+      "say": "You'll also see HTTPS almost everywhere now, with an S on the end. Same protocol, with the traffic encrypted so nobody sitting in between can read it or change it. Browsers flag plain HTTP pages as not secure. GitHub Pages serves your work over HTTPS automatically, so this is one of the few things this term you get for nothing.",
+      "type": [
+        "",
+        "HTTPS     the same thing, encrypted. Pages gives you this free."
+      ],
+      "focus": [
+        35,
+        35
+      ]
+    },
+    {
+      "say": "One consequence of all this matters for the rest of the course. Because the server just hands over files and the browser does the drawing, the browser is the thing you're really writing for. Two browsers can read the same file and draw it slightly differently. That is why testing your work in more than one is a habit worth starting now, while your pages are still small enough that the differences are easy to spot."
+    },
+    {
+      "say": "Before we move on, three things you should be able to do. Explain what a client and a server each do, and what a request and a response are. Break a URL into its protocol, domain and path. And say what DNS does in one sentence. If any of those feel shaky, that's the part to read again.",
+      "focus": [
+        4,
+        7
+      ]
+    },
+    {
+      "crumb": "MTM1511  Week 1  HTML Basics",
+      "file": {
+        "name": "index.html",
+        "label": "index.html",
+        "text": ""
+      },
+      "say": "Now to the thing you'll actually be writing. HTML stands for hypertext markup language. Every site you've ever visited is built on it, from somebody's personal blog to the largest search engine there is. What matters most here's not the list of tags. It is what the language is for."
+    },
+    {
+      "say": "HTML describes structure and meaning, not appearance. When you write it, you're labelling content. This is a heading. This is a paragraph. This is a list. This is a link. You're not saying what colour it is, how large the text should be, or where it sits on the page. That is a separate job, done by CSS, which you take in Web Styles. Keeping those two apart, structure in HTML and appearance in CSS, is one of the habits this course exists to build."
+    },
+    {
+      "say": "A browser reads HTML and turns it into the page you see. With no styling at all a page still displays, just plainly. Headings come out larger than paragraphs, lists get bullets, links come out blue and underlined. That plain look is the browser's own built in idea of what each element means, before any designer has touched it. You're going to see a lot of it on the right hand side today, and none of it's a sign that something is broken."
+    },
+    {
+      "say": "Every HTML page splits into two parts. A head, holding information about the page that never appears on screen. And a body, holding everything a visitor actually sees. I am going to get that wrong on purpose, because what the browser does about it's more interesting than getting it right.",
+      "type": [
+        "<!DOCTYPE html>",
+        "<html lang=\"en\">",
+        "<head>",
+        "  <title>Mountain Trail Guide</title>",
+        "  <h1>Mountain Trail Guide</h1>",
+        "</head>",
+        "<body>",
+        "  <p>Three routes, from an easy lakeside loop to a steep summit climb.</p>",
+        "</body>",
+        "</html>"
+      ],
+      "focus": [
+        5,
+        5
+      ]
+    },
+    {
+      "say": "The heading on line five is inside the head, where nothing is supposed to be visible. Look at the right hand side. It shows up anyway. The browser read that heading, worked out that it can't possibly belong in the head, closed the head early on my behalf, and started the body without being asked. The page you get is the page I meant, not the page I wrote.",
+      "focus": [
+        3,
+        6
+      ]
+    },
+    {
+      "say": "Get that straight early, because it shapes how you debug for the rest of your career. HTML parsers are built to repair broken markup rather than refuse it. A browser will almost never tell you that you got something wrong. It guesses. Usually it guesses well, as it did here. When it guesses badly you get a page that looks nearly right, with no error message anywhere to work from. That is the entire reason validation exists, and we'll come back to it."
+    },
+    {
+      "say": "Don't take that as permission to be sloppy. The browser repaired this one, but you can't predict which mistakes it repairs and which it renders into nonsense, and another person reading your file has to work out what you meant. Put the heading where it belongs.",
+      "file": {
+        "name": "index.html",
+        "label": "index.html",
+        "text": [
+          "<!DOCTYPE html>",
+          "<html lang=\"en\">",
+          "<head>",
+          "  <title>Mountain Trail Guide</title>",
+          "</head>",
+          "<body>",
+          "  <h1>Mountain Trail Guide</h1>",
+          "  <p>Three routes, from an easy lakeside loop to a steep summit climb.</p>",
+          "</body>",
+          "</html>"
+        ]
+      },
+      "focus": [
+        7,
+        7
+      ]
+    },
+    {
+      "say": "Now the vocabulary everything else depends on. An HTML element is made of a tag, and usually some content inside it. Look at the paragraph on line eight. Angle bracket, p, angle bracket, is the opening tag. Angle bracket, slash, p, angle bracket, is the closing tag. The text between them is the content. Nearly every element you meet this term follows that same shape. Opening tag, content, closing tag.",
+      "focus": [
+        8,
+        8
+      ]
+    },
+    {
+      "say": "Some elements carry extra information in attributes, written inside the opening tag. I am going to add a link.",
+      "type": [
+        "",
+        "  <a href=\"https://algonquincollege.com\">Algonquin College</a>"
+      ],
+      "focus": [
+        10,
+        10
+      ]
+    },
+    {
+      "say": "h ref is an attribute, and it tells the anchor element where the link should point. An attribute always lives inside the opening tag, and it's always written the same way. A name, an equals sign, and a value in quotes. The a stands for anchor, which is an odd name for a link, and you do get used to it. Notice the browser has made it blue and underlined without being asked, because that's what it thinks a link looks like.",
+      "focus": [
+        10,
+        10
+      ]
+    },
+    {
+      "say": "Elements can also sit inside each other, which is how you build anything more complicated than a paragraph. Here is a list.",
+      "type": [
+        "",
+        "  <ul>",
+        "    <li>Lakeside loop</li>",
+        "    <li>Ridge trail</li>",
+        "    <li>Summit climb</li>",
+        "  </ul>"
+      ],
+      "focus": [
+        12,
+        16
+      ]
+    },
+    {
+      "say": "The list itself is the u l element, for unordered list. Each item is an l i, for list item, and each one sits inside the list. Look at the right hand side again. You didn't ask for those bullets or that indent. The browser supplies them, because that's what it thinks a list is. Change u l to o l later, for ordered list, and you get numbers instead, without touching a single item.",
+      "focus": [
+        13,
+        15
+      ]
+    },
+    {
+      "say": "One last thing about how this is written down. The browser doesn't care about your indentation at all. You could put that entire list on one line and it would draw exactly the same page. The indentation isn't for the browser. It is for you, in three weeks, when the file is two hundred lines long and you're trying to work out which closing tag belongs to which opening one. One level deeper for each element inside another. Start that habit now, while your files are short enough that it feels unnecessary.",
+      "focus": [
+        12,
+        16
+      ]
+    },
+    {
+      "say": "The checklist for that section. You should be able to say why HTML describes structure and meaning rather than appearance. Every element is a tag, its content, and a closing tag. Attributes live inside the opening tag, written as a name, equals, and a value in quotes. And elements nest, one level of indentation deeper than whatever they sit inside."
+    },
+    {
+      "crumb": "MTM1511  Week 1  Git, GitHub and Pages",
+      "file": {
+        "name": "week-01-notes.txt",
+        "plain": true,
+        "text": [
+          "MTM1511, Week 1",
+          "Git, GitHub and Pages in plain terms",
+          ""
+        ]
+      },
+      "say": "Last part, and this one is short. By now you've cloned a repository, changed a file, staged it, committed it, pushed it, and turned on Pages. You did all of that as a sequence of steps. Here is what each of those things actually was, so they land as ideas rather than instructions you followed."
+    },
+    {
+      "say": "Git is version control software that runs on your computer. It tracks every change you commit, so you can see the whole history of a project and go back to any earlier point in it. Git works entirely on your machine. It doesn't need the internet at all.",
+      "type": [
+        "",
+        "Git       version control, running on your own machine."
+      ],
+      "focus": [
+        4,
+        4
+      ]
+    },
+    {
+      "say": "GitHub is a website that hosts Git repositories online. It is where your code lives so it can be shared, backed up, and looked at from a link. Git and GitHub are related but they're not the same thing, and the names being nearly identical does nobody any favours. Git is the tool. GitHub is one place among several that hosts what Git tracks.",
+      "type": [
+        "",
+        "GitHub    a website that hosts what Git tracks."
+      ],
+      "focus": [
+        5,
+        5
+      ]
+    },
+    {
+      "say": "A repository, or repo, is a project folder that Git is tracking. Every project in this course is its own repository. That is why you're making a fresh one for each assignment rather than piling everything into one place.",
+      "type": [
+        "",
+        "repo      one project folder that Git is tracking."
+      ],
+      "focus": [
+        6,
+        6
+      ]
+    },
+    {
+      "say": "And GitHub Pages is a free feature of GitHub that takes the files in a repository and publishes them as a live website, at an address like your username dot github dot i o, slash repository name. It is the thing that turns a project from a folder of files into something a person can actually visit.",
+      "type": [
+        "",
+        "Pages     publishes a repo as a live site you can visit."
+      ],
+      "focus": [
+        7,
+        7
+      ]
+    },
+    {
+      "say": "One last thing, and I want to be direct about it. This workflow is setup heavy and the first week of it's genuinely tedious. It isn't a simplified classroom version of how the industry works. It is the actual daily workflow. Clone, edit, stage, commit, push, is what a working web developer does dozens of times a week, on a real team, from the first day of a real job. Learning it properly now, however slow it feels this week, is time you don't spend relearning it later.",
+      "focus": [
+        4,
+        7
+      ]
+    },
+    {
+      "say": "That is Week 1. Next session we build a full document from the skeleton up, and everything you write from there lives inside the structure we started today.",
+      "hold": 1.5
+    }
+  ]
+}

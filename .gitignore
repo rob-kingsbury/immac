@@ -4,3 +4,6 @@ docs/.vuepress/.temp/
 docs/.vuepress/dist/
 docs/.vuepress/public/search-index.json
 .DS_Store
+
+# Rendered video output: large binaries, rebuilt from lessons/ on demand
+video/out/

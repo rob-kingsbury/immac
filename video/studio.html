@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Studio</title>
+<style>
+  /* Palette is separated by LUMINANCE, not just hue. YouTube encodes 4:2:0, which
+     halves colour resolution both ways, so two tokens differing only in hue smear
+     into each other. Amber > sage > violet > grey is a descending brightness ramp
+     that survives the chroma subsampling. */
+  :root{
+    --bg:#1a1714; --pane:#211d19; --rule:#2e2823;
+    --fg:#e8e2d8; --gut:#544c43;
+    --tag:#ffc978; --attr:#a8c98f; --val:#c9a2d4; --com:#8a7f72; --punc:#7d7268;
+    --accent:#ffc978;
+    --mono:'JetBrains Mono','Cascadia Mono',Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;width:1920px;height:1080px;overflow:hidden;background:var(--bg)}
+  body{font-family:var(--mono);color:var(--fg)}
+
+  header{height:64px;display:flex;align-items:center;gap:11px;padding:0 26px;
+    background:var(--pane);border-bottom:1px solid var(--rule)}
+  .dot{width:13px;height:13px;border-radius:50%;background:#3a332c}
+  #filename{font-size:20px;font-weight:500;color:#bdb3a6;margin-left:14px;letter-spacing:.01em}
+  #crumb{margin-left:auto;font-size:17px;font-weight:300;color:#7d7268}
+
+  main{display:flex;height:1016px}
+  #codewrap{flex:0 0 58%;position:relative;overflow:hidden;background:var(--bg)}
+  body.full #codewrap{flex:0 0 100%}
+  body.full #preview{display:none}
+
+  #scroller{position:absolute;left:0;right:0;top:0;will-change:transform}
+  .ln{display:flex;min-height:36px;line-height:36px;font-size:22px;white-space:pre;
+    border-left:4px solid transparent;transition:opacity .22s cubic-bezier(.4,0,.2,1)}
+  .ln .num{flex:0 0 74px;text-align:right;padding-right:24px;color:var(--gut);
+    font-weight:300;user-select:none}
+  .ln .code{flex:1;padding-right:26px}
+  /* Dim sits at .5, not the .28 a dark theme tempts you into: the point of showing
+     the whole file is that the unlit part stays readable. Flat tint on the focused
+     rows, never a gradient, because a low-alpha gradient bands under h264. */
+  .ln.dim{opacity:.5}
+  .ln.hit{background:rgba(255,201,120,.07);border-left-color:var(--accent)}
+  .ln.hit .num{color:var(--accent);font-weight:400}
+
+  .t-tag{color:var(--tag)} .t-attr{color:var(--attr)} .t-val{color:var(--val)}
+  .t-com{color:var(--com)} .t-punc{color:var(--punc)}
+
+  /* Solid, not blinking. A 1s blink cycle strobes unpredictably against a fixed
+     capture rate and pulls the eye off the line being taught. */
+  #caret{display:inline-block;width:12px;height:25px;background:var(--accent);
+    vertical-align:-4px;opacity:.9}
+  body.notyping #caret{display:none}
+
+  #preview{flex:1;display:flex;flex-direction:column;background:var(--pane);
+    border-left:1px solid var(--rule)}
+  #prevbar{height:56px;display:flex;align-items:center;gap:14px;padding:0 26px;
+    font-size:16px;font-weight:300;color:#7d7268;border-bottom:1px solid var(--rule)}
+  #prevbar b{font-weight:500;color:#bdb3a6}
+  #frame{flex:1;border:0;background:#fff;width:100%}
+</style>
+</head>
+<body class="notyping">
+<header>
+  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  <span id="filename">index.html</span>
+  <span id="crumb"></span>
+</header>
+<main>
+  <div id="codewrap"><div id="scroller"></div></div>
+  <div id="preview">
+    <div id="prevbar"><b id="prevlabel">index.html</b> as the browser draws it</div>
+    <iframe id="frame" sandbox="allow-same-origin"></iframe>
+  </div>
+</main>
+<script>
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function hlLine(raw, state){
+  if(state.plain) return esc(raw);
+  let out='', i=0;
+  while(i < raw.length){
+    if(state.com){
+      const end = raw.indexOf('-->', i);
+      if(end === -1){ out += '<span class="t-com">'+esc(raw.slice(i))+'</span>'; i = raw.length; }
+      else { out += '<span class="t-com">'+esc(raw.slice(i,end+3))+'</span>'; i = end+3; state.com=false; }
+      continue;
+    }
+    if(raw.startsWith('<!--', i)){ state.com = true; continue; }
+    if(raw[i] === '<'){
+      const close = raw.indexOf('>', i);
+      const seg = close === -1 ? raw.slice(i) : raw.slice(i, close+1);
+      out += hlTag(seg); i += seg.length; continue;
+    }
+    const next = raw.indexOf('<', i);
+    const stop = next === -1 ? raw.length : next;
+    out += esc(raw.slice(i, stop)); i = stop;
+  }
+  return out;
+}
+
+function hlTag(seg){
+  const m = seg.match(/^<\/?[A-Za-z!][\w!-]*/);
+  if(!m) return '<span class="t-punc">'+esc(seg)+'</span>';
+  const out = '<span class="t-punc">&lt;</span><span class="t-tag">'+esc(m[0].slice(1))+'</span>';
+  const rest = esc(seg.slice(m[0].length))
+    .replace(/([\w-]+)(=)(&quot;[^&]*?&quot;)/g,
+      '<span class="t-attr">$1</span><span class="t-punc">$2</span><span class="t-val">$3</span>')
+    .replace(/&gt;/g,'<span class="t-punc">&gt;</span>');
+  return out + rest;
+}
+
+const LH = 36, PADMIN = 30;
+const S = {
+  text:'', focus:null, plain:false, lines:[], typing:false,
+  scroller: document.getElementById('scroller'),
+  wrap: document.getElementById('codewrap'),
+};
+
+function render(){
+  const state = {com:false, plain:S.plain};
+  const raw = S.text.split('\n');
+  let html = '';
+  for(let i=0;i<raw.length;i++){
+    const cls = S.focus ? ((i+1 >= S.focus[0] && i+1 <= S.focus[1]) ? 'ln hit' : 'ln dim') : 'ln';
+    let body = hlLine(raw[i], state);
+    if(S.typing && i === raw.length-1) body += '<span id="caret"></span>';
+    html += '<div class="'+cls+'"><span class="num">'+(i+1)+'</span><span class="code">'+body+'</span></div>';
+  }
+  S.scroller.innerHTML = html;
+  S.lines = raw;
+}
+
+// A file shorter than the pane is centred rather than pinned to the top, so a
+// six-line example does not sit in a frame that is two thirds empty.
+function camera(){
+  const viewH = S.wrap.clientHeight;
+  const bodyH = S.lines.length * LH;
+  if(bodyH + PADMIN*2 <= viewH){
+    S.scroller.style.transform = 'translateY(' + Math.round((viewH - bodyH)/2) + 'px)';
+    return;
+  }
+  let target;
+  if(S.focus){
+    const mid = ((S.focus[0]-1) + S.focus[1]) / 2 * LH;
+    target = mid - viewH/2;
+  } else {
+    target = bodyH + PADMIN - viewH;
+  }
+  target = Math.max(-PADMIN, Math.min(target, bodyH + PADMIN - viewH));
+  S.scroller.style.transform = 'translateY(' + (-target) + 'px)';
+}
+
+// Repaint the preview only where the markup is plausibly whole, so a half-typed
+// tag does not flash a broken page thirty times a second.
+function safePoint(t){
+  const c = t[t.length-1];
+  return c === '>' || c === '\n' || c === undefined;
+}
+
+window.studio = {
+  setFile(name, text, opts){
+    opts = opts || {};
+    S.plain = !!opts.plain; S.text = text; S.focus = null; S.typing = false;
+    document.getElementById('filename').textContent = name;
+    document.getElementById('prevlabel').textContent = opts.label || name;
+    document.body.classList.add('notyping');
+    document.body.classList.toggle('full', !!opts.plain);
+    render(); camera(); this.preview(true);
+  },
+  setCrumb(t){ document.getElementById('crumb').textContent = t; },
+  setText(text, opts){
+    opts = opts || {};
+    S.text = text; S.typing = !!opts.typing;
+    document.body.classList.toggle('notyping', !S.typing);
+    render();
+    if(opts.follow !== false) camera();
+    if(safePoint(text) || opts.force) this.preview();
+  },
+  setFocus(a, b){
+    S.focus = (a === null || a === undefined) ? null : [a,b];
+    render(); camera();
+  },
+  glide(a, b){
+    S.focus = [a,b]; render();
+    S.scroller.style.transition = 'transform .5s cubic-bezier(.4,0,.2,1)';
+    camera();
+    setTimeout(() => { S.scroller.style.transition = ''; }, 560);
+  },
+  preview(force){
+    if(S.plain) return;
+    const f = document.getElementById('frame');
+    if(force || f.srcdoc !== S.text) f.srcdoc = S.text;
+  },
+  text(){ return S.text; }
+};
+studio.setFile('index.html', '', {});
+</script>
+</body>
+</html>
