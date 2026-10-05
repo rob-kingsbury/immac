@@ -34,6 +34,18 @@ Home
 
 A common rule of thumb: no page should be more than two or three clicks from the home page. It's not a hard law, but it's a useful check. If your site map has a page buried four levels deep, that's usually a sign the structure needs a shortcut, a broader top-level category, or a rethink of what's actually important enough to put in the main navigation.
 
+Sometimes a deep page is the right call. A portfolio with years of projects might file them by year and then by type, which puts each project page four clicks from home:
+
+```
+Home
+└── Projects
+    └── 2026
+        └── Web Design
+            └── Bakery Website
+```
+
+That's a planned exception, and it's fine as long as you can say two things about it: why the page sits that deep, and how a visitor reaches it faster. Here the bakery project might also be featured on the home page, which makes it one click away for anyone who arrives there. Write that reason as a short note beside your site map. An exception you explain is a decision. One you don't is a problem waiting to be found.
+
 ## Content hierarchy
 
 Within a single page, hierarchy is the order of importance of the content. It's the same idea as heading levels, applied to planning rather than markup. What's the one thing this page is about (the `<h1>`)? What are its major parts (the `<h2>` sections)? What's supporting detail underneath?
