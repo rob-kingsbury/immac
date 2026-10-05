@@ -13,6 +13,19 @@ You can catch a large share of issues yourself, before anyone else sees the page
 
 **Run an automated audit.** Lighthouse, built into Chrome and Edge's developer tools, flags missing alt text, poor contrast, and unlabelled fields in seconds. Open developer tools, choose the Lighthouse panel, tick the Accessibility category, and run it against your page. Then work the itemized list, since every flagged item comes with a link explaining what it wants and why. The [axe DevTools extension](https://www.deque.com/axe/devtools/) is more thorough again. Both are worth running every time.
 
+"Unlabelled field" is one of the most common things Lighthouse flags, so it's worth knowing what a labelled one looks like. A form control gets its name from a `<label>`, connected by giving the label a `for` that matches the control's `id`:
+
+```html
+<!-- Wrong: the placeholder looks like a label, but it isn't one -->
+<input type="email" id="email" placeholder="Email address">
+
+<!-- Right: the label's for matches the input's id -->
+<label for="email">Email address</label>
+<input type="email" id="email">
+```
+
+The first version looks labelled to a sighted user, but the grey placeholder text vanishes the moment someone starts typing, and it was never a real name for the field to begin with. A placeholder is a hint. It can never replace a label. [HTML Forms](/modules/html/html-form/README.md) covers labels in full.
+
 **Zoom text to 200%** and look for clipping, overlap, or horizontal scrolling.
 
 **Turn on reduce motion** in your operating system and reload. Your animations should stop.
